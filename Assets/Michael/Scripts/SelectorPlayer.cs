@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -10,6 +11,8 @@ public class SelectorPlayer : MonoBehaviour
 {
     private PlayerInput _playerInput;
     [SerializeField] private EventSystem _eventSystem;
+
+    
 
     void OnNavigate() {
         if (_eventSystem.currentSelectedGameObject) {
