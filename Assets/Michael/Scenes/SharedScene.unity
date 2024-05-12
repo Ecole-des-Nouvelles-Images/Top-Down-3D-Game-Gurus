@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -267,7 +267,6 @@ GameObject:
   m_Component:
   - component: {fileID: 57742601}
   - component: {fileID: 57742603}
-  - component: {fileID: 57742602}
   - component: {fileID: 57742604}
   m_Layer: 5
   m_Name: Player
@@ -297,19 +296,6 @@ RectTransform:
   m_AnchoredPosition: {x: -441.68, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &57742602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57742600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd9ef23c7473e14d943a665d20736f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventSystem: {fileID: 988411677}
 --- !u!114 &57742603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +324,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &57742604
@@ -364,6 +350,7 @@ MonoBehaviour:
   - {fileID: 1998475308}
   _characterSelected: {fileID: 0}
   _characterIndex: 0
+  _eventSystem: {fileID: 988411677}
 --- !u!1 &159399952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,7 +2898,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1783476393}
   - component: {fileID: 1783476395}
-  - component: {fileID: 1783476394}
   - component: {fileID: 1783476396}
   m_Layer: 5
   m_Name: Player 2
@@ -2941,19 +2927,6 @@ RectTransform:
   m_AnchoredPosition: {x: -441.68, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1783476394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783476392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd9ef23c7473e14d943a665d20736f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventSystem: {fileID: 1733560831}
 --- !u!114 &1783476395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3008,6 +2981,7 @@ MonoBehaviour:
   - {fileID: 1998475308}
   _characterSelected: {fileID: 0}
   _characterIndex: 0
+  _eventSystem: {fileID: 1733560831}
 --- !u!1 &1854056956
 GameObject:
   m_ObjectHideFlags: 0
