@@ -134,10 +134,10 @@ GameObject:
   - component: {fileID: 162613958}
   - component: {fileID: 162613957}
   - component: {fileID: 162613956}
+  - component: {fileID: 162613964}
+  - component: {fileID: 162613962}
   - component: {fileID: 162613955}
-  - component: {fileID: 162613954}
-  - component: {fileID: 162613960}
-  - component: {fileID: 162613959}
+  - component: {fileID: 162613963}
   m_Layer: 0
   m_Name: Turtle
   m_TagString: Untagged
@@ -145,29 +145,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &162613954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162613953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 784f1b5b69959d74db7a6600912394b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  attackDistance: 0.25
-  attackWidth: 0.25
-  dashSpeedMultiplier: 5
-  maxDashChargeTime: 2.5
-  minDashDistance: 2
-  maxDashDistance: 10
-  rb: {fileID: 162613959}
-  TrapPrefab: {fileID: 0}
-  attackParticle: {fileID: 0}
-  dashParticle: {fileID: 0}
 --- !u!135 &162613955
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -256,34 +233,7 @@ Transform:
   - {fileID: 1448499315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!54 &162613959
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162613953}
-  serializedVersion: 4
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!114 &162613960
+--- !u!114 &162613962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,8 +261,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 162613954}
-        m_TargetAssemblyTypeName: Noah.Scripts.TurtlePlayerController, Assembly-CSharp
+      - m_Target: {fileID: 162613964}
+        m_TargetAssemblyTypeName: Noah.Scripts.CharacterController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -324,12 +274,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 93e9356b-2160-46bc-9f7e-92b8ebbbdac8
-    m_ActionName: Turtle/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick,/XInputControllerWindows1/leftStick]
+    m_ActionName: Turtle/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 162613954}
-        m_TargetAssemblyTypeName: Noah.Scripts.TurtlePlayerController, Assembly-CSharp
-        m_MethodName: OnDash
+      - m_Target: {fileID: 162613964}
+        m_TargetAssemblyTypeName: Noah.Scripts.CharacterController, Assembly-CSharp
+        m_MethodName: OnMainCapacity
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -340,56 +290,73 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 910a414d-8c7e-4835-b7e9-b5c5f0cf54cf
-    m_ActionName: Turtle/Dash[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/Keyboard/shift]
+    m_ActionName: Turtle/Dash[/XInputControllerWindows/buttonSouth,/Keyboard/shift]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: ea7d71cb-b873-4d60-b4f5-1797347fcfe7
-    m_ActionName: Turtle/X[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
+    m_ActionName: Turtle/X[/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: ba4bb530-da3e-4938-af80-6230d1531466
-    m_ActionName: Turtle/Y[/XInputControllerWindows/buttonNorth,/XInputControllerWindows1/buttonNorth]
+    m_ActionName: Turtle/Y[/XInputControllerWindows/buttonNorth]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 220a9024-1255-4bf2-95d4-a6603492744b
-    m_ActionName: Turtle/B[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
+    m_ActionName: Turtle/B[/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: c928c4f5-fd21-48b0-9fc2-43505bcab253
-    m_ActionName: Turtle/A[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
+    m_ActionName: Turtle/A[/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 5ebae7ff-cc17-4e52-9c6e-de559acc3044
-    m_ActionName: Turtle/Attack[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Basic control scheme
+    m_ActionName: Turtle/Attack[/XInputControllerWindows/buttonEast]
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Turtle
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!54 &162613963
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162613953}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 2
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!114 &162613964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162613953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef30d808301ee044ab5b6eacbb9a6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  dashForce: 3
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,5 +1025,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 330585546}
   - {fileID: 410087041}
-  - {fileID: 2040500389}
   - {fileID: 162613958}
+  - {fileID: 2040500389}

@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Dash",
+                    "name": "Main Capacity",
                     "type": "Button",
                     "id": "910a414d-8c7e-4835-b7e9-b5c5f0cf54cf",
                     "expectedControlType": "Button",
@@ -143,7 +143,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dash",
+                    "action": "Main Capacity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -154,7 +154,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dash",
+                    "action": "Main Capacity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
