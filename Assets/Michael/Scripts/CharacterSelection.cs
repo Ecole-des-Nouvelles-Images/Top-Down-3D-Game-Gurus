@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Michael.Scripts.Manager;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,7 +19,8 @@ namespace Michael.Scripts
         public int _maxPlayers ;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private Button _characterSelected;
-        [SerializeField] private int _characterIndex;
+        [SerializeField] private Button _joinButton;
+        [SerializeField] private int _characterIndex; // l'index du personnage selectionné
         [SerializeField] private EventSystem _eventSystem;
         
         
@@ -28,12 +30,14 @@ namespace Michael.Scripts
             PlayerIsJoined = new bool[5] {false, false, false, false,false};
         }
         
+     
+        
         void OnNavigate() {  //Bouger le cursor du player 
           PlayerSelector();
         }
 
         void PlayerSelector() {
-            if (_eventSystem.currentSelectedGameObject) {
+            if  (_eventSystem.currentSelectedGameObject.GetComponentInChildren<HorizontalLayoutGroup>()) {
                 transform.SetParent( _eventSystem.currentSelectedGameObject
                     .GetComponentInChildren<HorizontalLayoutGroup>().transform);
             }
@@ -47,34 +51,50 @@ namespace Michael.Scripts
                 if (GetComponentInParent<Button>()) {
                 
                     _characterSelected = GetComponentInParent<Button>();
-                    PlayerReady();
                     _characterIndex = _characterButtons.IndexOf(_characterSelected);
-                    Debug.Log(_characterIndex);
-                    _characterSelected.enabled = false;
+                    PlayerReady();
+                    Debug.Log("l'index du personnage selectionné est " + _characterIndex);
 
-                    var buttonGrid = _characterSelected.GetComponentInChildren<HorizontalLayoutGroup>();
+                    MooveOtherSelectorPosition();
                     
                 
-                    if ( buttonGrid.transform.childCount >= 2) {
-                        Debug.Log("il a plus de 1 joueur sur ce personnage");
-                  
-                        for (int i = 0; i < buttonGrid.transform.childCount; i++) {
-                            Transform childTransform = buttonGrid.transform.GetChild(i);
-                        
-                            if (childTransform != this.transform) {
-                                Button buttonWithNoChildren = FindButtonWithNoChildren(_characterButtons);
-                                childTransform.GetComponentInChildren<EventSystem>()
-                                    .SetSelectedGameObject(buttonWithNoChildren.gameObject);
-                                childTransform.GetComponent<CharacterSelection>().PlayerSelector();
-                            }
-                        }
-                    }
+                   
                 }
             }
 
          
         }
+
+        void MooveSelectorPosition() {
+            if (_characterSelected) {
+                var buttonGrid =   _characterSelected.GetComponentInChildren<HorizontalLayoutGroup>();
+                if (buttonGrid.transform.childCount >= 2) {
+                    Button buttonWithNoChildren = FindButtonWithNoChildren(_characterButtons);
+                    _eventSystem.SetSelectedGameObject(buttonWithNoChildren.gameObject);
+                    PlayerSelector();
+                }
+            }
+        }
         
+        void MooveOtherSelectorPosition() {
+            
+            var buttonGrid = _characterSelected.GetComponentInChildren<HorizontalLayoutGroup>();
+            if ( buttonGrid.transform.childCount >= 2) {
+                  
+                Debug.Log("il a plus de 1 joueur sur ce personnage");
+                  
+                for (int i = 0; i < buttonGrid.transform.childCount; i++) {
+                    Transform childTransform = buttonGrid.transform.GetChild(i);
+                        
+                    if (childTransform != this.transform) {
+                        Button buttonWithNoChildren = FindButtonWithNoChildren(_characterButtons);
+                        childTransform.GetComponentInChildren<EventSystem>()
+                            .SetSelectedGameObject(buttonWithNoChildren.gameObject);
+                        childTransform.GetComponent<CharacterSelection>().PlayerSelector();
+                    }
+                }
+            }
+        }
         
         Button FindButtonWithNoChildren(List<Button> buttonList) {
             foreach (Button button in _characterButtons) {
@@ -94,10 +114,12 @@ namespace Michael.Scripts
                 PlayerIsReady[PlayerIndex] = false;
                 _characterSelected.enabled = true;
                 Debug.Log("le joueur nest plus pret");
+                RemoveChoice(PlayerIndex);
+                Debug.Log( DataManager.Instance.PlayerCharacter);
             }
             else if (PlayerIsJoined[PlayerIndex])
             {
-               // GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(_joinButton);
+              _eventSystem.SetSelectedGameObject(_joinButton.gameObject);
                PlayerIsJoined[PlayerIndex] = false;
                Debug.Log("le jooueur est parti");
             }
@@ -108,6 +130,9 @@ namespace Michael.Scripts
         public void PlayerJoined() {
             PlayerIndex = GetComponent<PlayerInput>().playerIndex;
             PlayerIsJoined[PlayerIndex ] = true;
+            _eventSystem.SetSelectedGameObject(_characterButtons[0].gameObject);
+           // MooveSelectorPosition();
+            Debug.Log("un joueur a rejoin");
         }
         
         public void PlayerReady() {
@@ -123,18 +148,43 @@ namespace Michael.Scripts
                     }
                     else {
                         readyCount++;
-                        Debug.Log("le joueur est pret");
-                       // GetComponent<EventSystem>().SetSelectedGameObject(null);
+                        _characterSelected.enabled = false;
+                        ConfirmChoice(PlayerIndex,_characterIndex);
+                        
+                        Debug.Log("le joueur " + PlayerIndex +"est pret");
+                        Debug.Log(readyCount+" joueurs pret");
+                        foreach(var key in   DataManager.Instance.PlayerCharacter.Keys)
+                        {
+                            Debug.Log($"Key: {key}, Value: {   DataManager.Instance.PlayerCharacter[key]}");
+                        }
                     }
                 }
             }
-            if (allPlayersReady == true ) {
+            if  (/*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >=2 ) {
                 CanStart = true;
             }
             else {
                 CanStart = false;
             }
+
+            if (CanStart)
+            {
+                CustomSceneManager.Instance.LoadScene("Game");
+            }
         }
+        public void ConfirmChoice(int playerIndex, int characterIndex) {
+
+            if (!DataManager.Instance.PlayerCharacter.ContainsKey(PlayerIndex))
+            {
+                DataManager.Instance.PlayerCharacter.Add(playerIndex, characterIndex);
+            }
+            
+          
+        }
+        public void RemoveChoice(int playerIndex) {
+            DataManager.Instance.PlayerCharacter.Remove(playerIndex);
+        }
+        
         
         
         
