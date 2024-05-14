@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Michael.Scripts.Manager;
 using UnityEngine;
 
@@ -12,13 +13,15 @@ namespace Michael.Scripts
 
         private void Start() { 
             if (DataManager.Instance.PlayerCharacter.Count > 0) {
-                foreach (var player in DataManager.Instance.PlayerCharacter) {
+                
+                var ascendingDict = DataManager.Instance.PlayerCharacter.OrderBy(keyValuePair => keyValuePair.Key);
+                foreach (var player in ascendingDict) {
                     
-                    foreach(KeyValuePair<int, int> items in DataManager.Instance.PlayerCharacter) {
+                    foreach(KeyValuePair<int, int> items in ascendingDict) {
                         Debug.Log("You have "  + items.Key+ " " + items.Value );
                     }
                     
-                    GameObject character = Instantiate(characterPrefabs[player.Value], spawnPoints[player.Key].position,
+                    GameObject character = Instantiate(characterPrefabs[player.Value], spawnPoints[player.Value].position,
                         Quaternion.identity);
                         
                     GameManager.Instance.Flowers.Add(character);

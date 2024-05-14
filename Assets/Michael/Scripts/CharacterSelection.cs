@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using Michael.Scripts.Manager;
-using UnityEditor.Experimental.GraphView;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
 namespace Michael.Scripts
@@ -15,6 +13,7 @@ namespace Michael.Scripts
         public static bool[] PlayerIsReady;
         public static bool[] PlayerIsJoined;
         public static bool CanStart;
+        public static bool TurtleIsSelected;
         public int PlayerIndex ;
         public int _maxPlayers ;
         [SerializeField] private List<Button> _characterButtons;
@@ -22,10 +21,13 @@ namespace Michael.Scripts
         [SerializeField] private Button _joinButton;
         [SerializeField] private int _characterIndex; // l'index du personnage selectionné
         [SerializeField] private EventSystem _eventSystem;
-        
+        [SerializeField] private GameObject Selector;
+        public TextMeshProUGUI joinText;
         
         private void Start() {
+            Selector.SetActive(false);
             CanStart = false;
+            TurtleIsSelected = false;
             PlayerIsReady = new bool[5] {false, false, false, false,false};
             PlayerIsJoined = new bool[5] {false, false, false, false,false};
         }
@@ -46,34 +48,29 @@ namespace Michael.Scripts
 
         void OnSubmit() { //Valider la selection d'un personnage 
 
-            if (!PlayerIsReady[PlayerIndex])
-            {
+            
+            if (!PlayerIsJoined[PlayerIndex]) {
+                PlayerJoined();
+            }
+            else if (!PlayerIsReady[PlayerIndex]) {
                 if (GetComponentInParent<Button>()) {
-                
                     _characterSelected = GetComponentInParent<Button>();
                     _characterIndex = _characterButtons.IndexOf(_characterSelected);
+                    _characterSelected.enabled = false;
                     PlayerReady();
                     Debug.Log("l'index du personnage selectionné est " + _characterIndex);
-
                     MooveOtherSelectorPosition();
-                    
-                
-                   
                 }
             }
-
-         
         }
 
         void MooveSelectorPosition() {
-            if (_characterSelected) {
-                var buttonGrid =   _characterSelected.GetComponentInChildren<HorizontalLayoutGroup>();
-                if (buttonGrid.transform.childCount >= 2) {
-                    Button buttonWithNoChildren = FindButtonWithNoChildren(_characterButtons);
-                    _eventSystem.SetSelectedGameObject(buttonWithNoChildren.gameObject);
-                    PlayerSelector();
-                }
-            }
+            
+            Button buttonWithNoChildren = FindButtonWithNoChildren(_characterButtons);
+            _eventSystem.SetSelectedGameObject(buttonWithNoChildren.gameObject);
+            PlayerSelector();
+                
+            
         }
         
         void MooveOtherSelectorPosition() {
@@ -106,22 +103,33 @@ namespace Michael.Scripts
         }
         
         
-        
         void OnCancel() { // Annulé la la selection d'un personnage 
             
-            Debug.Log("retour");
+           
             if (PlayerIsReady[PlayerIndex]) {
+                Debug.Log("retour");
                 PlayerIsReady[PlayerIndex] = false;
                 _characterSelected.enabled = true;
                 Debug.Log("le joueur nest plus pret");
                 RemoveChoice(PlayerIndex);
-                Debug.Log( DataManager.Instance.PlayerCharacter);
+                joinText.text = "Ready?";
+                
+                if (_characterSelected.name == "TurtleButton")
+                {
+                    TurtleIsSelected = false;
+                    Debug.Log("turtle deselectionnée");
+                }
             }
             else if (PlayerIsJoined[PlayerIndex])
-            {
+            { 
+                joinText.text = "Join";
               _eventSystem.SetSelectedGameObject(_joinButton.gameObject);
-               PlayerIsJoined[PlayerIndex] = false;
-               Debug.Log("le jooueur est parti");
+              if (_characterSelected) {
+                  _characterSelected.enabled = true;
+              }
+              PlayerIsJoined[PlayerIndex] = false;
+              Debug.Log("le jooueur est parti");
+              Selector.SetActive(false);
             }
         }
         
@@ -130,12 +138,14 @@ namespace Michael.Scripts
         public void PlayerJoined() {
             PlayerIndex = GetComponent<PlayerInput>().playerIndex;
             PlayerIsJoined[PlayerIndex ] = true;
-            _eventSystem.SetSelectedGameObject(_characterButtons[0].gameObject);
-           // MooveSelectorPosition();
+            MooveSelectorPosition();
             Debug.Log("un joueur a rejoin");
+            Selector.SetActive(true);
+            joinText.text = "Ready?";
         }
         
         public void PlayerReady() {
+            joinText.text = "READY";
             PlayerIsReady[PlayerIndex] = true;
             bool allPlayersReady = true;
             int readyCount = 0;
@@ -148,9 +158,13 @@ namespace Michael.Scripts
                     }
                     else {
                         readyCount++;
-                        _characterSelected.enabled = false;
                         ConfirmChoice(PlayerIndex,_characterIndex);
                         
+                        if (_characterSelected.name == "TurtleButton")
+                        {
+                            TurtleIsSelected = true;
+                            Debug.Log("turtle selectionnée");
+                        }
                         Debug.Log("le joueur " + PlayerIndex +"est pret");
                         Debug.Log(readyCount+" joueurs pret");
                         foreach(var key in   DataManager.Instance.PlayerCharacter.Keys)
@@ -160,7 +174,7 @@ namespace Michael.Scripts
                     }
                 }
             }
-            if  (/*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >=2 ) {
+            if  (/*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= 2 && TurtleIsSelected) {
                 CanStart = true;
             }
             else {
