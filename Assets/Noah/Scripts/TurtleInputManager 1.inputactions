@@ -2,7 +2,7 @@
     "name": "TurtleInputManager 1",
     "maps": [
         {
-            "name": "Turtle",
+            "name": "Character",
             "id": "e69ee188-73b7-4e24-be3f-2e95f81889a1",
             "actions": [
                 {

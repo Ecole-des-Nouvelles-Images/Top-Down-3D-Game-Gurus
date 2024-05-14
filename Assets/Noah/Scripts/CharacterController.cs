@@ -67,5 +67,14 @@ namespace Noah.Scripts
 
         #endregion
         
+        #region Third Capacity
+
+        public abstract void OnThirdCapacity(InputAction.CallbackContext context);
+
+        protected abstract void ThirdCapacity();
+        
+
+        #endregion
+        
     }
 }

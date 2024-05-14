@@ -13,16 +13,14 @@ namespace Noah.Scripts
         [SerializeField] private float chargeDashMultiplier;
         [SerializeField] private float chargeTime;
         [SerializeField] private float maxChargeTime;
-
-        [SerializeField]private Collider _attackCollider;
+        [SerializeField] private Collider _attackCollider;
         private Vector2 lastNonZeroDirection;
-
         
         private void Start()
         {
             _attackCollider.enabled = false;
         }
-        
+
         protected override void FixedUpdate()
         {
             if (!isDashing && !isCharging)
@@ -53,8 +51,6 @@ namespace Noah.Scripts
 
         protected override void MainCapacity()
         {
-            Debug.Log("turtle main capacity");
-
             if (!isDashing)
             {
                 Vector2 dashDirection;
@@ -116,13 +112,12 @@ namespace Noah.Scripts
 
         #endregion
 
-        
         #region Secondary Capacity
 
         protected override void SecondaryCapacity()
         {
             EnableAttackCollider();
-           Invoke(nameof(DisableAttackCollider),1f); 
+            Invoke(nameof(DisableAttackCollider), 1f);
         }
 
         private void EnableAttackCollider()
@@ -135,10 +130,20 @@ namespace Noah.Scripts
             _attackCollider.enabled = false;
         }
 
-      
+        #endregion
+
+        #region Third Capacity
+
+        public override void OnThirdCapacity(InputAction.CallbackContext context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void ThirdCapacity()
+        {
+            throw new System.NotImplementedException();
+        }
 
         #endregion
-        
-        
     }
 }

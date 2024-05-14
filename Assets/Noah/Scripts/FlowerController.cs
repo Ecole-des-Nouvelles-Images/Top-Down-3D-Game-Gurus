@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Noah.Scripts
 {
-    public class FlowerController : CharacterController
+    public abstract class FlowerController : CharacterController
     {
         [SerializeField] private bool dead;
 
@@ -12,15 +13,25 @@ namespace Noah.Scripts
             dead = false;
         }
 
-        protected override void MainCapacity()
-        {
-            throw new System.NotImplementedException();
-        }
+        protected abstract void PassiveCapacity();
 
+        #region Non-Used Capacities
+        
         protected override void SecondaryCapacity()
         {
             throw new System.NotImplementedException();
         }
+
+        public override void OnThirdCapacity(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void ThirdCapacity()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
 
         private void OnTriggerEnter(Collider other)
         {
