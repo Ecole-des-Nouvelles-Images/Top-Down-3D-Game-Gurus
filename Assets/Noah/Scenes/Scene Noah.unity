@@ -152,7 +152,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162613953}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 82cd81ded314a084ca087706cc4c5efd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
     m_ActionName: Turtle/Attack[/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Basic control scheme
-  m_DefaultActionMap: Turtle
+  m_DefaultActionMap: Character
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!54 &162613963
@@ -355,7 +355,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &162613964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,8 +807,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 2
 --- !u!65 &1373179638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -830,20 +830,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1252576, y: 0.12525757, z: 0.122864924}
   m_Center: {x: -0.0028787942, y: -0.0028787886, z: 0.060534064}
---- !u!114 &1373179642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7749646087724820835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7900baf2c7de9a641be4a5035135a4d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  dead: 0
 --- !u!1 &1448499314
 GameObject:
   m_ObjectHideFlags: 0
@@ -4415,8 +4401,8 @@ GameObject:
   - component: {fileID: 1107485364639951374}
   - component: {fileID: 1373179637}
   - component: {fileID: 1373179638}
-  - component: {fileID: 1373179642}
   - component: {fileID: 7749646087724820836}
+  - component: {fileID: 7749646087724820837}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -4452,7 +4438,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1373179642}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Noah.Scripts.CharacterController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -4516,9 +4502,23 @@ MonoBehaviour:
     m_ActionName: Turtle/Attack[/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Turtle
+  m_DefaultActionMap: Character
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7749646087724820837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7749646087724820835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51067189011123f41b3a1e098f9abafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  dead: 0
 --- !u!33 &7824831987428444048
 MeshFilter:
   m_ObjectHideFlags: 0
