@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Secondary Capacity",
+                    "type": "Button",
+                    "id": "220a9024-1255-4bf2-95d4-a6603492744b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "X",
                     "type": "Button",
                     "id": "ea7d71cb-b873-4d60-b4f5-1797347fcfe7",
@@ -36,15 +45,6 @@
                     "name": "Y",
                     "type": "Button",
                     "id": "ba4bb530-da3e-4938-af80-6230d1531466",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "B",
-                    "type": "Button",
-                    "id": "220a9024-1255-4bf2-95d4-a6603492744b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -142,7 +142,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Basic control scheme",
                     "action": "Main Capacity",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -182,17 +182,6 @@
                 },
                 {
                     "name": "",
-                    "id": "93fef2ab-c0bb-49e1-b84e-d86f769fe841",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Basic control scheme",
-                    "action": "B",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8c7bea0d-964f-45cd-8342-5b4eab3a2f9f",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -210,6 +199,17 @@
                     "processors": "",
                     "groups": "Basic control scheme",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93fef2ab-c0bb-49e1-b84e-d86f769fe841",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Basic control scheme",
+                    "action": "Secondary Capacity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

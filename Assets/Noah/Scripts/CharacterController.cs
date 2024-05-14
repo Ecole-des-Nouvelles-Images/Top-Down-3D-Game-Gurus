@@ -6,41 +6,30 @@ namespace Noah.Scripts
     public abstract class CharacterController : MonoBehaviour
     {
         [SerializeField] protected float moveSpeed = 3f;
-        private bool isDoingMainCapacity = false;
 
         protected Rigidbody Rb;
-        private Vector2 move;
+        protected Vector2 move;
 
         private void Awake()
         {
             Rb = GetComponent<Rigidbody>();
         }
-        
-        private void FixedUpdate()
+
+        protected virtual void FixedUpdate()
         {
-            if (!isDoingMainCapacity)
-            {
-                Move();
-            }
-        }
-        
-        private void Update()
-        {
-            if (isDoingMainCapacity && Rb.velocity.magnitude < 0.01f)
-            {
-                isDoingMainCapacity = false; 
-            }
+            Move();
         }
 
+        protected virtual void Update() { }
 
         #region Move
-        
+
         public void OnMove(InputAction.CallbackContext context)
         {
             move = context.ReadValue<Vector2>();
         }
 
-        private void Move()
+        protected void Move()
         {
             Vector3 movement = new Vector3(-move.x, 0f, -move.y) * moveSpeed;
 
@@ -52,20 +41,31 @@ namespace Noah.Scripts
 
             Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
         }
+
         #endregion
-        
+
         #region Main Capacity
-        
-        public void OnMainCapacity(InputAction.CallbackContext context)
+
+        public virtual void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.performed && !isDoingMainCapacity) 
-            {
-                MainCapacity();
-                isDoingMainCapacity = true;
-            }
+            MainCapacity();
         }
-        
+
         protected abstract void MainCapacity();
+
         #endregion
+
+        
+        #region Secondary Capacity
+
+        public virtual void OnSecondaryCapacity(InputAction.CallbackContext context)
+        {
+            SecondaryCapacity();
+        }
+
+        protected abstract void SecondaryCapacity();
+
+        #endregion
+        
     }
 }
