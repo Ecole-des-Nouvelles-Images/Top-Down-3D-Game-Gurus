@@ -81,5 +81,15 @@ namespace Noah.Scripts
 
         #endregion
         
+        private void OnDrawGizmos()
+        {
+            // Calcul de la direction de rotation
+            Vector3 forward = transform.forward;
+
+            // Dessiner un rayon dans la direction de la rotation actuelle
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, forward * 2f); // 2f est la longueur du rayon, vous pouvez ajuster selon vos besoins
+        }
+        
     }
 }

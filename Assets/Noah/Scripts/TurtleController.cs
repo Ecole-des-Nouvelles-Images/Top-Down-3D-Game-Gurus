@@ -63,6 +63,7 @@ namespace Noah.Scripts
                     dashDirection = isDashInputReleased
                         ? -lastNonZeroDirection
                         : new Vector2(transform.forward.x, transform.forward.z);
+                    Debug.Log("call");
                 }
                 else
                 {
