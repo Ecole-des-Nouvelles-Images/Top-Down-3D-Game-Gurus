@@ -376,7 +376,7 @@ MonoBehaviour:
   isDashing: 0
   isCharging: 0
   isDashInputReleased: 0
-  chargeDashMultiplier: 1
+  chargeDashMultiplier: 0.84
   chargeTime: 0
   maxChargeTime: 1.5
   _attackCollider: {fileID: 1752209870}
