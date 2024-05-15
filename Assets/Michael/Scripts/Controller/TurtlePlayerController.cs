@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+using JetBrains.Annotations;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
-namespace Michael.Scripts
+namespace Michael.Scripts.Controller
 {
-     public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         [Header("VARIABLES")] 
         public Rigidbody rb;
@@ -16,12 +18,7 @@ namespace Michael.Scripts
         public float attackWidth = 1f; 
 
         private Vector2 move;
-        private bool isDashing = false;
-
-        private void Start()
-        {
-            rb = GetComponent<Rigidbody>();
-        }
+        private bool isDashing = false; 
 
         private void FixedUpdate() 
         {
@@ -60,6 +57,7 @@ namespace Michael.Scripts
         #endregion
         
         #region Dash
+        [UsedImplicitly]
         public void OnDash(InputAction.CallbackContext context)
         {
             if (context.performed && !isDashing) 
@@ -79,10 +77,23 @@ namespace Michael.Scripts
         #region Attack
         public void OnAttack(InputAction.CallbackContext context)
         {
-         
+            Attack();
         }
         
-       
+        private void Attack()
+        {
+            Vector3 attackOrigin = transform.position + transform.forward * attackDistance;
+            Collider[] colliders = Physics.OverlapCapsule(attackOrigin, attackOrigin + transform.forward * attackWidth, attackWidth / 2f);
+    
+            foreach (Collider collider in colliders)
+            {
+
+                if (collider.CompareTag("Flower"))
+                {
+
+                }
+            }
+        }
 
         #endregion
         

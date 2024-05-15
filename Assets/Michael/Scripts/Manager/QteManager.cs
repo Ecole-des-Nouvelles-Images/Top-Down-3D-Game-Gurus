@@ -108,7 +108,7 @@ namespace Michael.Scripts.Manager
             qteSequence.Clear();
             _currentQTeImage.SetActive(false);
             Debug.Log("QTE gagné");
-            _turtlePlayerInput.currentActionMap = _turtlePlayerInput.actions.FindActionMap("Player");
+            _turtlePlayerInput.currentActionMap = _turtlePlayerInput.actions.FindActionMap("Character");
         }
 
         void QTEFailure() {
