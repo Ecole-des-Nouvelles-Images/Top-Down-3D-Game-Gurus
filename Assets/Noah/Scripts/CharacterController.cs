@@ -31,16 +31,15 @@ namespace Noah.Scripts
 
         protected void Move()
         {
-            Vector3 movement = new Vector3(-move.x, 0f, -move.y) * moveSpeed;
-            
+            Vector3 movement = new Vector3(move.x, 0f, move.y) * moveSpeed;
+
             if (movement != Vector3.zero)
             {
-                Quaternion newRotation = Quaternion.LookRotation(movement, Vector3.up);
+                Quaternion newRotation = Quaternion.LookRotation(-movement, Vector3.up);
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
             }
-            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * Time.deltaTime);
-            Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
-            // Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
+
+            Rb.AddForce(-movement * Time.deltaTime, ForceMode.Force);
         }
 
         #endregion
@@ -55,7 +54,7 @@ namespace Noah.Scripts
         protected abstract void MainCapacity();
 
         #endregion
-        
+
         #region Secondary Capacity
 
         public virtual void OnSecondaryCapacity(InputAction.CallbackContext context)
@@ -66,7 +65,7 @@ namespace Noah.Scripts
         protected abstract void SecondaryCapacity();
 
         #endregion
-        
+
         #region Third Capacity
 
         public virtual void OnThirdCapacity(InputAction.CallbackContext context)
@@ -80,16 +79,12 @@ namespace Noah.Scripts
         }
 
         #endregion
-        
+
         private void OnDrawGizmos()
         {
-            // Calcul de la direction de rotation
             Vector3 forward = transform.forward;
-
-            // Dessiner un rayon dans la direction de la rotation actuelle
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position, forward * 2f); // 2f est la longueur du rayon, vous pouvez ajuster selon vos besoins
+            Gizmos.DrawRay(transform.position, forward * 2f);
         }
-        
     }
 }

@@ -13,11 +13,11 @@ namespace Noah.Scripts
             Dead
         }
         
-        [SerializeField] private State CurrentState;
+        [SerializeField] private State currentState;
         
-        protected void Start()
+        protected virtual void Start()
         {
-            CurrentState = State.Alive;
+            currentState = State.Alive;
         }
         
         protected override void SecondaryCapacity()
@@ -49,12 +49,12 @@ namespace Noah.Scripts
 
         private void GetStunned()
         {
-            CurrentState = State.Stunned;
+            currentState = State.Stunned;
         }
 
         private void TakeHit()
         {
-            CurrentState = State.Dead;
+            currentState = State.Dead;
         }
     }
 }

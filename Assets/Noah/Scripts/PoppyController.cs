@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Noah.Scripts
 {
@@ -9,27 +10,41 @@ namespace Noah.Scripts
         public LayerMask whatIsGrappleable;
         public LineRenderer lr;
 
-        [Header("Grappling")] public float grappleSpeed;
+        [Header("Grappling")]
+        public float grappleSpeed;
         public float maxGrappleDistance;
         public float grappleDelayTime;
-
-        private Vector3 grapplePoint;
-
+        
         [Header("Cooldown")]
         public float grapplingCd;
         private float _grapplingCdTimer;
         
+        private Vector3 grapplePoint;
         private bool _grappling;
-    
+
+        protected override void Start()
+        {
+            base.Start();
+            lr.enabled = false;
+        }
+        
         protected override void PassiveCapacity()
         {
             throw new System.NotImplementedException();
-        }
+        } 
 
         protected override void Update()
         {
             if (_grapplingCdTimer > 0)
                 _grapplingCdTimer -= Time.deltaTime;
+        }
+        
+        public override void OnMainCapacity(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                MainCapacity();
+            }
         }
 
         protected override void MainCapacity()
@@ -52,7 +67,7 @@ namespace Noah.Scripts
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(gunTip.position, gunTip.position + gunTip.forward * maxGrappleDistance);
         }
-
+        
         private void StartGrapple()
         {
             if (_grapplingCdTimer > 0) return;
@@ -63,8 +78,12 @@ namespace Noah.Scripts
             if (Physics.Raycast(gunTip.position, gunTip.forward, out hit, maxGrappleDistance, whatIsGrappleable))
             {
                 grapplePoint = hit.point;
-                Invoke(nameof(ExecuteGrapple), grappleDelayTime);
-                Debug.Log("GRABBING");
+                lr.enabled = true;
+                lr.positionCount = 2;
+                lr.SetPosition(0, gunTip.position);
+                lr.SetPosition(1, grapplePoint);
+                lr.enabled = true;
+                ExecuteGrapple();
             }
             else
             {
@@ -73,14 +92,17 @@ namespace Noah.Scripts
             }
         }
 
+
         private void ExecuteGrapple()
         {
-           // Rb.MovePosition(grapplePoint);
             Vector3 directionToGrapple = (grapplePoint - transform.position).normalized;
             Vector3 forceVector = directionToGrapple * grappleSpeed;
             Rb.AddForce(forceVector * Time.deltaTime, ForceMode.Force);
 
-            if (Vector3.Distance(transform.position, grapplePoint) < 0.1f)
+            lr.SetPosition(0, gunTip.position);
+            lr.SetPosition(1, grapplePoint);
+
+            if (Vector3.Distance(transform.position, grapplePoint) < 0.3f)
             {
                 StopGrapple();
             }
@@ -94,6 +116,7 @@ namespace Noah.Scripts
         {
             _grappling = false;
             _grapplingCdTimer = grapplingCd;
+            lr.enabled = false;
         }
 
         public bool IsGrappling()
@@ -105,13 +128,13 @@ namespace Noah.Scripts
         {
             return grapplePoint;
         }
-        
-        private void OnTriggerEnter(Collider other)
+
+        private void OnCollisionEnter(Collision other)
         {
-            if (!other) 
+            if (other.gameObject != null) 
             {
                 StopGrapple();
-            }
+            }        
         }
     }
 }
