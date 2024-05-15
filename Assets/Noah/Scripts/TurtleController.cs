@@ -5,6 +5,9 @@ namespace Noah.Scripts
 {
     public class TurtleController : CharacterController
     {
+        [Header("Trap")] [SerializeField] private GameObject TrapPrefab;
+        [SerializeField] private Transform TrapSpawn;
+        
         [Header("Dashing")] [SerializeField] private float dashForce;
         [SerializeField] private float maxDashForce;
         [SerializeField] private bool isDashing;
@@ -67,7 +70,8 @@ namespace Noah.Scripts
                 }
 
                 float currentDashForce = Mathf.Clamp(dashForce * (chargeTime * chargeDashMultiplier), 0f, maxDashForce);
-                Rb.velocity = new Vector3(dashDirection.x, 0f, dashDirection.y) * currentDashForce;
+                //Rb.velocity = new Vector3(dashDirection.x, 0f, dashDirection.y) * currentDashForce;
+                Rb.AddForce(currentDashForce * new Vector3(dashDirection.x, 0f, dashDirection.y), ForceMode.Impulse);
                 isDashing = true;
             }
         }
@@ -133,15 +137,10 @@ namespace Noah.Scripts
         #endregion
 
         #region Third Capacity
-
-        public override void OnThirdCapacity(InputAction.CallbackContext context)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         protected override void ThirdCapacity()
         {
-            throw new System.NotImplementedException();
+            Instantiate(TrapPrefab);
         }
 
         #endregion

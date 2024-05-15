@@ -12,7 +12,7 @@ namespace Noah.Scripts
 
         protected override void MainCapacity()
         {
-            
+            ;
         }
         
     }

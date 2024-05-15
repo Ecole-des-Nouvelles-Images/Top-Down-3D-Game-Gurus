@@ -32,14 +32,15 @@ namespace Noah.Scripts
         protected void Move()
         {
             Vector3 movement = new Vector3(-move.x, 0f, -move.y) * moveSpeed;
-
+            
             if (movement != Vector3.zero)
             {
                 Quaternion newRotation = Quaternion.LookRotation(movement, Vector3.up);
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
             }
-
-            Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
+            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * Time.deltaTime);
+            Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
+            // Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
         }
 
         #endregion
@@ -54,7 +55,6 @@ namespace Noah.Scripts
         protected abstract void MainCapacity();
 
         #endregion
-
         
         #region Secondary Capacity
 
@@ -69,10 +69,15 @@ namespace Noah.Scripts
         
         #region Third Capacity
 
-        public abstract void OnThirdCapacity(InputAction.CallbackContext context);
+        public virtual void OnThirdCapacity(InputAction.CallbackContext context)
+        {
+            ThirdCapacity();
+        }
 
-        protected abstract void ThirdCapacity();
-        
+        protected virtual void ThirdCapacity()
+        {
+            Debug.Log("ThirdCapacity is not used");
+        }
 
         #endregion
         

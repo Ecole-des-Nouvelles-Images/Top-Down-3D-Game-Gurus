@@ -6,44 +6,55 @@ namespace Noah.Scripts
 {
     public abstract class FlowerController : CharacterController
     {
-        [SerializeField] private bool dead;
-
+        private enum State
+        {
+            Alive,
+            Stunned,
+            Dead
+        }
+        
+        [SerializeField] private State CurrentState;
+        
         protected void Start()
         {
-            dead = false;
+            CurrentState = State.Alive;
         }
-
-        protected abstract void PassiveCapacity();
-
-        #region Non-Used Capacities
         
         protected override void SecondaryCapacity()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override void OnThirdCapacity(InputAction.CallbackContext context)
-        {
-            throw new NotImplementedException();
+            // this.gameObject.SetActive(false);
+            // Michael Dig pas besoin d'override
         }
 
         protected override void ThirdCapacity()
         {
-            throw new NotImplementedException();
+            // Michael Reanimate
+            // protected override void ThirdCapacity() pour Lys
         }
-        #endregion
-
+        
+        protected abstract void PassiveCapacity();
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Turtle Collider"))
             {
                 TakeHit();
             }
+
+            if (other.CompareTag("Trap"))
+            {
+                GetStunned();
+            }
+        }
+
+        private void GetStunned()
+        {
+            CurrentState = State.Stunned;
         }
 
         private void TakeHit()
         {
-            dead = true;
+            CurrentState = State.Dead;
         }
     }
 }
