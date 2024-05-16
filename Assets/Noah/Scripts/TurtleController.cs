@@ -76,7 +76,7 @@ namespace Noah.Scripts
 
                 if (move.magnitude > 0f)
                 {
-                    Quaternion newRotation = Quaternion.LookRotation(new Vector3(-move.x, 0f, -move.y), Vector3.up);
+                    Quaternion newRotation = Quaternion.LookRotation(new Vector3(move.x, 0f, move.y), Vector3.up);
                     Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
                 }
             }
