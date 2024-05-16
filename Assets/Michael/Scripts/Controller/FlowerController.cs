@@ -18,8 +18,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private float reanimateDuration = 1;
        
         
-        private enum State
-        {
+        private enum State {
             Alive,
             Planted,
             Stunned,
@@ -41,9 +40,24 @@ namespace Michael.Scripts.Controller
                     reanimateTimer = 0;
                 }
             }
+            
+            
+            //pour l'animation de course 
+            if (Rb.velocity.magnitude > this.idleTreshold)
+            {
+                _animator.SetBool("Run", true);
+                _animator.SetBool("IsPlanted",false);
+            }
+            else
+            {
+                _animator.SetBool("Run", false); 
+            }
+            
+            
         }        
         protected override void SecondaryCapacity() {
             CurrentState = State.Planted;
+            _animator.SetBool("IsPlanted",true);
             // this.gameObject.SetActive(false);
             // Michael Dig pas besoin d'override
         }

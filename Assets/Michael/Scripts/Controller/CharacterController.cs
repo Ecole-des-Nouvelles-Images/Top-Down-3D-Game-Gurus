@@ -7,9 +7,10 @@ namespace Michael.Scripts.Controller
     {
         [SerializeField] protected float moveSpeed = 3f;
         [SerializeField] protected Animator _animator;
-
+        [SerializeField] protected float idleTreshold = 0.1f;
         protected Rigidbody Rb;
         protected Vector2 move;
+        private static readonly int Run = Animator.StringToHash("Run");
 
         private void Awake()
         {
@@ -21,7 +22,10 @@ namespace Michael.Scripts.Controller
             Move();
         }
 
-        protected virtual void Update() { }
+        protected virtual void Update()
+        {
+            
+        }
 
         #region Move
 
@@ -31,14 +35,16 @@ namespace Michael.Scripts.Controller
         }
 
         protected void Move()
-        {
+        { 
             Vector3 movement = new Vector3(move.x, 0f, move.y) * moveSpeed;
-            
-            if (movement != Vector3.zero)
+            if ( movement != Vector3.zero)
             {
                 Quaternion newRotation = Quaternion.LookRotation(movement, Vector3.up);
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
             }
+            
+            
+                
             // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * Time.deltaTime);
             Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
             // Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
