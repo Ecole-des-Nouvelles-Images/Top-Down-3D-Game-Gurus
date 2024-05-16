@@ -16,8 +16,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
-       
-        
+
         private enum State {
             Alive,
             Planted,

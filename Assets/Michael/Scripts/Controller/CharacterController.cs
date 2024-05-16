@@ -1,3 +1,4 @@
+using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,6 +40,7 @@ namespace Michael.Scripts.Controller
             Vector3 movement = new Vector3(move.x, 0f, move.y) * moveSpeed;
             if ( movement != Vector3.zero)
             {
+                _animator.SetBool("Run",true);
                 Quaternion newRotation = Quaternion.LookRotation(movement, Vector3.up);
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
             }

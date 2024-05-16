@@ -1,3 +1,4 @@
+using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,7 +21,13 @@ namespace Michael.Scripts.Controller
 
         private void Start()
         {
+            QteManager.Instance.OnQteFinished += AnimationDash;
             _attackCollider.enabled = false;
+        }
+
+        private void AnimationDash()
+        {
+            _animator.SetBool("QteSuccess",true);
         }
 
         protected override void FixedUpdate()
@@ -68,10 +75,12 @@ namespace Michael.Scripts.Controller
             if (isDashing && Rb.velocity.magnitude < 0.01f)
             {
                 isDashing = false;
+                _animator.SetBool("IsDashing",false);
             }
 
             if (isCharging)
             {
+                _animator.SetBool("IsDashing",true);
                 chargeTime += Time.deltaTime;
                 chargeTime = Mathf.Min(chargeTime, maxChargeTime);
 
@@ -85,6 +94,7 @@ namespace Michael.Scripts.Controller
 
         private void StartCharging()
         {
+            
             isCharging = true;
             chargeTime = 0f;
         }

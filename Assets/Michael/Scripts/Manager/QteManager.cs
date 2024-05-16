@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Image = UnityEngine.UI.Image;
+using Random = UnityEngine.Random;
 
 namespace Michael.Scripts.Manager
 {
@@ -9,6 +11,7 @@ namespace Michael.Scripts.Manager
     {
         public bool QteSucces = false;
         public float qteDuration = 2f;
+        public Action OnQteFinished;
         [SerializeField] private PlayerInput _turtlePlayerInput;
         [SerializeField] private InputAction[] _qteActions;
         [SerializeField] private GameObject _currentQTeImage;
@@ -22,7 +25,10 @@ namespace Michael.Scripts.Manager
         private float qteTimer;
         private int currentInput;
         
-        private void Start() {
+        private void Start()
+        {
+
+              OnQteFinished += QTESuccess; 
             
             _qteActions[0] = _turtlePlayerInput.actions["UpArrow"];
             _qteActions[1] = _turtlePlayerInput.actions["DownArrow"];
@@ -91,7 +97,8 @@ namespace Michael.Scripts.Manager
                     UpdteQTEUi();
                     if (currentInput >= qteSequence.Count)
                     {
-                        QTESuccess();
+                       // QTESuccess(); 
+                       OnQteFinished.Invoke();
                     }
                     break;
                 }

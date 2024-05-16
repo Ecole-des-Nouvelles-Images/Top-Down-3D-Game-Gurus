@@ -28,8 +28,7 @@ namespace Michael.Scripts.Manager
                     Transform randomSpawnPoint = _sunSpawnPoints[Random.Range(0, _sunSpawnPoints.Length)];
                     if (!_sunOccupiedSpawns.ContainsValue(randomSpawnPoint)) {
                         GameObject Sun = Instantiate(_sunPrefabs, randomSpawnPoint.position, randomSpawnPoint.rotation,SunSpawnsParent.transform);
-                        _sunOccupiedSpawns.Add(Sun,randomSpawnPoint);
-                        Debug.Log("spawnSun");
+                        _sunOccupiedSpawns.Add(Sun, randomSpawnPoint);
                     }
                    
                 }
