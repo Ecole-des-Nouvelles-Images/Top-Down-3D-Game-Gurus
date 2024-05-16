@@ -7,6 +7,7 @@ TagManager:
   - Turtle Collider
   - Trap
   - Sun
+  - Seed
   layers:
   - Default
   - TransparentFX

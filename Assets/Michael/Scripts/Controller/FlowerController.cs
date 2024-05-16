@@ -2,15 +2,22 @@ using System;
 using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 
 namespace Michael.Scripts.Controller
 {
     public abstract class FlowerController : CharacterController
     {
         public static Action OnSunCollected;
-        public int Sun;
-        public int MaxSun;
-        public bool CanReanimate;
+        public int sun =0 ; 
+        public int maxSun = 3 ;
+        public bool canReanimate;
+        [SerializeField] bool isCharging;
+        [SerializeField] float reanimateTimer = 0;
+        [SerializeField] private float reanimateDuration = 1;
+       
+        
         private enum State
         {
             Alive,
@@ -18,28 +25,52 @@ namespace Michael.Scripts.Controller
             Stunned,
             Dead
         }
-
-       
-        
         [SerializeField] private State CurrentState;
         
-        protected void Start()
-        {
+        protected void Start() {
             CurrentState = State.Alive;
         }
-        
-        protected override void SecondaryCapacity()
-        {
+
+        protected override void Update() {
+
+            if (isCharging) {
+                reanimateTimer += Time.deltaTime;
+                if (reanimateTimer >= reanimateDuration +0.1) {
+                    ThirdCapacity();
+                    isCharging = false;
+                    reanimateTimer = 0;
+                }
+            }
+        }        
+        protected override void SecondaryCapacity() {
             CurrentState = State.Planted;
             // this.gameObject.SetActive(false);
             // Michael Dig pas besoin d'override
-            
+        }
+        public override void OnThirdCapacity(InputAction.CallbackContext context) {
+
+            if (canReanimate && sun == maxSun)
+            {
+                if (context.started) {
+                    isCharging = true;
+                   
+                }
+                else if (context.canceled) {
+                    isCharging = false;
+                    reanimateTimer = 0;
+                }
+            }
         }
 
-        protected override void ThirdCapacity()
+        protected override void ThirdCapacity() // revive ally 
         {
-            // Michael Reanimate
-            Sun = Sun- MaxSun;
+            Debug.Log("revive");
+            sun =- maxSun;
+            if (sun < 0) {
+                sun = 0;
+            }
+            canReanimate = false;
+
             // protected override void ThirdCapacity() pour Lys
         }
         
@@ -55,12 +86,11 @@ namespace Michael.Scripts.Controller
                 GetStunned();
             }
 
-          
-
-          /*  if (other.CompareTag("Seed"))
+            
+            if (other.CompareTag("Seed"))
             {
-                CanReanimate = true;
-            }*/
+                canReanimate = true;
+            }
         }
 
         private void OnTriggerStay(Collider other)
@@ -73,17 +103,20 @@ namespace Michael.Scripts.Controller
 
         private void OnTriggerExit(Collider other)
         {
-          /*  if (other.CompareTag("Seed"))
+            if (other.CompareTag("Seed"))
             {
-                CanReanimate = false;
-            }*/
+                canReanimate = false;
+                isCharging = false;
+                reanimateTimer = 0;
+            }
         }
 
         private void CollectSun(GameObject sun)
         {
-            if (Sun < MaxSun) {
+            if (this.sun < maxSun) {
+                
                 GameManager.Instance.OnSubCollected(sun);
-                Sun++;
+                this.sun++;
             }
         }
         
