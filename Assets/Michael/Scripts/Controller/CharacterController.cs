@@ -6,6 +6,7 @@ namespace Michael.Scripts.Controller
     public abstract class CharacterController : MonoBehaviour
     {
         [SerializeField] protected float moveSpeed = 3f;
+        [SerializeField] protected Animator _animator;
 
         protected Rigidbody Rb;
         protected Vector2 move;

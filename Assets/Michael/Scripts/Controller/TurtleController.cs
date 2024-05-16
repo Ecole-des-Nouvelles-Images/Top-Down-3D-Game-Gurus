@@ -7,18 +7,17 @@ namespace Michael.Scripts.Controller
     {
         [Header("Trap")] [SerializeField] private GameObject TrapPrefab;
         [SerializeField] private Transform TrapSpawn;
-        
+
         [Header("Dashing")] [SerializeField] private float dashForce;
         [SerializeField] private float maxDashForce;
         [SerializeField] private bool isDashing;
         [SerializeField] private bool isCharging;
-        [SerializeField] private bool isDashInputReleased;
         [SerializeField] private float chargeDashMultiplier;
         [SerializeField] private float chargeTime;
         [SerializeField] private float maxChargeTime;
         [SerializeField] private Collider _attackCollider;
-        private Vector2 lastNonZeroDirection;
         
+
         private void Start()
         {
             _attackCollider.enabled = false;
@@ -56,22 +55,10 @@ namespace Michael.Scripts.Controller
         {
             if (!isDashing)
             {
-                Vector2 dashDirection;
-
-                if (move.magnitude == 0f)
-                {
-                    dashDirection = isDashInputReleased
-                        ? -lastNonZeroDirection
-                        : new Vector2(transform.forward.x, transform.forward.z);
-                }
-                else
-                {
-                    dashDirection = isDashInputReleased ? -move.normalized : move.normalized;
-                }
-
+                Vector3 dashDirection = transform.forward;
                 float currentDashForce = Mathf.Clamp(dashForce * (chargeTime * chargeDashMultiplier), 0f, maxDashForce);
-                //Rb.velocity = new Vector3(dashDirection.x, 0f, dashDirection.y) * currentDashForce;
-                Rb.AddForce(currentDashForce * new Vector3(dashDirection.x, 0f, dashDirection.y), ForceMode.Impulse);
+
+                Rb.AddForce(currentDashForce * dashDirection, ForceMode.Impulse);
                 isDashing = true;
             }
         }
@@ -90,28 +77,21 @@ namespace Michael.Scripts.Controller
 
                 if (move.magnitude > 0f)
                 {
-                    Quaternion newRotation = Quaternion.LookRotation(new Vector3(-move.x, 0f, -move.y), Vector3.up);
+                    Quaternion newRotation = Quaternion.LookRotation(new Vector3(move.x, 0f, move.y), Vector3.up);
                     Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
                 }
-            }
-
-            if (move.magnitude > 0f)
-            {
-                lastNonZeroDirection = move.normalized;
             }
         }
 
         private void StartCharging()
         {
             isCharging = true;
-            isDashInputReleased = false;
             chargeTime = 0f;
         }
 
         private void StopCharging()
         {
             isCharging = false;
-            isDashInputReleased = true;
         }
 
         #endregion
@@ -137,7 +117,7 @@ namespace Michael.Scripts.Controller
         #endregion
 
         #region Third Capacity
-        
+
         protected override void ThirdCapacity()
         {
             Instantiate(TrapPrefab);
