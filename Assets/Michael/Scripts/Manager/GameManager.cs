@@ -3,11 +3,14 @@ using UnityEngine;
 
 namespace Michael.Scripts.Manager
 {
+    [System.Serializable]
+   
     public class GameManager : MonoBehaviourSingleton<GameManager>
-    {
-        public List<GameObject> FlowersAlive;
+    { 
+        public List<GameObject> FlowersAlive; 
         public List<GameObject> Flowers;
-        [SerializeField] private List<Transform> _sunOccupiedSpawns;
+        //[SerializeField] private List<Transform> _sunOccupiedSpawns;
+        [SerializeField] private Dictionary<GameObject,Transform> _sunOccupiedSpawns = new Dictionary<GameObject, Transform>();
         [SerializeField] private Transform[] _sunSpawnPoints;
         [SerializeField] private GameObject _sunPrefabs;
         [SerializeField] private GameObject SunSpawnsParent;
@@ -23,17 +26,18 @@ namespace Michael.Scripts.Manager
 
                 for (int i = 0; i < sunTospawn; i++) {
                     Transform randomSpawnPoint = _sunSpawnPoints[Random.Range(0, _sunSpawnPoints.Length)];
-                    if (!_sunOccupiedSpawns.Contains(randomSpawnPoint)) {
+                    if (!_sunOccupiedSpawns.ContainsValue(randomSpawnPoint)) {
                         GameObject Sun = Instantiate(_sunPrefabs, randomSpawnPoint.position, randomSpawnPoint.rotation,SunSpawnsParent.transform);
-                        _sunOccupiedSpawns.Add(randomSpawnPoint);
+                        _sunOccupiedSpawns.Add(Sun,randomSpawnPoint);
+                        Debug.Log("spawnSun");
                     }
-                    Debug.Log("spawnSun");
+                   
                 }
             }
         }
         
         public void OnSubCollected(GameObject sun) {
-            _sunOccupiedSpawns.Remove(sun.transform);
+            _sunOccupiedSpawns.Remove(sun);
             Destroy(sun);
         }
         
