@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 162613962}
   - component: {fileID: 162613955}
   - component: {fileID: 162613963}
-  - component: {fileID: 162613965}
   m_Layer: 0
   m_Name: Turtle
   m_TagString: Untagged
@@ -368,26 +367,6 @@ MonoBehaviour:
   chargeTime: 0
   maxChargeTime: 1.5
   _attackCollider: {fileID: 1752209870}
---- !u!114 &162613965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162613953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b52971538887744ba6e4f919a1a0d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_collisionMask:
-    m_Bits: 16
-  m_skinWidth: 0.015
-  m_maxSlopeAngle: 55
-  m_minCeilingAngle: 165
-  m_maxStepHeight: 0.2
-  m_minStepDepth: 0.1
-  SHOW_DEBUG: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -4171,7 +4150,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6415361771969077184}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bc54a65f80c9a3643bc0c3af7c02b427, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
