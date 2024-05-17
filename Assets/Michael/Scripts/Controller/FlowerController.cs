@@ -27,7 +27,9 @@ namespace Michael.Scripts.Controller
         }
         [SerializeField] private State CurrentState;
         
-        protected void Start() {
+        
+        protected virtual void Start()
+        { 
             CurrentState = State.Alive;
         }
 
