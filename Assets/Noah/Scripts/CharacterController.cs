@@ -37,10 +37,12 @@ namespace Noah.Scripts
             {
                 Quaternion newRotation = Quaternion.LookRotation(movement, Vector3.up);
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
-            }
 
-            Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
+            }
+            Vector3 normalizedMovement = movement.normalized;
+            Rb.AddForce(normalizedMovement * Time.deltaTime, ForceMode.Force);
         }
+
 
         #endregion
 
