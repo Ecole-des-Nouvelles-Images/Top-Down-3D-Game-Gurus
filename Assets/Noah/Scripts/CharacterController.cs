@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 namespace Noah.Scripts
 {
@@ -9,10 +10,13 @@ namespace Noah.Scripts
 
         protected Rigidbody Rb;
         protected Vector2 move;
+        private CinemachineTargetGroup _targetGroup;
+        private Transform _transform;
 
         private void Awake()
         {
             Rb = GetComponent<Rigidbody>();
+            
         }
 
         protected virtual void FixedUpdate()
