@@ -135,9 +135,6 @@ namespace Michael.Scripts.Controller
             }
         }
         
-        
-        
-
         private void GetStunned()
         {
             CurrentState = State.Stunned;

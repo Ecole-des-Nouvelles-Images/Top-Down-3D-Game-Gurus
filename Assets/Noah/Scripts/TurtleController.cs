@@ -1,9 +1,10 @@
+using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Noah.Scripts
 {
-    public class TurtleController : CharacterController
+    public class TurtleController : Michael.Scripts.Controller.CharacterController
     {
         [Header("Trap")] [SerializeField] private GameObject TrapPrefab;
         [SerializeField] private Transform TrapSpawn;
@@ -16,10 +17,17 @@ namespace Noah.Scripts
         [SerializeField] private float chargeTime;
         [SerializeField] private float maxChargeTime;
         [SerializeField] private Collider _attackCollider;
-        
+        [SerializeField] private GameObject dashTrail;
+
         private void Start()
         {
+            QteManager.Instance.OnQteFinished += AnimationDash;
             _attackCollider.enabled = false;
+        }
+
+        private void AnimationDash()
+        {
+            _animator.SetBool("QteSuccess",true);
         }
 
         protected override void FixedUpdate()
@@ -67,10 +75,15 @@ namespace Noah.Scripts
             if (isDashing && Rb.velocity.magnitude < 0.01f)
             {
                 isDashing = false;
+                _animator.SetBool("IsDashing",false);
+                dashTrail.SetActive(false);
             }
 
             if (isCharging)
             {
+                _animator.SetBool("IsDashing",true);
+                _animator.SetFloat("DashTimer",chargeTime);
+                dashTrail.SetActive(true);
                 chargeTime += Time.deltaTime;
                 chargeTime = Mathf.Min(chargeTime, maxChargeTime);
 
@@ -84,6 +97,7 @@ namespace Noah.Scripts
 
         private void StartCharging()
         {
+            
             isCharging = true;
             chargeTime = 0f;
         }
@@ -100,7 +114,8 @@ namespace Noah.Scripts
         protected override void SecondaryCapacity()
         {
             EnableAttackCollider();
-            Invoke(nameof(DisableAttackCollider), 1f);
+            Invoke(nameof(DisableAttackCollider), 0.7f);
+            _animator.SetTrigger("Attack");
         }
 
         private void EnableAttackCollider()

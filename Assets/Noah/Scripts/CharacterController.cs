@@ -1,22 +1,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Cinemachine;
 
 namespace Noah.Scripts
 {
     public abstract class CharacterController : MonoBehaviour
     {
         [SerializeField] protected float moveSpeed = 3f;
-
+        [SerializeField] protected Animator _animator;
+        [SerializeField] protected float idleTreshold = 0.1f;
         protected Rigidbody Rb;
         protected Vector2 move;
-        private CinemachineTargetGroup _targetGroup;
-        private Transform _transform;
+        private static readonly int Run = Animator.StringToHash("Run");
 
         private void Awake()
         {
             Rb = GetComponent<Rigidbody>();
-            
         }
 
         protected virtual void FixedUpdate()
@@ -24,29 +22,39 @@ namespace Noah.Scripts
             Move();
         }
 
-        protected virtual void Update() { }
+        protected virtual void Update()
+        {
+            
+        }
 
         #region Move
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            move = context.ReadValue<Vector2>();
+            Vector2 inputMove = context.ReadValue<Vector2>();
+            if (inputMove.magnitude > 0.1f)
+            {
+                move = inputMove;
+            }
+            else
+            {
+                move = Vector2.zero;
+            }
         }
 
         protected void Move()
-        {
+        { 
             Vector3 movement = new Vector3(move.x, 0f, move.y) * moveSpeed;
-
             if (movement != Vector3.zero)
             {
+                _animator.SetBool("Run",true);
                 Quaternion newRotation = Quaternion.LookRotation(movement, Vector3.up);
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
-
             }
-            Vector3 normalizedMovement = movement.normalized;
-            Rb.AddForce(normalizedMovement * Time.deltaTime, ForceMode.Force);
+            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * Time.deltaTime);
+            Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
+            // Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
         }
-
 
         #endregion
 
@@ -60,18 +68,22 @@ namespace Noah.Scripts
         protected abstract void MainCapacity();
 
         #endregion
-
+        
         #region Secondary Capacity
 
         public virtual void OnSecondaryCapacity(InputAction.CallbackContext context)
         {
-            SecondaryCapacity();
+            if (context.performed)
+            {
+                SecondaryCapacity();
+            }
+           
         }
 
         protected abstract void SecondaryCapacity();
 
         #endregion
-
+        
         #region Third Capacity
 
         public virtual void OnThirdCapacity(InputAction.CallbackContext context)
@@ -85,12 +97,6 @@ namespace Noah.Scripts
         }
 
         #endregion
-
-        private void OnDrawGizmos()
-        {
-            Vector3 forward = transform.forward;
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position, forward * 2f);
-        }
+        
     }
 }

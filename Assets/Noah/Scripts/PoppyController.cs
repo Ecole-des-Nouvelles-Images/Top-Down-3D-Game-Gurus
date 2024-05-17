@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,8 +36,11 @@ namespace Noah.Scripts
 
         protected override void Update()
         {
+            base.Update();
             if (_grapplingCdTimer > 0)
                 _grapplingCdTimer -= Time.deltaTime;
+            Debug.Log(move.magnitude);
+            
         }
         
         public override void OnMainCapacity(InputAction.CallbackContext context)
@@ -102,8 +106,9 @@ namespace Noah.Scripts
             lr.SetPosition(0, gunTip.position);
             lr.SetPosition(1, grapplePoint);
 
-            if (Vector3.Distance(transform.position, grapplePoint) < 0.3f)
+            if (Vector3.Distance(transform.position, grapplePoint) < 0.8f)
             {
+                Debug.Log("Stop Grapple");
                 StopGrapple();
             }
             else
