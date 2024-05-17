@@ -41,6 +41,8 @@ namespace Michael.Scripts.Controller
         protected override void Update()
         {
             DashingUpdate();
+            
+            
         }
 
         #region Main Capacity

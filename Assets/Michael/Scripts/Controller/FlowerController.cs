@@ -35,6 +35,7 @@ namespace Michael.Scripts.Controller
 
         protected override void Update() {
 
+            _animator.SetFloat("Velocity",Rb.velocity.magnitude);
             if (isCharging) {
                 reanimateTimer += Time.deltaTime;
                 if (reanimateTimer >= reanimateDuration +0.1) {
@@ -48,19 +49,15 @@ namespace Michael.Scripts.Controller
             //pour l'animation de course 
             if (Rb.velocity.magnitude > this.idleTreshold)
             {
-                _animator.SetBool("Run", true);
-                _animator.SetBool("IsPlanted",false);
+                _animator.SetBool("isPlanted",false);
             }
-            else
-            {
-                _animator.SetBool("Run", false); 
-            }
+           
             
             
         }        
         protected override void SecondaryCapacity() {
             CurrentState = State.Planted;
-            _animator.SetBool("IsPlanted",true);
+            _animator.SetBool("isPlanted",true);
             // this.gameObject.SetActive(false);
             // Michael Dig pas besoin d'override
         }
