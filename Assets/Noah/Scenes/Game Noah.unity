@@ -30342,13 +30342,13 @@ MonoBehaviour:
   m_Targets:
   - target: {fileID: 1215627404}
     weight: 1.1
-    radius: 1.5
+    radius: 2.5
   - target: {fileID: 2113322376}
     weight: 1
-    radius: 1.5
+    radius: 2
   - target: {fileID: 1509801584}
     weight: 1
-    radius: 1.5
+    radius: 2
   - target: {fileID: 1038161245}
     weight: 1
     radius: 1
@@ -50542,7 +50542,7 @@ Transform:
   m_GameObject: {fileID: 1573128326}
   serializedVersion: 2
   m_LocalRotation: {x: 0.42841145, y: -0, z: -0, w: 0.9035838}
-  m_LocalPosition: {x: 0.31945753, y: 35.5544, z: -21.252203}
+  m_LocalPosition: {x: 0.32208407, y: 40.96024, z: -25.967272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57721,7 +57721,7 @@ MonoBehaviour:
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2
   m_AdjustmentMode: 2
-  m_GroupFramingSize: 1
+  m_GroupFramingSize: 0.95
   m_MaxDollyIn: 5000
   m_MaxDollyOut: 5000
   m_MinimumDistance: 1
