@@ -69,7 +69,11 @@ namespace Michael.Scripts.Controller
 
         public virtual void OnSecondaryCapacity(InputAction.CallbackContext context)
         {
-            SecondaryCapacity();
+            if (context.performed)
+            {
+                SecondaryCapacity();
+            }
+           
         }
 
         protected abstract void SecondaryCapacity();

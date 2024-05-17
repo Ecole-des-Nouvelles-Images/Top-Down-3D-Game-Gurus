@@ -17,7 +17,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private float chargeTime;
         [SerializeField] private float maxChargeTime;
         [SerializeField] private Collider _attackCollider;
-        
+        [SerializeField] private GameObject dashTrail;
 
         private void Start()
         {
@@ -76,11 +76,14 @@ namespace Michael.Scripts.Controller
             {
                 isDashing = false;
                 _animator.SetBool("IsDashing",false);
+                dashTrail.SetActive(false);
             }
 
             if (isCharging)
             {
                 _animator.SetBool("IsDashing",true);
+                _animator.SetFloat("DashTimer",chargeTime);
+                dashTrail.SetActive(true);
                 chargeTime += Time.deltaTime;
                 chargeTime = Mathf.Min(chargeTime, maxChargeTime);
 
@@ -111,7 +114,8 @@ namespace Michael.Scripts.Controller
         protected override void SecondaryCapacity()
         {
             EnableAttackCollider();
-            Invoke(nameof(DisableAttackCollider), 1f);
+            Invoke(nameof(DisableAttackCollider), 0.7f);
+            _animator.SetTrigger("Attack");
         }
 
         private void EnableAttackCollider()

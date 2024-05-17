@@ -16,7 +16,9 @@ namespace Michael.Scripts.Controller
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
-
+        [SerializeField] private GameObject deadModel;
+        [SerializeField] private GameObject aliveModel;
+        [SerializeField] private Collider aliveModelCollider;
         private enum State {
             Alive,
             Planted,
@@ -143,6 +145,10 @@ namespace Michael.Scripts.Controller
 
         private void TakeHit()
         {
+            aliveModelCollider.enabled = false;
+            aliveModel.SetActive(false);
+            deadModel.SetActive(true);
+            GetComponent<PlayerInput>().enabled = false;
             CurrentState = State.Dead;
         }
     }
