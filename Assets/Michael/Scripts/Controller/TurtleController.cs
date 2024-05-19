@@ -41,6 +41,7 @@ namespace Michael.Scripts.Controller
         protected override void Update()
         {
             DashingUpdate();
+            _animator.SetFloat("Velocity",Rb.velocity.magnitude);
             
             
         }
@@ -115,9 +116,12 @@ namespace Michael.Scripts.Controller
 
         protected override void SecondaryCapacity()
         {
-            EnableAttackCollider();
-            Invoke(nameof(DisableAttackCollider), 0.7f);
-            _animator.SetTrigger("Attack");
+            if (!isDashing) {
+                EnableAttackCollider();
+                Invoke(nameof(DisableAttackCollider), 0.7f);
+                _animator.SetTrigger("Attack");
+            }
+         
         }
 
         private void EnableAttackCollider()

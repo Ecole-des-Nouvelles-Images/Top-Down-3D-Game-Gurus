@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Michael.Scripts.Manager
@@ -7,17 +8,31 @@ namespace Michael.Scripts.Manager
    
     public class GameManager : MonoBehaviourSingleton<GameManager>
     { 
+        public GameObject Turtle;
         public List<GameObject> FlowersAlive; 
-        public List<GameObject> Flowers;
-        //[SerializeField] private List<Transform> _sunOccupiedSpawns;
-        [SerializeField] private Dictionary<GameObject,Transform> _sunOccupiedSpawns = new Dictionary<GameObject, Transform>();
+        public List<GameObject> Flowers; 
+        private Dictionary<GameObject,Transform> _sunOccupiedSpawns = new Dictionary<GameObject, Transform>();
         [SerializeField] private Transform[] _sunSpawnPoints;
         [SerializeField] private GameObject _sunPrefabs;
         [SerializeField] private GameObject SunSpawnsParent;
+        [SerializeField] private GameObject firstCamera;
+        [SerializeField] private GameObject circularTransition;
+        [SerializeField] private GameObject CrashVfx;
         
-        void Start() {
-            InvokeRepeating(nameof(SpawnSun),5,10);
+        void Start()
+        {
+            circularTransition.transform.DOScale(15, 1);
+          
         }
+        
+        public void StartGame()
+        {
+            CrashVfx.SetActive(true);
+            InvokeRepeating(nameof(SpawnSun),7,10);
+            Invoke("ShowTurtle",1.5f);
+        }
+
+        
         
         private void SpawnSun() {
             
@@ -39,6 +54,19 @@ namespace Michael.Scripts.Manager
             _sunOccupiedSpawns.Remove(sun);
             Destroy(sun);
         }
+        
+        private void ShowTurtle() {
+            Turtle.SetActive(true);
+            firstCamera.SetActive(false);
+      
+        } 
+        
+        
+        
+        
+        
+        
+      
         
     }
 }

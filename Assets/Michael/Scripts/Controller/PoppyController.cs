@@ -8,7 +8,7 @@ namespace Michael.Scripts.Controller
         
         protected override void PassiveCapacity()
         {
-            throw new System.NotImplementedException();
+            ;
         }
 
         protected override void MainCapacity()

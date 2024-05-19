@@ -50,6 +50,7 @@ namespace Michael.Scripts.Controller
             if (Rb.velocity.magnitude > this.idleTreshold)
             {
                 _animator.SetBool("isPlanted",false);
+                aliveModelCollider.enabled = true;
             }
            
             
@@ -58,6 +59,7 @@ namespace Michael.Scripts.Controller
         protected override void SecondaryCapacity() {
             CurrentState = State.Planted;
             _animator.SetBool("isPlanted",true);
+            aliveModelCollider.enabled = false;
             // this.gameObject.SetActive(false);
             // Michael Dig pas besoin d'override
         }

@@ -8,15 +8,17 @@ TagManager:
   - Trap
   - Sun
   - Seed
+  - Turtle
+  - SeeTroughZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Mask
   - Water
   - UI
-  - 
-  - 
+  - See Trough
+  - Turtle
   - 
   - 
   - 

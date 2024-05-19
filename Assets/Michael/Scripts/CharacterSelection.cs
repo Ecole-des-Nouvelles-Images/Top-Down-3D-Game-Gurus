@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Michael.Scripts.Manager;
 using TMPro;
 using UnityEngine;
@@ -17,32 +19,56 @@ namespace Michael.Scripts
         public int PlayerIndex ;
         public int _maxPlayers ;
         [SerializeField] private List<Button> _characterButtons;
+        [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private Button _characterSelected;
         [SerializeField] private Button _joinButton;
         [SerializeField] private int _characterIndex; // l'index du personnage selectionné
         [SerializeField] private EventSystem _eventSystem;
         [SerializeField] private GameObject Selector;
-        public TextMeshProUGUI joinText;
+        [SerializeField] private GameObject joinedText;
+        [SerializeField] private GameObject readyText;
+        [SerializeField] private GameObject circleTransition;
+        [SerializeField] private Camera camera;
+        private Vector3 _initialTransform;
         
-        private void Start() {
+        private void Start()
+        {
+            _initialTransform = transform.localScale;
             Selector.SetActive(false);
             CanStart = false;
             TurtleIsSelected = false;
             PlayerIsReady = new bool[5] {false, false, false, false,false};
             PlayerIsJoined = new bool[5] {false, false, false, false,false};
         }
-        
-     
-        
+
+        private void Update()
+        {
+           // PlayerSelector();
+        }
+
         void OnNavigate() {  //Bouger le cursor du player 
           PlayerSelector();
         }
 
         void PlayerSelector() {
-            if  (_eventSystem.currentSelectedGameObject.GetComponentInChildren<HorizontalLayoutGroup>()) {
+            if  (_eventSystem.currentSelectedGameObject.GetComponentInChildren<HorizontalLayoutGroup>() != null ) {
                 transform.SetParent( _eventSystem.currentSelectedGameObject
                     .GetComponentInChildren<HorizontalLayoutGroup>().transform);
+                _characterSelected = GetComponentInParent<Button>(); 
+                _joinButton.image.sprite = _characterSprites[_characterButtons.IndexOf(_characterSelected)];
+
+                if (_characterSelected.name == "TurtleButton")
+                {
+                    _joinButton.transform.DOScale(1.2f, 0.5f);
+                    transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+                }
+                else if (_characterSelected.name != "TurtleButton")
+                {
+                    _joinButton.transform.DOScale(1f, 0.5f);
+                    transform.localScale = _initialTransform;
+                }
             }
+           
         }
 
 
@@ -54,7 +80,7 @@ namespace Michael.Scripts
             }
             else if (!PlayerIsReady[PlayerIndex]) {
                 if (GetComponentInParent<Button>()) {
-                    _characterSelected = GetComponentInParent<Button>();
+                    //_characterSelected = GetComponentInParent<Button>();
                     _characterIndex = _characterButtons.IndexOf(_characterSelected);
                     _characterSelected.enabled = false;
                     PlayerReady();
@@ -112,7 +138,8 @@ namespace Michael.Scripts
                 _characterSelected.enabled = true;
                 Debug.Log("le joueur nest plus pret");
                 RemoveChoice(PlayerIndex);
-                joinText.text = "Ready?";
+                joinedText.SetActive(false);
+                readyText.SetActive(true);
                 
                 if (_characterSelected.name == "TurtleButton")
                 {
@@ -122,7 +149,9 @@ namespace Michael.Scripts
             }
             else if (PlayerIsJoined[PlayerIndex])
             { 
-                joinText.text = "Join";
+                _joinButton.image.sprite = _characterSprites[7];
+                joinedText.SetActive(true);
+                readyText.SetActive(false);
               _eventSystem.SetSelectedGameObject(_joinButton.gameObject);
               if (_characterSelected) {
                   _characterSelected.enabled = true;
@@ -141,11 +170,14 @@ namespace Michael.Scripts
             MooveSelectorPosition();
             Debug.Log("un joueur a rejoin");
             Selector.SetActive(true);
-            joinText.text = "Ready?";
+            joinedText.SetActive(false);
+            readyText.SetActive(true);
         }
         
-        public void PlayerReady() {
-            joinText.text = "READY";
+        public void PlayerReady()
+        {
+            camera.transform.DOShakePosition(1, 1);
+            readyText.SetActive(false);
             PlayerIsReady[PlayerIndex] = true;
             bool allPlayersReady = true;
             int readyCount = 0;
@@ -183,9 +215,24 @@ namespace Michael.Scripts
 
             if (CanStart)
             {
-                CustomSceneManager.Instance.LoadScene("Game");
+                circleTransition.transform.DOScale(15,1);
+                Invoke("LoadSceneWarpper",1f);
             }
         }
+        
+
+        public void LoadSceneWarpper()
+        {
+            string sceneName = "Game";
+            CustomSceneManager.Instance.LoadScene(sceneName);
+        }
+        
+        
+        
+        
+        
+        
+        
         public void ConfirmChoice(int playerIndex, int characterIndex) {
 
             if (!DataManager.Instance.PlayerCharacter.ContainsKey(PlayerIndex))
