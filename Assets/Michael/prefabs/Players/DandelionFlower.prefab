@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8594941089947108054}
   m_Layer: 0
   m_Name: DandelionFlower
-  m_TagString: Untagged
+  m_TagString: Flower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,10 +118,6 @@ MonoBehaviour:
     m_ActionName: Character/Secondary Capacity[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 51549419-713c-4af6-ab45-09046417d341
-    m_ActionName: Character/Attack[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: c95b2375-e6d9-4b88-9c4c-c5e76515df4b
     m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows1/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows1/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows1/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows1/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows1/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows1/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows1/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows1/rightStick/right,/XInputControllerWindows/dpad,/XInputControllerWindows1/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -185,7 +181,19 @@ MonoBehaviour:
     m_ActionId: e18606a6-2b04-4262-9435-b8419ed934ef
     m_ActionName: QTE/RightShoulder[/XInputControllerWindows/rightShoulder,/XInputControllerWindows1/rightShoulder]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8594941089947108054}
+        m_TargetAssemblyTypeName: Michael.Scripts.Controller.FlowerController, Assembly-CSharp
+        m_MethodName: OnThirdCapacity
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f240888d-0759-475d-b3b1-1df73fd0c598
     m_ActionName: Character/ThirdCapacity[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
   - m_PersistentCalls:
@@ -294,7 +302,11 @@ MonoBehaviour:
   deadModel: {fileID: 9214815904163377635}
   aliveModel: {fileID: 8487193312828004991}
   aliveModelCollider: {fileID: 8753650036598929146}
-  CurrentState: 0
+  isDead: 0
+  isStun: 0
+  stunDuration: 3
+  stunTimer: 0
+  deadFlowerController: {fileID: 0}
 --- !u!1 &2992387629157615357
 GameObject:
   m_ObjectHideFlags: 0
@@ -5191,6 +5203,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8952142739528100526}
     m_Modifications:
+    - target: {fileID: 3812670161668711321, guid: 938e0edc8d1f50c4ab0f483d98a22575,
+        type: 3}
+      propertyPath: m_TagString
+      value: Seed
+      objectReference: {fileID: 0}
     - target: {fileID: 7281883807057980110, guid: 938e0edc8d1f50c4ab0f483d98a22575,
         type: 3}
       propertyPath: m_Name
@@ -5269,8 +5286,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3812670161668711321, guid: 938e0edc8d1f50c4ab0f483d98a22575,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7118216282052393189}
   m_SourcePrefab: {fileID: 100100000, guid: 938e0edc8d1f50c4ab0f483d98a22575, type: 3}
+--- !u!1 &3316544660836825268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3812670161668711321, guid: 938e0edc8d1f50c4ab0f483d98a22575,
+    type: 3}
+  m_PrefabInstance: {fileID: 1941025617266547501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &7118216282052393189
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3316544660836825268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.4210085
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8406613647596940121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7945935312904810612, guid: 938e0edc8d1f50c4ab0f483d98a22575,
@@ -5296,6 +5344,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4a231e461b6e05f44ac480a273e63f38, type: 2}
+    - target: {fileID: 19588373650122424, guid: 718d9895a6b697548932498b9a58f0af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 549976856432613018, guid: 718d9895a6b697548932498b9a58f0af,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -5370,6 +5423,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909184480279943993, guid: 718d9895a6b697548932498b9a58f0af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920674389096193774, guid: 718d9895a6b697548932498b9a58f0af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443618838767593003, guid: 718d9895a6b697548932498b9a58f0af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410710211707951795, guid: 718d9895a6b697548932498b9a58f0af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765054181193721023, guid: 718d9895a6b697548932498b9a58f0af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023601881149296984, guid: 718d9895a6b697548932498b9a58f0af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596682165276451479, guid: 718d9895a6b697548932498b9a58f0af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

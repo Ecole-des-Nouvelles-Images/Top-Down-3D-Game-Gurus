@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Turtle Collider
-  - Trap
   - Sun
   - Seed
   - Turtle
   - SeeTroughZone
+  - TurtleTrap
+  - FlowerTrap
+  - Flower
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - UI
   - See Trough
   - Turtle
-  - 
-  - 
+  - TurtleTrap
+  - Flower
   - 
   - 
   - 

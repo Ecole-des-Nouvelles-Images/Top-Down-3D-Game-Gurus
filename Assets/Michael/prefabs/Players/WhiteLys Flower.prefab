@@ -4904,7 +4904,7 @@ GameObject:
   - component: {fileID: 6596435443765276438}
   m_Layer: 0
   m_Name: WhiteLys Flower
-  m_TagString: Untagged
+  m_TagString: Flower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5004,10 +5004,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6f50b094-ef52-4e58-804b-04526939dda3
     m_ActionName: Character/Secondary Capacity[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 51549419-713c-4af6-ab45-09046417d341
-    m_ActionName: Character/Attack[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: c95b2375-e6d9-4b88-9c4c-c5e76515df4b
@@ -5136,7 +5132,11 @@ MonoBehaviour:
   deadModel: {fileID: 3990079875012126393}
   aliveModel: {fileID: 7528616895496475775}
   aliveModelCollider: {fileID: 5737656819072611389}
-  CurrentState: 0
+  isDead: 0
+  isStun: 0
+  stunDuration: 3
+  stunTimer: 0
+  deadFlowerController: {fileID: 0}
 --- !u!136 &5737656819072611389
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5715,6 +5715,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -159.29375
       objectReference: {fileID: 0}
+    - target: {fileID: 5328604050871673464, guid: 82084cd458c24c44ba744561dd999cfe,
+        type: 3}
+      propertyPath: m_TagString
+      value: Seed
+      objectReference: {fileID: 0}
     - target: {fileID: 5387191170501158583, guid: 82084cd458c24c44ba744561dd999cfe,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6028,7 +6033,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5328604050871673464, guid: 82084cd458c24c44ba744561dd999cfe,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7184156157047111306}
   m_SourcePrefab: {fileID: 100100000, guid: 82084cd458c24c44ba744561dd999cfe, type: 3}
 --- !u!1 &3990079875012126393 stripped
 GameObject:
@@ -6042,3 +6051,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3408024618437643670}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7401874291604254702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5328604050871673464, guid: 82084cd458c24c44ba744561dd999cfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 3408024618437643670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &7184156157047111306
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401874291604254702}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.4210085
+  m_Center: {x: 0, y: 0, z: 0}

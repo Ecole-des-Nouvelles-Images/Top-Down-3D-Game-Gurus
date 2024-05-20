@@ -82,15 +82,45 @@ namespace Michael.Scripts.Controller
 
         public virtual void OnThirdCapacity(InputAction.CallbackContext context)
         {
-            ThirdCapacity();
+            if (context.performed)
+            {
+                ThirdCapacity();
+            }
+           
         }
 
         protected virtual void ThirdCapacity()
         {
-            Debug.Log("ThirdCapacity is not used");
+          
         }
 
         #endregion
+        
+        
+        
+        
+        
+        
+        
+        
+        #region Fourth Capacity
+        public virtual void OnFourthCapacity(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+               FourthCapacity();
+            }
+           
+        }
+
+        protected virtual void FourthCapacity()
+        {
+            
+        }
+        #endregion
+
+        
+        
         
     }
 }

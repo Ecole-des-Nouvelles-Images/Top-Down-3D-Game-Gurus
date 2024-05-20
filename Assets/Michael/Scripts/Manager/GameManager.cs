@@ -11,6 +11,7 @@ namespace Michael.Scripts.Manager
         public GameObject Turtle;
         public List<GameObject> FlowersAlive; 
         public List<GameObject> Flowers; 
+        public List<GameObject> TurtleTrap; 
         private Dictionary<GameObject,Transform> _sunOccupiedSpawns = new Dictionary<GameObject, Transform>();
         [SerializeField] private Transform[] _sunSpawnPoints;
         [SerializeField] private GameObject _sunPrefabs;

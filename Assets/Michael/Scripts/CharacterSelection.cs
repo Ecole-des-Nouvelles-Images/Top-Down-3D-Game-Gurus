@@ -160,6 +160,7 @@ namespace Michael.Scripts
             }
             else if (PlayerIsJoined[PlayerIndex])
             { 
+                _joinButton.transform.DOScale(1f, 0.5f);
                 _joinButton.image.sprite = _characterSprites[7];
                 CapacityImage.gameObject.SetActive(false);
                 joinedText.SetActive(true);
