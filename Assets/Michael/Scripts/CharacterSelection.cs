@@ -20,14 +20,17 @@ namespace Michael.Scripts
         public int _maxPlayers ;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
+        [SerializeField] private List<Sprite> _characterCapacitiesSprites;
         [SerializeField] private Button _characterSelected;
         [SerializeField] private Button _joinButton;
         [SerializeField] private int _characterIndex; // l'index du personnage selectionné
         [SerializeField] private EventSystem _eventSystem;
         [SerializeField] private GameObject Selector;
         [SerializeField] private GameObject joinedText;
+        [SerializeField] private Image CapacityImage;
         [SerializeField] private GameObject readyText;
         [SerializeField] private GameObject circleTransition;
+        [SerializeField] private GameObject canvas;
         [SerializeField] private Camera camera;
         private Vector3 _initialTransform;
         
@@ -43,11 +46,15 @@ namespace Michael.Scripts
 
         private void Update()
         {
-           // PlayerSelector();
+            PlayerSelector();
         }
+      
+        
+        
+        
 
         void OnNavigate() {  //Bouger le cursor du player 
-          PlayerSelector();
+          
         }
 
         void PlayerSelector() {
@@ -56,14 +63,18 @@ namespace Michael.Scripts
                     .GetComponentInChildren<HorizontalLayoutGroup>().transform);
                 _characterSelected = GetComponentInParent<Button>(); 
                 _joinButton.image.sprite = _characterSprites[_characterButtons.IndexOf(_characterSelected)];
+               
 
                 if (_characterSelected.name == "TurtleButton")
                 {
+                    CapacityImage.gameObject.SetActive(false);
                     _joinButton.transform.DOScale(1.2f, 0.5f);
                     transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
                 }
                 else if (_characterSelected.name != "TurtleButton")
                 {
+                    CapacityImage.gameObject.SetActive(true);
+                    CapacityImage.sprite = _characterCapacitiesSprites[_characterButtons.IndexOf(_characterSelected)];
                     _joinButton.transform.DOScale(1f, 0.5f);
                     transform.localScale = _initialTransform;
                 }
@@ -150,6 +161,7 @@ namespace Michael.Scripts
             else if (PlayerIsJoined[PlayerIndex])
             { 
                 _joinButton.image.sprite = _characterSprites[7];
+                CapacityImage.gameObject.SetActive(false);
                 joinedText.SetActive(true);
                 readyText.SetActive(false);
               _eventSystem.SetSelectedGameObject(_joinButton.gameObject);
@@ -159,6 +171,7 @@ namespace Michael.Scripts
               PlayerIsJoined[PlayerIndex] = false;
               Debug.Log("le jooueur est parti");
               Selector.SetActive(false);
+              transform.SetParent(canvas.transform);
             }
         }
         
@@ -172,6 +185,7 @@ namespace Michael.Scripts
             Selector.SetActive(true);
             joinedText.SetActive(false);
             readyText.SetActive(true);
+            CapacityImage.gameObject.SetActive(true);
         }
         
         public void PlayerReady()
@@ -191,7 +205,7 @@ namespace Michael.Scripts
                     else {
                         readyCount++;
                         ConfirmChoice(PlayerIndex,_characterIndex);
-                        
+                      
                         if (_characterSelected.name == "TurtleButton")
                         {
                             TurtleIsSelected = true;
@@ -209,7 +223,12 @@ namespace Michael.Scripts
             if  (/*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= 2 && TurtleIsSelected) {
                 CanStart = true;
             }
-            else {
+            else if ( readyCount >= 2 && !TurtleIsSelected){
+                CanStart = false;
+                
+            }
+            else
+            {
                 CanStart = false;
             }
 
@@ -218,6 +237,7 @@ namespace Michael.Scripts
                 circleTransition.transform.DOScale(15,1);
                 Invoke("LoadSceneWarpper",1f);
             }
+            
         }
         
 
@@ -225,6 +245,7 @@ namespace Michael.Scripts
         {
             string sceneName = "Game";
             CustomSceneManager.Instance.LoadScene(sceneName);
+            
         }
         
         

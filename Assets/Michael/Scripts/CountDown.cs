@@ -16,7 +16,7 @@ namespace Michael.Scripts
         [SerializeField] private string StartMessage;
         private void Start()
         {
-           Invoke("Countdown",1);
+            Invoke("Countdown",1);
         }
 
         private void Countdown()
@@ -31,11 +31,12 @@ namespace Michael.Scripts
                 else
                 {
                     countdownText.text = number.ToString();
+                    countdownText.transform.DOScale(targetScale, bounceDuration)
+                        .SetEase(Ease.InOutSine)
+                        .OnComplete(() => countdownText.transform.DOScale(Vector3.one, bounceDuration)
+                            .SetEase(Ease.InOutSine));
                 }
-                countdownText.transform.DOScale(targetScale, bounceDuration)
-                    .SetEase(Ease.InOutSine)
-                    .OnComplete(() => countdownText.transform.DOScale(Vector3.one, bounceDuration)
-                        .SetEase(Ease.InOutSine));
+               
                 if (number == 4)
                 {
                     Invoke("StartCountDown",delayBeforeCountdown);
