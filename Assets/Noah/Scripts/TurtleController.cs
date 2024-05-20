@@ -97,7 +97,6 @@ namespace Noah.Scripts
 
         private void StartCharging()
         {
-            
             isCharging = true;
             chargeTime = 0f;
         }

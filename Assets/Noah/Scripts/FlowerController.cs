@@ -133,9 +133,6 @@ namespace Noah.Scripts
             }
         }
         
-        
-        
-
         private void GetStunned()
         {
             CurrentState = State.Stunned;
