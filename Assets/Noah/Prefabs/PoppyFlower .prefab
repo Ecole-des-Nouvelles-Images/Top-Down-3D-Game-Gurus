@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2886224740745255777}
   - component: {fileID: 5600322422553726027}
   m_Layer: 0
-  m_Name: Grabble
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5097,15 +5097,16 @@ MonoBehaviour:
   aliveModel: {fileID: 952492748910712844}
   aliveModelCollider: {fileID: 1937509767298159499}
   CurrentState: 0
-  gunTip: {fileID: 2886224740745255777}
+  Gun: {fileID: 2886224740745255777}
   whatIsGrappleable:
     serializedVersion: 2
     m_Bits: 4294967295
   lr: {fileID: 5600322422553726027}
   grappleSpeed: 50
   maxGrappleDistance: 5
-  grappleDelayTime: 0
+  grappleMaxHoldTime: 5
   grapplingCd: 2
+  _grappleMultiplier: 1
 --- !u!114 &377286660148860727
 MonoBehaviour:
   m_ObjectHideFlags: 0

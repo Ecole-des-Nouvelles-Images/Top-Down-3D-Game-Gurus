@@ -1,36 +1,37 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Noah.Scripts
 {
     public class PoppyController : FlowerController
     {
         [Header("References")]
-        public Transform gunTip;
+        public Transform Gun;
         public LayerMask whatIsGrappleable;
         public LineRenderer lr;
 
         [Header("Grappling")]
         public float grappleSpeed;
         public float maxGrappleDistance;
-        public float grappleMaxHoldTime = 2f; 
+        public float grappleMaxHoldTime = 2f;
 
         [Header("Cooldown")]
         public float grapplingCd;
         private float _grapplingCdTimer;
-
-        public float _grappleMultiplier = 1;
-
+        
         private float _grappleHoldTimer;
         private Vector3 grapplePoint;
         private bool _isgrappling;
         private bool _shouldApplyGrappleForce;
 
+         [SerializeField] private float grapplingSpeed;
+
         protected override void Start()
         {
             base.Start();
             lr.enabled = false;
-            lr.positionCount = 2; 
+            lr.positionCount = 2;
         }
 
         protected override void PassiveCapacity()
@@ -43,7 +44,7 @@ namespace Noah.Scripts
             base.Update();
             GrapplingUpdate();
         }
-        
+
         private void GrapplingUpdate()
         {
             if (_grapplingCdTimer > 0)
@@ -64,7 +65,6 @@ namespace Noah.Scripts
             else if (_shouldApplyGrappleForce)
             {
                 ApplyGrappleForce();
-                
             }
         }
 
@@ -72,7 +72,7 @@ namespace Noah.Scripts
         {
             if (context.started)
             {
-                StartGrapple();
+                MainCapacity();
             }
 
             if (context.canceled)
@@ -92,8 +92,6 @@ namespace Noah.Scripts
             _grappleHoldTimer = 0f;
             _isgrappling = true;
             lr.enabled = true;
-            lr.SetPosition(0, gunTip.position); // Set initial positions
-            lr.SetPosition(1, gunTip.position); // Set initial positions
             Debug.Log("Started Grapple");
         }
 
@@ -104,11 +102,27 @@ namespace Noah.Scripts
             _grappleHoldTimer += Time.deltaTime;
             _grappleHoldTimer = Mathf.Min(_grappleHoldTimer, grappleMaxHoldTime);
 
-            if (grappleMaxHoldTime > 0)
+            if (grappleMaxHoldTime > 0 && !_shouldApplyGrappleForce)
             {
-                float currentGrappleDistance = maxGrappleDistance * ((_grappleHoldTimer * _grappleMultiplier) / grappleMaxHoldTime);
-                lr.SetPosition(0, gunTip.position);
-                lr.SetPosition(1, gunTip.position + gunTip.forward * currentGrappleDistance);
+                // currentGrappleDistance = maxGrappleDistance * ((_grappleHoldTimer * _grappleMultiplier) / grappleMaxHoldTime);
+                float currentGrappleForce = Mathf.Clamp(grapplingSpeed * _grappleHoldTimer , 0f, maxGrappleDistance);
+                Debug.Log(grapplingSpeed * _grappleHoldTimer);
+                
+                lr.SetPosition(0, Gun.position);
+                lr.SetPosition(1, Gun.position + Gun.forward * currentGrappleForce);
+                
+                RaycastHit hit;
+                if (Physics.Raycast(Gun.position, Gun.forward, out hit, currentGrappleForce, whatIsGrappleable))
+                {
+                    grapplePoint = hit.point;
+                    _shouldApplyGrappleForce = true;
+
+                    lr.SetPosition(0, Gun.position);
+                    lr.SetPosition(1, grapplePoint);
+                    
+
+                    _grapplingCdTimer = grapplingCd;
+                }
             }
         }
 
@@ -118,44 +132,12 @@ namespace Noah.Scripts
 
             if (grappleMaxHoldTime > 0)
             {
-                float currentGrappleDistance = maxGrappleDistance * ((_grappleHoldTimer * _grappleMultiplier) / grappleMaxHoldTime);
-
-                RaycastHit hit;
-                if (Physics.Raycast(gunTip.position, gunTip.forward, out hit, currentGrappleDistance, whatIsGrappleable))
-                {
-                    grapplePoint = hit.point;
-                    _shouldApplyGrappleForce = true;
-
-                    lr.SetPosition(0, gunTip.position);
-                    lr.SetPosition(1, grapplePoint);
-
-                    float distanceToGrapple = Vector3.Distance(gunTip.position, grapplePoint);
-
-                    float timeToReachGrapple = distanceToGrapple / grappleSpeed;
-
-                    float elapsedTime = 0f;
-                    Vector3 startPosition = gunTip.position;
-
-                    while (elapsedTime < timeToReachGrapple)
-                    {
-                        elapsedTime += Time.deltaTime;
-                        float t = elapsedTime / timeToReachGrapple;
-                        lr.SetPosition(0, Vector3.Lerp(startPosition, grapplePoint, t));
-                    }
-                }
-                else
-                {
-                    _isgrappling = false;
-                    lr.enabled = false;
-                }
+                StopGrapple();
             }
             else
             {
-                _isgrappling = false;
-                lr.enabled = false;
+                StopGrapple();
             }
-
-            _grapplingCdTimer = grapplingCd;
         }
 
         private void ApplyGrappleForce()
@@ -165,12 +147,11 @@ namespace Noah.Scripts
 
             Rb.AddForce(forceVector, ForceMode.Force);
 
-            lr.SetPosition(0, gunTip.position);
+            lr.SetPosition(0, Gun.position);
             lr.SetPosition(1, grapplePoint);
 
             if (Vector3.Distance(transform.position, grapplePoint) < 0.1f)
             {
-                _shouldApplyGrappleForce = false;
                 StopGrapple();
             }
         }
@@ -194,25 +175,14 @@ namespace Noah.Scripts
 
         private void OnDrawGizmos()
         {
-            // Draw a line for the current grapple distance while holding
-            if (_isgrappling)
-            {
-                float currentGrappleDistance = maxGrappleDistance * ((_grappleHoldTimer * _grappleMultiplier) / grappleMaxHoldTime);
-                Gizmos.color = Color.green;
-                Gizmos.DrawLine(gunTip.position, gunTip.position + gunTip.forward * currentGrappleDistance);
-            }
-            // Draw a sphere at the grapple point when grappled
             if (grapplePoint != Vector3.zero)
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawSphere(grapplePoint, 0.1f);
             }
 
-            // Draw the max grapple distance
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(gunTip.position, maxGrappleDistance);
+            Gizmos.DrawWireSphere(Gun.position, maxGrappleDistance);
         }
     }
 }
-
-
