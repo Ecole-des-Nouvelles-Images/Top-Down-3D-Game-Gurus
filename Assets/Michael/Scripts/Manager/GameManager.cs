@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Michael.Scripts.Manager
 {
@@ -12,7 +14,7 @@ namespace Michael.Scripts.Manager
         public List<GameObject> FlowersAlive; 
         public List<GameObject> Flowers; 
         public List<GameObject> TurtleTrap; 
-        private Dictionary<GameObject,Transform> _sunOccupiedSpawns = new Dictionary<GameObject, Transform>();
+        public Dictionary<GameObject,Transform> _sunOccupiedSpawns = new Dictionary<GameObject, Transform>();
         [SerializeField] private Transform[] _sunSpawnPoints;
         [SerializeField] private GameObject _sunPrefabs;
         [SerializeField] private GameObject SunSpawnsParent;
@@ -25,12 +27,23 @@ namespace Michael.Scripts.Manager
             circularTransition.transform.DOScale(15, 1);
           
         }
-        
+
+        private void Update()
+        {
+            if (FlowersAlive.Count <= 0)
+            {
+                Debug.Log("Turtle WiNNNNNNNN");
+            }
+            
+            
+        }
+
+
         public void StartGame()
         {
             CrashVfx.SetActive(true);
-            InvokeRepeating(nameof(SpawnSun),7,10);
-            Invoke("ShowTurtle",1.5f);
+            InvokeRepeating(nameof(SpawnSun),2,7);
+            Invoke("ShowTurtle",1.4f);
         }
 
         
@@ -46,14 +59,8 @@ namespace Michael.Scripts.Manager
                         GameObject Sun = Instantiate(_sunPrefabs, randomSpawnPoint.position, randomSpawnPoint.rotation,SunSpawnsParent.transform);
                         _sunOccupiedSpawns.Add(Sun, randomSpawnPoint);
                     }
-                   
                 }
             }
-        }
-        
-        public void OnSubCollected(GameObject sun) {
-            _sunOccupiedSpawns.Remove(sun);
-            Destroy(sun);
         }
         
         private void ShowTurtle() {

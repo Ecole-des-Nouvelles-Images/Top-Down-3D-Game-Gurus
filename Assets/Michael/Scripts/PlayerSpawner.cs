@@ -13,10 +13,12 @@ namespace Michael.Scripts
         public List<Transform> spawnPoints;
         [SerializeField] private CinemachineTargetGroup _targetGroup;
 
-        private void Start() { 
-            if (DataManager.Instance.PlayerCharacter.Count > 0) {
+        private void Start()
+        {
+            if (DataManager.Instance.PlayerCharacter.Count >= 0) {
                 
                 var ascendingDict = DataManager.Instance.PlayerCharacter.OrderBy(keyValuePair => keyValuePair.Key);
+              
                 foreach (var player in ascendingDict) {
                     
                     foreach(KeyValuePair<int, int> items in ascendingDict) {
@@ -26,7 +28,7 @@ namespace Michael.Scripts
                         Quaternion.identity,this.gameObject.transform);
                     
                   
-                    if (character.tag == characterPrefabs[6].tag) {
+                    if (character.CompareTag(characterPrefabs[6].tag)) {
                         Debug.Log("turtle ajouté");
                         _targetGroup.AddMember(character.transform,1.1f,2.5f);
                         GameManager.Instance.Turtle = character.gameObject;
@@ -40,7 +42,6 @@ namespace Michael.Scripts
                         GameManager.Instance.FlowersAlive.Add(character);
                         Debug.Log("fleur ajouté");
                     }
-                    
                 }
             }
         }

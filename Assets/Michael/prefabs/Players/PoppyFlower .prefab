@@ -5289,6 +5289,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoppyModel
       objectReference: {fileID: 0}
+    - target: {fileID: 2588545044546835055, guid: 9c412284751cbef4aa5b5a1821df57a4,
+        type: 3}
+      propertyPath: m_StartDepth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3440071085456194035, guid: 9c412284751cbef4aa5b5a1821df57a4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

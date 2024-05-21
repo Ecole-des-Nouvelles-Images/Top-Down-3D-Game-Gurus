@@ -5069,7 +5069,19 @@ MonoBehaviour:
     m_ActionId: e18606a6-2b04-4262-9435-b8419ed934ef
     m_ActionName: QTE/RightShoulder[/XInputControllerWindows/rightShoulder,/XInputControllerWindows1/rightShoulder]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6324875074125721127}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f240888d-0759-475d-b3b1-1df73fd0c598
     m_ActionName: Character/ThirdCapacity[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
   - m_PersistentCalls:
@@ -5269,6 +5281,11 @@ PrefabInstance:
     - target: {fileID: 9205069085632883473, guid: 9e9a6e8ed01df5444964e3793d02b5bc,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205069085632883475, guid: 9e9a6e8ed01df5444964e3793d02b5bc,
+        type: 3}
+      propertyPath: m_StartDepth
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

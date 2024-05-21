@@ -124,15 +124,10 @@ namespace Michael.Scripts.Controller
                 canReanimate = true;
                 deadFlowerController = other.GetComponentInParent<FlowerController>();
             }
+           
         }
 
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.CompareTag("Sun")) {
-              
-                CollectSun(other.gameObject);
-            }
-        }
+       
 
         private void OnTriggerExit(Collider other)
         {
@@ -145,15 +140,15 @@ namespace Michael.Scripts.Controller
             }
         }
 
-        private void CollectSun(GameObject sun)
+     /*   private void CollectSun(GameObject sun)
         {
             if (this.sun < maxSun) {
                 
                 GameManager.Instance.OnSubCollected(sun);
                 this.sun++;
-            }
+                Debug.Log("soleilszds");            }
         }
-
+*/
         private void GetPlanted() {
             
             _animator.SetBool("isPlanted",true);
@@ -178,13 +173,14 @@ namespace Michael.Scripts.Controller
             GameManager.Instance.FlowersAlive.Remove(this.gameObject);
         }
         
+        [ContextMenu("GetRevive")]
         private void GetRevive() {
             
             aliveModelCollider.enabled = true;
-            aliveModel.SetActive(true);
-            deadModel.SetActive(false);
             GetComponent<PlayerInput>().enabled = true;
             isDead = false;
+            aliveModel.SetActive(true);
+            deadModel.SetActive(false);
             GameManager.Instance.FlowersAlive.Add(this.gameObject);
         }
         

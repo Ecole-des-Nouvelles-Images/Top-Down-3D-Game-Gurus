@@ -25,7 +25,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private float scanDuration = 3;
         [SerializeField] private GameObject scanSphereArea;
         [SerializeField] private float scanRange = 10;
-        
+        [SerializeField] private float battery; 
         private void Start()
         {
             QteManager.Instance.OnQteFinished += AnimationDash;
