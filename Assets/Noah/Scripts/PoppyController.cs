@@ -1,32 +1,31 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Noah.Scripts
 {
     public class PoppyController : FlowerController
     {
-        [Header("References")]
-        public Transform Gun;
-        public LayerMask whatIsGrappleable;
-        public LineRenderer lr;
+        [Header("Grappling - References")]
+        [SerializeField] private Transform Gun;
+        [SerializeField] private LineRenderer lr;
+        [SerializeField] private LayerMask whatIsGrappleable;
 
-        [Header("Grappling")]
-        public float grappleSpeed;
-        public float maxGrappleDistance;
-        public float grappleMaxHoldTime = 2f;
+        
+        [Header("Grappling - Stats")]
+        [SerializeField] private float grappleSpeed;
+        [SerializeField] private float maxGrappleDistance;
+        [SerializeField] private float grapplingSpeed;
 
-        [Header("Cooldown")]
-        public float grapplingCd;
+        [Header("Grappling - Cooldown")]
+        [SerializeField] private float grapplingCd;
         private float _grapplingCdTimer;
         
         private float _grappleHoldTimer;
         private Vector3 grapplePoint;
         private bool _isgrappling;
         private bool _shouldApplyGrappleForce;
-
-         [SerializeField] private float grapplingSpeed;
-
+        
         protected override void Start()
         {
             base.Start();
@@ -77,7 +76,7 @@ namespace Noah.Scripts
 
             if (context.canceled)
             {
-                ExecuteGrapple();
+                StopGrapple();
             }
         }
 
@@ -92,7 +91,6 @@ namespace Noah.Scripts
             _grappleHoldTimer = 0f;
             _isgrappling = true;
             lr.enabled = true;
-            Debug.Log("Started Grapple");
         }
 
         private void HoldGrapple()
@@ -100,19 +98,16 @@ namespace Noah.Scripts
             if (!_isgrappling) return;
 
             _grappleHoldTimer += Time.deltaTime;
-            _grappleHoldTimer = Mathf.Min(_grappleHoldTimer, grappleMaxHoldTime);
 
-            if (grappleMaxHoldTime > 0 && !_shouldApplyGrappleForce)
+            if (!_shouldApplyGrappleForce)
             {
-                // currentGrappleDistance = maxGrappleDistance * ((_grappleHoldTimer * _grappleMultiplier) / grappleMaxHoldTime);
-                float currentGrappleForce = Mathf.Clamp(grapplingSpeed * _grappleHoldTimer , 0f, maxGrappleDistance);
-                Debug.Log(grapplingSpeed * _grappleHoldTimer);
+                float currentGrappleDistance = Mathf.Clamp(grappleSpeed * _grappleHoldTimer , 0f, maxGrappleDistance);
                 
                 lr.SetPosition(0, Gun.position);
-                lr.SetPosition(1, Gun.position + Gun.forward * currentGrappleForce);
+                lr.SetPosition(1, Gun.position + Gun.forward * currentGrappleDistance);
                 
                 RaycastHit hit;
-                if (Physics.Raycast(Gun.position, Gun.forward, out hit, currentGrappleForce, whatIsGrappleable))
+                if (Physics.Raycast(Gun.position, Gun.forward, out hit, currentGrappleDistance, whatIsGrappleable))
                 {
                     grapplePoint = hit.point;
                     _shouldApplyGrappleForce = true;
@@ -120,30 +115,19 @@ namespace Noah.Scripts
                     lr.SetPosition(0, Gun.position);
                     lr.SetPosition(1, grapplePoint);
                     
-
                     _grapplingCdTimer = grapplingCd;
+                }
+                else if (Math.Abs(currentGrappleDistance - maxGrappleDistance) < 0.01f)
+                {
+                    StopGrapple();
                 }
             }
         }
-
-        private void ExecuteGrapple()
-        {
-            if (!_isgrappling) return;
-
-            if (grappleMaxHoldTime > 0)
-            {
-                StopGrapple();
-            }
-            else
-            {
-                StopGrapple();
-            }
-        }
-
+        
         private void ApplyGrappleForce()
         {
             Vector3 directionToGrapple = (grapplePoint - transform.position).normalized;
-            Vector3 forceVector = directionToGrapple * grappleSpeed * Time.deltaTime;
+            Vector3 forceVector = directionToGrapple * grapplingSpeed * Time.deltaTime;
 
             Rb.AddForce(forceVector, ForceMode.Force);
 
@@ -162,7 +146,12 @@ namespace Noah.Scripts
             _shouldApplyGrappleForce = false;
             _grapplingCdTimer = grapplingCd;
             lr.enabled = false;
-            Debug.Log("Stopped Grapple");
+        }
+
+        private void ReturnGrapple()
+        {
+            lr.SetPosition(0, Gun.position);
+            lr.SetPosition(1, grapplePoint);
         }
 
         private void OnCollisionEnter(Collision other)
