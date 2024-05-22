@@ -2,8 +2,6 @@ using System;
 using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
 namespace Michael.Scripts.Controller
 {
@@ -19,20 +17,26 @@ namespace Michael.Scripts.Controller
         [SerializeField] private GameObject deadModel;
         [SerializeField] private GameObject aliveModel;
         [SerializeField] private Collider aliveModelCollider;
-        private enum State {
-            Alive,
-            Planted,
-            Stunned,
-            Dead
-        }
-        [SerializeField] private State CurrentState;
+        [SerializeField] private bool isDead;
+        [SerializeField] private bool isStun;
+        [SerializeField] private float stunDuration = 3f;
+        [SerializeField] private float stunTimer = 0;
+        [SerializeField] private FlowerController deadFlowerController;
+
         
-        protected void Start() {
-            CurrentState = State.Alive;
+        protected override void FixedUpdate()
+        {
+            if (!isStun)
+            {
+                Move();
+            }
         }
 
         protected override void Update() {
 
+            _animator.SetFloat("Velocity",Rb.velocity.magnitude);
+            
+            
             if (isCharging) {
                 reanimateTimer += Time.deltaTime;
                 if (reanimateTimer >= reanimateDuration +0.1) {
@@ -41,30 +45,40 @@ namespace Michael.Scripts.Controller
                     reanimateTimer = 0;
                 }
             }
+
+            if (isStun)
+            {
+                stunTimer += Time.deltaTime;
+                if (stunTimer >= stunDuration)
+                {
+                    isStun = false;
+                    stunTimer = 0;
+                    _animator.SetBool("IsDizzy",false);
+                }
+            }
             
             
-            //pour l'animation de course 
-            if (Rb.velocity.magnitude > this.idleTreshold)
+            
+            if (Rb.velocity.magnitude > this.idleTreshold && !isDead)
             {
-                _animator.SetBool("Run", true);
-                _animator.SetBool("IsPlanted",false);
+                _animator.SetBool("isPlanted",false);
+                aliveModelCollider.enabled = true;
             }
-            else
-            {
-                _animator.SetBool("Run", false); 
-            }
+           
             
             
         }        
-        protected override void SecondaryCapacity() {
-            CurrentState = State.Planted;
-            _animator.SetBool("IsPlanted",true);
-            // this.gameObject.SetActive(false);
-            // Michael Dig pas besoin d'override
-        }
-        public override void OnThirdCapacity(InputAction.CallbackContext context) {
+        protected override void SecondaryCapacity() { // SE PLANTER DANS LE SOL 
+            if (!isStun)
+            {
+                GetPlanted();
+            }
 
-            if (canReanimate && sun == maxSun)
+            
+        }
+        public override void OnThirdCapacity(InputAction.CallbackContext context) {// REANIMATION
+
+            if (canReanimate && sun == maxSun && !isStun)
             {
                 if (context.started) {
                     isCharging = true;
@@ -84,9 +98,9 @@ namespace Michael.Scripts.Controller
             if (sun < 0) {
                 sun = 0;
             }
+            deadFlowerController.GetRevive();
             canReanimate = false;
-
-            // protected override void ThirdCapacity() pour Lys
+            
         }
         
         protected abstract void PassiveCapacity();
@@ -96,25 +110,20 @@ namespace Michael.Scripts.Controller
             if (other.CompareTag("Turtle Collider")) {
                 TakeHit();
             }
-
-            if (other.CompareTag("Trap")) {
+            if (other.CompareTag("TurtleTrap")) {
+                
+                GameManager.Instance.TurtleTrap.Remove(other.gameObject);
+                Destroy(other.gameObject);
                 GetStunned();
             }
-
-            
-            if (other.CompareTag("Seed"))
-            {
+            if (other.CompareTag("Seed")) {
                 canReanimate = true;
+                deadFlowerController = other.GetComponentInParent<FlowerController>();
             }
+           
         }
 
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.CompareTag("Sun")) {
-              
-                CollectSun(other.gameObject);
-            }
-        }
+       
 
         private void OnTriggerExit(Collider other)
         {
@@ -123,30 +132,57 @@ namespace Michael.Scripts.Controller
                 canReanimate = false;
                 isCharging = false;
                 reanimateTimer = 0;
+                deadFlowerController = null;
             }
         }
 
-        private void CollectSun(GameObject sun)
+     /*   private void CollectSun(GameObject sun)
         {
             if (this.sun < maxSun) {
                 
                 GameManager.Instance.OnSubCollected(sun);
                 this.sun++;
-            }
+                Debug.Log("soleilszds");            }
         }
-        
-        private void GetStunned()
-        {
-            CurrentState = State.Stunned;
+*/
+        private void GetPlanted() {
+            
+            _animator.SetBool("isPlanted",true);
+            aliveModelCollider.enabled = false;
         }
 
-        private void TakeHit()
-        {
+        private void GetStunned() {
+            
+            _animator.SetBool("IsDizzy",true);
+            isStun = true;
+        }
+        
+        [ContextMenu("TakeHit")]
+        private void TakeHit() {
+            
             aliveModelCollider.enabled = false;
             aliveModel.SetActive(false);
             deadModel.SetActive(true);
             GetComponent<PlayerInput>().enabled = false;
-            CurrentState = State.Dead;
+            isDead = true;
+            sun = 0;
+            GameManager.Instance.FlowersAlive.Remove(this.gameObject);
         }
+        
+        [ContextMenu("GetRevive")]
+        private void GetRevive() {
+            
+            aliveModelCollider.enabled = true;
+            GetComponent<PlayerInput>().enabled = true;
+            isDead = false;
+            aliveModel.SetActive(true);
+            deadModel.SetActive(false);
+            GameManager.Instance.FlowersAlive.Add(this.gameObject);
+        }
+        
+        
+        
+        
+        
     }
 }

@@ -15,6 +15,7 @@ public class CustomSceneManager : MonoBehaviourSingleton<CustomSceneManager>{
         _isShared = true;
     }
 
+  
     /**
      * Reload the active scene
      */
@@ -27,17 +28,24 @@ public class CustomSceneManager : MonoBehaviourSingleton<CustomSceneManager>{
      * Load a new scene as active scene and unload active scene
      */
     public void LoadScene(string sceneName) {
+        DataManager.Instance.loadingScreen.SetActive(true);
         Scene activeScene = SceneManager.GetActiveScene();
         SceneManager.UnloadSceneAsync(activeScene);
         StartCoroutine(LoadSceneAndSetActive(sceneName));
     }
+    
+    
+    
 
     private IEnumerator LoadSceneAndSetActive(string sceneName) {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-
-        // Wait until the asynchronous scene fully loads
-        yield return new WaitUntil(() => asyncLoad.isDone);
-
+        
+        
+        //DataManager.Instance.loadingScreen.SetActive(true);
+        yield return new WaitUntil(() => asyncLoad.isDone); // Wait until the asynchronous scene fully loads
+        
+        DataManager.Instance.loadingScreen.SetActive(false);
+        
         Scene loadedScene = SceneManager.GetSceneByName(sceneName);
         SceneManager.SetActiveScene(loadedScene);
         yield return null;

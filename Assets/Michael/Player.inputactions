@@ -33,15 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "51549419-713c-4af6-ab45-09046417d341",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ThirdCapacity",
                     "type": "Button",
                     "id": "f240888d-0759-475d-b3b1-1df73fd0c598",
@@ -135,17 +126,6 @@
                     "processors": "",
                     "groups": "Basic control scheme;Gamepad",
                     "action": "Main Capacity",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c87eb5cc-6249-47a3-b61d-4cb99370ebd7",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Basic control scheme;Gamepad",
-                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

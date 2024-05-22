@@ -1,33 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using Michael.Scripts.Manager;
 using UnityEngine;
 
 namespace Michael.Scripts
 {
-    public class PlayerSpawner : MonoBehaviour
+    public class PlayerSpawner : MonoBehaviourSingleton<PlayerSpawner>
     {
         public List<GameObject> characterPrefabs; 
         public List<Transform> spawnPoints;
+        [SerializeField] private CinemachineTargetGroup _targetGroup;
 
-        private void Start() { 
-            if (DataManager.Instance.PlayerCharacter.Count > 0) {
+        private void Start()
+        {
+            if (DataManager.Instance.PlayerCharacter.Count >= 0) {
                 
                 var ascendingDict = DataManager.Instance.PlayerCharacter.OrderBy(keyValuePair => keyValuePair.Key);
+              
                 foreach (var player in ascendingDict) {
                     
                     foreach(KeyValuePair<int, int> items in ascendingDict) {
                         Debug.Log("You have "  + items.Key+ " " + items.Value );
                     }
-                    
                     GameObject character = Instantiate(characterPrefabs[player.Value], spawnPoints[player.Value].position,
-                        Quaternion.identity);
+                        Quaternion.identity,this.gameObject.transform);
+                    
+                  
+                    if (character.CompareTag(characterPrefabs[6].tag)) {
+                        Debug.Log("turtle ajouté");
+                        _targetGroup.AddMember(character.transform,1.1f,2.5f);
+                        GameManager.Instance.Turtle = character.gameObject;
+                        SeeTroughWall._turtle = character.gameObject;
                         
-                    GameManager.Instance.Flowers.Add(character);
-                    GameManager.Instance.FlowersAlive.Add(character);
+                    }
+                    if (character.tag != characterPrefabs[6].tag)
+                    {
+                        _targetGroup.AddMember(character.transform,1,2);
+                        GameManager.Instance.Flowers.Add(character);
+                        GameManager.Instance.FlowersAlive.Add(character);
+                        Debug.Log("fleur ajouté");
+                    }
                 }
             }
         }
     }
+    
+  
+    
+    
+    
+    
+    
 }

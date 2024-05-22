@@ -40,16 +40,14 @@ namespace Michael.Scripts.Controller
             Vector3 movement = new Vector3(move.x, 0f, move.y) * moveSpeed;
             if ( movement != Vector3.zero)
             {
-                _animator.SetBool("Run",true);
                 Quaternion newRotation = Quaternion.LookRotation(movement, Vector3.up);
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
             }
             
-            
-                
             // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * Time.deltaTime);
             Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
             // Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
+            
         }
 
         #endregion
@@ -84,15 +82,45 @@ namespace Michael.Scripts.Controller
 
         public virtual void OnThirdCapacity(InputAction.CallbackContext context)
         {
-            ThirdCapacity();
+            if (context.performed)
+            {
+                ThirdCapacity();
+            }
+           
         }
 
         protected virtual void ThirdCapacity()
         {
-            Debug.Log("ThirdCapacity is not used");
+          
         }
 
         #endregion
+        
+        
+        
+        
+        
+        
+        
+        
+        #region Fourth Capacity
+        public virtual void OnFourthCapacity(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+               FourthCapacity();
+            }
+           
+        }
+
+        protected virtual void FourthCapacity()
+        {
+            
+        }
+        #endregion
+
+        
+        
         
     }
 }
