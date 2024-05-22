@@ -13,21 +13,25 @@ namespace Michael.Scripts
             {
                 if (!_collected)
                 {
-                    FlowerController flowerController = other.GetComponent<FlowerController>();
-                    if (flowerController.sun < flowerController.maxSun)
-                    {
+                    FlowerController flowerController = other.GetComponent<FlowerController>(); 
+                    if (flowerController.sun < flowerController.maxSun) {
                         GameManager.Instance._sunOccupiedSpawns.Remove(gameObject);
                         other.GetComponent<FlowerController>().sun++;
                         _collected = true;
                         Destroy(gameObject);
                     }
                 }
-             
             }
 
             if (other.CompareTag("Turtle"))
             {
-                
+                if (!_collected)
+                {
+                        GameManager.Instance._sunOccupiedSpawns.Remove(gameObject);
+                        BatteryManager.Instance.CurrentBatteryTime += 15;
+                        _collected = true;
+                        Destroy(gameObject);;
+                }
             }
         }
     }

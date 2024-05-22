@@ -26,6 +26,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private GameObject scanSphereArea;
         [SerializeField] private float scanRange = 10;
         [SerializeField] private float battery; 
+        
         private void Start()
         {
             QteManager.Instance.OnQteFinished += AnimationDash;
@@ -62,9 +63,10 @@ namespace Michael.Scripts.Controller
                 StartCharging();
             }
             else if (context.canceled)
-            {
+            { 
                 StopCharging();
-                MainCapacity();
+               MainCapacity();
+             
             }
         }
 
@@ -77,6 +79,8 @@ namespace Michael.Scripts.Controller
 
                 Rb.AddForce(currentDashForce * dashDirection, ForceMode.Impulse);
                 isDashing = true;
+                
+                BatteryManager.Instance.BatteryCost(10);
             }
         }
 
@@ -127,6 +131,7 @@ namespace Michael.Scripts.Controller
                 EnableAttackCollider();
                 Invoke(nameof(DisableAttackCollider), 0.7f);
                 _animator.SetTrigger("Attack");
+                BatteryManager.Instance.BatteryCost(10);
             }
          
         }
@@ -151,6 +156,7 @@ namespace Michael.Scripts.Controller
             {
                 GameObject trap = Instantiate(TrapPrefab,TrapSpawn.position,TrapSpawn.rotation);
                 GameManager.Instance.TurtleTrap.Add(trap);
+                BatteryManager.Instance.BatteryCost(10);
             }
             else
             {
@@ -172,6 +178,7 @@ namespace Michael.Scripts.Controller
             {
                 scanSphereArea.transform.DOScale(scanRange, 3f);
                 isScanning = true;
+                BatteryManager.Instance.BatteryCost(20);
             }
             
         }

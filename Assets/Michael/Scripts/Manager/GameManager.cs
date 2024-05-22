@@ -11,6 +11,7 @@ namespace Michael.Scripts.Manager
     public class GameManager : MonoBehaviourSingleton<GameManager>
     { 
         public GameObject Turtle;
+        public bool TurtleIsDead = false;
         public List<GameObject> FlowersAlive; 
         public List<GameObject> Flowers; 
         public List<GameObject> TurtleTrap; 
@@ -22,25 +23,23 @@ namespace Michael.Scripts.Manager
         [SerializeField] private GameObject circularTransition;
         [SerializeField] private GameObject CrashVfx;
         
-        void Start()
-        {
+        void Start() {
             circularTransition.transform.DOScale(15, 1);
           
         }
 
-        private void Update()
-        {
-            if (FlowersAlive.Count <= 0)
-            {
+        private void Update() {
+            if (FlowersAlive.Count <= 0) {
                 Debug.Log("Turtle WiNNNNNNNN");
             }
-            
+            else if (TurtleIsDead) {
+                Debug.Log("Flower WiNNNNNNNN");
+            }
             
         }
 
 
-        public void StartGame()
-        {
+        public void StartGame() {
             CrashVfx.SetActive(true);
             InvokeRepeating(nameof(SpawnSun),2,7);
             Invoke("ShowTurtle",1.4f);
@@ -51,7 +50,7 @@ namespace Michael.Scripts.Manager
         private void SpawnSun() {
             
             if (_sunSpawnPoints.Length > 0) {
-                int sunTospawn = Random.Range(1, _sunSpawnPoints.Length);
+                int sunTospawn = Random.Range(3, _sunSpawnPoints.Length);
 
                 for (int i = 0; i < sunTospawn; i++) {
                     Transform randomSpawnPoint = _sunSpawnPoints[Random.Range(0, _sunSpawnPoints.Length)];

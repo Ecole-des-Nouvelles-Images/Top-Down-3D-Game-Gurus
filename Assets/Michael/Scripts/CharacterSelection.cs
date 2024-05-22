@@ -17,7 +17,7 @@ namespace Michael.Scripts
         public static bool CanStart;
         public static bool TurtleIsSelected;
         public int PlayerIndex ;
-        public int _maxPlayers ;
+        public static int _maxPlayers = 3 ;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -221,10 +221,10 @@ namespace Michael.Scripts
                     }
                 }
             }
-            if  (/*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= 2 && TurtleIsSelected) {
+            if  (/*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= _maxPlayers && TurtleIsSelected) {
                 CanStart = true;
             }
-            else if ( readyCount >= 2 && !TurtleIsSelected){
+            else if ( readyCount >= _maxPlayers && !TurtleIsSelected){
                 CanStart = false;
                 
             }

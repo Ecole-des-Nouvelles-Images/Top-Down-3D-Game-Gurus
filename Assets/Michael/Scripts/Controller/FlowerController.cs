@@ -1,11 +1,7 @@
 using System;
 using Michael.Scripts.Manager;
-using UnityEditor.AnimatedValues;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
 namespace Michael.Scripts.Controller
 {
