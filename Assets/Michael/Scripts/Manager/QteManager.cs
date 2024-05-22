@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -92,7 +93,6 @@ namespace Michael.Scripts.Manager
               
                 if (action.WasPressedThisFrame() && action == qteSequence[currentInput]) {
                     UpdteQTEUi();
-                    Debug.Log("ok");
                     currentInput++;
                     UpdteQTEUi();
                     if (currentInput >= qteSequence.Count)
@@ -114,7 +114,6 @@ namespace Michael.Scripts.Manager
             QteSucces = true;
             qteSequence.Clear();
             _currentQTeImage.SetActive(false);
-            Debug.Log("QTE gagné");
             _turtlePlayerInput.currentActionMap = _turtlePlayerInput.actions.FindActionMap("Character");
         }
 
@@ -123,7 +122,6 @@ namespace Michael.Scripts.Manager
             QteSucces = false;
             qteSequence.Clear();
             _currentQTeImage.SetActive(false);
-            Debug.Log("QTE perdu");
           _FailQTeImage.SetActive(true);
          
           Invoke("StartQTE",1f);

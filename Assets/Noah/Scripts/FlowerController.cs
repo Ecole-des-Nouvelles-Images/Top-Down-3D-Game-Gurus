@@ -127,8 +127,6 @@ namespace Noah.Scripts
         private void CollectSun(GameObject sun)
         {
             if (this.sun < maxSun) {
-                
-                GameManager.Instance.OnSubCollected(sun);
                 this.sun++;
             }
         }
