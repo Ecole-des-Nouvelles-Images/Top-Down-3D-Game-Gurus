@@ -56,7 +56,10 @@ namespace Michael.Scripts.Controller
 
         public virtual void OnMainCapacity(InputAction.CallbackContext context)
         {
-            MainCapacity();
+            if (context.performed)
+            {
+                MainCapacity();
+            }
         }
 
         protected abstract void MainCapacity();

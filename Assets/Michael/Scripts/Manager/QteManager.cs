@@ -18,8 +18,6 @@ namespace Michael.Scripts.Manager
         [SerializeField] private GameObject _FailQTeImage;
         [SerializeField] private List<InputAction> qteSequence;
         [SerializeField] private List<Sprite> qteImages;
-        [SerializeField] private Camera camera;
-        [SerializeField] private GameObject canvas;
         [SerializeField] private int TouchQteCount;
         private bool qteActive;
         private float qteTimer;
@@ -36,7 +34,6 @@ namespace Michael.Scripts.Manager
             _qteActions[3] = _turtlePlayerInput.actions["LeftArrow"];
             _qteActions[4] = _turtlePlayerInput.actions["LeftShoulder"];
             _qteActions[5] = _turtlePlayerInput.actions["RightShoulder"];
-            camera = Camera.main;
             StartQTE();
         }
 
@@ -85,7 +82,7 @@ namespace Michael.Scripts.Manager
                     QTEFailure();
                 }
             }
-            canvas.transform.LookAt(2* _FailQTeImage.transform.position -camera.transform.position);
+           
         }
         void CheckQTEInput() {
             foreach (var action in _qteActions) {

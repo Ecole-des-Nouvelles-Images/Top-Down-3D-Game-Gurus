@@ -9,15 +9,23 @@ namespace Michael.Scripts.Controller
         protected override void MainCapacity()
         {
             //give his sun to other flowers
-            if (sun > 0)
-            {
-                foreach (GameObject floweralive in  GameManager.Instance.FlowersAlive)
-                {
-                    floweralive.GetComponent<FlowerController>().sun += sun;
-                    sun = 0;
+            if (sun > 0) {
                 
-                    Debug.Log(floweralive.GetComponent<FlowerController>().sun);
+                foreach (GameObject floweralive in  GameManager.Instance.FlowersAlive) {
+                    if (floweralive != gameObject)
+                    {
+                        if (floweralive.GetComponent<FlowerController>().sun < 3)
+                        {
+                            floweralive.GetComponent<FlowerController>().sun += sun;
+                            sun = 0;
+                        }
+                        else
+                        {
+                            Debug.Log("toutes les fleurs ont des soleils");
+                        }
+                    }
                 }
+            
             }
         }
 

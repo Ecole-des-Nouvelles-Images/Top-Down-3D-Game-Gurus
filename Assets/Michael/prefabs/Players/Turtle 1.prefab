@@ -306,7 +306,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.51382416, y: 1.9556034, z: 0.37000003}
   m_Center: {x: 0.008087746, y: -0.2368306, z: -0.00000007014433}
@@ -31127,7 +31127,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6087152995887917918}
   - component: {fileID: 5327885360982016726}
-  - component: {fileID: 8286540042095550745}
   m_Layer: 7
   m_Name: headTop
   m_TagString: Untagged
@@ -31231,27 +31230,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.012095571, y: 0.9040563, z: 1.2000993}
     m_Extent: {x: 0.22712058, y: 0.26539767, z: 0.36373627}
   m_DirtyAABB: 0
---- !u!135 &8286540042095550745
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4688440466900817607}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.37093213
-  m_Center: {x: -0.004599406, y: -1.1750796, z: 1.3364124}
 --- !u!1 &4899306705517399911
 GameObject:
   m_ObjectHideFlags: 0
@@ -31651,13 +31629,14 @@ GameObject:
   - component: {fileID: 3500690454718387371}
   - component: {fileID: 6645832813520081467}
   - component: {fileID: 101159695294892799}
+  - component: {fileID: 4654969085222632658}
   m_Layer: 7
   m_Name: Turtle 1
   m_TagString: Turtle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4794998425054158332
 Transform:
   m_ObjectHideFlags: 0
@@ -31938,6 +31917,7 @@ MonoBehaviour:
   scanDuration: 3
   scanSphereArea: {fileID: 7702337643989341141}
   scanRange: 5
+  battery: 0
 --- !u!114 &101159695294892799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32012,9 +31992,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f06b55eb6b01c7f4b8b6f7a9f1116051, type: 3}
   - {fileID: 21300000, guid: 55769fdebc0e3184e8b027cc733d6fed, type: 3}
   - {fileID: 21300000, guid: cac26e12556251f46b9dbbf1dadf3512, type: 3}
-  camera: {fileID: 0}
-  canvas: {fileID: 6818169329554680362}
   TouchQteCount: 6
+--- !u!114 &4654969085222632658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6201944885439627890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dbfc48ff1069449ab0e79c99c3c813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentBatteryTime: 0
+  _maxBatteryTime: 300
+  _batteryBar: {fileID: 6733291072727318676}
 --- !u!1 &6232724449886776111
 GameObject:
   m_ObjectHideFlags: 0
@@ -42035,6 +42028,7 @@ GameObject:
   - component: {fileID: 5616266807757610953}
   - component: {fileID: 2866917959213014758}
   - component: {fileID: 8451455670479657104}
+  - component: {fileID: 5013933684353701336}
   m_Layer: 0
   m_Name: TurtleCanvas
   m_TagString: Untagged
@@ -42056,6 +42050,7 @@ RectTransform:
   m_Children:
   - {fileID: 6388528082670566892}
   - {fileID: 5441020416649460877}
+  - {fileID: 3230803352148223120}
   m_Father: {fileID: 4794998425054158332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -42126,6 +42121,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5013933684353701336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6818169329554680362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9388296bedac6be4a8b703782955a99a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  canvas: {fileID: 6818169329554680362}
+  imagetoFollow: {fileID: 0}
 --- !u!1 &6918060812155899267
 GameObject:
   m_ObjectHideFlags: 0
@@ -57644,6 +57654,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8531288552643015042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8754499106161746268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3230803352148223120}
+  - component: {fileID: 8632630493626464278}
+  - component: {fileID: 6733291072727318676}
+  m_Layer: 0
+  m_Name: BatteryBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3230803352148223120
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754499106161746268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4236386679785415031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 2.2677}
+  m_SizeDelta: {x: 0, y: -4.5354}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8632630493626464278
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754499106161746268}
+  m_CullTransparentMesh: 1
+--- !u!114 &6733291072727318676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754499106161746268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c215f4d82d5357f47a218734cce6dc13, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8947775620449331506
 GameObject:
   m_ObjectHideFlags: 0

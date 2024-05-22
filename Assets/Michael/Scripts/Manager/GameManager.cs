@@ -12,6 +12,7 @@ namespace Michael.Scripts.Manager
     { 
         public GameObject Turtle;
         public bool TurtleIsDead = false;
+        public bool FlowersAreDead = false;
         public List<GameObject> FlowersAlive; 
         public List<GameObject> Flowers; 
         public List<GameObject> TurtleTrap; 
@@ -24,17 +25,20 @@ namespace Michael.Scripts.Manager
         [SerializeField] private GameObject CrashVfx;
         
         void Start() {
-            circularTransition.transform.DOScale(15, 1);
-          
+            circularTransition.transform.DOScale(15, 1.2f);
+            
         }
 
         private void Update() {
+        
             if (FlowersAlive.Count <= 0) {
                 Debug.Log("Turtle WiNNNNNNNN");
+                FlowersAreDead = true;
             }
             else if (TurtleIsDead) {
                 Debug.Log("Flower WiNNNNNNNN");
             }
+           
             
         }
 
@@ -50,11 +54,12 @@ namespace Michael.Scripts.Manager
         private void SpawnSun() {
             
             if (_sunSpawnPoints.Length > 0) {
-                int sunTospawn = Random.Range(3, _sunSpawnPoints.Length);
+                int sunTospawn = Random.Range(3, 5);
 
                 for (int i = 0; i < sunTospawn; i++) {
                     Transform randomSpawnPoint = _sunSpawnPoints[Random.Range(0, _sunSpawnPoints.Length)];
                     if (!_sunOccupiedSpawns.ContainsValue(randomSpawnPoint)) {
+                        
                         GameObject Sun = Instantiate(_sunPrefabs, randomSpawnPoint.position, randomSpawnPoint.rotation,SunSpawnsParent.transform);
                         _sunOccupiedSpawns.Add(Sun, randomSpawnPoint);
                     }
@@ -63,6 +68,7 @@ namespace Michael.Scripts.Manager
         }
         
         private void ShowTurtle() {
+            firstCamera.transform.DOShakePosition(1, 0.5f, 10);
             Turtle.SetActive(true);
             firstCamera.SetActive(false);
       
