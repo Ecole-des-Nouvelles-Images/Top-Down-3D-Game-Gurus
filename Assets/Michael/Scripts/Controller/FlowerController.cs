@@ -10,6 +10,7 @@ namespace Michael.Scripts.Controller
         public static Action OnSunCollected;
         public int sun =0 ; 
         public int maxSun = 3 ;
+        public int CapacityCost = 2;
         public bool canReanimate;
         public FlowerController deadFlowerController;
         public bool IsPlanted = false;
@@ -25,7 +26,10 @@ namespace Michael.Scripts.Controller
         [SerializeField] private float stunTimer = 0;
         
 
-        
+        protected virtual void Start() {
+            
+        }
+
         protected override void FixedUpdate()
         {
             if (!isStun)
@@ -160,6 +164,7 @@ namespace Michael.Scripts.Controller
         
         [ContextMenu("TakeHit")]
         private void TakeHit() {
+            
             
             aliveModelCollider.enabled = false;
             aliveModel.SetActive(false);

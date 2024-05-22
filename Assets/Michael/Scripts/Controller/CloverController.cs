@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Michael.Scripts.Controller
@@ -5,11 +6,18 @@ namespace Michael.Scripts.Controller
     public class CloverController : FlowerController
     {
         [SerializeField] private GameObject[] plantedFlowers;
-        [SerializeField] private Transform initialPosition;
+        
+        protected override void Start()
+        {
+          plantedFlowers = GameObject.FindGameObjectsWithTag("Fake");
+          
+        }
+
+
         protected override void MainCapacity()
         {
             
-            if (IsPlanted)
+            if (IsPlanted && sun >=CapacityCost)
             {
                 Vector3 initialPosition = gameObject.transform.position;
                 GameObject randomSpawnPoint = plantedFlowers[Random.Range(0, plantedFlowers.Length)];
@@ -24,7 +32,7 @@ namespace Michael.Scripts.Controller
                 int rngLuckCost = Random.Range(0, 4);
                 if (rngLuckCost != 1)
                 {
-                    OnLooseSunCapacity(2);
+                    OnLooseSunCapacity(CapacityCost);
                 }
                 else
                 {

@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace Michael.Scripts
+namespace Michael.Scripts.CharacterSelection
 {
     public class CharacterSelection : MonoBehaviour
     {
@@ -17,7 +17,7 @@ namespace Michael.Scripts
         public static bool CanStart;
         public static bool TurtleIsSelected;
         public int PlayerIndex ;
-        public static int _maxPlayers = 3 ;
+        public static int _maxPlayers = 2 ;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -179,7 +179,7 @@ namespace Michael.Scripts
 
 
         public void PlayerJoined() {
-            PlayerIndex = GetComponent<PlayerInput>().playerIndex;
+          //  PlayerIndex = GetComponent<PlayerInput>().playerIndex;
             PlayerIsJoined[PlayerIndex ] = true;
             MooveSelectorPosition();
             Debug.Log("un joueur a rejoin");
@@ -205,7 +205,7 @@ namespace Michael.Scripts
                     }
                     else {
                         readyCount++;
-                        ConfirmChoice(PlayerIndex,_characterIndex);
+                        ConfirmChoice(PlayerIndex);
                       
                         if (_characterSelected.name == "TurtleButton")
                         {
@@ -214,10 +214,7 @@ namespace Michael.Scripts
                         }
                         Debug.Log("le joueur " + PlayerIndex +"est pret");
                         Debug.Log(readyCount+" joueurs pret");
-                        foreach(var key in   DataManager.Instance.PlayerCharacter.Keys)
-                        {
-                            Debug.Log($"Key: {key}, Value: {   DataManager.Instance.PlayerCharacter[key]}");
-                        }
+                       
                     }
                 }
             }
@@ -255,17 +252,18 @@ namespace Michael.Scripts
         
         
         
-        public void ConfirmChoice(int playerIndex, int characterIndex) {
+        public void ConfirmChoice(int playerIndex) {
 
-            if (!DataManager.Instance.PlayerCharacter.ContainsKey(PlayerIndex))
+            if (!DataManager.Instance.PlayerChoice[PlayerIndex] && DataManager.Instance.PlayerChoice.Count < 5 )
             {
-                DataManager.Instance.PlayerCharacter.Add(playerIndex, characterIndex);
+                DataManager.Instance.PlayerChoice.Insert(playerIndex,DataManager.Instance.CharacterPrefabs[_characterIndex]);
+                DataManager.Instance.PlayerChoice.RemoveAt(DataManager.Instance.PlayerChoice.Count - 1);
             }
             
           
         }
         public void RemoveChoice(int playerIndex) {
-            DataManager.Instance.PlayerCharacter.Remove(playerIndex);
+            DataManager.Instance.PlayerChoice[playerIndex] = null;
         }
         
         

@@ -12,6 +12,7 @@ TagManager:
   - TurtleTrap
   - FlowerTrap
   - Flower
+  - Fake
   layers:
   - Default
   - TransparentFX
