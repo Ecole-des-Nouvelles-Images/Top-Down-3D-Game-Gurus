@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,45 +6,77 @@ namespace Noah.Scripts
 {
     public class PoppyController : FlowerController
     {
-        [Header("References")]
-        public Transform gunTip;
-        public LayerMask whatIsGrappleable;
-        public LineRenderer lr;
+        [Header("Grappling - References")]
+        [SerializeField] private Transform Gun;
+        [SerializeField] private LineRenderer lr;
+        [SerializeField] private LayerMask whatIsGrappleable;
 
-        [Header("Grappling")]
-        public float grappleSpeed;
-        public float maxGrappleDistance;
-        public float grappleDelayTime;
         
-        [Header("Cooldown")]
-        public float grapplingCd;
+        [Header("Grappling - Stats")]
+        [SerializeField] private float grappleSpeed;
+        [SerializeField] private float maxGrappleDistance;
+        [SerializeField] private float grapplingSpeed;
+
+        [Header("Grappling - Cooldown")]
+        [SerializeField] private float grapplingCd;
         private float _grapplingCdTimer;
         
+        private float _grappleHoldTimer;
         private Vector3 grapplePoint;
-        private bool _grappling;
-
+        private bool _isgrappling;
+        private bool _shouldApplyGrappleForce;
+        
         protected override void Start()
         {
             base.Start();
             lr.enabled = false;
+            lr.positionCount = 2;
         }
-        
+
         protected override void PassiveCapacity()
         {
             throw new System.NotImplementedException();
-        } 
+        }
 
         protected override void Update()
         {
+            base.Update();
+            GrapplingUpdate();
+        }
+
+        private void GrapplingUpdate()
+        {
             if (_grapplingCdTimer > 0)
                 _grapplingCdTimer -= Time.deltaTime;
+
+            if (_isgrappling)
+            {
+                HoldGrapple();
+            }
         }
-        
+
+        protected override void FixedUpdate()
+        {
+            if (!_isgrappling)
+            {
+                Move();
+            }
+            else if (_shouldApplyGrappleForce)
+            {
+                ApplyGrappleForce();
+            }
+        }
+
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
             if (context.started)
             {
                 MainCapacity();
+            }
+
+            if (context.canceled)
+            {
+                StopGrapple();
             }
         }
 
@@ -52,89 +85,93 @@ namespace Noah.Scripts
             StartGrapple();
         }
 
-        protected override void FixedUpdate()
+        private void StartGrapple()
         {
-            if (!_grappling)
+            if (_grapplingCdTimer > 0) return;
+            _grappleHoldTimer = 0f;
+            _isgrappling = true;
+            lr.enabled = true;
+        }
+
+        private void HoldGrapple()
+        {
+            if (!_isgrappling) return;
+
+            _grappleHoldTimer += Time.deltaTime;
+
+            if (!_shouldApplyGrappleForce)
             {
-                Move();
+                float currentGrappleDistance = Mathf.Clamp(grappleSpeed * _grappleHoldTimer , 0f, maxGrappleDistance);
+                
+                lr.SetPosition(0, Gun.position);
+                lr.SetPosition(1, Gun.position + Gun.forward * currentGrappleDistance);
+                
+                RaycastHit hit;
+                if (Physics.Raycast(Gun.position, Gun.forward, out hit, currentGrappleDistance, whatIsGrappleable))
+                {
+                    grapplePoint = hit.point;
+                    _shouldApplyGrappleForce = true;
+
+                    lr.SetPosition(0, Gun.position);
+                    lr.SetPosition(1, grapplePoint);
+                    
+                    _grapplingCdTimer = grapplingCd;
+                }
+                else if (Math.Abs(currentGrappleDistance - maxGrappleDistance) < 0.01f)
+                {
+                    StopGrapple();
+                }
+            }
+        }
+        
+        private void ApplyGrappleForce()
+        {
+            Vector3 directionToGrapple = (grapplePoint - transform.position).normalized;
+            Vector3 forceVector = directionToGrapple * grapplingSpeed * Time.deltaTime;
+
+            Rb.AddForce(forceVector, ForceMode.Force);
+
+            lr.SetPosition(0, Gun.position);
+            lr.SetPosition(1, grapplePoint);
+
+            if (Vector3.Distance(transform.position, grapplePoint) < 0.1f)
+            {
+                StopGrapple();
+            }
+        }
+
+        private void StopGrapple()
+        {
+            _isgrappling = false;
+            _shouldApplyGrappleForce = false;
+            _grapplingCdTimer = grapplingCd;
+            lr.enabled = false;
+        }
+
+        private void ReturnGrapple()
+        {
+            lr.SetPosition(0, Gun.position);
+            lr.SetPosition(1, grapplePoint);
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject != null)
+            {
+                StopGrapple();
             }
         }
 
         private void OnDrawGizmos()
         {
-            if (_grapplingCdTimer > 0) return;
+            if (grapplePoint != Vector3.zero)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(grapplePoint, 0.1f);
+            }
 
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(gunTip.position, gunTip.position + gunTip.forward * maxGrappleDistance);
-        }
-        
-        private void StartGrapple()
-        {
-            if (_grapplingCdTimer > 0) return;
-
-            _grappling = true;
-
-            RaycastHit hit;
-            if (Physics.Raycast(gunTip.position, gunTip.forward, out hit, maxGrappleDistance, whatIsGrappleable))
-            {
-                grapplePoint = hit.point;
-                lr.enabled = true;
-                lr.positionCount = 2;
-                lr.SetPosition(0, gunTip.position);
-                lr.SetPosition(1, grapplePoint);
-                lr.enabled = true;
-                ExecuteGrapple();
-            }
-            else
-            {
-                Debug.Log("Nowhere to land");
-                StopGrapple();
-            }
-        }
-
-
-        private void ExecuteGrapple()
-        {
-            Vector3 directionToGrapple = (grapplePoint - transform.position).normalized;
-            Vector3 forceVector = directionToGrapple * grappleSpeed;
-            Rb.AddForce(forceVector * Time.deltaTime, ForceMode.Force);
-
-            lr.SetPosition(0, gunTip.position);
-            lr.SetPosition(1, grapplePoint);
-
-            if (Vector3.Distance(transform.position, grapplePoint) < 0.3f)
-            {
-                StopGrapple();
-            }
-            else
-            {
-                Invoke(nameof(ExecuteGrapple), Time.fixedDeltaTime);
-            }
-        }
-
-        public void StopGrapple()
-        {
-            _grappling = false;
-            _grapplingCdTimer = grapplingCd;
-            lr.enabled = false;
-        }
-
-        public bool IsGrappling()
-        {
-            return _grappling;
-        }
-
-        public Vector3 GetGrapplePoint()
-        {
-            return grapplePoint;
-        }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.gameObject != null) 
-            {
-                StopGrapple();
-            }        
+            Gizmos.DrawWireSphere(Gun.position, maxGrappleDistance);
         }
     }
 }
