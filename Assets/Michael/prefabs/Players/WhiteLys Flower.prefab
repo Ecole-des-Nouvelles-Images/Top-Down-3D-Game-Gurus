@@ -5071,12 +5071,12 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6324875074125721127}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: Michael.Scripts.Controller.FlowerController, Assembly-CSharp
+        m_MethodName: OnThirdCapacity
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5137,7 +5137,10 @@ MonoBehaviour:
   idleTreshold: 0.3
   sun: 0
   maxSun: 3
+  CapacityCost: 2
   canReanimate: 0
+  deadFlowerController: {fileID: 0}
+  IsPlanted: 0
   isCharging: 0
   reanimateTimer: 0
   reanimateDuration: 1.2
@@ -5148,7 +5151,6 @@ MonoBehaviour:
   isStun: 0
   stunDuration: 3
   stunTimer: 0
-  deadFlowerController: {fileID: 0}
 --- !u!136 &5737656819072611389
 CapsuleCollider:
   m_ObjectHideFlags: 0

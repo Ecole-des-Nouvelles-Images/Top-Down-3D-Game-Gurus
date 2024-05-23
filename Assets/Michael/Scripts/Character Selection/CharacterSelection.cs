@@ -17,7 +17,7 @@ namespace Michael.Scripts.CharacterSelection
         public static bool CanStart;
         public static bool TurtleIsSelected;
         public int PlayerIndex ;
-        public static int _maxPlayers = 2 ;
+        public static int _maxPlayers = 3 ;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -36,6 +36,7 @@ namespace Michael.Scripts.CharacterSelection
         
         private void Start()
         {
+            PlayerIndex = GetComponent<PlayerInput>().user.index;
             _initialTransform = transform.localScale;
             Selector.SetActive(false);
             CanStart = false;
@@ -46,7 +47,7 @@ namespace Michael.Scripts.CharacterSelection
 
         private void Update()
         {
-            PlayerSelector();
+           
         }
       
         
@@ -54,11 +55,11 @@ namespace Michael.Scripts.CharacterSelection
         
 
         void OnNavigate() {  //Bouger le cursor du player 
-          
+            PlayerSelector();
         }
 
         void PlayerSelector() {
-            if  (_eventSystem.currentSelectedGameObject.GetComponentInChildren<HorizontalLayoutGroup>() != null ) {
+            if  (_eventSystem.currentSelectedGameObject.GetComponentInChildren<HorizontalLayoutGroup>()) {
                 transform.SetParent( _eventSystem.currentSelectedGameObject
                     .GetComponentInChildren<HorizontalLayoutGroup>().transform);
                 _characterSelected = GetComponentInParent<Button>(); 
@@ -86,7 +87,7 @@ namespace Michael.Scripts.CharacterSelection
         void OnSubmit() { //Valider la selection d'un personnage 
 
             
-            if (!PlayerIsJoined[PlayerIndex]) {
+            if (PlayerIsJoined[PlayerIndex] == false) {
                 PlayerJoined();
             }
             else if (!PlayerIsReady[PlayerIndex]) {
@@ -179,10 +180,10 @@ namespace Michael.Scripts.CharacterSelection
 
 
         public void PlayerJoined() {
-          //  PlayerIndex = GetComponent<PlayerInput>().playerIndex;
+           
             PlayerIsJoined[PlayerIndex ] = true;
             MooveSelectorPosition();
-            Debug.Log("un joueur a rejoin");
+            Debug.Log("un joueur " + PlayerIndex +" a rejoin");
             Selector.SetActive(true);
             joinedText.SetActive(false);
             readyText.SetActive(true);
@@ -205,7 +206,7 @@ namespace Michael.Scripts.CharacterSelection
                     }
                     else {
                         readyCount++;
-                        ConfirmChoice(PlayerIndex);
+                        ConfirmChoice(PlayerIndex, _characterIndex);
                       
                         if (_characterSelected.name == "TurtleButton")
                         {
@@ -252,18 +253,20 @@ namespace Michael.Scripts.CharacterSelection
         
         
         
-        public void ConfirmChoice(int playerIndex) {
+        public void ConfirmChoice(int playerIndex, int characterIndex) {
 
-            if (!DataManager.Instance.PlayerChoice[PlayerIndex] && DataManager.Instance.PlayerChoice.Count < 5 )
+            if (!DataManager.Instance.PlayerChoice.ContainsKey(PlayerIndex))
             {
-                DataManager.Instance.PlayerChoice.Insert(playerIndex,DataManager.Instance.CharacterPrefabs[_characterIndex]);
-                DataManager.Instance.PlayerChoice.RemoveAt(DataManager.Instance.PlayerChoice.Count - 1);
+                //DataManager.Instance.PlayerCharacter.Add(playerIndex, characterIndex);
+                DataManager.Instance.PlayerChoice[playerIndex] = characterIndex;
+
+
             }
             
           
         }
         public void RemoveChoice(int playerIndex) {
-            DataManager.Instance.PlayerChoice[playerIndex] = null;
+            DataManager.Instance.PlayerChoice.Remove(playerIndex);
         }
         
         

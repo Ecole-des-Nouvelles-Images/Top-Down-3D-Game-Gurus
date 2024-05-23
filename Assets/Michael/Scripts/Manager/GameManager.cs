@@ -23,6 +23,7 @@ namespace Michael.Scripts.Manager
         [SerializeField] private GameObject firstCamera;
         [SerializeField] private GameObject circularTransition;
         [SerializeField] private GameObject CrashVfx;
+        [SerializeField] private Transform spawnTurtlePosition;
         void Start() {
             circularTransition.transform.DOScale(15, 1.2f);
             
@@ -46,7 +47,7 @@ namespace Michael.Scripts.Manager
         public void StartGame() {
             CrashVfx.SetActive(true);
             InvokeRepeating(nameof(SpawnSun),2,8);
-            Invoke("ShowTurtle",1.4f);
+            Invoke("TurtleEntrance",1.4f);
         }
 
         
@@ -67,13 +68,13 @@ namespace Michael.Scripts.Manager
             }
         }
         
-        private void ShowTurtle() {
+        private void TurtleEntrance() {
             CameraShake();
-            Turtle.SetActive(true);
             firstCamera.SetActive(false);
-      
+            Turtle.SetActive(true);
         }
 
+    
         public void CameraShake()
         {
             firstCamera.transform.DOShakePosition(1, 0.5f, 10);

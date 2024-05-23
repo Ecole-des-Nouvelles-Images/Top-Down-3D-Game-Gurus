@@ -39,7 +39,9 @@ namespace Michael.Scripts.Controller
             sun =- 1;
             if (sun < 0) {
                 sun = 0;
+                
             }
+            deadFlowerController.GetRevive();
             canReanimate = false;
 
         }

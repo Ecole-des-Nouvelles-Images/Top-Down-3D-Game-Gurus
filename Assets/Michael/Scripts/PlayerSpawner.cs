@@ -9,25 +9,25 @@ namespace Michael.Scripts
 {
     public class PlayerSpawner : MonoBehaviourSingleton<PlayerSpawner>
     {
-      //  public List<GameObject> characterPrefabs; 
+        public List<GameObject> characterPrefabs; 
         public List<Transform> spawnPoints;
         [SerializeField] private CinemachineTargetGroup _targetGroup;
 
-        private void Start()
-        {
-            
-            foreach (GameObject characterPrefabs in DataManager.Instance.PlayerChoice) {
-                if (characterPrefabs != null)
+        private void Start() {
+
+            for (int i = 0; i < 4 ; i++)
+            {
+                if ( DataManager.Instance.PlayerChoice.ContainsKey(i))
                 {
-                    GameObject character = Instantiate(characterPrefabs, spawnPoints[DataManager.Instance.CharacterPrefabs.IndexOf(characterPrefabs)].position,
+                    GameObject character = Instantiate(characterPrefabs[ DataManager.Instance.PlayerChoice[i]], spawnPoints[ DataManager.Instance.PlayerChoice[i]].position,
                         Quaternion.identity,this.gameObject.transform);
-                    
-                
+                 
                     if (character.CompareTag("Turtle")) { 
                         Debug.Log("turtle ajouté");
                         _targetGroup.AddMember(character.transform,1.1f,2.5f);
                         GameManager.Instance.Turtle = character.gameObject;
                         SeeTroughWall._turtle = character.gameObject;
+                        character.SetActive(false);
                         
                     }
                     if (!character.CompareTag("Turtle"))
@@ -39,65 +39,18 @@ namespace Michael.Scripts
                     }
                 }
 
-
             }
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-             //   var ascendingDict = DataManager.Instance.PlayerCharacter.OrderBy(keyValuePair => keyValuePair.Key);
               
-               /* foreach (var player in ascendingDict) {
-                    
-                    foreach(KeyValuePair<int, int> items in ascendingDict) {
-                        Debug.Log("You have "  + items.Key+ " " + items.Value );
-                    }
-                    GameObject character = Instantiate(characterPrefabs[player.Value], spawnPoints[player.Value].position,
-                        Quaternion.identity,this.gameObject.transform);
-                    
-                  
-                    if (character.CompareTag(characterPrefabs[6].tag)) {
-                        Debug.Log("turtle ajouté");
-                        _targetGroup.AddMember(character.transform,1.1f,2.5f);
-                        GameManager.Instance.Turtle = character.gameObject;
-                        SeeTroughWall._turtle = character.gameObject;
-                        
-                    }
-                    if (character.tag != characterPrefabs[6].tag)
-                    {
-                        _targetGroup.AddMember(character.transform,1,2);
-                        GameManager.Instance.Flowers.Add(character);
-                        GameManager.Instance.FlowersAlive.Add(character);
-                        Debug.Log("fleur ajouté");
-                    }*/
-                
+               
         }
+
+
     }
+                
+
 }
+
+
     
   
     
