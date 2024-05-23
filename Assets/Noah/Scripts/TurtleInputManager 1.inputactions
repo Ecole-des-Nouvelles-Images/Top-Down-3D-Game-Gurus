@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Right Joystick",
+                    "type": "Value",
+                    "id": "b40ac18a-272d-4e72-af58-c1d362de609c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -150,6 +159,17 @@
                     "processors": "",
                     "groups": "Basic control scheme",
                     "action": "Secondary Capacity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "22ae1db0-c612-4e55-9d1c-e4d7938d1a32",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Joystick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

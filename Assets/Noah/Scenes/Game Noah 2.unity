@@ -8683,6 +8683,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turtle Noah
       objectReference: {fileID: 0}
+    - target: {fileID: 2853466273823292305, guid: da6f950bbcb82974ebbaf1050aff276b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8690759843080258900, guid: da6f950bbcb82974ebbaf1050aff276b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15642,7 +15647,7 @@ PrefabInstance:
     - target: {fileID: 826814285070280784, guid: a55dd4a48c3ed784b9f6eb26c2e7ea93,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4676916939119863231, guid: a55dd4a48c3ed784b9f6eb26c2e7ea93,
         type: 3}
@@ -35583,6 +35588,79 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.009564728, y: -0.018873483, z: -0.15169111}
     m_Extent: {x: 0.36882558, y: 0.34606, z: 0.2858474}
   m_DirtyAABB: 0
+--- !u!1001 &401986515638076593
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235637679494718594, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212013219938488218, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_Name
+      value: ThistleFlower
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497458019954719230, guid: 587e1df2359c55b4abb03990fc319fb2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 587e1df2359c55b4abb03990fc319fb2, type: 3}
 --- !u!1 &405332181434619502
 GameObject:
   m_ObjectHideFlags: 0
@@ -41529,3 +41607,4 @@ SceneRoots:
   - {fileID: 1372840919}
   - {fileID: 575195722}
   - {fileID: 955465721}
+  - {fileID: 401986515638076593}
