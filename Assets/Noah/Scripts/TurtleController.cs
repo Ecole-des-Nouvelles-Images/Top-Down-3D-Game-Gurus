@@ -108,7 +108,6 @@ namespace Noah.Scripts
                 {
                     Debug.Log("No Force");
                 }
-                Debug.Log("Dash Direction : " + dashDirection);
                 _animator.SetBool("IsDashing",true);
                 Rb.AddForce(currentDashForce * dashDirection, ForceMode.Impulse);
                 if (dashDirection != Vector3.zero)
@@ -129,7 +128,6 @@ namespace Noah.Scripts
                 _animator.SetBool("IsDashing",false);
                 dashTrail.SetActive(false);
                 _lastDashDirection = Vector3.zero;
-                Debug.Log("Reset dash");
             }
 
             if (_isCharging)
@@ -142,7 +140,6 @@ namespace Noah.Scripts
                 if (move.magnitude > 0.5f)
                 {
                     _lastDashDirection = new Vector3(move.x, 0f, move.y);
-                    Debug.Log("Last Dash Direction : " + _lastDashDirection);
                 }
             }
             
