@@ -2,7 +2,6 @@ using DG.Tweening;
 using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Noah.Scripts
 {
@@ -16,9 +15,10 @@ namespace Noah.Scripts
         [SerializeField] private float firstDashLevelPower = 5; 
         [SerializeField] private float secondDashLevelTime = 1.5f, secondDashLevelPower = 10; 
         [SerializeField] private float thirdDashLevelTime = 3f, thirdDashLevelPower = 20;
-        private float chargeTime;
+        private float _chargeTime;
         private bool _isCharging;
         private bool _isDashing;
+        private Vector3 _lastDashDirection;
         
         [Header("Scanning")]
         [SerializeField] private float scanTime, scanRange, scanDuration;
@@ -59,14 +59,14 @@ namespace Noah.Scripts
 
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.started)
+            if (context.started )
             {
                 StartCharging();
             }
             else if (context.canceled)
             { 
                 StopCharging();
-               MainCapacity();
+                MainCapacity();
             }
         }
 
@@ -75,20 +75,31 @@ namespace Noah.Scripts
             if (!_isDashing)
             {
                 Vector3 dashDirection = new Vector3(move.x, 0f, move.y);
+                if (dashDirection == Vector3.zero)
+                {
+                    dashDirection = transform.forward;
+                }
+
+                if (_lastDashDirection != Vector3.zero)
+                {
+                    dashDirection = _lastDashDirection;
+                    Debug.Log("utilisation last dash direction");
+                }
+                
                 float currentDashForce = 0;
                 
-                if (chargeTime > firstDashLevelTime && chargeTime < secondDashLevelTime)
+                if (_chargeTime > firstDashLevelTime && _chargeTime < secondDashLevelTime)
                 {
                     currentDashForce = firstDashLevelPower * firstDashLevelTime;
                     Debug.Log("First Level Dash");
                 }
-                else if (chargeTime > firstDashLevelTime && chargeTime > secondDashLevelTime && chargeTime < thirdDashLevelTime)
+                else if (_chargeTime > firstDashLevelTime && _chargeTime > secondDashLevelTime && _chargeTime < thirdDashLevelTime)
                 {
                     currentDashForce = secondDashLevelPower * secondDashLevelTime;
                     Debug.Log("Second Level Dash");
 
                 }
-                else if (chargeTime > firstDashLevelTime && chargeTime > secondDashLevelTime && chargeTime > thirdDashLevelTime)
+                else if (_chargeTime > firstDashLevelTime && _chargeTime > secondDashLevelTime && _chargeTime > thirdDashLevelTime)
                 {
                     currentDashForce = thirdDashLevelPower * thirdDashLevelTime;
                     Debug.Log("Third Level Dash");
@@ -97,9 +108,14 @@ namespace Noah.Scripts
                 {
                     Debug.Log("No Force");
                 }
+                Debug.Log("Dash Direction : " + dashDirection);
+                _animator.SetBool("IsDashing",true);
                 Rb.AddForce(currentDashForce * dashDirection, ForceMode.Impulse);
+                if (dashDirection != Vector3.zero)
+                {
+                    Rb.rotation = Quaternion.LookRotation(dashDirection);
+                }
                 _isDashing = true;
-                Debug.Log(chargeTime);
                 BatteryManager.Instance.BatteryCost(10);
             }
         }
@@ -112,22 +128,31 @@ namespace Noah.Scripts
                 _isDashing = false;
                 _animator.SetBool("IsDashing",false);
                 dashTrail.SetActive(false);
+                _lastDashDirection = Vector3.zero;
+                Debug.Log("Reset dash");
             }
 
             if (_isCharging)
             {
                 _animator.SetBool("IsDashing",true);
-                _animator.SetFloat("DashTimer",chargeTime);
+                _animator.SetFloat("DashTimer",_chargeTime);
                 dashTrail.SetActive(true);
-                chargeTime += Time.deltaTime;
+                _chargeTime += Time.deltaTime;
+
+                if (move.magnitude > 0.5f)
+                {
+                    _lastDashDirection = new Vector3(move.x, 0f, move.y);
+                    Debug.Log("Last Dash Direction : " + _lastDashDirection);
+                }
             }
+            
         }
         
 
         private void StartCharging()
         {
             _isCharging = true;
-            chargeTime = 0f;
+            _chargeTime = 0f;
         }
 
         private void StopCharging()

@@ -30,10 +30,8 @@ namespace Michael.Scripts.Manager
 
         private void Update() {
             if (FlowersAlive.Count <= 0) {
-                Debug.Log("Turtle WiNNNNNNNN");
             }
             else if (TurtleIsDead) {
-                Debug.Log("Flower WiNNNNNNNN");
             }
             
         }
