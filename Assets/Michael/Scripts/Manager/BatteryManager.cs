@@ -1,4 +1,6 @@
+
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Michael.Scripts.Manager
 {
@@ -6,17 +8,19 @@ namespace Michael.Scripts.Manager
     {
         public float CurrentBatteryTime;
         [SerializeField] private float _maxBatteryTime;
-        
+        [SerializeField] private Image _batteryBar;
   
     
         void Start() {
             CurrentBatteryTime = _maxBatteryTime;
-        
+            _batteryBar.fillAmount = 1;
         }
         
         void Update() {
             
             CurrentBatteryTime -= Time.deltaTime;
+            int intCurrentBattery = (int)CurrentBatteryTime;
+            _batteryBar.fillAmount = intCurrentBattery / _maxBatteryTime;
 
             if (CurrentBatteryTime <= 0 && !GameManager.Instance.TurtleIsDead){
                 
@@ -28,8 +32,12 @@ namespace Michael.Scripts.Manager
             if (CurrentBatteryTime > _maxBatteryTime) {
                 CurrentBatteryTime = _maxBatteryTime;
             }
-            if (CurrentBatteryTime < _maxBatteryTime) {
-                CurrentBatteryTime = _maxBatteryTime;
+            if (CurrentBatteryTime <= 0)
+            { 
+                CurrentBatteryTime = 0;
+                if (!GameManager.Instance.FlowersAreDead) {
+                    GameManager.Instance.TurtleIsDead = true;
+                }
             }
         }
 
@@ -38,8 +46,6 @@ namespace Michael.Scripts.Manager
         {
             CurrentBatteryTime -= capacityCost;
         }
-        
-        
         
         
     }

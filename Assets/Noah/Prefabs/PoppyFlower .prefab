@@ -900,10 +900,6 @@ MonoBehaviour:
     m_ActionName: Character/Secondary Capacity[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 51549419-713c-4af6-ab45-09046417d341
-    m_ActionName: Character/Attack[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: c95b2375-e6d9-4b88-9c4c-c5e76515df4b
     m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows1/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows1/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows1/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows1/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows1/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows1/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows1/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows1/rightStick/right,/XInputControllerWindows/dpad,/XInputControllerWindows1/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:

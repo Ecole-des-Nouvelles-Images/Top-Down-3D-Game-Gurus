@@ -10,7 +10,10 @@ namespace Michael.Scripts.Controller
         public static Action OnSunCollected;
         public int sun =0 ; 
         public int maxSun = 3 ;
+        public int CapacityCost = 2;
         public bool canReanimate;
+        public FlowerController deadFlowerController;
+        public bool IsPlanted = false;
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
@@ -21,9 +24,12 @@ namespace Michael.Scripts.Controller
         [SerializeField] private bool isStun;
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;
-        [SerializeField] private FlowerController deadFlowerController;
-
         
+
+        protected virtual void Start() {
+            
+        }
+
         protected override void FixedUpdate()
         {
             if (!isStun)
@@ -35,6 +41,15 @@ namespace Michael.Scripts.Controller
         protected override void Update() {
 
             _animator.SetFloat("Velocity",Rb.velocity.magnitude);
+            
+            if (sun < 0) {
+                sun = 0;
+            }
+
+            if (sun > maxSun) {
+                sun = maxSun;
+            }
+            
             
             
             if (isCharging) {
@@ -61,7 +76,8 @@ namespace Michael.Scripts.Controller
             
             if (Rb.velocity.magnitude > this.idleTreshold && !isDead)
             {
-                _animator.SetBool("isPlanted",false);
+                IsPlanted = false;
+                _animator.SetBool("isPlanted",IsPlanted);
                 aliveModelCollider.enabled = true;
             }
            
@@ -95,9 +111,6 @@ namespace Michael.Scripts.Controller
         {
             Debug.Log("revive");
             sun =- maxSun;
-            if (sun < 0) {
-                sun = 0;
-            }
             deadFlowerController.GetRevive();
             canReanimate = false;
             
@@ -135,19 +148,11 @@ namespace Michael.Scripts.Controller
                 deadFlowerController = null;
             }
         }
-
-     /*   private void CollectSun(GameObject sun)
-        {
-            if (this.sun < maxSun) {
-                
-                GameManager.Instance.OnSubCollected(sun);
-                this.sun++;
-                Debug.Log("soleilszds");            }
-        }
-*/
+        
         private void GetPlanted() {
             
-            _animator.SetBool("isPlanted",true);
+            IsPlanted = true;
+            _animator.SetBool("isPlanted",IsPlanted);
             aliveModelCollider.enabled = false;
         }
 
@@ -160,6 +165,7 @@ namespace Michael.Scripts.Controller
         [ContextMenu("TakeHit")]
         private void TakeHit() {
             
+            
             aliveModelCollider.enabled = false;
             aliveModel.SetActive(false);
             deadModel.SetActive(true);
@@ -170,7 +176,7 @@ namespace Michael.Scripts.Controller
         }
         
         [ContextMenu("GetRevive")]
-        private void GetRevive() {
+        public void GetRevive() {
             
             aliveModelCollider.enabled = true;
             GetComponent<PlayerInput>().enabled = true;
@@ -180,7 +186,11 @@ namespace Michael.Scripts.Controller
             GameManager.Instance.FlowersAlive.Add(this.gameObject);
         }
         
-        
+        public void OnLooseSunCapacity(int capacityCost)
+        {
+            sun -= capacityCost;
+        }
+
         
         
         

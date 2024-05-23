@@ -51,6 +51,11 @@ namespace Michael.Scripts.Controller
             DashingUpdate();
             ScanningUpdate();
             _animator.SetFloat("Velocity",Rb.velocity.magnitude);
+            if (GameManager.Instance.TurtleIsDead)
+            {
+                _animator.SetBool("IsDead",true);
+                GetComponent<PlayerInput>().enabled = false;
+            }
             
         }
 
