@@ -1211,7 +1211,7 @@ MonoBehaviour:
   - {fileID: 868645135718470026}
   m_EndBones: []
   m_Material: {fileID: 0}
-  m_StartDepth: 0
+  m_StartDepth: 1
   m_SiblingConstraints: 0
   m_ClosedSiblings: 0
   m_SiblingRotationConstraints: 1
