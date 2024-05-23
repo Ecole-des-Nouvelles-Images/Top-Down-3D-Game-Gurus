@@ -37,17 +37,14 @@ namespace Michael.Scripts.Manager
             }
             else if (TurtleIsDead) {
                 Debug.Log("Flower WiNNNNNNNN");
-                
             }
-           
-            
         }
 
 
         public void StartGame() {
             CrashVfx.SetActive(true);
             InvokeRepeating(nameof(SpawnSun),2,8);
-            Invoke("TurtleEntrance",1.4f);
+            Invoke("TurtleEntrance",1.45f);
         }
 
         

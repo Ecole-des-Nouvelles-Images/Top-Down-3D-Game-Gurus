@@ -31,7 +31,10 @@ namespace Michael.Scripts.Controller
         {
             QteManager.Instance.OnQteFinished += AnimationDash;
             _attackCollider.enabled = false;
+            gameObject.SetActive(false);
         }
+
+       
 
         private void AnimationDash()
         {

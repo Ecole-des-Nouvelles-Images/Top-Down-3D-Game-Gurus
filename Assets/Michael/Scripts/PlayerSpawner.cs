@@ -12,6 +12,7 @@ namespace Michael.Scripts
         public List<GameObject> characterPrefabs; 
         public List<Transform> spawnPoints;
         [SerializeField] private CinemachineTargetGroup _targetGroup;
+        
 
         private void Start() {
 
@@ -27,27 +28,32 @@ namespace Michael.Scripts
                         _targetGroup.AddMember(character.transform,1.1f,2.5f);
                         GameManager.Instance.Turtle = character.gameObject;
                         SeeTroughWall._turtle = character.gameObject;
-                        character.SetActive(false);
-                        
                     }
-                    if (!character.CompareTag("Turtle"))
-                    {
+                    if (!character.CompareTag("Turtle")) {
                         _targetGroup.AddMember(character.transform,1,2);
                         GameManager.Instance.Flowers.Add(character);
                         GameManager.Instance.FlowersAlive.Add(character);
                         Debug.Log("fleur ajouté");
                     }
                 }
-
             }
-              
-               
         }
 
+        
+        
+           
+        
+        
 
+        
+        
+        
+        
+        
+        
+        
+        
     }
-                
-
 }
 
 
