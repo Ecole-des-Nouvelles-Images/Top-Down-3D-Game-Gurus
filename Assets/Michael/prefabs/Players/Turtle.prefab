@@ -47980,27 +47980,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8463613a58f7a4b8cd230016458469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 350
+  moveSpeed: 470
   _animator: {fileID: 2018351108338068067}
   idleTreshold: 0.1
+  _attackCollider: {fileID: 5078953049106598018}
+  dashTrail: {fileID: 8761091613312585760}
+  firstDashLevelTime: 0.7
+  firstDashLevelPower: 5
+  secondDashLevelTime: 1.5
+  secondDashLevelPower: 10
+  thirdDashLevelTime: 3
+  thirdDashLevelPower: 20
+  scanTime: 0
+  scanRange: 5
+  scanDuration: 3
+  scanSphereArea: {fileID: 8916670446963452082}
   TrapPrefab: {fileID: 8109188231840348700, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
     type: 3}
   TrapSpawn: {fileID: 7023721015562698820}
-  dashForce: 8
-  maxDashForce: 10
-  isDashing: 0
-  isScanning: 0
-  isCharging: 0
-  chargeDashMultiplier: 1.2
-  chargeTime: 0
-  maxChargeTime: 2
-  _attackCollider: {fileID: 5078953049106598018}
-  dashTrail: {fileID: 8761091613312585760}
-  scanTime: 0
-  scanDuration: 3
-  scanSphereArea: {fileID: 8916670446963452082}
-  scanRange: 5
-  battery: 0
 --- !u!114 &5709900678810685968
 MonoBehaviour:
   m_ObjectHideFlags: 0

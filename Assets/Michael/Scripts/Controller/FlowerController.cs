@@ -164,8 +164,6 @@ namespace Michael.Scripts.Controller
         
         [ContextMenu("TakeHit")]
         private void TakeHit() {
-            
-            
             aliveModelCollider.enabled = false;
             aliveModel.SetActive(false);
             deadModel.SetActive(true);
@@ -173,6 +171,7 @@ namespace Michael.Scripts.Controller
             isDead = true;
             sun = 0;
             GameManager.Instance.FlowersAlive.Remove(this.gameObject);
+
         }
         
         [ContextMenu("GetRevive")]

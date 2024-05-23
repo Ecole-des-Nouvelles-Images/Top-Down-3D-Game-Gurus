@@ -290,12 +290,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4760e62f7e710db4b9708ec9d82429c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 350
+  moveSpeed: 525
   _animator: {fileID: 8721775417236793125}
   idleTreshold: 0.3
   sun: 0
   maxSun: 3
+  CapacityCost: 2
   canReanimate: 0
+  deadFlowerController: {fileID: 0}
+  IsPlanted: 0
   isCharging: 0
   reanimateTimer: 0
   reanimateDuration: 1.2
@@ -306,7 +309,6 @@ MonoBehaviour:
   isStun: 0
   stunDuration: 3
   stunTimer: 0
-  deadFlowerController: {fileID: 0}
 --- !u!1 &2992387629157615357
 GameObject:
   m_ObjectHideFlags: 0
