@@ -838,7 +838,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db949041777254d44bf412e770b6d65d, type: 2}
+  - {fileID: 2100000, guid: b82482b7fd3d5784e88f0acbf856f731, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3163,7 +3163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1150972965
 Animator:
   serializedVersion: 5
@@ -3821,12 +3821,12 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0
-    m_NormalBias: 4
+    m_NormalBias: 0
     m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
@@ -6276,46 +6276,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mode+RIG
       objectReference: {fileID: 0}
-    - target: {fileID: 2468370780942454766, guid: 718d9895a6b697548932498b9a58f0af,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6630fa82867f21e428adec9e3a349254, type: 2}
-    - target: {fileID: 3692792130417708998, guid: 718d9895a6b697548932498b9a58f0af,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6630fa82867f21e428adec9e3a349254, type: 2}
-    - target: {fileID: 3892675598162770011, guid: 718d9895a6b697548932498b9a58f0af,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4c9a02b9c5c5e0d459593555a8141912, type: 2}
-    - target: {fileID: 8028513434422995464, guid: 718d9895a6b697548932498b9a58f0af,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028513434422995464, guid: 718d9895a6b697548932498b9a58f0af,
-        type: 3}
-      propertyPath: m_LightProbeUsage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028513434422995464, guid: 718d9895a6b697548932498b9a58f0af,
-        type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028513434422995464, guid: 718d9895a6b697548932498b9a58f0af,
-        type: 3}
-      propertyPath: m_UpdateWhenOffscreen
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028513434422995464, guid: 718d9895a6b697548932498b9a58f0af,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 55dbb442aa309194f96d0274e16e6fa8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6475,21 +6435,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1348533960}
     m_Modifications:
-    - target: {fileID: 3481527035475597858, guid: 2968d91e6888ddf498ec0d03f090fab7,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3481527035475597858, guid: 2968d91e6888ddf498ec0d03f090fab7,
-        type: 3}
-      propertyPath: m_LightProbeUsage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3481527035475597858, guid: 2968d91e6888ddf498ec0d03f090fab7,
-        type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6039861119166757898, guid: 2968d91e6888ddf498ec0d03f090fab7,
         type: 3}
       propertyPath: m_Name
