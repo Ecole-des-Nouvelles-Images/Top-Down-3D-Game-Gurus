@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a86d19991c153b245966e58fe4d02bb3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a86d19991c153b245966e58fe4d02bb3,
         type: 3}
@@ -66,22 +66,22 @@ PrefabInstance:
     - target: {fileID: -2639638324218457063, guid: a86d19991c153b245966e58fe4d02bb3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.17364807
+      value: -0.34202012
       objectReference: {fileID: 0}
     - target: {fileID: -2639638324218457063, guid: a86d19991c153b245966e58fe4d02bb3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.9848078
+      value: -0.9396927
       objectReference: {fileID: 0}
     - target: {fileID: -2639638324218457063, guid: a86d19991c153b245966e58fe4d02bb3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -200
+      value: -220
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a86d19991c153b245966e58fe4d02bb3,
         type: 3}
       propertyPath: m_Name
-      value: bucket_Mode
+      value: Bucket
       objectReference: {fileID: 0}
     - target: {fileID: 1145053579610742354, guid: a86d19991c153b245966e58fe4d02bb3,
         type: 3}

@@ -201,7 +201,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fb3d778030db0ab49a8142d690b26ed4,
         type: 3}
       propertyPath: m_Name
-      value: tomatoesPlant_Mode
+      value: Tomatoes
       objectReference: {fileID: 0}
     - target: {fileID: 1446317025356153247, guid: fb3d778030db0ab49a8142d690b26ed4,
         type: 3}
