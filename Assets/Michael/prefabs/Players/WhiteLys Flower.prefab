@@ -5141,6 +5141,7 @@ MonoBehaviour:
   canReanimate: 0
   deadFlowerController: {fileID: 0}
   IsPlanted: 0
+  isInvincible: 0
   isCharging: 0
   reanimateTimer: 0
   reanimateDuration: 1.2

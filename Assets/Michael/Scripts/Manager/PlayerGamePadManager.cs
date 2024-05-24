@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerGamePadManager : MonoBehaviour
 {
-    public event Action<PlayerInput> PlayerJoinedGame;
+   // public event Action<PlayerInput> PlayerJoinedGame;
     [SerializeField] private InputAction joinAction;
     [SerializeField] private List<PlayerInput> disabledPlayerInputs;
     private int _nextPlayerinput;

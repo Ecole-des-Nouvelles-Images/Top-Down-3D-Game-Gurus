@@ -14,6 +14,7 @@ namespace Michael.Scripts.Controller
         public bool canReanimate;
         public FlowerController deadFlowerController;
         public bool IsPlanted = false;
+        public bool isInvincible = false;
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
@@ -24,7 +25,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private bool isStun;
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;
-        
+     
 
         protected virtual void Start() {
             
@@ -164,14 +165,16 @@ namespace Michael.Scripts.Controller
         
         [ContextMenu("TakeHit")]
         private void TakeHit() {
-            aliveModelCollider.enabled = false;
-            aliveModel.SetActive(false);
-            deadModel.SetActive(true);
-            GetComponent<PlayerInput>().enabled = false;
-            isDead = true;
-            sun = 0;
-            GameManager.Instance.FlowersAlive.Remove(this.gameObject);
-
+            if (!isInvincible) {
+                aliveModelCollider.enabled = false;
+                aliveModel.SetActive(false);
+                deadModel.SetActive(true);
+                GetComponent<PlayerInput>().enabled = false;
+                isDead = true;
+                sun = 0;
+                GameManager.Instance.FlowersAlive.Remove(this.gameObject);
+            }
+           
         }
         
         [ContextMenu("GetRevive")]
