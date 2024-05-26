@@ -15,6 +15,7 @@ namespace Michael.Scripts.Controller
         public FlowerController deadFlowerController;
         public bool IsPlanted = false;
         public bool isInvincible = false;
+        public bool IsStun;
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
@@ -22,10 +23,10 @@ namespace Michael.Scripts.Controller
         [SerializeField] private GameObject aliveModel;
         [SerializeField] private Collider aliveModelCollider;
         [SerializeField] private bool isDead;
-        [SerializeField] private bool isStun;
+        [SerializeField] private float magnetudeToStun = 22f;
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;
-     
+        [SerializeField] private ParticleSystem stunParticleSystem;
 
         protected virtual void Start() {
             
@@ -33,7 +34,7 @@ namespace Michael.Scripts.Controller
 
         protected override void FixedUpdate()
         {
-            if (!isStun)
+            if (!IsStun)
             {
                 Move();
             }
@@ -62,12 +63,13 @@ namespace Michael.Scripts.Controller
                 }
             }
 
-            if (isStun)
+            if (IsStun)
             {
                 stunTimer += Time.deltaTime;
                 if (stunTimer >= stunDuration)
                 {
-                    isStun = false;
+                    stunParticleSystem.gameObject.SetActive(false);
+                    IsStun = false;
                     stunTimer = 0;
                     _animator.SetBool("IsDizzy",false);
                 }
@@ -86,7 +88,7 @@ namespace Michael.Scripts.Controller
             
         }        
         protected override void SecondaryCapacity() { // SE PLANTER DANS LE SOL 
-            if (!isStun)
+            if (!IsStun)
             {
                 GetPlanted();
             }
@@ -95,7 +97,7 @@ namespace Michael.Scripts.Controller
         }
         public override void OnThirdCapacity(InputAction.CallbackContext context) {// REANIMATION
 
-            if (canReanimate && sun == maxSun && !isStun)
+            if (canReanimate && sun == maxSun && !IsStun)
             {
                 if (context.started) {
                     isCharging = true;
@@ -134,11 +136,16 @@ namespace Michael.Scripts.Controller
                 canReanimate = true;
                 deadFlowerController = other.GetComponentInParent<FlowerController>();
             }
-           
+            if (other.gameObject.CompareTag("Turtle") && !isDead)
+            {
+                Rigidbody turtleRb = other.gameObject.GetComponent<Rigidbody>();
+                if (turtleRb.velocity.magnitude > magnetudeToStun)
+                {
+                    GetStunned();
+                }
+            }
         }
-
-       
-
+        
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Seed"))
@@ -149,7 +156,9 @@ namespace Michael.Scripts.Controller
                 deadFlowerController = null;
             }
         }
+
         
+
         private void GetPlanted() {
             
             IsPlanted = true;
@@ -157,10 +166,12 @@ namespace Michael.Scripts.Controller
             aliveModelCollider.enabled = false;
         }
 
+        [ContextMenu("GetStunned")]
         private void GetStunned() {
             
+            stunParticleSystem.gameObject.SetActive(true);
             _animator.SetBool("IsDizzy",true);
-            isStun = true;
+            IsStun = true;
         }
         
         [ContextMenu("TakeHit")]

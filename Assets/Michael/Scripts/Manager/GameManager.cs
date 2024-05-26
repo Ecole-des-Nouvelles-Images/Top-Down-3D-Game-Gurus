@@ -35,14 +35,13 @@ namespace Michael.Scripts.Manager
         private void Update()
         {
 
-            if (FlowersAlive.Count <= 0)
-            {
+            if (FlowersAlive.Count <= 0) {
                 TurtleVictoryPanel.GetComponent<CanvasGroup>().DOFade(1, 1);
                 FlowersAreDead = true;
             }
             else if (TurtleIsDead)
             {
-             FlowersVictoryPanel.GetComponent<CanvasGroup>().DOFade(1, 1);
+                FlowersVictoryPanel.GetComponent<CanvasGroup>().DOFade(1, 1);
             }
         }
 

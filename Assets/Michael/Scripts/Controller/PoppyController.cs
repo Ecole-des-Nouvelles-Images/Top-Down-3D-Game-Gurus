@@ -75,7 +75,7 @@ namespace Michael.Scripts.Controller
 
         protected override void FixedUpdate()
         {
-            if (!_isgrappling)
+            if (!_isgrappling && !IsStun)
             {
                 Move();
             }
