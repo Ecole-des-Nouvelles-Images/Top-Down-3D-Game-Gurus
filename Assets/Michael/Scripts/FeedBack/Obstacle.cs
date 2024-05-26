@@ -1,7 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 public class Obstacle : MonoBehaviour
@@ -11,7 +11,8 @@ public class Obstacle : MonoBehaviour
    [SerializeField] private int shakeVibrato = 1;
    [SerializeField] private List<GameObject> Tomatoe;
    [SerializeField] private ParticleSystem waterRipples;
-    void Start()
+   [SerializeField] private GameObject brokenPot;
+   void Start()
     {
         
     }
@@ -21,16 +22,21 @@ public class Obstacle : MonoBehaviour
             Rigidbody turtleRb = collision.gameObject.GetComponent<Rigidbody>();
             if (turtleRb.velocity.magnitude > shakeThreshold) {
                 ShakeObject();
-                if (Tomatoe.Count != 0)
-                {
+                if (Tomatoe.Count != 0) {
                     int randomTomatoe = Random.Range(0, Tomatoe.Count-1);
                     Tomatoe[randomTomatoe].GetComponent<Rigidbody>().isKinematic = false;
                 }
 
-                if (waterRipples)
-                {
+                if (waterRipples) {
                    waterRipples.Play(); 
                 }
+
+                if (brokenPot)
+                { 
+                    Instantiate(brokenPot, transform.position, transform.rotation);
+                    Destroy(gameObject);
+                }
+                
             }
         }
     }

@@ -26047,7 +26047,7 @@ MonoBehaviour:
   chargingSmokeParticules: {fileID: 4786662540256690413}
   scanTime: 0
   scanRange: 12
-  scanDuration: 3
+  scanDuration: 2
   scanSphereArea: {fileID: 8721222829056409284}
   TrapPrefab: {fileID: 8109188231840348700, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
     type: 3}
