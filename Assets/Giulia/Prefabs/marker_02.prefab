@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0acd0a528ec54254f929feeb3c8fc373,
         type: 3}
       propertyPath: m_Name
-      value: marker_02
+      value: Marker_02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
