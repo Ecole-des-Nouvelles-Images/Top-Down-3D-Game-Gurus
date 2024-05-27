@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Booster",
+                    "type": "Button",
+                    "id": "c6cee065-2dcb-4c5c-bc03-efb6a502f11b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Main Capacity",
                     "type": "Button",
                     "id": "02558de8-c0f3-409b-b27c-05639ab1028a",
@@ -159,6 +168,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "FourthCapacity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6a3f45b-264e-4813-af63-a743a0f71252",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Booster",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e85ee4e-e34b-4c8c-8906-4d72f1dd923a",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Booster",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
