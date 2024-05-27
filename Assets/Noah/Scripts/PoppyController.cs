@@ -1,4 +1,5 @@
 using System;
+using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,40 +7,59 @@ namespace Noah.Scripts
 {
     public class PoppyController : FlowerController
     {
-        [Header("Grappling - References")]
-        [SerializeField] private Transform Gun;
+        [Header("Grappling - References")] [SerializeField]
+        private Transform Gun;
+
         [SerializeField] private LineRenderer lr;
         [SerializeField] private LayerMask whatIsGrappleable;
+        [SerializeField] private ParticleSystem impactGrappleParticules;
 
-        
-        [Header("Grappling - Stats")]
-        [SerializeField] private float grappleSpeed;
+        [Header("Grappling - Stats")] [SerializeField]
+        private float grappleSpeed;
+
         [SerializeField] private float maxGrappleDistance;
         [SerializeField] private float grapplingSpeed;
 
-        [Header("Grappling - Cooldown")]
-        [SerializeField] private float grapplingCd;
+        [Header("Grappling - Cooldown")] [SerializeField]
+        private float grapplingCd;
+
         private float _grapplingCdTimer;
-        
+
+
         private float _grappleHoldTimer;
         private Vector3 grapplePoint;
         private bool _isgrappling;
         private bool _shouldApplyGrappleForce;
-        
+        private bool isBoosted;
+
         protected override void Start()
         {
             base.Start();
             lr.enabled = false;
             lr.positionCount = 2;
+            impactGrappleParticules = Instantiate(impactGrappleParticules, Vector3.zero, Quaternion.identity);
         }
+
 
         protected override void PassiveCapacity()
         {
-            throw new System.NotImplementedException();
+            if (!isBoosted && GameManager.Instance.FlowersAlive.Count == 1)
+            {
+                Debug.Log("boost vitesse dernier en vie");
+                moveSpeed += 20;
+                isBoosted = true;
+            }
+
+            if (GameManager.Instance.FlowersAlive.Count > 1)
+            {
+                isBoosted = false;
+                moveSpeed = 350;
+            }
         }
 
         protected override void Update()
         {
+            PassiveCapacity();
             base.Update();
             GrapplingUpdate();
         }
@@ -57,7 +77,7 @@ namespace Noah.Scripts
 
         protected override void FixedUpdate()
         {
-            if (!_isgrappling)
+            if (!_isgrappling && !IsStun)
             {
                 Move();
             }
@@ -82,7 +102,11 @@ namespace Noah.Scripts
 
         protected override void MainCapacity()
         {
-            StartGrapple();
+            if (sun >= CapacityCost && !IsPlanted)
+            {
+                StartGrapple();
+                OnLooseSunCapacity(CapacityCost);
+            }
         }
 
         private void StartGrapple()
@@ -101,20 +125,23 @@ namespace Noah.Scripts
 
             if (!_shouldApplyGrappleForce)
             {
-                float currentGrappleDistance = Mathf.Clamp(grappleSpeed * _grappleHoldTimer , 0f, maxGrappleDistance);
-                
+                float currentGrappleDistance = Mathf.Clamp(grappleSpeed * _grappleHoldTimer, 0f, maxGrappleDistance);
+
                 lr.SetPosition(0, Gun.position);
                 lr.SetPosition(1, Gun.position + Gun.forward * currentGrappleDistance);
-                
+
                 RaycastHit hit;
                 if (Physics.Raycast(Gun.position, Gun.forward, out hit, currentGrappleDistance, whatIsGrappleable))
                 {
                     grapplePoint = hit.point;
+                    impactGrappleParticules.transform.position = grapplePoint;
+                    impactGrappleParticules.transform.forward = hit.normal;
+                    impactGrappleParticules.Play();
                     _shouldApplyGrappleForce = true;
 
                     lr.SetPosition(0, Gun.position);
                     lr.SetPosition(1, grapplePoint);
-                    
+
                     _grapplingCdTimer = grapplingCd;
                 }
                 else if (Math.Abs(currentGrappleDistance - maxGrappleDistance) < 0.01f)
@@ -123,7 +150,7 @@ namespace Noah.Scripts
                 }
             }
         }
-        
+
         private void ApplyGrappleForce()
         {
             Vector3 directionToGrapple = (grapplePoint - transform.position).normalized;
