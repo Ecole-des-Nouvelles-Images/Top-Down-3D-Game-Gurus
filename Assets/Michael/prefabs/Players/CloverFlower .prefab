@@ -249,10 +249,12 @@ MonoBehaviour:
   idleTreshold: 0.3
   sun: 0
   maxSun: 3
-  CapacityCost: 2
+  CapacityCost: 3
   canReanimate: 0
   deadFlowerController: {fileID: 0}
   IsPlanted: 0
+  isInvincible: 0
+  IsStun: 0
   isCharging: 0
   reanimateTimer: 0
   reanimateDuration: 1.2
@@ -260,9 +262,10 @@ MonoBehaviour:
   aliveModel: {fileID: 5725145251188269153}
   aliveModelCollider: {fileID: 7564978543378155545}
   isDead: 0
-  isStun: 0
+  magnetudeToStun: 22
   stunDuration: 3
   stunTimer: 0
+  stunParticleSystem: {fileID: 0}
   plantedFlowers: []
 --- !u!136 &7564978543378155545
 CapsuleCollider:

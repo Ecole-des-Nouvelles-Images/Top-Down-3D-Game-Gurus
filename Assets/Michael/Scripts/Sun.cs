@@ -15,10 +15,30 @@ namespace Michael.Scripts
                 {
                     FlowerController flowerController = other.GetComponent<FlowerController>(); 
                     if (flowerController.sun < flowerController.maxSun) {
-                        GameManager.Instance._sunOccupiedSpawns.Remove(gameObject);
-                        other.GetComponent<FlowerController>().sun++;
-                        _collected = true;
-                        Destroy(gameObject);
+
+                        if (other.GetComponent<CloverController>()) {
+                          
+                            GameManager.Instance._sunOccupiedSpawns.Remove(gameObject);
+                            
+                            int rngLuckCost = Random.Range(0, 4);
+                            if (rngLuckCost != 1) {
+                                other.GetComponent<FlowerController>().sun++ ;
+                            }
+                            else {
+                                other.GetComponent<FlowerController>().sun += 3 ;
+                                Debug.Log("chanceux");
+                            }
+                            _collected = true;
+                            Destroy(gameObject);
+                        }
+                        else
+                        {
+                            GameManager.Instance._sunOccupiedSpawns.Remove(gameObject);
+                            other.GetComponent<FlowerController>().sun++;
+                            _collected = true;
+                            Destroy(gameObject);
+                        }
+                        
                     }
                 }
             }

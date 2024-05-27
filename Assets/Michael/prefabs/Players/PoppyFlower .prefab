@@ -5297,6 +5297,7 @@ MonoBehaviour:
   aliveModel: {fileID: 4384586793289522454}
   aliveModelCollider: {fileID: 5686252515435969221}
   isDead: 0
+  magnetudeToStun: 22
   stunDuration: 3
   stunTimer: 0
   stunParticleSystem: {fileID: 4749315361091767225}
@@ -5307,9 +5308,9 @@ MonoBehaviour:
     m_Bits: 4294967295
   impactGrappleParticules: {fileID: 8137901211290482641, guid: 6ddd35ffe222fc346baecd6cc9680bdb,
     type: 3}
-  grappleSpeed: 10
-  maxGrappleDistance: 8
-  grapplingSpeed: 800
+  grappleSpeed: 17
+  maxGrappleDistance: 12
+  grapplingSpeed: 1600
   grapplingCd: 0
 --- !u!136 &5686252515435969221
 CapsuleCollider:
@@ -5832,7 +5833,7 @@ PrefabInstance:
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: moveWithTransform
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}

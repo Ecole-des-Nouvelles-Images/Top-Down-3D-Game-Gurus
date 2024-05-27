@@ -7,6 +7,7 @@ namespace Michael.Scripts.Controller
 {
     public abstract class FlowerController : CharacterController
     {
+        public int characterIndex;
         public static Action OnSunCollected;
         public int sun =0 ; 
         public int maxSun = 3 ;
@@ -20,7 +21,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
         [SerializeField] private GameObject deadModel;
-        [SerializeField] private GameObject aliveModel;
+        [SerializeField] protected GameObject aliveModel;
         [SerializeField] private Collider aliveModelCollider;
         [SerializeField] private bool isDead;
         [SerializeField] private float magnetudeToStun = 22f;

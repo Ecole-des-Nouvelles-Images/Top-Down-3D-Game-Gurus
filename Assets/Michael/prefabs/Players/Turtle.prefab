@@ -26027,7 +26027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8463613a58f7a4b8cd230016458469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 350
+  moveSpeed: 400
   _animator: {fileID: 4159274208551880169}
   idleTreshold: 0.1
   _attackCollider: {fileID: 4408583465232902560}
