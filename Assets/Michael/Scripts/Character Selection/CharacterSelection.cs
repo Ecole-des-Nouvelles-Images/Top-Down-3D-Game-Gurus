@@ -17,7 +17,7 @@ namespace Michael.Scripts.CharacterSelection
         public static bool CanStart;
         public static bool TurtleIsSelected;
         public int PlayerIndex ;
-        public static int _maxPlayers = 3 ;
+        public static int _maxPlayers = 2 ;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -195,14 +195,14 @@ namespace Michael.Scripts.CharacterSelection
             camera.transform.DOShakePosition(1, 1);
             readyText.SetActive(false);
             PlayerIsReady[PlayerIndex] = true;
-            bool allPlayersReady = true;
+            //bool allPlayersReady = true;
             int readyCount = 0;
             Debug.Log( PlayerIsReady[PlayerIndex]);
 
             for (int i = 0; i < PlayerIsJoined.Length; i++) {
                 if (PlayerIsJoined[i] == true) {
                     if (PlayerIsReady[i] == false) {
-                        allPlayersReady = false;
+                      //  allPlayersReady = false;
                     }
                     else {
                         readyCount++;

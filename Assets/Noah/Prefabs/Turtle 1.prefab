@@ -31938,6 +31938,7 @@ MonoBehaviour:
   scanDuration: 3
   scanSphereArea: {fileID: 7702337643989341141}
   scanRange: 5
+  battery: 0
 --- !u!114 &101159695294892799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32012,8 +32013,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f06b55eb6b01c7f4b8b6f7a9f1116051, type: 3}
   - {fileID: 21300000, guid: 55769fdebc0e3184e8b027cc733d6fed, type: 3}
   - {fileID: 21300000, guid: cac26e12556251f46b9dbbf1dadf3512, type: 3}
-  camera: {fileID: 0}
-  canvas: {fileID: 6818169329554680362}
   TouchQteCount: 6
 --- !u!1 &6232724449886776111
 GameObject:

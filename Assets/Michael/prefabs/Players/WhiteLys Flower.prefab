@@ -5132,7 +5132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9801589dae4939830ff4a5d78c2adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 300
+  moveSpeed: 525
   _animator: {fileID: 7528616895496475774}
   idleTreshold: 0.3
   sun: 0
@@ -5141,6 +5141,7 @@ MonoBehaviour:
   canReanimate: 0
   deadFlowerController: {fileID: 0}
   IsPlanted: 0
+  isInvincible: 0
   isCharging: 0
   reanimateTimer: 0
   reanimateDuration: 1.2
