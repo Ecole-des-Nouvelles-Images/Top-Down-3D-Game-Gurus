@@ -10,14 +10,24 @@ namespace Michael.Scripts.Ui
     {
         public FlowerController FlowerPlayer;
        [SerializeField] private List<Sprite> playerCharacterImages;
-       [SerializeField] private int sun;
        [SerializeField] private List<Image> sunSprites;
+       [SerializeField] private int sun;
        [SerializeField] private  Sprite fullSun;
        [SerializeField] private  Sprite emptySun;
+       [SerializeField] private Image characterIcon;
+
+       private void Start()
+       {
+           characterIcon.sprite = playerCharacterImages[FlowerPlayer.characterIndex];
+       }
 
        private void Update()
        {
-           sun = FlowerPlayer.sun;
+           if (FlowerPlayer)
+           {
+               sun = FlowerPlayer.sun;
+           }
+         
            for (int i = 0; i < sunSprites.Count; i++)
            {
                if (i < sun)
