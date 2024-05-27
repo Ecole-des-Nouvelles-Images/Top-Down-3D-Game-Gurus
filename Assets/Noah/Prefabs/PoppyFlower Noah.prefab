@@ -5299,6 +5299,7 @@ MonoBehaviour:
   stunDuration: 3
   stunTimer: 0
   stunParticleSystem: {fileID: 4749315361091767225}
+  plantingCooldown: 1
   Gun: {fileID: 906675944261342744}
   lr: {fileID: 8694057788543303523}
   whatIsGrappleable:

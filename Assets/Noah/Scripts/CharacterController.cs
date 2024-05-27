@@ -5,7 +5,7 @@ namespace Noah.Scripts
 {
     public abstract class CharacterController : MonoBehaviour
     {
-        [SerializeField] protected float moveSpeed = 525f;
+        [SerializeField] protected float moveSpeed ;
         [SerializeField] protected Animator _animator;
         [SerializeField] protected float idleTreshold = 0.1f;
         protected Rigidbody Rb;
@@ -55,7 +55,10 @@ namespace Noah.Scripts
 
         public virtual void OnMainCapacity(InputAction.CallbackContext context)
         {
-            MainCapacity();
+            if (context.performed)
+            {
+                MainCapacity();
+            }
         }
 
         protected abstract void MainCapacity();
@@ -95,13 +98,6 @@ namespace Noah.Scripts
 
         #endregion
         
-        
-        
-        
-        
-        
-        
-        
         #region Fourth Capacity
         public virtual void OnFourthCapacity(InputAction.CallbackContext context)
         {
@@ -117,9 +113,6 @@ namespace Noah.Scripts
             
         }
         #endregion
-
-        
-        
         
     }
 }
