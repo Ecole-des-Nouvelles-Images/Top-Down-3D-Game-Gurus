@@ -14,10 +14,10 @@ namespace Michael.Scripts.Manager
         private float _lerpSpeed = 0.05f;
         private float _delayBatteryTime;
     
-        void Start() {
+        void Start()
+        {
             CurrentBatteryTime = _maxBatteryTime;
             _delayBatteryTime = _maxBatteryTime;
-            //_batteryBar.fillAmount = 1;
         }
         
         void Update() {
@@ -25,42 +25,21 @@ namespace Michael.Scripts.Manager
            CurrentBatteryTime -= Time.deltaTime;
            _delayBatteryTime -= Time.deltaTime *_easeSilerRate;
            _delayBatteryTime = Mathf.Clamp(_delayBatteryTime,CurrentBatteryTime, _maxBatteryTime);
-            //int intCurrentBattery = (int)CurrentBatteryTime;
-            //_batteryBar.fillAmount = intCurrentBattery / _maxBatteryTime;
-
-            _batteryBar.value = CurrentBatteryTime / _maxBatteryTime;
+           
+           _batteryBar.value = CurrentBatteryTime / _maxBatteryTime;
             _easeBatteryBar.value = _delayBatteryTime / _maxBatteryTime;
             
             if (CurrentBatteryTime <= 0 && !GameManager.Instance.TurtleIsDead){
-                
-                // animation 
-                //particule 
+               
                 GameManager.Instance.TurtleIsDead = true;
             }
 
-          /*  if (CurrentBatteryTime > _maxBatteryTime) {
+            if (CurrentBatteryTime > _maxBatteryTime)
+            {
                 CurrentBatteryTime = _maxBatteryTime;
             }
-            if (CurrentBatteryTime <= 0)
-            { 
-                CurrentBatteryTime = 0;
-                if (!GameManager.Instance.FlowersAreDead) {
-                    GameManager.Instance.TurtleIsDead = true;
-                }
-            }*/
-          
-            /*if (_batteryBar.value != CurrentBatteryTime) {
-               _batteryBar.value = CurrentBatteryTime;
-           }
-
-           if (_batteryBar.value != _easeBatteryBar.value)
-           {
-               _easeBatteryBar.value = Mathf.Lerp(_easeBatteryBar.value,CurrentBatteryTime,_lerpSpeed);
-           }*/
-           
         }
-
-
+        
        public void BatteryCost(float capacityCost)
         {
             CurrentBatteryTime -= capacityCost;

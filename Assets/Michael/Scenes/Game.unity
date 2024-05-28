@@ -933,7 +933,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 0.4}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 80}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &117337100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2394,89 +2394,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224538943}
   m_CullTransparentMesh: 1
---- !u!1001 &226843750
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3555467346372697277, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_Name
-      value: Turtle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3555467346372697277, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4779670786821184751, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: _batteryBar
-      value: 
-      objectReference: {fileID: 1788888890}
-    - target: {fileID: 4779670786821184751, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: _easeBatteryBar
-      value: 
-      objectReference: {fileID: 230221259}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.004
-      objectReference: {fileID: 0}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.436
-      objectReference: {fileID: 0}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: df501fe65bab708489a2acc612d1e8e1, type: 3}
 --- !u!1 &230221258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,7 +2405,7 @@ GameObject:
   - component: {fileID: 230221260}
   - component: {fileID: 230221259}
   m_Layer: 5
-  m_Name: EaseBatteryBAr
+  m_Name: EaseBatteryBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2537,7 +2454,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 557807328}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -2563,7 +2480,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: -100}
+  m_AnchoredPosition: {x: -156, y: -100}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &243948818 stripped
@@ -2840,7 +2757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &303714206
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3967,7 +3884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &488593521
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3989,9 +3906,9 @@ RectTransform:
   - {fileID: 1213099737}
   m_Father: {fileID: 1022163882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1916, y: -185}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 193.88403, y: 196.686}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &488593522
@@ -4605,7 +4522,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 80}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &557807329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4619,7 +4536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.14684942, b: 0.14684942, a: 1}
+  m_Color: {r: 1, g: 0.9397521, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6419,7 +6336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &807424516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8004,7 +7921,7 @@ Transform:
   m_GameObject: {fileID: 1003838119}
   serializedVersion: 2
   m_LocalRotation: {x: 0.42841145, y: -0, z: -0, w: 0.9035838}
-  m_LocalPosition: {x: 1.504, y: 6.4987197, z: 4.076218}
+  m_LocalPosition: {x: 1.504, y: 6.4987254, z: 4.0762124}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9562,7 +9479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1189322212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9584,9 +9501,9 @@ RectTransform:
   - {fileID: 2053130898}
   m_Father: {fileID: 1022163882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 699}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 345}
   m_SizeDelta: {x: 193.884, y: 196.68604}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1189322213
@@ -11099,7 +11016,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 80}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1421676654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11490,6 +11407,7 @@ GameObject:
   - component: {fileID: 1501747239}
   - component: {fileID: 1501747240}
   - component: {fileID: 1501747241}
+  - component: {fileID: 1501747242}
   m_Layer: 5
   m_Name: Panel_Tortoise
   m_TagString: Untagged
@@ -11544,6 +11462,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TurtlePlayer: {fileID: 0}
+--- !u!114 &1501747242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501747238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dbfc48ff1069449ab0e79c99c3c813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentBatteryTime: 0
+  _maxBatteryTime: 300
+  _easeSilerRate: 15
+  _batteryBar: {fileID: 1788888890}
+  _easeBatteryBar: {fileID: 230221259}
 --- !u!1 &1510071310
 GameObject:
   m_ObjectHideFlags: 0
@@ -13715,7 +13650,7 @@ GameObject:
   - component: {fileID: 1788888889}
   - component: {fileID: 1788888890}
   m_Layer: 5
-  m_Name: BatteryBAr
+  m_Name: BatteryBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13738,7 +13673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: -100}
+  m_AnchoredPosition: {x: -156, y: -100}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788888890
@@ -13784,7 +13719,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1421676653}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -14046,7 +13981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1815243488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14359,7 +14294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 28.4}
+  m_AnchoredPosition: {x: 0, y: 28.400024}
   m_SizeDelta: {x: 136.7289, y: 56.9704}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1001 &1910066841
@@ -15086,6 +15021,7 @@ MonoBehaviour:
   spawnTurtlePosition: {fileID: 0}
   TurtleVictoryPanel: {fileID: 766603039}
   FlowersVictoryPanel: {fileID: 1337294575}
+  TurtleUis: {fileID: 1501747238}
 --- !u!114 &2018925707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16218,7 +16154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &198096157639116210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17149,7 +17085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 193.884, y: 196.686}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7986743049460497559
@@ -17281,4 +17217,3 @@ SceneRoots:
   - {fileID: 1326746307}
   - {fileID: 1124246988}
   - {fileID: 1022163882}
-  - {fileID: 226843750}

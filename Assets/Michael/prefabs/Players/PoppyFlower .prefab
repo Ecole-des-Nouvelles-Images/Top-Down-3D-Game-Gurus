@@ -5295,13 +5295,13 @@ MonoBehaviour:
   IsPlanted: 0
   isInvincible: 0
   IsStun: 0
+  isDead: 0
   isCharging: 0
   reanimateTimer: 0
   reanimateDuration: 1.2
   deadModel: {fileID: 1883880054981992116}
   aliveModel: {fileID: 4384586793289522454}
   aliveModelCollider: {fileID: 5686252515435969221}
-  isDead: 0
   magnetudeToStun: 22
   stunDuration: 3
   stunTimer: 0
@@ -5758,12 +5758,12 @@ PrefabInstance:
     - target: {fileID: 1379768070476412052, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.297
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 1379768070476412052, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.606
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1379768070476412052, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}

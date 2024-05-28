@@ -28,6 +28,8 @@ namespace Michael.Scripts.Controller
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;
         [SerializeField] private ParticleSystem stunParticleSystem;
+        [SerializeField] private float plantingCooldown = 0.7f;
+        private float currentPlantingCooldown = 0f;
 
         protected virtual void Start() {
             
@@ -76,26 +78,50 @@ namespace Michael.Scripts.Controller
                 }
             }
             
-            
-            
-            if (Rb.velocity.magnitude > this.idleTreshold && !isDead)
+            if (currentPlantingCooldown > 0)
             {
-                IsPlanted = false;
-                _animator.SetBool("isPlanted",IsPlanted);
-                aliveModelCollider.enabled = true;
-            }
-           
-            
-            
-        }        
-        protected override void SecondaryCapacity() { // SE PLANTER DANS LE SOL 
-            if (!IsStun)
-            {
-                GetPlanted();
+                currentPlantingCooldown -= Time.deltaTime;
             }
 
-            
+        }  
+        
+        
+        public override void OnSecondaryCapacity(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                if (!IsStun && currentPlantingCooldown <= 0)
+                {
+                    if (!IsPlanted)
+                    {
+                        SecondaryCapacity();
+                    }
+                    else
+                    {
+                        GetUnplanted();
+                    }
+                }
+            }
         }
+        protected override void SecondaryCapacity() { // SE PLANTER DANS LE SOL 
+            
+            GetPlanted();
+            currentPlantingCooldown = plantingCooldown;
+                
+        }
+        
+        private void GetUnplanted()
+        {
+            if (IsPlanted)
+            {
+                IsPlanted = false;
+                Rb.isKinematic = false;
+                _animator.SetBool("isPlanted", IsPlanted);
+                aliveModelCollider.enabled = true;
+                currentPlantingCooldown = plantingCooldown;
+            }
+        } 
+        
         public override void OnThirdCapacity(InputAction.CallbackContext context) {// REANIMATION
 
             if (canReanimate && sun == maxSun && !IsStun)
@@ -137,6 +163,10 @@ namespace Michael.Scripts.Controller
                 canReanimate = true;
                 deadFlowerController = other.GetComponentInParent<FlowerController>();
             }
+        }
+        
+        private void OnTriggerStay(Collider other)
+        {
             if (other.gameObject.CompareTag("Turtle") && !isDead)
             {
                 Rigidbody turtleRb = other.gameObject.GetComponent<Rigidbody>();
@@ -146,7 +176,7 @@ namespace Michael.Scripts.Controller
                 }
             }
         }
-        
+
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Seed"))
@@ -163,6 +193,7 @@ namespace Michael.Scripts.Controller
         private void GetPlanted() {
             
             IsPlanted = true;
+            Rb.isKinematic = true;
             _animator.SetBool("isPlanted",IsPlanted);
             aliveModelCollider.enabled = false;
         }

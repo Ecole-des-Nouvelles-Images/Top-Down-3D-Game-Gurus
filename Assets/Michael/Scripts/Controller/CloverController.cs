@@ -21,14 +21,14 @@ namespace Michael.Scripts.Controller
             {
                 Vector3 initialPosition = gameObject.transform.position;
                 GameObject randomSpawnPoint = plantedFlowers[Random.Range(0, plantedFlowers.Length)];
-                Rb.isKinematic = true;
+                //Rb.isKinematic = true;
                 transform.position = new Vector3(randomSpawnPoint.transform.position.x, 0,
                     randomSpawnPoint.transform.position.z);
 
                  randomSpawnPoint.transform.position = new Vector3(initialPosition.x,
                     randomSpawnPoint.transform.position.y, initialPosition.z);
                 
-                 Invoke("DisableKinematic",0.5f) ;
+                // Invoke("DisableKinematic",0.5f) ;
                  OnLooseSunCapacity(CapacityCost);
            
             }
