@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Michael.Scripts.Controller;
+using Michael.Scripts.Manager;
 using UnityEngine;
 
 namespace Michael.Scripts.Ui
@@ -9,7 +11,12 @@ namespace Michael.Scripts.Ui
     
     { 
         public TurtleController TurtlePlayer;
-      
+        private BatteryManager _batteryManager;
+        private void Start()
+        {
+            throw new NotImplementedException();
+        }
+
         void Update()
         {
 

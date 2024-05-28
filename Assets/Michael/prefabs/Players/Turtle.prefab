@@ -25962,6 +25962,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 98612f79-46c0-498f-9573-2951227867fa
     m_ActionName: Character/FourthCapacity[/XInputControllerWindows/buttonNorth,/XInputControllerWindows1/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6cee065-2dcb-4c5c-bc03-efb6a502f11b
+    m_ActionName: Character/Booster[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows1/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: QTE
@@ -26047,7 +26051,7 @@ MonoBehaviour:
   chargingSmokeParticules: {fileID: 4786662540256690413}
   scanTime: 0
   scanRange: 12
-  scanDuration: 2
+  scanDuration: 3
   scanSphereArea: {fileID: 8721222829056409284}
   TrapPrefab: {fileID: 8109188231840348700, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
     type: 3}

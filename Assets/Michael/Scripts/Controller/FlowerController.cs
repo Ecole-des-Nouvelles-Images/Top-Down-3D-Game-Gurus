@@ -17,13 +17,13 @@ namespace Michael.Scripts.Controller
         public bool IsPlanted = false;
         public bool isInvincible = false;
         public bool IsStun;
+        public bool isDead;
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
         [SerializeField] private GameObject deadModel;
         [SerializeField] protected GameObject aliveModel;
         [SerializeField] private Collider aliveModelCollider;
-        [SerializeField] private bool isDead;
         [SerializeField] private float magnetudeToStun = 22f;
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;

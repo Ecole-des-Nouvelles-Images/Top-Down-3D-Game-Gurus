@@ -1,14 +1,12 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Michael.Scripts.Manager;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace Michael.Scripts.CharacterSelection
+namespace Michael.Scripts.Character_Selection
 {
     public class CharacterSelection : MonoBehaviour
     {
@@ -17,7 +15,7 @@ namespace Michael.Scripts.CharacterSelection
         public static bool CanStart;
         public static bool TurtleIsSelected;
         public int PlayerIndex ;
-        public static int _maxPlayers = 2 ;
+        public static int _maxPlayers = 3;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
