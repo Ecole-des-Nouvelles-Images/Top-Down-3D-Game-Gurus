@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using JetBrains.Annotations;
@@ -31,8 +32,8 @@ namespace Noah.Scripts
         private bool _isCharging;
         private bool _isDashing;
         private Vector3 _lastDashDirection;
-        private float _normalSpeed; 
-            
+        private float _normalSpeed;
+        
         [Header("Scanning")] [SerializeField] private float scanTime, scanRange, scanDuration;
         [SerializeField] private GameObject scanSphereArea;
         private bool _isScanning;
@@ -40,6 +41,7 @@ namespace Noah.Scripts
         [Header("Trap")] [SerializeField] private GameObject TrapPrefab;
         [SerializeField] private Transform TrapSpawn;
 
+        public Transform TransformWall;
         private void Start()
         {
             QteManager.Instance.OnQteFinished += AnimationDash;
@@ -157,7 +159,6 @@ namespace Noah.Scripts
             }
         }
 
-
         private void DashingUpdate()
         {
             if (_isDashing && Rb.velocity.magnitude < 0.01f)
@@ -180,7 +181,6 @@ namespace Noah.Scripts
                 {
                     _lastDashDirection = new Vector3(move.x, 0f, move.y);
                 }
-
 
                 // change light of turtle when charging 
                 if (_chargeTime > firstDashLevelTime && _chargeTime < secondDashLevelTime)
@@ -211,7 +211,6 @@ namespace Noah.Scripts
             }
         }
 
-
         private void StartCharging()
         {
             _isCharging = true;
@@ -231,6 +230,17 @@ namespace Noah.Scripts
         {
             if (!_isDashing)
             {
+                RaycastHit hit;
+                float raycastDistance = 6.0f;
+                if (Physics.Raycast(transform.position, TransformWall.forward, out hit, raycastDistance))
+                {
+                    if (hit.collider.CompareTag("Wall"))
+                    {
+                        Debug.Log("Wall detected, attack cancelled.");
+                        return;
+                    }
+                }
+
                 EnableAttackCollider();
                 Invoke(nameof(DisableAttackCollider), 0.7f);
                 _animator.SetTrigger("Attack");
