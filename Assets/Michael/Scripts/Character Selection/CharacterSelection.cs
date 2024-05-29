@@ -190,7 +190,7 @@ namespace Michael.Scripts.Character_Selection
         
         public void PlayerReady()
         {
-            camera.transform.DOShakePosition(1, 1);
+            //camera.transform.DOShakePosition(1, 1);
             readyText.SetActive(false);
             PlayerIsReady[PlayerIndex] = true;
             //bool allPlayersReady = true;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Michael.Scripts.FeedBack
 {
-    public class UIFeedBack : MonoBehaviour, ISelectHandler, IDeselectHandler
+    public class UISelectionFeedBack : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         [SerializeField] private GameObject OutlineSelector;
     

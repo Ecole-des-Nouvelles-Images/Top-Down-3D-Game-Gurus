@@ -34,7 +34,6 @@ namespace Michael.Scripts
                         _targetGroup.AddMember(character.transform,1.1f,2.5f);
                         GameManager.Instance.Turtle = character.gameObject;
                         SeeTroughWall._turtle = character.gameObject;
-                        TurtleUi.TurtlePlayer = character.GetComponent<TurtleController>();
                     }
                     if (!character.CompareTag("Turtle"))
                     {
