@@ -186,6 +186,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _DisplacementMagnitude: 0
-  _LerpSpeed: 0
+  _DisplacementMagnitude: 0.4
+  _LerpSpeed: 2
   _DisolveSpeed: 1
