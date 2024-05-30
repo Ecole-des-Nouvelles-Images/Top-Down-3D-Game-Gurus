@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1319287047693143635}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.94, y: 0, z: 4.81}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -319,6 +319,7 @@ MonoBehaviour:
   stunDuration: 3
   stunTimer: 0
   stunParticleSystem: {fileID: 2262800390388739445}
+  plantingCooldown: 0.7
   _invincibilityTimer: 0
   invincibilityDuration: 5
   pollenVfx: {fileID: 4086426091261872676}
@@ -5357,12 +5358,12 @@ PrefabInstance:
     - target: {fileID: 4156075518288859708, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4156075518288859708, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.861
       objectReference: {fileID: 0}
     - target: {fileID: 4156075518288859708, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
@@ -5411,13 +5412,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
       propertyPath: CollisionModule.enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
-      propertyPath: ExternalForcesModule.enabled
+      propertyPath: VelocityModule.y.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
+      propertyPath: ShapeModule.m_Rotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
+      propertyPath: ExternalForcesModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
@@ -5426,8 +5462,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
+      propertyPath: VelocityModule.orbitalY.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}

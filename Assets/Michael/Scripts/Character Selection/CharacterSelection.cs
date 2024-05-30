@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Michael.Scripts.Manager;
+using Michael.Scripts.Ui;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -14,8 +16,9 @@ namespace Michael.Scripts.Character_Selection
         public static bool[] PlayerIsJoined;
         public static bool CanStart;
         public static bool TurtleIsSelected;
+        public static bool CanJoin;
         public int PlayerIndex ;
-        public static int _maxPlayers = 4;
+        public static int _maxPlayers = 2;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -30,7 +33,10 @@ namespace Michael.Scripts.Character_Selection
         [SerializeField] private GameObject circleTransition;
         [SerializeField] private GameObject canvas;
         [SerializeField] private Camera camera;
+        [SerializeField] private Button _backButton;
+        [SerializeField] private List<Animator> _flowersAnimators;
         private Vector3 _initialTransform;
+        
         
         private void Start()
         {
@@ -45,15 +51,19 @@ namespace Michael.Scripts.Character_Selection
 
         private void Update()
         {
-           
         }
-      
+
+        public void SelectionScreen(bool canJoin)
+        {
+            CanJoin = canJoin;
+        }
         
         
         
 
         void OnNavigate() {  //Bouger le cursor du player 
             PlayerSelector();
+
         }
 
         void PlayerSelector() {
@@ -84,20 +94,23 @@ namespace Michael.Scripts.Character_Selection
 
         void OnSubmit() { //Valider la selection d'un personnage 
 
-            
-            if (PlayerIsJoined[PlayerIndex] == false) {
-                PlayerJoined();
-            }
-            else if (!PlayerIsReady[PlayerIndex]) {
-                if (GetComponentInParent<Button>()) {
-                    //_characterSelected = GetComponentInParent<Button>();
-                    _characterIndex = _characterButtons.IndexOf(_characterSelected);
-                    _characterSelected.enabled = false;
-                    PlayerReady();
-                    Debug.Log("l'index du personnage selectionné est " + _characterIndex);
-                    MooveOtherSelectorPosition();
+            if (CanJoin)
+            {
+                if (PlayerIsJoined[PlayerIndex] == false) {
+                    PlayerJoined();
+                }
+                else if (!PlayerIsReady[PlayerIndex]) {
+                    if (GetComponentInParent<Button>()) {
+                        //_characterSelected = GetComponentInParent<Button>();
+                        _characterIndex = _characterButtons.IndexOf(_characterSelected);
+                        _characterSelected.enabled = false;
+                        PlayerReady();
+                        Debug.Log("l'index du personnage selectionné est " + _characterIndex);
+                        MooveOtherSelectorPosition();
+                    }
                 }
             }
+         
         }
 
         void MooveSelectorPosition() {
@@ -140,102 +153,125 @@ namespace Michael.Scripts.Character_Selection
         
         
         void OnCancel() { // Annulé la la selection d'un personnage 
-            
-           
-            if (PlayerIsReady[PlayerIndex]) {
-                Debug.Log("retour");
-                PlayerIsReady[PlayerIndex] = false;
-                _characterSelected.enabled = true;
-                Debug.Log("le joueur nest plus pret");
-                RemoveChoice(PlayerIndex);
-                joinedText.SetActive(false);
-                readyText.SetActive(true);
+
+            if (CanJoin)
+            {
+                if (PlayerIsReady[PlayerIndex]) {
+                    Debug.Log("retour");
+                    PlayerIsReady[PlayerIndex] = false;
+                    _characterSelected.enabled = true;
+                    Debug.Log("le joueur nest plus pret");
+                    RemoveChoice(PlayerIndex);
+                    joinedText.SetActive(false);
+                    readyText.SetActive(true);
                 
-                if (_characterSelected.name == "TurtleButton")
-                {
-                    TurtleIsSelected = false;
-                    Debug.Log("turtle deselectionnée");
+                    if (_characterSelected.name == "TurtleButton")
+                    {
+                        TurtleIsSelected = false;
+                        Debug.Log("turtle deselectionnée");
+                    }
                 }
+                else if (PlayerIsJoined[PlayerIndex])
+                { 
+                    _joinButton.transform.DOScale(1f, 0.5f);
+                    _joinButton.image.sprite = _characterSprites[7];
+                    CapacityImage.gameObject.SetActive(false);
+                    joinedText.SetActive(true);
+                    readyText.SetActive(false);
+                    _eventSystem.SetSelectedGameObject(_joinButton.gameObject);
+                    if (_characterSelected) {
+                        _characterSelected.enabled = true;
+                    }
+                    PlayerIsJoined[PlayerIndex] = false;
+                    Debug.Log("le jooueur est parti");
+                    Selector.SetActive(false);
+                    transform.SetParent(canvas.transform);
+                }
+                else if (PlayerIsJoined.All(element => !element))
+                {
+                    if (_backButton != null)
+                    {
+                        _backButton.onClick?.Invoke();
+                    }
+                
+                }
+
             }
-            else if (PlayerIsJoined[PlayerIndex])
-            { 
-                _joinButton.transform.DOScale(1f, 0.5f);
-                _joinButton.image.sprite = _characterSprites[7];
-                CapacityImage.gameObject.SetActive(false);
-                joinedText.SetActive(true);
-                readyText.SetActive(false);
-              _eventSystem.SetSelectedGameObject(_joinButton.gameObject);
-              if (_characterSelected) {
-                  _characterSelected.enabled = true;
-              }
-              PlayerIsJoined[PlayerIndex] = false;
-              Debug.Log("le jooueur est parti");
-              Selector.SetActive(false);
-              transform.SetParent(canvas.transform);
-            }
+         
         }
         
 
 
         public void PlayerJoined() {
-           
-            PlayerIsJoined[PlayerIndex ] = true;
-            MooveSelectorPosition();
-            Debug.Log("un joueur " + PlayerIndex +" a rejoin");
-            Selector.SetActive(true);
-            joinedText.SetActive(false);
-            readyText.SetActive(true);
-            CapacityImage.gameObject.SetActive(true);
+
+            if (CanJoin)
+            {
+                PlayerIsJoined[PlayerIndex ] = true;
+                MooveSelectorPosition();
+                Debug.Log("un joueur " + PlayerIndex +" a rejoin");
+                Selector.SetActive(true);
+                joinedText.SetActive(false);
+                readyText.SetActive(true);
+                CapacityImage.gameObject.SetActive(true);
+            }
+         
         }
         
         public void PlayerReady()
         {
-            //camera.transform.DOShakePosition(1, 1);
-            readyText.SetActive(false);
-            PlayerIsReady[PlayerIndex] = true;
-            //bool allPlayersReady = true;
-            int readyCount = 0;
-            Debug.Log( PlayerIsReady[PlayerIndex]);
+            if (CanJoin)
+            {
+                readyText.SetActive(false);
+                PlayerIsReady[PlayerIndex] = true;
+                //bool allPlayersReady = true;
+                int readyCount = 0;
+                Debug.Log( PlayerIsReady[PlayerIndex]);
 
-            for (int i = 0; i < PlayerIsJoined.Length; i++) {
-                if (PlayerIsJoined[i] == true) {
-                    if (PlayerIsReady[i] == false) {
-                      //  allPlayersReady = false;
-                    }
-                    else {
-                        readyCount++;
-                        ConfirmChoice(PlayerIndex, _characterIndex);
-                      
-                        if (_characterSelected.name == "TurtleButton")
-                        {
-                            TurtleIsSelected = true;
-                            Debug.Log("turtle selectionnée");
+                for (int i = 0; i < PlayerIsJoined.Length; i++) {
+                    if (PlayerIsJoined[i] == true) {
+                        if (PlayerIsReady[i] == false) {
+                            //  allPlayersReady = false;
                         }
-                        Debug.Log("le joueur " + PlayerIndex +"est pret");
-                        Debug.Log(readyCount+" joueurs pret");
+                        else {
+                            readyCount++;
+                            ConfirmChoice(PlayerIndex, _characterIndex);
+                      
+                            if (_characterSelected.name == "TurtleButton")
+                            {
+                                TurtleIsSelected = true;
+                                Debug.Log("turtle selectionnée");
+                            }
+                            Debug.Log("le joueur " + PlayerIndex +"est pret");
+                            Debug.Log(readyCount+" joueurs pret");
                        
+                        }
                     }
                 }
-            }
-            if  (/*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= _maxPlayers && TurtleIsSelected) {
-                CanStart = true;
-            }
-            else if ( readyCount >= _maxPlayers && !TurtleIsSelected){
-                CanStart = false;
+                if  (/*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= _maxPlayers && TurtleIsSelected) {
+                    CanStart = true;
+                }
+                else if ( readyCount >= _maxPlayers && !TurtleIsSelected){
+                    CanStart = false;
                 
-            }
-            else
-            {
-                CanStart = false;
-            }
+                }
+                else
+                {
+                    CanStart = false;
+                }
 
-            if (CanStart)
-            {
-                circleTransition.transform.DOScale(15,1);
-                Invoke("LoadSceneWarpper",1f);
-            }
+                if (CanStart)
+                {
+                  
+                    
+                    MenuManager.Instance.SpawnPlayerInMenu();
+                    
+                    /*circleTransition.transform.DOScale(15,1);
+                    Invoke("LoadSceneWarpper",1f);*/
+                }
             
+            }
         }
+       
         
 
         public void LoadSceneWarpper()

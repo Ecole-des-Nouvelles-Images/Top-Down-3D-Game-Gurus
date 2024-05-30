@@ -5048,7 +5048,7 @@ GameObject:
   - component: {fileID: 5686252515435969221}
   - component: {fileID: 5148523322681042034}
   m_Layer: 0
-  m_Name: 'PoppyFlower '
+  m_Name: MenuPoppy
   m_TagString: Flower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5064,8 +5064,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5081999, y: 0.5081999, z: 0.5081999}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4653064772843297653}
   - {fileID: 1256278077392372750}
@@ -5289,7 +5289,7 @@ MonoBehaviour:
   characterIndex: 0
   sun: 0
   maxSun: 3
-  CapacityCost: 1
+  CapacityCost: 0
   canReanimate: 0
   deadFlowerController: {fileID: 0}
   IsPlanted: 0
