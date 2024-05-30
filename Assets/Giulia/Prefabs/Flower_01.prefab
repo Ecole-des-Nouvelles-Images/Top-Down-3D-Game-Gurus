@@ -2375,6 +2375,8 @@ GameObject:
   - component: {fileID: 6384473710598874800}
   - component: {fileID: 6850129506304098641}
   - component: {fileID: 6850129506304098646}
+  - component: {fileID: 7690629536117493215}
+  - component: {fileID: 8054780088706874335}
   m_Layer: 0
   m_Name: Flower_01
   m_TagString: Untagged
@@ -2487,6 +2489,44 @@ MonoBehaviour:
   m_ForceModule: {fileID: 0}
   m_ForceScale: 1
   m_SimulateSpace: {fileID: 0}
+--- !u!136 &7690629536117493215
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039861119166757898}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Height: 0.85
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &8054780088706874335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039861119166757898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a816d64a591274ca69e63d3e547399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ReferenceCollider: {fileID: 7690629536117493215}
+  m_Margin: 0
+  m_InsideMode: 0
 --- !u!1 &6088409447406679541
 GameObject:
   m_ObjectHideFlags: 0

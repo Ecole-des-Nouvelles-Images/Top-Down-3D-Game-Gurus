@@ -3,7 +3,27 @@ guid: 5946945c2edec9c4ab7ce600714508ee
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_emissive
+    second: {fileID: 2100000, guid: a45e505dd7f6a2943a250b7bbe09b4ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_emissive.001
+    second: {fileID: 2100000, guid: a45e505dd7f6a2943a250b7bbe09b4ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_metal
+    second: {fileID: 2100000, guid: 84fcafe9297ecc64ebcff91d56a407c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_pipe
+    second: {fileID: 2100000, guid: b1d7824ab9796224995773bda585cf07, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
