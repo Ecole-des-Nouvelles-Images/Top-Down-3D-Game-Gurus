@@ -246,7 +246,6 @@ namespace Noah.Scripts
         {
             if (!_isDashing)
             {
-                /*
                 RaycastHit hit;
                 float raycastDistance = 6.0f;
                 if (Physics.Raycast(transform.position, TransformWall.forward, out hit, raycastDistance))
@@ -257,8 +256,6 @@ namespace Noah.Scripts
                         return;
                     }
                 }
-                */
-
                 EnableAttackCollider();
                 Invoke(nameof(DisableAttackCollider), 0.7f);
                 _animator.SetTrigger("Attack");

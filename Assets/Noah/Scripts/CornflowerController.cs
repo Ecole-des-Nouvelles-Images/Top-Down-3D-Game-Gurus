@@ -1,3 +1,5 @@
+using Shields.Scripts;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Noah.Scripts
@@ -8,7 +10,7 @@ namespace Noah.Scripts
 
         protected override void MainCapacity()
         {
-            _Shield.OpenCloseShield();
+            _Shield.OpenShield();
         }
 
         protected override void PassiveCapacity()
