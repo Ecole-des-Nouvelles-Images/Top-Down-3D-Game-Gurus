@@ -13,6 +13,7 @@ TagManager:
   - FlowerTrap
   - Flower
   - Fake
+  - Wall
   layers:
   - Default
   - TransparentFX
