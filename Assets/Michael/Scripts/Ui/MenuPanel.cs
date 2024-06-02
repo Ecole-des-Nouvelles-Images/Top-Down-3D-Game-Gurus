@@ -8,6 +8,7 @@ namespace Michael.Scripts.Ui
     {
         [SerializeField] private Button _backButton;
         private PlayerUI _playerUI;
+        [SerializeField] private AudioSource cancelledSound;
         private void Awake()
         {
             _playerUI = new PlayerUI();
@@ -29,6 +30,10 @@ namespace Michael.Scripts.Ui
             if (_backButton != null)
             {
                 _backButton.onClick?.Invoke();
+                if (cancelledSound)
+                {
+                    cancelledSound.Play();
+                }
             }
 
         }

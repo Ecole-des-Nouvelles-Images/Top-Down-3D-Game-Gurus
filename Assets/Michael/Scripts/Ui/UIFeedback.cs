@@ -10,48 +10,98 @@ namespace Michael.Scripts.Ui
     public class UIFeedback : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         [SerializeField] private TextMeshProUGUI buttonText;
-        [SerializeField] private Color _buttonColor;
+        [SerializeField] private Color _deselectedbuttonColor;
+        [SerializeField] private Color _selectedbuttonColor;
         [SerializeField] private GameObject tutoPanel;
+        [SerializeField] private GameObject optionsButton;
+        [SerializeField] private AudioSource selectedSound;
         private static Button _currentButton;
+        
         private void Start()
         {
             _currentButton = null;
         }
 
         public void OnSelect(BaseEventData eventData) {
-            
-            // Vérifier si un bouton est déjà sélectionné
-            if (_currentButton != null)
+
+            if (selectedSound)
             {
-                // Désélectionner le bouton précédent
+                selectedSound.Play();
+            }
+          
+            if (_currentButton != null) {
+                
                 _currentButton.OnDeselect(eventData);
             }
+
+            if (GetComponent<Button>()) {
+                gameObject.GetComponent<Image>().color = _selectedbuttonColor;
+                transform.DOScale(1.1f, 0.5f);
+                buttonText.color = Color.white;
             
+                if (tutoPanel) {
+                    tutoPanel.SetActive(true);
+                }
             
-            gameObject.GetComponent<Image>().color = Color.white;
-            transform.DOScale(1.1f, 0.5f);
-            buttonText.color = Color.grey;
-            
-            if (tutoPanel) {
-                tutoPanel.SetActive(true);
+                _currentButton = GetComponent<Button>();
+            }
+
+            if (optionsButton)
+            {
+                if (GetComponent<Slider>())
+                {
+                    optionsButton.GetComponent<Image>().color = _selectedbuttonColor;
+                    optionsButton.transform.DOScale(1.1f, 0.5f);
+                    buttonText.color = _selectedbuttonColor;
+                }
+                
+                if (GetComponent<Toggle>()) {
+                   // optionsButton.gameObject.GetComponent<Toggle>().colors. = _deselectedbuttonColor;
+                   optionsButton.transform.DOScale(1.1f, 0.5f);
+                   buttonText.color = _selectedbuttonColor;
+                }
             }
             
-            _currentButton = GetComponent<Button>();
-            
+
         }
 
         public void OnDeselect(BaseEventData eventData)
         {
-            gameObject.GetComponent<Image>().color = _buttonColor;
-            transform.DOScale(1.0f, 0.5f);
-            buttonText.color = Color.white;
-            
-            if (tutoPanel) {
-                tutoPanel.SetActive(false);
+            if (GetComponent<Button>()) { 
+                gameObject.GetComponent<Image>().color = _deselectedbuttonColor;
+                transform.DOScale(1.0f, 0.5f);
+                buttonText.color = Color.grey;
+
+                if (tutoPanel)
+                {
+                    tutoPanel.SetActive(false);
+                }
+
+                _currentButton = null;
             }
             
-            _currentButton = null;
-           
+            if (optionsButton)
+            {
+                if (GetComponent<Slider>())
+                {
+                    optionsButton.gameObject.GetComponent<Image>().color = _deselectedbuttonColor;
+                    optionsButton.transform.DOScale(1.0f, 0.5f);
+                    buttonText.color = _deselectedbuttonColor;
+                }
+
+                if (GetComponent<Toggle>())
+                {
+                   // optionsButton.gameObject.GetComponent<Toggle>().colors. = _deselectedbuttonColor;
+                    optionsButton.transform.DOScale(1.0f, 0.5f);
+                    buttonText.color = _deselectedbuttonColor;
+                }
+              
+            }
+
+          
+            
+            
+            
         }
         
         

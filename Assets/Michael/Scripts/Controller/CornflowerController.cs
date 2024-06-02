@@ -2,7 +2,7 @@ using Shields.Scripts;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Noah.Scripts
+namespace Michael.Scripts.Controller
 {
     public class CornflowerController : FlowerController
     {
