@@ -12,6 +12,7 @@ namespace Michael.Scripts.Controller
        [SerializeField] private float _invincibilityTimer;
        [SerializeField] private float invincibilityDuration = 5f;
        [SerializeField] private ParticleSystem pollenVfx;
+       private bool isBoosted;
         
       protected override void Start()
        {
@@ -27,15 +28,21 @@ namespace Michael.Scripts.Controller
                 _invincibilityTimer = 0;
             }
             
-            if (isInvincible) {
+            if (isInvincible && !isBoosted) {
                 
-                _invincibilityTimer += Time.deltaTime;
-                gameObject.layer = LayerMask.NameToLayer("Dandelion");
                 pollenVfx.Play();
+                aliveModel.SetActive(false);
+                _invincibilityTimer += Time.deltaTime;
+                moveSpeed += 20;
+                isBoosted = true;
+
             }
             else {
-                gameObject.layer = LayerMask.NameToLayer("Default");
+                
                 pollenVfx.Stop();
+                aliveModel.SetActive(true);
+                isBoosted = false;
+                moveSpeed = 525;
             }
            
             

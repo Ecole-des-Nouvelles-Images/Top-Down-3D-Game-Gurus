@@ -25760,7 +25760,6 @@ GameObject:
   - component: {fileID: 5512825134671668568}
   - component: {fileID: 2817803585925714333}
   - component: {fileID: 6791591643116250088}
-  - component: {fileID: 4779670786821184751}
   m_Layer: 7
   m_Name: Turtle
   m_TagString: Turtle
@@ -25962,6 +25961,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 98612f79-46c0-498f-9573-2951227867fa
     m_ActionName: Character/FourthCapacity[/XInputControllerWindows/buttonNorth,/XInputControllerWindows1/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6cee065-2dcb-4c5c-bc03-efb6a502f11b
+    m_ActionName: Character/Booster[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows1/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: QTE
@@ -26027,7 +26030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8463613a58f7a4b8cd230016458469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 350
+  moveSpeed: 400
   _animator: {fileID: 4159274208551880169}
   idleTreshold: 0.1
   _attackCollider: {fileID: 4408583465232902560}
@@ -26047,7 +26050,7 @@ MonoBehaviour:
   chargingSmokeParticules: {fileID: 4786662540256690413}
   scanTime: 0
   scanRange: 12
-  scanDuration: 2
+  scanDuration: 3
   scanSphereArea: {fileID: 8721222829056409284}
   TrapPrefab: {fileID: 8109188231840348700, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
     type: 3}
@@ -26127,21 +26130,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 55769fdebc0e3184e8b027cc733d6fed, type: 3}
   - {fileID: 21300000, guid: cac26e12556251f46b9dbbf1dadf3512, type: 3}
   TouchQteCount: 6
---- !u!114 &4779670786821184751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3555467346372697277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93dbfc48ff1069449ab0e79c99c3c813, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentBatteryTime: 0
-  _maxBatteryTime: 300
-  _batteryBar: {fileID: 3670877418791652735}
 --- !u!1 &3639624841532712709
 GameObject:
   m_ObjectHideFlags: 0

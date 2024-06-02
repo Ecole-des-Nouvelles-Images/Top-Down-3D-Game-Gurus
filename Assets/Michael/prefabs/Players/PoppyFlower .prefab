@@ -5063,7 +5063,7 @@ Transform:
   m_GameObject: {fileID: 3817836459905497788}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.94, y: 0.032, z: 4.81}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5235,6 +5235,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 98612f79-46c0-498f-9573-2951227867fa
     m_ActionName: Character/FourthCapacity[/XInputControllerWindows/buttonNorth,/XInputControllerWindows1/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6cee065-2dcb-4c5c-bc03-efb6a502f11b
+    m_ActionName: Character/Booster[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows1/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Character
@@ -5282,6 +5286,7 @@ MonoBehaviour:
   moveSpeed: 525
   _animator: {fileID: 4017575276733151485}
   idleTreshold: 0.3
+  characterIndex: 0
   sun: 0
   maxSun: 3
   CapacityCost: 1
@@ -5290,16 +5295,18 @@ MonoBehaviour:
   IsPlanted: 0
   isInvincible: 0
   IsStun: 0
+  isDead: 0
   isCharging: 0
   reanimateTimer: 0
   reanimateDuration: 1.2
   deadModel: {fileID: 1883880054981992116}
   aliveModel: {fileID: 4384586793289522454}
   aliveModelCollider: {fileID: 5686252515435969221}
-  isDead: 0
+  magnetudeToStun: 22
   stunDuration: 3
   stunTimer: 0
   stunParticleSystem: {fileID: 4749315361091767225}
+  plantingCooldown: 0.7
   Gun: {fileID: 906675944261342744}
   lr: {fileID: 8694057788543303523}
   whatIsGrappleable:
@@ -5307,9 +5314,9 @@ MonoBehaviour:
     m_Bits: 4294967295
   impactGrappleParticules: {fileID: 8137901211290482641, guid: 6ddd35ffe222fc346baecd6cc9680bdb,
     type: 3}
-  grappleSpeed: 10
-  maxGrappleDistance: 8
-  grapplingSpeed: 800
+  grappleSpeed: 17
+  maxGrappleDistance: 12
+  grapplingSpeed: 1600
   grapplingCd: 0
 --- !u!136 &5686252515435969221
 CapsuleCollider:
@@ -5752,12 +5759,12 @@ PrefabInstance:
     - target: {fileID: 1379768070476412052, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.297
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 1379768070476412052, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.606
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1379768070476412052, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
@@ -5809,6 +5816,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2246523798804582043, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246523798804582043, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b3a551f24dab3ec45bb52538586ccb93, type: 2}
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: prewarm
@@ -5831,13 +5848,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
+      propertyPath: TrailModule.ratio
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
+        type: 3}
       propertyPath: moveWithTransform
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: SizeModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
+        type: 3}
+      propertyPath: TrailModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
@@ -5847,6 +5874,11 @@ PrefabInstance:
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
+        type: 3}
+      propertyPath: TrailModule.worldSpace
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
@@ -5871,6 +5903,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
+        type: 3}
       propertyPath: VelocityModule.radial.scalar
       value: 0
       objectReference: {fileID: 0}
@@ -5878,6 +5915,16 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.maxNumParticles
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
+        type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
+        type: 3}
+      propertyPath: TrailModule.inheritParticleColor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
