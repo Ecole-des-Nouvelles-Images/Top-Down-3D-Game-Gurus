@@ -9,12 +9,14 @@ namespace Michael.Scripts.Controller
 {
     public class TurtleController : CharacterController
     {
+        [SerializeField] private float boosterMultiplier = 1.2f;
           [Header("General References")]
         [SerializeField] private Collider _attackCollider;
        // [SerializeField] private TrailRenderer dashTrail;
         [SerializeField] private Material dashMaterial;
 
-        [Header("Charging & Dashing")] [SerializeField] private float firstDashLevelTime = 0.7f;
+        [Header("Charging & Dashing")]
+        [SerializeField] private float firstDashLevelTime = 0.7f;
         [SerializeField] private float firstDashLevelPower = 5; 
         [SerializeField] private float secondDashLevelTime = 1.5f, secondDashLevelPower = 10; 
         [SerializeField] private float thirdDashLevelTime = 3f, thirdDashLevelPower = 20;
@@ -26,6 +28,7 @@ namespace Michael.Scripts.Controller
         private bool _isCharging;
         private bool _isDashing;
         private Vector3 _lastDashDirection;
+        private float _normalSpeed;
         
         [Header("Scanning")]
         [SerializeField] private float scanTime, scanRange, scanDuration;
@@ -41,6 +44,7 @@ namespace Michael.Scripts.Controller
             QteManager.Instance.OnQteFinished += AnimationDash;
             _attackCollider.enabled = false;
             gameObject.SetActive(false);
+            _normalSpeed = moveSpeed;
         }
 
         private void AnimationDash()
@@ -74,7 +78,18 @@ namespace Michael.Scripts.Controller
                 
             }
         }
-
+        public void OnBooster(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                Debug.Log("turbo");
+                moveSpeed *= boosterMultiplier;
+            }
+            else
+            {
+                moveSpeed = _normalSpeed;
+            }
+        }
         #region Main Capacity
 
         public override void OnMainCapacity(InputAction.CallbackContext context)

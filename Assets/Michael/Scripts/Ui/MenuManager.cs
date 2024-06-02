@@ -3,15 +3,14 @@ using DG.Tweening;
 using Michael.Scripts.Character_Selection;
 using Michael.Scripts.Manager;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Michael.Scripts.Ui
 {
     public class MenuManager : MonoBehaviourSingleton<MenuManager>
     {
-        public List<GameObject> characterPrefabs;
-        public List<Transform> spawnPoints;
-        [SerializeField] private GameObject finalMenuCamera;
-        [SerializeField] private GameObject selectionCanvas;
+       
         public void QuitApplication()
         {
             Application.Quit();
@@ -27,22 +26,16 @@ namespace Michael.Scripts.Ui
             panel.GetComponent<CanvasGroup>().DOFade(0, 0.5f);
         }
 
-        public void SpawnPlayerInMenu()
+        
+        public void SelectButton(Button newButton)
         {
-            selectionCanvas.SetActive(false);
-            finalMenuCamera.SetActive(true);
-            for (int i = 0; i < CharacterSelection._maxPlayers; i++)
-            {
-                if (DataManager.Instance.PlayerChoice.ContainsKey(i))
-                {
-                    GameObject character = Instantiate(characterPrefabs[DataManager.Instance.PlayerChoice[i]],
-                        spawnPoints[DataManager.Instance.PlayerChoice[i]].position,
-                        Quaternion.identity, this.gameObject.transform);
-                }
-            }
+            // Définir le bouton sélectionné par défaut sur null
+            EventSystem.current.SetSelectedGameObject(null);
 
-
+            // Sélectionner le nouveau bouton
+            newButton.Select();
         }
+    
     }
 }
 

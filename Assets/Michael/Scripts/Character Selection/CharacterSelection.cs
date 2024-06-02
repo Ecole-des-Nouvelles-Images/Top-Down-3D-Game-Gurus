@@ -32,9 +32,8 @@ namespace Michael.Scripts.Character_Selection
         [SerializeField] private GameObject readyText;
         [SerializeField] private GameObject circleTransition;
         [SerializeField] private GameObject canvas;
-        [SerializeField] private Camera camera;
+      // [SerializeField] private Camera camera;
         [SerializeField] private Button _backButton;
-        [SerializeField] private List<Animator> _flowersAnimators;
         private Vector3 _initialTransform;
         
         
@@ -261,12 +260,9 @@ namespace Michael.Scripts.Character_Selection
 
                 if (CanStart)
                 {
-                  
                     
-                    MenuManager.Instance.SpawnPlayerInMenu();
-                    
-                    /*circleTransition.transform.DOScale(15,1);
-                    Invoke("LoadSceneWarpper",1f);*/
+                    circleTransition.transform.DOScale(15,1);
+                    Invoke("LoadSceneWarpper",1f);
                 }
             
             }
