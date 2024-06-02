@@ -33,6 +33,7 @@ namespace Noah.Scripts
         private bool _isDashing;
         private Vector3 _lastDashDirection;
         private float _normalSpeed;
+        private bool _isAttacking;
         
         [Header("Scanning")] [SerializeField] private float scanTime, scanRange, scanDuration;
         [SerializeField] private GameObject scanSphereArea;
@@ -93,6 +94,21 @@ namespace Noah.Scripts
             {
                 moveSpeed = _normalSpeed;
             }
+        }
+        
+        protected override void Move()
+        { 
+            Vector3 movement = new Vector3(move.x, 0f, move.y) * moveSpeed;
+            if (movement != Vector3.zero)
+            {
+                Quaternion newRotation = Quaternion.LookRotation(movement, Vector3.up);
+                Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
+            }
+            
+            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * Time.deltaTime);
+            Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
+            // Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
+            
         }
 
         #region Main Capacity
@@ -240,7 +256,6 @@ namespace Noah.Scripts
                         return;
                     }
                 }
-
                 EnableAttackCollider();
                 Invoke(nameof(DisableAttackCollider), 0.7f);
                 _animator.SetTrigger("Attack");
@@ -251,11 +266,14 @@ namespace Noah.Scripts
         private void EnableAttackCollider()
         {
             _attackCollider.enabled = true;
+            _isAttacking = true;
+
         }
 
         private void DisableAttackCollider()
         {
             _attackCollider.enabled = false;
+            _isAttacking = false;
         }
 
         #endregion
