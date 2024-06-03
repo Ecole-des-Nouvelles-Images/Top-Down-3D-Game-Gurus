@@ -7,6 +7,8 @@ namespace Noah.Scripts
 {
     public class PoppyController : FlowerController
     {
+        public MeshTrail MeshTrail;
+        
         [Header("Grappling - References")] [SerializeField]
         private Transform Gun;
 
@@ -48,6 +50,8 @@ namespace Noah.Scripts
                 Debug.Log("boost vitesse dernier en vie");
                 moveSpeed += 20;
                 isBoosted = true;
+                
+                
             }
 
             if (GameManager.Instance.FlowersAlive.Count > 1)
@@ -62,6 +66,7 @@ namespace Noah.Scripts
             PassiveCapacity();
             base.Update();
             GrapplingUpdate();
+            
         }
 
         private void GrapplingUpdate()
@@ -89,6 +94,7 @@ namespace Noah.Scripts
 
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
+            RumbleManager.Instance.RumblePulse(2f, 5f, 2f);
             if (context.started)
             {
                 MainCapacity();

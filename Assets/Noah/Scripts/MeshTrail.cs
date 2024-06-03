@@ -25,9 +25,14 @@ namespace Noah.Scripts
         {
             if (Input.GetKeyDown(KeyCode.Space) && !isTrailActive)
             {
-                isTrailActive = true;
-                StartCoroutine(ActivateTrail(activateTime));
+                StartMeshTrail();
             }
+        }
+
+        public void StartMeshTrail()
+        {
+            isTrailActive = true;
+            StartCoroutine(ActivateTrail(activateTime));
         }
 
         IEnumerator ActivateTrail(float timeActive)
