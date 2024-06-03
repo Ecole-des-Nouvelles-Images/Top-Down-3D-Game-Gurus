@@ -10,6 +10,8 @@ namespace Michael.Scripts.Manager
        public static float SfxVolume = 0.5f;
        public static float MusicVolume = 0.5f;
        public static bool CanVibrate = true;
+       public static bool UiInWorldSpace = true;
+       public static bool CharacterSelectionScene = false;
        
     }
 }

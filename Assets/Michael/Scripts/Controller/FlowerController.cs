@@ -1,7 +1,10 @@
 using System;
+using DG.Tweening;
 using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Michael.Scripts.Controller
 {
@@ -30,9 +33,28 @@ namespace Michael.Scripts.Controller
         [SerializeField] private ParticleSystem stunParticleSystem;
         [SerializeField] private float plantingCooldown = 0.7f;
         private float currentPlantingCooldown = 0f;
-
+        [SerializeField] private Image reviveChargingIcon;
+        [SerializeField] private GameObject deadArrowUI;
+       
         protected virtual void Start() {
-            
+            StartAnimation();
+        }
+        private void StartAnimation()
+        {
+            if (deadArrowUI)
+            {
+                deadArrowUI.transform.DOLocalMoveY(0.25f, 1 )
+                    .SetEase(Ease.InOutSine)
+                    .OnComplete(() => {
+                        deadArrowUI.transform.DOLocalMoveY(-0.25f, 1 )
+                            .SetEase(Ease.InOutSine)
+                            .OnComplete(() =>
+                            {
+                                StartAnimation();
+                            });
+                    });
+            }
+         
         }
 
         protected override void FixedUpdate()
@@ -54,17 +76,32 @@ namespace Michael.Scripts.Controller
             if (sun > maxSun) {
                 sun = maxSun;
             }
-            
-            
-            
-            if (isCharging) {
-                reanimateTimer += Time.deltaTime;
-                if (reanimateTimer >= reanimateDuration +0.1) {
-                    ThirdCapacity();
-                    isCharging = false;
-                    reanimateTimer = 0;
+
+            if (deadFlowerController)
+            {
+                if (isCharging) {
+                    deadFlowerController.reviveChargingIcon.fillAmount = 0;
+                    reanimateTimer += Time.deltaTime;
+                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount, value =>
+                            deadFlowerController.reviveChargingIcon.fillAmount = value, reanimateTimer / reanimateDuration, reanimateDuration)
+                        .OnComplete(() => {
+                            
+                            if (reanimateTimer >= reanimateDuration + 0.1f) {
+                                ThirdCapacity();
+                                isCharging = false;
+                                reanimateTimer = 0;
+                            }
+                        });
                 }
+                else {
+                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
+                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, reanimateDuration);
+                }
+
             }
+            
+          
+            
 
             if (IsStun)
             {
@@ -99,6 +136,7 @@ namespace Michael.Scripts.Controller
                     else
                     {
                         GetUnplanted();
+                      
                     }
                 }
             }
@@ -159,9 +197,13 @@ namespace Michael.Scripts.Controller
                 Destroy(other.gameObject);
                 GetStunned();
             }
-            if (other.CompareTag("Seed")) {
+
+            if (other.CompareTag("Seed"))
+            {
                 canReanimate = true;
                 deadFlowerController = other.GetComponentInParent<FlowerController>();
+                deadFlowerController.reviveChargingIcon.gameObject.SetActive(true);
+                deadFlowerController.deadArrowUI.SetActive(false);
             }
         }
         
@@ -184,6 +226,8 @@ namespace Michael.Scripts.Controller
                 canReanimate = false;
                 isCharging = false;
                 reanimateTimer = 0;
+                deadFlowerController.reviveChargingIcon.gameObject.SetActive(false);
+                deadFlowerController.deadArrowUI.SetActive(true);
                 deadFlowerController = null;
             }
         }
@@ -216,6 +260,7 @@ namespace Michael.Scripts.Controller
                 isDead = true;
                 sun = 0;
                 GameManager.Instance.FlowersAlive.Remove(this.gameObject);
+                deadArrowUI.SetActive(true);
             }
            
         }
@@ -230,7 +275,9 @@ namespace Michael.Scripts.Controller
             deadModel.SetActive(false);
             GameManager.Instance.FlowersAlive.Add(this.gameObject);
         }
-        
+
+     
+
         public void OnLooseSunCapacity(int capacityCost)
         {
             sun -= capacityCost;
