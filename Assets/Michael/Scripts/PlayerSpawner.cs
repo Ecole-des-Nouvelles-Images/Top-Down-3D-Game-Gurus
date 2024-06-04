@@ -18,7 +18,7 @@ namespace Michael.Scripts
         public List<Transform> spawnPoints;
         [SerializeField] private CinemachineTargetGroup _targetGroup;
         [SerializeField] private List<FlowerUI> FlowerUis;
-        [SerializeField] private TurtleUi TurtleUi;
+       // [SerializeField] private TurtleUi TurtleUi;
         
         private void Start() {
 

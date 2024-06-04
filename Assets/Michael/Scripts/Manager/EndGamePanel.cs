@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using Michael.Scripts.Ui;
+using UnityEngine;
+
+namespace Michael.Scripts.Manager
+{
+    public class EndGamePanel : MonoBehaviourSingleton<EndGamePanel>
+
+    {
+
+        public void LoadCharacterSelectionScene(string sceneName)
+        {
+            DataManager.Instance.PlayerChoice.Clear();
+            DataManager.CharacterSelectionScene = true;
+            CustomSceneManager.Instance.LoadScene(sceneName);
+           
+        }
+        
+        public void ReloadScene(string sceneName)
+        {
+            CustomSceneManager.Instance.ReloadActiveScene();
+        }
+        
+        public void LoadMenuScene(string sceneName)
+        {
+            CustomSceneManager.Instance.LoadScene(sceneName);
+        }
+        
+
+        
+    }
+}
