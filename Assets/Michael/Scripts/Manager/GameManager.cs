@@ -26,6 +26,7 @@ namespace Michael.Scripts.Manager
         [SerializeField] private Transform spawnTurtlePosition;
         [SerializeField] private GameObject TurtleVictoryPanel;
         [SerializeField] private GameObject FlowersVictoryPanel;
+        [SerializeField] private GameObject TurtleUis;
         void Start()
         {
             circularTransition.transform.DOScale(15, 1.2f);
@@ -51,6 +52,7 @@ namespace Michael.Scripts.Manager
             CrashVfx.SetActive(true);
             InvokeRepeating(nameof(SpawnSun), 2, 8);
             Invoke("TurtleEntrance", 1.45f);
+            
         }
 
 
@@ -81,6 +83,8 @@ namespace Michael.Scripts.Manager
             CameraShake(1, 0.5f, 10);
             firstCamera.SetActive(false);
             Turtle.SetActive(true);
+            TurtleUis.SetActive(true);
+            TurtleUis.transform.DOShakePosition(0.5f, 0.1f, 10);
         }
 
 

@@ -36,11 +36,11 @@ namespace Michael.Scripts.Controller
 
         protected override void ThirdCapacity()
         {
-            sun =- 1;
+          /*  sun =- 1;
             if (sun < 0) {
                 sun = 0;
                 
-            }
+            }*/
             deadFlowerController.GetRevive();
             canReanimate = false;
 

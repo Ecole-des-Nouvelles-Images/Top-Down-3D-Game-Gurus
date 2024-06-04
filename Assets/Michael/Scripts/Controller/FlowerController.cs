@@ -1,12 +1,16 @@
 using System;
+using DG.Tweening;
 using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Michael.Scripts.Controller
 {
     public abstract class FlowerController : CharacterController
     {
+        public int characterIndex;
         public static Action OnSunCollected;
         public int sun =0 ; 
         public int maxSun = 3 ;
@@ -16,20 +20,41 @@ namespace Michael.Scripts.Controller
         public bool IsPlanted = false;
         public bool isInvincible = false;
         public bool IsStun;
+        public bool isDead;
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
         [SerializeField] private GameObject deadModel;
-        [SerializeField] private GameObject aliveModel;
+        [SerializeField] protected GameObject aliveModel;
         [SerializeField] private Collider aliveModelCollider;
-        [SerializeField] private bool isDead;
         [SerializeField] private float magnetudeToStun = 22f;
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;
         [SerializeField] private ParticleSystem stunParticleSystem;
-
+        [SerializeField] private float plantingCooldown = 0.7f;
+        private float currentPlantingCooldown = 0f;
+        [SerializeField] private Image reviveChargingIcon;
+        [SerializeField] private GameObject deadArrowUI;
+       
         protected virtual void Start() {
-            
+            StartAnimation();
+        }
+        private void StartAnimation()
+        {
+            if (deadArrowUI)
+            {
+                deadArrowUI.transform.DOLocalMoveY(0.25f, 1 )
+                    .SetEase(Ease.InOutSine)
+                    .OnComplete(() => {
+                        deadArrowUI.transform.DOLocalMoveY(-0.25f, 1 )
+                            .SetEase(Ease.InOutSine)
+                            .OnComplete(() =>
+                            {
+                                StartAnimation();
+                            });
+                    });
+            }
+         
         }
 
         protected override void FixedUpdate()
@@ -51,17 +76,32 @@ namespace Michael.Scripts.Controller
             if (sun > maxSun) {
                 sun = maxSun;
             }
-            
-            
-            
-            if (isCharging) {
-                reanimateTimer += Time.deltaTime;
-                if (reanimateTimer >= reanimateDuration +0.1) {
-                    ThirdCapacity();
-                    isCharging = false;
-                    reanimateTimer = 0;
+
+            if (deadFlowerController)
+            {
+                if (isCharging) {
+                    deadFlowerController.reviveChargingIcon.fillAmount = 0;
+                    reanimateTimer += Time.deltaTime;
+                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount, value =>
+                            deadFlowerController.reviveChargingIcon.fillAmount = value, reanimateTimer / reanimateDuration, reanimateDuration)
+                        .OnComplete(() => {
+                            
+                            if (reanimateTimer >= reanimateDuration + 0.1f) {
+                                ThirdCapacity();
+                                isCharging = false;
+                                reanimateTimer = 0;
+                            }
+                        });
                 }
+                else {
+                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
+                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, reanimateDuration);
+                }
+
             }
+            
+          
+            
 
             if (IsStun)
             {
@@ -75,26 +115,51 @@ namespace Michael.Scripts.Controller
                 }
             }
             
-            
-            
-            if (Rb.velocity.magnitude > this.idleTreshold && !isDead)
+            if (currentPlantingCooldown > 0)
             {
-                IsPlanted = false;
-                _animator.SetBool("isPlanted",IsPlanted);
-                aliveModelCollider.enabled = true;
-            }
-           
-            
-            
-        }        
-        protected override void SecondaryCapacity() { // SE PLANTER DANS LE SOL 
-            if (!IsStun)
-            {
-                GetPlanted();
+                currentPlantingCooldown -= Time.deltaTime;
             }
 
-            
+        }  
+        
+        
+        public override void OnSecondaryCapacity(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                if (!IsStun && currentPlantingCooldown <= 0)
+                {
+                    if (!IsPlanted)
+                    {
+                        SecondaryCapacity();
+                    }
+                    else
+                    {
+                        GetUnplanted();
+                      
+                    }
+                }
+            }
         }
+        protected override void SecondaryCapacity() { // SE PLANTER DANS LE SOL 
+            
+            GetPlanted();
+            currentPlantingCooldown = plantingCooldown;
+                
+        }
+        
+        private void GetUnplanted()
+        {
+            if (IsPlanted)
+            {
+                IsPlanted = false;
+                Rb.isKinematic = false;
+                _animator.SetBool("isPlanted", IsPlanted);
+                aliveModelCollider.enabled = true;
+                currentPlantingCooldown = plantingCooldown;
+            }
+        } 
+        
         public override void OnThirdCapacity(InputAction.CallbackContext context) {// REANIMATION
 
             if (canReanimate && sun == maxSun && !IsStun)
@@ -132,10 +197,18 @@ namespace Michael.Scripts.Controller
                 Destroy(other.gameObject);
                 GetStunned();
             }
-            if (other.CompareTag("Seed")) {
+
+            if (other.CompareTag("Seed"))
+            {
                 canReanimate = true;
                 deadFlowerController = other.GetComponentInParent<FlowerController>();
+                deadFlowerController.reviveChargingIcon.gameObject.SetActive(true);
+                deadFlowerController.deadArrowUI.SetActive(false);
             }
+        }
+        
+        private void OnTriggerStay(Collider other)
+        {
             if (other.gameObject.CompareTag("Turtle") && !isDead)
             {
                 Rigidbody turtleRb = other.gameObject.GetComponent<Rigidbody>();
@@ -145,7 +218,7 @@ namespace Michael.Scripts.Controller
                 }
             }
         }
-        
+
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Seed"))
@@ -153,6 +226,8 @@ namespace Michael.Scripts.Controller
                 canReanimate = false;
                 isCharging = false;
                 reanimateTimer = 0;
+                deadFlowerController.reviveChargingIcon.gameObject.SetActive(false);
+                deadFlowerController.deadArrowUI.SetActive(true);
                 deadFlowerController = null;
             }
         }
@@ -162,6 +237,7 @@ namespace Michael.Scripts.Controller
         private void GetPlanted() {
             
             IsPlanted = true;
+            Rb.isKinematic = true;
             _animator.SetBool("isPlanted",IsPlanted);
             aliveModelCollider.enabled = false;
         }
@@ -184,6 +260,7 @@ namespace Michael.Scripts.Controller
                 isDead = true;
                 sun = 0;
                 GameManager.Instance.FlowersAlive.Remove(this.gameObject);
+                deadArrowUI.SetActive(true);
             }
            
         }
@@ -198,7 +275,9 @@ namespace Michael.Scripts.Controller
             deadModel.SetActive(false);
             GameManager.Instance.FlowersAlive.Add(this.gameObject);
         }
-        
+
+     
+
         public void OnLooseSunCapacity(int capacityCost)
         {
             sun -= capacityCost;

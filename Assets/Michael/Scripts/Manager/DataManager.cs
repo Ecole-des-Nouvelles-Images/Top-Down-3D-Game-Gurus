@@ -6,8 +6,12 @@ namespace Michael.Scripts.Manager
     public class DataManager :  MonoBehaviourSingleton<DataManager>
     {
        public Dictionary<int, int> PlayerChoice = new Dictionary<int, int>();
-       //public List<GameObject> PlayerChoice = new List<GameObject>(4);
-       // public List<GameObject> CharacterPrefabs = new List<GameObject>(6);
        public GameObject loadingScreen;
+       public static float SfxVolume = 0.5f;
+       public static float MusicVolume = 0.5f;
+       public static bool CanVibrate = true;
+       public static bool UiInWorldSpace = true;
+       public static bool CharacterSelectionScene = false;
+       
     }
 }

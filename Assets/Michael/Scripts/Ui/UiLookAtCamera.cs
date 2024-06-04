@@ -10,7 +10,7 @@ namespace Michael.Scripts.Ui
     
         [SerializeField] private Camera camera;
         [SerializeField] private GameObject canvas;
-        [SerializeField] private Image imagetoFollow;
+        //[SerializeField] private Image imagetoFollow;
         void Start() {
             camera = Camera.main;
         }
