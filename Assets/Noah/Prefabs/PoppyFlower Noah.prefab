@@ -5047,6 +5047,7 @@ GameObject:
   - component: {fileID: -5538384948341810301}
   - component: {fileID: 5686252515435969221}
   - component: {fileID: 5148523322681042034}
+  - component: {fileID: 1354174118475173757}
   m_Layer: 0
   m_Name: PoppyFlower Noah
   m_TagString: Flower
@@ -5233,6 +5234,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 98612f79-46c0-498f-9573-2951227867fa
     m_ActionName: Character/FourthCapacity[/XInputControllerWindows/buttonNorth,/XInputControllerWindows1/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6cee065-2dcb-4c5c-bc03-efb6a502f11b
+    m_ActionName: Character/Booster[/SwitchProControllerHID/rightTrigger,/SwitchProControllerHID/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Character
@@ -5300,6 +5305,7 @@ MonoBehaviour:
   stunTimer: 0
   stunParticleSystem: {fileID: 4749315361091767225}
   plantingCooldown: 1
+  MeshTrail: {fileID: 1354174118475173757}
   Gun: {fileID: 906675944261342744}
   lr: {fileID: 8694057788543303523}
   whatIsGrappleable:
@@ -5357,6 +5363,26 @@ CapsuleCollider:
   m_Height: 1.0667899
   m_Direction: 1
   m_Center: {x: 0, y: 0.7597141, z: 0}
+--- !u!114 &1354174118475173757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3817836459905497788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63c40956aaac7945a3daecc1719e312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateTime: 2
+  meshRefreshRate: 5
+  meshDestroyDelay: 3
+  positionToSpawn: {fileID: 8648350842671081415}
+  mat: {fileID: 2100000, guid: 5189f966d6b71dc479c5a427a163b0cd, type: 2}
+  shaderVarRef: _Alpha
+  shaderVarRate: 0.1
+  shaderVarRefreshRate: 5
 --- !u!1001 &2562767548104999092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5738,6 +5764,12 @@ Transform:
 --- !u!4 &7378050656635300083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5040898500802848839, guid: 9c412284751cbef4aa5b5a1821df57a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2562767548104999092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8648350842671081415 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6599421368573273971, guid: 9c412284751cbef4aa5b5a1821df57a4,
     type: 3}
   m_PrefabInstance: {fileID: 2562767548104999092}
   m_PrefabAsset: {fileID: 0}

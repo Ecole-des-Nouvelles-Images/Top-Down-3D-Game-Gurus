@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace Michael.Scripts.Manager
@@ -24,26 +25,45 @@ namespace Michael.Scripts.Manager
         [SerializeField] private GameObject circularTransition;
         [SerializeField] private GameObject CrashVfx;
         [SerializeField] private Transform spawnTurtlePosition;
+        [SerializeField] private GameObject EndGamePanel;
         [SerializeField] private GameObject TurtleVictoryPanel;
         [SerializeField] private GameObject FlowersVictoryPanel;
         [SerializeField] private GameObject TurtleUis;
+        [SerializeField] private GameObject eventSystem;
+        [SerializeField] private GameObject restartButton;
         void Start()
         {
             circularTransition.transform.DOScale(15, 1.2f);
 
         }
+        
+        private void DesactiveGameManager()
+        {
+            gameObject.SetActive(false);
+        }
 
         private void Update()
         {
 
-            if (FlowersAlive.Count <= 0) {
-                TurtleVictoryPanel.GetComponent<CanvasGroup>().DOFade(1, 1);
+           /* if (FlowersAlive.Count <= 0) {
+                
+                TurtleVictoryPanel.SetActive(true);
+                EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 2f);
+                eventSystem.SetActive(true);
+                eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
                 FlowersAreDead = true;
+                Invoke("DesactiveGameManager",2.1f);
+                
             }
             else if (TurtleIsDead)
             {
-                FlowersVictoryPanel.GetComponent<CanvasGroup>().DOFade(1, 1);
-            }
+                FlowersVictoryPanel.SetActive(true);
+                EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 2f);
+                eventSystem.SetActive(true);
+                eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
+                Invoke("DesactiveGameManager",2.1f);
+               
+            }*/
         }
 
 
@@ -105,7 +125,7 @@ namespace Michael.Scripts.Manager
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
     
-
+        
 
 
 

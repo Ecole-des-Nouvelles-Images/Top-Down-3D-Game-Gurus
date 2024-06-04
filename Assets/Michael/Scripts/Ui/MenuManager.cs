@@ -14,6 +14,9 @@ namespace Michael.Scripts.Ui
         [SerializeField] private AudioMixer _mixer;
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private Slider _sfxSlider;
+        [SerializeField] private GameObject mainMenuPanel;
+        [SerializeField] private GameObject CharacterSelectionPanel;
+        [SerializeField] private GameObject eventSystem;
        
         private void Start()
         {
@@ -21,6 +24,16 @@ namespace Michael.Scripts.Ui
             _sfxSlider.value =  DataManager.SfxVolume;
             SetMusicVolume();
             SetSfxVolume();
+
+            if (DataManager.CharacterSelectionScene) {
+                eventSystem.SetActive(false);
+                CharacterSelectionPanel.SetActive(true);
+                DataManager.CharacterSelectionScene = false;
+            }
+            else
+            {
+                mainMenuPanel.SetActive(true);
+            }
         }
         
         

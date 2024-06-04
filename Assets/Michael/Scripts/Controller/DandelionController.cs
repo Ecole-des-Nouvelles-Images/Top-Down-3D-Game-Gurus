@@ -13,6 +13,7 @@ namespace Michael.Scripts.Controller
        [SerializeField] private float invincibilityDuration = 5f;
        [SerializeField] private ParticleSystem pollenVfx;
        private bool isBoosted;
+       
         
       protected override void Start()
        {
@@ -28,10 +29,11 @@ namespace Michael.Scripts.Controller
                 _invincibilityTimer = 0;
             }
             
-            if (isInvincible && !isBoosted) {
+            if (isInvincible && !isBoosted && !isDead) {
                 
                 pollenVfx.Play();
-                aliveModel.SetActive(false);
+               // aliveModel.SetActive(false);
+                
                 _invincibilityTimer += Time.deltaTime;
                 moveSpeed += 20;
                 isBoosted = true;
@@ -40,7 +42,7 @@ namespace Michael.Scripts.Controller
             else {
                 
                 pollenVfx.Stop();
-                aliveModel.SetActive(true);
+             //   aliveModel.SetActive(true);
                 isBoosted = false;
                 moveSpeed = 525;
             }

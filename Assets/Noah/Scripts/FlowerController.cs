@@ -47,6 +47,11 @@ namespace Noah.Scripts
         {
             _animator.SetFloat("Velocity", Rb.velocity.magnitude);
 
+            if (isInvincible)
+            {
+                
+            }
+
             if (sun < 0)
             {
                 sun = 0;

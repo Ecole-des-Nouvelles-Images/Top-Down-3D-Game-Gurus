@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Force: 0.01
   m_Turbulence: {x: 0.3, y: 0.3, z: 0.7}
   m_TurbulenceMode: 1
-  m_Frequency: {x: 0.5, y: 0.5, z: 0.5}
+  m_Frequency: {x: 0.3, y: 0.3, z: 0.3}
   m_TimeCycle: 2
   m_CurveX:
     serializedVersion: 2
