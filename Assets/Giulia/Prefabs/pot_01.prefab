@@ -66,7 +66,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6ce95d7aceff9e44e88163525ae34282,
         type: 3}
       propertyPath: m_Name
-      value: pot_Mode_01
+      value: pot_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ce95d7aceff9e44e88163525ae34282,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
