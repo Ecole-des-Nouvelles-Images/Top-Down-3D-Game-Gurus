@@ -7,6 +7,7 @@ public class AnimationParticules : MonoBehaviour
 {
     [SerializeField] private GameObject _crashParticules;
     [SerializeField] private ParticleSystem _dirtParticules;
+    [SerializeField] private ParticleSystem _runParticules;
     private Animator _animator;
 
     private void Start()
@@ -25,6 +26,12 @@ public class AnimationParticules : MonoBehaviour
     public void ShowDirtParticules() {
         if (_dirtParticules) {
             _dirtParticules.Play();
+        }
+    }
+    
+    public void RunParticules() {
+        if (_runParticules) {
+           _runParticules.Play();
         }
     }
     

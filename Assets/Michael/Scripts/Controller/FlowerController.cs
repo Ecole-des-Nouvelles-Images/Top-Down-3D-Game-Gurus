@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 namespace Michael.Scripts.Controller
 {
@@ -35,7 +36,8 @@ namespace Michael.Scripts.Controller
         private float currentPlantingCooldown = 0f;
         [SerializeField] private Image reviveChargingIcon;
         [SerializeField] private GameObject deadArrowUI;
-       
+        [SerializeField] private VisualEffect ReviveVFX;
+        
         protected virtual void Start() {
             StartAnimation();
         }
@@ -274,6 +276,8 @@ namespace Michael.Scripts.Controller
             aliveModel.SetActive(true);
             deadModel.SetActive(false);
             GameManager.Instance.FlowersAlive.Add(this.gameObject);
+            ReviveVFX.Play();
+            
         }
 
      
