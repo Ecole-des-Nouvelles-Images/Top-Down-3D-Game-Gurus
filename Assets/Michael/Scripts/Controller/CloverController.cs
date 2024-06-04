@@ -9,6 +9,7 @@ namespace Michael.Scripts.Controller
         
         protected override void Start()
         {
+            base.Start();
           plantedFlowers = GameObject.FindGameObjectsWithTag("Fake");
           
         }

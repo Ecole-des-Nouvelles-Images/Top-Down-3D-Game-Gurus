@@ -45,7 +45,7 @@ namespace Michael.Scripts.Manager
         private void Update()
         {
 
-            if (FlowersAlive.Count <= 0) {
+          /*  if (FlowersAlive.Count <= 0) {
                 
                 TurtleVictoryPanel.SetActive(true);
                 EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 2f);
@@ -63,7 +63,7 @@ namespace Michael.Scripts.Manager
                 eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
                 Invoke("DesactiveGameManager",2.1f);
                
-            }
+            }*/
         }
 
 

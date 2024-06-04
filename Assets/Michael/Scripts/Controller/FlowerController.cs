@@ -94,8 +94,8 @@ namespace Michael.Scripts.Controller
                     
                 }
                 else {
-                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
-                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, reanimateDuration);
+                    /*DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
+                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, reanimateDuration);*/
                 }
 
             }
@@ -226,9 +226,12 @@ namespace Michael.Scripts.Controller
                 canReanimate = false;
                 isCharging = false;
                 reanimateTimer = 0;
-                deadFlowerController.reviveChargingIcon.gameObject.SetActive(false);
-                deadFlowerController.deadArrowUI.SetActive(true);
-                deadFlowerController = null;
+                if (deadFlowerController) {
+                    deadFlowerController.reviveChargingIcon.gameObject.SetActive(false);
+                    deadFlowerController.deadArrowUI.SetActive(true);
+                    deadFlowerController = null;
+                }
+             
             }
         }
 

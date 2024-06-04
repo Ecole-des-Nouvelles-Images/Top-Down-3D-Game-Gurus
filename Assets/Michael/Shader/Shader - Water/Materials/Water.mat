@@ -57,7 +57,7 @@ Material:
     - _Wave_Speed: 0
     m_Colors:
     - _Foam_Color: {r: 1, g: 1, b: 1, a: 0.5686275}
-    - _Water_Color: {r: 0.38487893, g: 0.7162011, b: 0.8773585, a: 0.6509804}
+    - _Water_Color: {r: 0.5061855, g: 0.7438517, b: 0.8584906, a: 0.6509804}
   m_BuildTextureStacks: []
 --- !u!114 &2490189419767720270
 MonoBehaviour:

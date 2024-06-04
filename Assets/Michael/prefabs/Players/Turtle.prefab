@@ -10474,7 +10474,7 @@ Transform:
   m_GameObject: {fileID: 1168902694845961782}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000000038959}
+  m_LocalPosition: {x: 0, y: 0.047, z: -0.000000038959}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -26045,6 +26045,7 @@ MonoBehaviour:
   moveSpeed: 400
   _animator: {fileID: 4159274208551880169}
   idleTreshold: 0.1
+  Rb: {fileID: 0}
   boosterMultiplier: 1.2
   _attackCollider: {fileID: 4408583465232902560}
   dashMaterial: {fileID: 2100000, guid: cec535088cc7fc54fb6a157fe45ca828, type: 2}
@@ -26065,7 +26066,7 @@ MonoBehaviour:
   scanRange: 12
   scanDuration: 3
   scanSphereArea: {fileID: 8721222829056409284}
-  TrapPrefab: {fileID: 8109188231840348700, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+  TrapPrefab: {fileID: 6696123197788748044, guid: 1ba76a8d896c91e47aa29cc35ee22ab2,
     type: 3}
   TrapSpawn: {fileID: 5385597024245364116}
 --- !u!114 &6791591643116250088
@@ -31118,7 +31119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1601028925336999455
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43191,6 +43192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _crashParticules: {fileID: 0}
   _dirtParticules: {fileID: 0}
+  _runParticules: {fileID: 0}
 --- !u!1 &7320261519637047387
 GameObject:
   m_ObjectHideFlags: 0
