@@ -18,7 +18,7 @@ namespace Michael.Scripts.Character_Selection
         public static bool TurtleIsSelected;
         public static bool CanJoin;
         public int PlayerIndex ;
-        public static int _maxPlayers = 2;
+        public static int _maxPlayers = 3;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;

@@ -84,16 +84,14 @@ namespace Michael.Scripts.Controller
                 if (isCharging) {
                     deadFlowerController.reviveChargingIcon.fillAmount = 0;
                     reanimateTimer += Time.deltaTime;
-                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount, value =>
-                            deadFlowerController.reviveChargingIcon.fillAmount = value, reanimateTimer / reanimateDuration, reanimateDuration)
-                        .OnComplete(() => {
-                            
+                   deadFlowerController.reviveChargingIcon.fillAmount = reanimateTimer / reanimateDuration;
+                      
                             if (reanimateTimer >= reanimateDuration + 0.1f) {
                                 ThirdCapacity();
                                 isCharging = false;
                                 reanimateTimer = 0;
                             }
-                        });
+                    
                 }
                 else {
                     DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
