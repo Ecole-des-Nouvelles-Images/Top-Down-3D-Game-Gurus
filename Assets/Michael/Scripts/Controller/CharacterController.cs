@@ -9,7 +9,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] protected float moveSpeed ;
         [SerializeField] protected Animator _animator;
         [SerializeField] protected float idleTreshold = 0.1f;
-        protected Rigidbody Rb;
+        public Rigidbody Rb;
         protected Vector2 move;
         private static readonly int Run = Animator.StringToHash("Run");
 
