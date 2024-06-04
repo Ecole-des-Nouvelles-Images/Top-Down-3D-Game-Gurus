@@ -82,7 +82,7 @@ namespace Noah.Scripts
 
         protected override void FixedUpdate()
         {
-            if (!_isgrappling && !IsStun)
+            if (!_isgrappling && !IsStunned)
             {
                 Move();
             }

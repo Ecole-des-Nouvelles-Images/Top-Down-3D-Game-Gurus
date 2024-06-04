@@ -207,10 +207,6 @@ namespace Michael.Scripts.Controller
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[0]);
                     dashMaterial.SetColor("_EmissionColor",colorsDashLevel[0]);
                 }
-                
-                
-                
-                
             }
             
         }
@@ -239,11 +235,7 @@ namespace Michael.Scripts.Controller
                 _animator.SetTrigger("Attack");
                 BatteryManager.Instance.BatteryCost(10);
             }
-         
         }
-        
-
-
         private void EnableAttackCollider()
         {
             _attackCollider.enabled = true;
@@ -303,6 +295,5 @@ namespace Michael.Scripts.Controller
         }
         
         #endregion
-        
     }
 }
