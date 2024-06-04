@@ -43,6 +43,9 @@ namespace Noah.Scripts
         [SerializeField] private Transform TrapSpawn;
 
         public Transform TransformWall;
+        [SerializeField] private Collider headCollider;
+        private bool _isTouchingWall;
+
         private void Start()
         {
             QteManager.Instance.OnQteFinished += AnimationDash;
@@ -246,6 +249,7 @@ namespace Noah.Scripts
         {
             if (!_isDashing)
             {
+                /*
                 RaycastHit hit;
                 float raycastDistance = 6.0f;
                 if (Physics.Raycast(transform.position, TransformWall.forward, out hit, raycastDistance))
@@ -256,6 +260,7 @@ namespace Noah.Scripts
                         return;
                     }
                 }
+                */
                 EnableAttackCollider();
                 Invoke(nameof(DisableAttackCollider), 0.7f);
                 _animator.SetTrigger("Attack");
@@ -263,6 +268,25 @@ namespace Noah.Scripts
             }
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                _isTouchingWall = true;
+                if (_isAttacking)
+                {
+                    _animator.SetTrigger("Idle");
+                }
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                _isTouchingWall = false;
+            }
+        }
         private void EnableAttackCollider()
         {
             _attackCollider.enabled = true;
