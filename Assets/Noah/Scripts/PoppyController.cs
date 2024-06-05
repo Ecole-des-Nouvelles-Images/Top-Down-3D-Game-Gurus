@@ -72,7 +72,7 @@ namespace Noah.Scripts
         private void GrapplingUpdate()
         {
             if (_grapplingCdTimer > 0)
-                _grapplingCdTimer -= Time.deltaTime;
+                _grapplingCdTimer -= TimeManager.Instance.deltaTime;
 
             if (_isgrappling)
             {
@@ -127,7 +127,7 @@ namespace Noah.Scripts
         {
             if (!_isgrappling) return;
 
-            _grappleHoldTimer += Time.deltaTime;
+            _grappleHoldTimer += TimeManager.Instance.deltaTime;
 
             if (!_shouldApplyGrappleForce)
             {
@@ -160,7 +160,7 @@ namespace Noah.Scripts
         private void ApplyGrappleForce()
         {
             Vector3 directionToGrapple = (grapplePoint - transform.position).normalized;
-            Vector3 forceVector = directionToGrapple * grapplingSpeed * Time.deltaTime;
+            Vector3 forceVector = directionToGrapple * grapplingSpeed * TimeManager.Instance.deltaTime;
 
             Rb.AddForce(forceVector, ForceMode.Force);
 

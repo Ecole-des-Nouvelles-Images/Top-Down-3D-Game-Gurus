@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Michael.Scripts.Manager;
-using Michael.Scripts.Ui;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -17,8 +16,9 @@ namespace Michael.Scripts.Character_Selection
         public static bool CanStart;
         public static bool TurtleIsSelected;
         public static bool CanJoin;
+        public bool IsCharging;
         public int PlayerIndex ;
-        public static int _maxPlayers = 3;
+        public static int _maxPlayers = 2;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -30,13 +30,26 @@ namespace Michael.Scripts.Character_Selection
         [SerializeField] private GameObject joinedText;
         [SerializeField] private Image CapacityImage;
         [SerializeField] private GameObject readyText;
+        [SerializeField] private GameObject readyCofirmText;
         [SerializeField] private GameObject circleTransition;
         [SerializeField] private GameObject canvas;
-      // [SerializeField] private Camera camera;
         [SerializeField] private Button _backButton;
+        [SerializeField] private Image startButton;
+        [SerializeField] private GameObject startText;
+        [SerializeField] private GameObject textInfo;
+        [SerializeField] private float startTimerDuration = 2f;
+        [SerializeField] private float startTimer = 0;
         private Vector3 _initialTransform;
-        
-        
+        [SerializeField] private InputAction startGameAction;
+        [SerializeField] private AudioSource pressedSound;
+        [SerializeField] private AudioSource cancelSound;
+       
+        private void Awake()
+        {
+            startGameAction = GetComponent<PlayerInput>().currentActionMap.FindAction("StartGame");
+            startGameAction.started += context => StartHold();
+            startGameAction.canceled += context => StartRelease();
+        }
         private void Start()
         {
             PlayerIndex = GetComponent<PlayerInput>().user.index;
@@ -46,10 +59,40 @@ namespace Michael.Scripts.Character_Selection
             TurtleIsSelected = false;
             PlayerIsReady = new bool[5] {false, false, false, false,false};
             PlayerIsJoined = new bool[5] {false, false, false, false,false};
+
+            if (readyText)
+            {
+                readyText.transform.DOScale(1.1f, 0.5f).SetEase(Ease.OutSine)
+                    .SetLoops(-1, LoopType.Yoyo);
+            }
+            
+           
         }
 
+      
         private void Update()
         {
+            PlayerSelector();
+            if (CanStart)
+            {
+                
+                if (IsCharging)
+                {
+                    startButton.fillAmount = 0;
+                    startTimer += TimeManager.Instance.deltaTime;
+                    startButton.fillAmount = startTimer / startTimerDuration;
+                            if (startTimer >= startTimerDuration + 0.1f)
+                            {
+                                circleTransition.transform.DOScale(15,1);
+                                Invoke("LoadSceneWarpper",1f);
+                            }
+                }
+                else
+                {
+                    DOTween.To(() => startButton.fillAmount, value => startButton.fillAmount = value, 0f,0.5f);
+                }
+            }
+          
         }
 
         public void SelectionScreen(bool canJoin)
@@ -60,8 +103,8 @@ namespace Michael.Scripts.Character_Selection
         
         
 
-        void OnNavigate() {  //Bouger le cursor du player 
-            PlayerSelector();
+        public void OnNavigate() {  //Bouger le cursor du player 
+            //PlayerSelector();
 
         }
 
@@ -71,7 +114,6 @@ namespace Michael.Scripts.Character_Selection
                     .GetComponentInChildren<HorizontalLayoutGroup>().transform);
                 _characterSelected = GetComponentInParent<Button>(); 
                 _joinButton.image.sprite = _characterSprites[_characterButtons.IndexOf(_characterSelected)];
-               
 
                 if (_characterSelected.name == "TurtleButton")
                 {
@@ -91,12 +133,13 @@ namespace Michael.Scripts.Character_Selection
         }
 
 
-        void OnSubmit() { //Valider la selection d'un personnage 
+        public void OnSubmit() { //Valider la selection d'un personnage 
 
             if (CanJoin)
             {
                 if (PlayerIsJoined[PlayerIndex] == false) {
                     PlayerJoined();
+                    pressedSound.Play();
                 }
                 else if (!PlayerIsReady[PlayerIndex]) {
                     if (GetComponentInParent<Button>()) {
@@ -106,6 +149,8 @@ namespace Michael.Scripts.Character_Selection
                         PlayerReady();
                         Debug.Log("l'index du personnage selectionné est " + _characterIndex);
                         MooveOtherSelectorPosition();
+                        pressedSound.Play();
+                        
                     }
                 }
             }
@@ -151,7 +196,7 @@ namespace Michael.Scripts.Character_Selection
         }
         
         
-        void OnCancel() { // Annulé la la selection d'un personnage 
+        public void OnCancel() { // Annulé la la selection d'un personnage 
 
             if (CanJoin)
             {
@@ -163,15 +208,21 @@ namespace Michael.Scripts.Character_Selection
                     RemoveChoice(PlayerIndex);
                     joinedText.SetActive(false);
                     readyText.SetActive(true);
+                    readyCofirmText.SetActive(false);
+                    startText.SetActive(false);
+                    textInfo.SetActive(true);
                 
                     if (_characterSelected.name == "TurtleButton")
                     {
                         TurtleIsSelected = false;
                         Debug.Log("turtle deselectionnée");
                     }
+                    
+                    cancelSound.Play();
                 }
                 else if (PlayerIsJoined[PlayerIndex])
                 { 
+                    cancelSound.Play();
                     _joinButton.transform.DOScale(1f, 0.5f);
                     _joinButton.image.sprite = _characterSprites[7];
                     CapacityImage.gameObject.SetActive(false);
@@ -212,14 +263,37 @@ namespace Michael.Scripts.Character_Selection
                 joinedText.SetActive(false);
                 readyText.SetActive(true);
                 CapacityImage.gameObject.SetActive(true);
+               
             }
          
         }
+        
+        
+
+        public void StartHold() {
+            if (CanStart) {
+                IsCharging = true;
+            }  
+           
+        }
+        
+        public void StartRelease() {
+                IsCharging = false;
+                startTimer = 0;
+        }
+            
+            
+        
+        
+        
+        
+        
         
         public void PlayerReady()
         {
             if (CanJoin)
             {
+                readyCofirmText.SetActive(true);
                 readyText.SetActive(false);
                 PlayerIsReady[PlayerIndex] = true;
                 //bool allPlayersReady = true;
@@ -260,9 +334,8 @@ namespace Michael.Scripts.Character_Selection
 
                 if (CanStart)
                 {
-                    
-                    circleTransition.transform.DOScale(15,1);
-                    Invoke("LoadSceneWarpper",1f);
+                    textInfo.SetActive(false);
+                    startText.SetActive(true);
                 }
             
             }

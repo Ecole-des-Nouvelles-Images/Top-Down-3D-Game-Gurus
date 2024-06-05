@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel.Design.Serialization;
+using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,7 +41,7 @@ namespace Noah.Scripts
 
             while (elapsedTime < duration)
             {
-                elapsedTime += Time.deltaTime;
+                elapsedTime += TimeManager.Instance.deltaTime;
                 yield return null;
             }
             

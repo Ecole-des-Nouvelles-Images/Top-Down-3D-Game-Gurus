@@ -1,4 +1,5 @@
 using Michael.Scripts.Manager;
+using Michael.Scripts.Ui;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +19,14 @@ namespace Michael.Scripts.Controller
             Rb = GetComponent<Rigidbody>();
         }
 
+        public void OnPause()
+        {
+            if (!PauseControlller.IsPaused)
+            {
+                PauseControlller.Instance.OpenPausePanel();
+            }
+          
+        }
         protected virtual void FixedUpdate()
         {
             Move();
@@ -32,7 +41,11 @@ namespace Michael.Scripts.Controller
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            move = context.ReadValue<Vector2>();
+            if (!PauseControlller.IsPaused)
+            {
+                move = context.ReadValue<Vector2>();
+            }
+            
         }
 
         protected void Move()
@@ -44,8 +57,8 @@ namespace Michael.Scripts.Controller
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
             }
             
-            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * Time.deltaTime);
-            Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
+            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * TimeManager.Instance.deltaTime);
+            Rb.AddForce(movement * TimeManager.Instance.deltaTime, ForceMode.Force);
             // Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
             
         }
@@ -56,7 +69,7 @@ namespace Michael.Scripts.Controller
 
         public virtual void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !PauseControlller.IsPaused)
             {
                 MainCapacity();
             }
@@ -70,7 +83,7 @@ namespace Michael.Scripts.Controller
 
         public virtual void OnSecondaryCapacity(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !PauseControlller.IsPaused)
             {
                 SecondaryCapacity();
             }
@@ -85,7 +98,7 @@ namespace Michael.Scripts.Controller
 
         public virtual void OnThirdCapacity(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed  && !PauseControlller.IsPaused)
             {
                 ThirdCapacity();
             }
@@ -100,16 +113,10 @@ namespace Michael.Scripts.Controller
         #endregion
         
         
-        
-        
-        
-        
-        
-        
         #region Fourth Capacity
         public virtual void OnFourthCapacity(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed  && !PauseControlller.IsPaused)
             {
                FourthCapacity();
             }

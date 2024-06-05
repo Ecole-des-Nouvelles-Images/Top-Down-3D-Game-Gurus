@@ -208,6 +208,27 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c6cee065-2dcb-4c5c-bc03-efb6a502f11b
     m_ActionName: Character/Booster[/DualShock4GamepadHID/rightTrigger,/DualShock4GamepadHID/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8594941089947108054}
+        m_TargetAssemblyTypeName: Michael.Scripts.Controller.CharacterController,
+          Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 48f46006-6b8a-40f7-9701-52f8ca7720e4
+    m_ActionName: Character/Pause[/XInputControllerWindows/start,/XInputControllerWindows1/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3e007b0e-bd27-40ae-acdd-2a246a51bcb5
+    m_ActionName: UI/StartGame[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Character
@@ -327,8 +348,9 @@ MonoBehaviour:
   deadArrowUI: {fileID: 3035541742640246703}
   ReviveVFX: {fileID: 4656057519872337942}
   _invincibilityTimer: 0
-  invincibilityDuration: 5
+  invincibilityDuration: 3
   pollenVfx: {fileID: 4086426091261872676}
+  isBoosted: 0
 --- !u!1 &2532690040068707908
 GameObject:
   m_ObjectHideFlags: 0
@@ -6666,6 +6688,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4a231e461b6e05f44ac480a273e63f38, type: 2}
+    - target: {fileID: 12191883227263354, guid: 718d9895a6b697548932498b9a58f0af,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 12191883227263355, guid: 718d9895a6b697548932498b9a58f0af,
         type: 3}
       propertyPath: m_StartDepth

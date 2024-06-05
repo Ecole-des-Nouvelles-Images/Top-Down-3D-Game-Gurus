@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Michael.Scripts.Manager;
 
 public class colorChange : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class colorChange : MonoBehaviour
             }
 
             // Incrémente le pas de changement de couleur
-            step += Time.deltaTime / fadeDuration;
+            step += TimeManager.Instance.deltaTime / fadeDuration;
 
             // Attend la fin du frame avant la prochaine itération
             yield return null;

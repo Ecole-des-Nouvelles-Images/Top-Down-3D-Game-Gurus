@@ -83,7 +83,7 @@ namespace Michael.Scripts.Controller
             {
                 if (isCharging) {
                     deadFlowerController.reviveChargingIcon.fillAmount = 0;
-                    reanimateTimer += Time.deltaTime;
+                    reanimateTimer += TimeManager.Instance.deltaTime;
                    deadFlowerController.reviveChargingIcon.fillAmount = reanimateTimer / reanimateDuration;
                       
                             if (reanimateTimer >= reanimateDuration + 0.1f) {
@@ -105,7 +105,7 @@ namespace Michael.Scripts.Controller
 
             if (IsStun)
             {
-                stunTimer += Time.deltaTime;
+                stunTimer += TimeManager.Instance.deltaTime;
                 if (stunTimer >= stunDuration)
                 {
                     stunParticleSystem.gameObject.SetActive(false);
@@ -117,7 +117,7 @@ namespace Michael.Scripts.Controller
             
             if (currentPlantingCooldown > 0)
             {
-                currentPlantingCooldown -= Time.deltaTime;
+                currentPlantingCooldown -= TimeManager.Instance.deltaTime;
             }
 
         }  
@@ -192,10 +192,14 @@ namespace Michael.Scripts.Controller
                 TakeHit();
             }
             if (other.CompareTag("TurtleTrap")) {
-                
-                GameManager.Instance.TurtleTrap.Remove(other.gameObject);
-                Destroy(other.gameObject);
-                GetStunned();
+
+                if (!isDead)
+                {
+                    GameManager.Instance.TurtleTrap.Remove(other.gameObject);
+                    Destroy(other.gameObject);
+                    GetStunned();
+                }
+               
             }
 
             if (other.CompareTag("Seed"))

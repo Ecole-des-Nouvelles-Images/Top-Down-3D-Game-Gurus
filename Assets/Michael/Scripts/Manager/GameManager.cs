@@ -113,16 +113,16 @@ namespace Michael.Scripts.Manager
             firstCamera.transform.DOShakePosition(duration, strength, vibrato);
         }
 
-        public void StartSlomotion()
+      public void StartSlomotion()
         {
             Time.timeScale = 0.5f;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            TimeManager.Instance.fixedDeltaTime = 0.02f * Time.timeScale;
         }
 
         public void FinishSlomotion()
         {
             Time.timeScale = 1f;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            TimeManager.Instance.fixedDeltaTime = 0.02f * Time.timeScale;
         }
     
         

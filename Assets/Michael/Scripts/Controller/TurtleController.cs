@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Michael.Scripts.Manager;
+using Michael.Scripts.Ui;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
@@ -97,14 +98,17 @@ namespace Michael.Scripts.Controller
 
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.started)
+            if ( !PauseControlller.IsPaused)
             {
-                StartCharging();
-            }
-            else if (context.canceled)
-            { 
-                StopCharging();
-                MainCapacity();
+                if (context.started)
+                {
+                    StartCharging();
+                }
+                else if (context.canceled)
+                { 
+                    StopCharging();
+                    MainCapacity();
+                } 
             }
         }
 
@@ -182,7 +186,7 @@ namespace Michael.Scripts.Controller
             {
                 _animator.SetBool("IsDashing",true);
                 _animator.SetFloat("DashTimer",_chargeTime);
-                _chargeTime += Time.deltaTime;
+                _chargeTime += TimeManager.Instance.deltaTime;
 
                 if (move.magnitude > 0.5f)
                 {
@@ -294,7 +298,7 @@ namespace Michael.Scripts.Controller
         private void ScanningUpdate() {
             if (_isScanning) {
               
-                scanTime += Time.deltaTime;
+                scanTime += TimeManager.Instance.deltaTime;
                 if (scanTime >= scanDuration) {
                     _isScanning = false;
                     scanTime = 0;

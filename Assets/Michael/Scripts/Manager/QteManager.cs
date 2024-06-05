@@ -86,7 +86,7 @@ namespace Michael.Scripts.Manager
             if (qteActive)
             {
                 // Mettre à jour le temps restant pour le bouton actuel
-                qteTimer -= Time.deltaTime;
+                qteTimer -= TimeManager.Instance.deltaTime;
 
                 if (qteTimer <= 0f)
                 {

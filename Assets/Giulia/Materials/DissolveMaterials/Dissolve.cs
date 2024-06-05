@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Michael.Scripts.Manager;
 
 public class Dissolve : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class Dissolve : MonoBehaviour
                 }
             }
 
-            elapsedTime += Time.deltaTime;
+            elapsedTime += TimeManager.Instance.deltaTime;
             yield return null;
         }
 

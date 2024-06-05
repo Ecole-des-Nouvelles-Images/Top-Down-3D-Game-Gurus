@@ -9,12 +9,13 @@ namespace Michael.Scripts.FeedBack
     public class UISelectionFeedBack : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         [SerializeField] private GameObject OutlineSelector;
-    
+        [SerializeField] private AudioSource selectedSound; 
 
         public void OnSelect(BaseEventData eventData)
         {
             OutlineSelector.SetActive(true);
             transform.DOScale(1.1f, 0.5f);
+            selectedSound.Play();
         }
 
         public void OnDeselect(BaseEventData eventData)

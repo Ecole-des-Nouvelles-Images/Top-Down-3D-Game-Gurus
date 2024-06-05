@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Michael.Scripts.Controller;
 using Michael.Scripts.Manager;
 using UnityEngine;

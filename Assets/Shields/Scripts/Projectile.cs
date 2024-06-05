@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Michael.Scripts.Manager;
 using Shields.Scripts;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ public class Projectile : MonoBehaviour
     }
     void Update()
     {
-        Vector3 delta = (transform.forward * _ProjectileSpeed * Time.deltaTime);
+        Vector3 delta = (transform.forward * _ProjectileSpeed * TimeManager.Instance.deltaTime);
         transform.position += delta;
         ray = new Ray(transform.position,transform.forward);
         if(Physics.Raycast(ray,out hit))

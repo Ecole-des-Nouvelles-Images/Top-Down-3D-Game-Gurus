@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Michael.Scripts.Manager;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -22,7 +23,7 @@ public class CameraController : MonoBehaviour
         {
             float rotateX = Input.GetAxis("Mouse X");
             float rotateY = Input.GetAxis("Mouse Y");
-            transform.Rotate(new Vector3(0, rotateX, -rotateY) *Time.deltaTime* _RotationSpeed);
+            transform.Rotate(new Vector3(0, rotateX, -rotateY) *TimeManager.Instance.deltaTime* _RotationSpeed);
             transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         }
         float translateForward = Input.GetAxis("Vertical");
@@ -46,7 +47,7 @@ public class CameraController : MonoBehaviour
         Vector3 right = Quaternion.Euler(0, 90, 0) * forward;
 
 
-        Vector3 translation = (forward * translateForward + right * translateRight + Vector3.up * translateUp)*Time.deltaTime* _MoveSpeed;
+        Vector3 translation = (forward * translateForward + right * translateRight + Vector3.up * translateUp)*TimeManager.Instance.deltaTime* _MoveSpeed;
         transform.position+= translation;
     }
 }
