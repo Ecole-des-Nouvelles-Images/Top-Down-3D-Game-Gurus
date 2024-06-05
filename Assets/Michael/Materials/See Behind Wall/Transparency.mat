@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Transparency
-  m_Shader: {fileID: -6465566751694194690, guid: efb7683b3bcb8f244854c7547a3eb10d, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: efb7683b3bcb8f244854c7547a3eb10d,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,12 +38,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Dither: 0.89
-    - _Fresnel: 0.19
+    - _Dither: 0.52
+    - _Fresnel: 0.18
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 1024, g: 1024, b: 1024, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &2623144610453607670
 MonoBehaviour:

@@ -2,6 +2,7 @@ using System;
 using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Noah.Scripts
 {
@@ -15,7 +16,7 @@ namespace Noah.Scripts
         public FlowerController deadFlowerController;
         public bool IsPlanted = false;
         public bool isInvincible = false;
-        public bool IsStun;
+        [FormerlySerializedAs("IsStun")] public bool IsStunned;
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
@@ -32,12 +33,11 @@ namespace Noah.Scripts
 
         protected virtual void Start()
         {
-            // Initialization code
         }
 
         protected override void FixedUpdate()
         {
-            if (!IsStun)
+            if (!IsStunned)
             {
                 Move();
             }
@@ -46,7 +46,8 @@ namespace Noah.Scripts
         protected override void Update()
         {
             _animator.SetFloat("Velocity", Rb.velocity.magnitude);
-
+            
+            
             if (sun < 0)
             {
                 sun = 0;
@@ -68,13 +69,13 @@ namespace Noah.Scripts
                 }
             }
 
-            if (IsStun)
+            if (IsStunned)
             {
                 stunTimer += Time.deltaTime;
                 if (stunTimer >= stunDuration)
                 {
                     stunParticleSystem.gameObject.SetActive(false);
-                    IsStun = false;
+                    IsStunned = false;
                     stunTimer = 0;
                     _animator.SetBool("IsDizzy", false);
                 }
@@ -90,7 +91,7 @@ namespace Noah.Scripts
         {
             if (context.started)
             {
-                if (!IsStun && currentPlantingCooldown <= 0)
+                if (!IsStunned && currentPlantingCooldown <= 0)
                 {
                     if (!IsPlanted)
                     {
@@ -132,7 +133,7 @@ namespace Noah.Scripts
 
         public override void OnThirdCapacity(InputAction.CallbackContext context)
         {
-            if (canReanimate && sun == maxSun && !IsStun)
+            if (canReanimate && sun == maxSun && !IsStunned)
             {
                 if (context.started)
                 {
@@ -162,6 +163,7 @@ namespace Noah.Scripts
             {
                 TakeHit();
             }
+            
 
             if (other.CompareTag("TurtleTrap"))
             {
@@ -187,6 +189,11 @@ namespace Noah.Scripts
                     GetStunned();
                 }
             }
+            
+            if (other.CompareTag("Shield"))
+            {
+                isInvincible = true;
+            }
         }
 
         private void OnTriggerExit(Collider other)
@@ -198,15 +205,23 @@ namespace Noah.Scripts
                 reanimateTimer = 0;
                 deadFlowerController = null;
             }
+            
+            if (other.CompareTag("Shield"))
+            {
+                isInvincible = false;
+            }
         }
 
         [ContextMenu("GetStunned")]
         private void GetStunned()
         {
-            GetUnplanted();
-            stunParticleSystem.gameObject.SetActive(true);
-            _animator.SetBool("IsDizzy", true);
-            IsStun = true;
+            if (!isInvincible)
+            {
+                GetUnplanted();
+                stunParticleSystem.gameObject.SetActive(true);
+                _animator.SetBool("IsDizzy", true);
+                IsStunned = true; 
+            }
         }
 
         [ContextMenu("TakeHit")]

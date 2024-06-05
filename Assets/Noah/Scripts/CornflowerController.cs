@@ -15,7 +15,7 @@ namespace Noah.Scripts
 
         protected override void PassiveCapacity()
         {
-            throw new System.NotImplementedException();
+            ;
         }
     }
 }

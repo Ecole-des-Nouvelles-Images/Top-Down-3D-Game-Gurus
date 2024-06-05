@@ -51,7 +51,7 @@ namespace Michael.Scripts.Controller
             if (GameManager.Instance.FlowersAlive.Count > 1)
             {
                 isBoosted = false;
-                moveSpeed = 350;
+                moveSpeed = 525;
             }
         }
 
