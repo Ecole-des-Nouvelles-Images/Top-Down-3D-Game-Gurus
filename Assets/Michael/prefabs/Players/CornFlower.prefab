@@ -4980,7 +4980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7882302814563030389
 Transform:
   m_ObjectHideFlags: 0
@@ -4993,8 +4993,7 @@ Transform:
   m_LocalPosition: {x: 0.297, y: 1.606, z: 0.096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8934890122036423163}
+  m_Children: []
   m_Father: {fileID: 7508994412150652216}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &3899621103373692757
@@ -5014,7 +5013,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -9908,6 +9907,7 @@ Transform:
   - {fileID: 2084212534044852485}
   - {fileID: 2916193135551231819}
   - {fileID: 7882302814563030389}
+  - {fileID: 8934890122036423163}
   - {fileID: 3218944856436548515}
   - {fileID: 2078835306932400860}
   - {fileID: 6260707113121904181}
@@ -10127,7 +10127,9 @@ MonoBehaviour:
   deadFlowerController: {fileID: 0}
   IsPlanted: 0
   isInvincible: 0
-  IsStun: 0
+  isUnhittable: 0
+  isUnstoppable: 0
+  IsStunned: 0
   isDead: 0
   isCharging: 0
   reanimateTimer: 0
@@ -10138,12 +10140,14 @@ MonoBehaviour:
   magnetudeToStun: 22
   stunDuration: 3
   stunTimer: 0
+  explosionParticleSystem: {fileID: 8934890122036423162}
   stunParticleSystem: {fileID: 3899621103373692757}
   plantingCooldown: 0.7
   reviveChargingIcon: {fileID: 7796551598710952594}
   deadArrowUI: {fileID: 9085642197590175763}
   ReviveVFX: {fileID: 4141914982640121168}
-  dirt: {fileID: 0}
+  dirt: {fileID: 4129921455319913798, guid: 2354a717495c77a49b59c84f86f82834, type: 3}
+  fireWorksParticules: {fileID: 0}
   _Shield: {fileID: 3107840225132026865}
 --- !u!54 &5720423377354123817
 Rigidbody:
@@ -10417,32 +10421,32 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7882302814563030389}
+    m_TransformParent: {fileID: 7508994412150652216}
     m_Modifications:
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.293
+      value: 0.0039999783
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.096000195
+      value: 0.5329995
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.0730003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
@@ -10474,11 +10478,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CFXR Electrified 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
+--- !u!198 &8934890122036423162 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9027514048236820043, guid: effb650189dc5714e9e9801b1cfb3991,
+    type: 3}
+  m_PrefabInstance: {fileID: 483915994161594289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8934890122036423163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,

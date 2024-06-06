@@ -7,6 +7,8 @@ namespace Noah.Scripts
     {
         [SerializeField] private GameObject spawnTrap;
         [SerializeField] private float respawnDelay = 5f;
+
+        private GameObject _currentTrap;
         
         protected override void PassiveCapacity()
         {
@@ -22,14 +24,15 @@ namespace Noah.Scripts
 
         protected override void MainCapacity()
         {
-            if (spawnTrap != null)
+            if (_currentTrap != null)
             {
                 Instantiate(spawnTrap, transform.position, transform.rotation);
+                _currentTrap = spawnTrap;
             }
 
             else
             {
-                spawnTrap.transform.position = transform.position;
+                _currentTrap.transform.position = transform.position;
             }
         }
         
@@ -46,8 +49,8 @@ namespace Noah.Scripts
         IEnumerator RespawnWaiter()
         {
             yield return new WaitForSeconds(respawnDelay);
-            transform.position = spawnTrap.transform.position;
-            GetRevive();
+            transform.position = _currentTrap.transform.position;
+            Invoke(nameof(GetRevive), 0.05f);
         }
     }
 }

@@ -232,6 +232,7 @@ Transform:
   - {fileID: 7745856747093342681}
   - {fileID: 8921718082076664170}
   - {fileID: 2308016527189388547}
+  - {fileID: 5631468935155611441}
   - {fileID: 7247858085099417022}
   - {fileID: 5893337261442892110}
   - {fileID: 6886256569122531826}
@@ -510,6 +511,8 @@ MonoBehaviour:
   deadFlowerController: {fileID: 0}
   IsPlanted: 0
   isInvincible: 0
+  isUnhittable: 0
+  isUnstoppable: 0
   IsStunned: 0
   isDead: 0
   isCharging: 0
@@ -521,12 +524,13 @@ MonoBehaviour:
   magnetudeToStun: 22
   stunDuration: 3
   stunTimer: 0
+  explosionParticleSystem: {fileID: 5631468935155611440}
   stunParticleSystem: {fileID: 5475125918833813288}
   plantingCooldown: 0.7
   reviveChargingIcon: {fileID: 2567696662101007374}
   deadArrowUI: {fileID: 6079696928965194883}
   ReviveVFX: {fileID: 4699251738087270962}
-  dirt: {fileID: 5074769399028340053}
+  dirt: {fileID: 4129921455319913798, guid: 2354a717495c77a49b59c84f86f82834, type: 3}
   fireWorksParticules: {fileID: 6886256569122531829}
   spawnTrap: {fileID: 7102651170530908386, guid: e94bd4fea0828344a8b729c83c748971,
     type: 3}
@@ -5990,7 +5994,7 @@ PrefabInstance:
     - target: {fileID: 1973231722175989698, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2246523798804582043, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
@@ -6015,7 +6019,7 @@ PrefabInstance:
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8708234834640191167, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
         type: 3}
@@ -6219,11 +6223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1379768070476412052, guid: 4af3dd75dbd26f542beaa4cf39fb578e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5631468935155611441}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4af3dd75dbd26f542beaa4cf39fb578e, type: 3}
 --- !u!4 &2308016527189388547 stripped
@@ -6244,32 +6244,32 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2308016527189388547}
+    m_TransformParent: {fileID: 9190117567362446147}
     m_Modifications:
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.293
+      value: -0.003000021
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.096000195
+      value: 0.5269996
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.0730003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
@@ -6296,16 +6296,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9027514048236820043, guid: effb650189dc5714e9e9801b1cfb3991,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991,
         type: 3}
       propertyPath: m_Name
       value: CFXR Electrified 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
+--- !u!198 &5631468935155611440 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9027514048236820043, guid: effb650189dc5714e9e9801b1cfb3991,
+    type: 3}
+  m_PrefabInstance: {fileID: 3706131654437888379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5631468935155611441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9027514048236820042, guid: effb650189dc5714e9e9801b1cfb3991,

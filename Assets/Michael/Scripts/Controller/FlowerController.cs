@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using Michael.Scripts.Manager;
+using Michael.Scripts.Ui;
 using Unity.Mathematics;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace Michael.Scripts.Controller
         public bool IsPlanted = false;
         public bool isInvincible = false;
         public bool isUnhittable = false;
+        public bool isUnstoppable = false;
+
         public bool IsStunned;
         public bool isDead;
         public static bool FlowersWin;
@@ -36,6 +39,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private float magnetudeToStun = 22f;
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;
+        [SerializeField] private ParticleSystem explosionParticleSystem;
         [SerializeField] private ParticleSystem stunParticleSystem;
         [SerializeField] private float plantingCooldown = 0.7f;
         private float currentPlantingCooldown = 0f;
@@ -123,6 +127,7 @@ namespace Michael.Scripts.Controller
                 if (stunTimer >= stunDuration)
                 {
                     stunParticleSystem.gameObject.SetActive(false);
+                    stunParticleSystem.Clear();
                     IsStunned = false;
                     stunTimer = 0;
                     _animator.SetBool("IsDizzy",false);
@@ -138,7 +143,7 @@ namespace Michael.Scripts.Controller
         
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.performed && !IsStunned)
+            if (context.performed && !IsStunned && !PauseControlller.IsPaused)
             {
                 MainCapacity();
             }
@@ -147,7 +152,7 @@ namespace Michael.Scripts.Controller
         
         public override void OnSecondaryCapacity(InputAction.CallbackContext context)
         {
-            if (context.started)
+            if (context.started  && !IsStunned && !PauseControlller.IsPaused)
             {
                 if (!IsStunned && currentPlantingCooldown <= 0)
                 {
@@ -185,7 +190,7 @@ namespace Michael.Scripts.Controller
         
         public override void OnThirdCapacity(InputAction.CallbackContext context) {// REANIMATION
 
-            if (canReanimate && sun == maxSun && !IsStunned)
+            if (canReanimate && sun == maxSun && !IsStunned && !PauseControlller.IsPaused )
             {
                 if (context.started) {
                     isCharging = true;
@@ -284,15 +289,18 @@ namespace Michael.Scripts.Controller
         [ContextMenu("GetStunned")]
         private void GetStunned() {
             
-            if (!isInvincible && !isUnhittable)
+            explosionParticleSystem.Play();
+
+            if (!isInvincible && !isUnstoppable && !isUnhittable)
             {
-                GetUnplanted();
                 stunParticleSystem.gameObject.SetActive(true);
+                stunParticleSystem.Play();
+                GetUnplanted();
                 _animator.SetBool("IsDizzy", true);
                 IsStunned = true; 
             }
-            
         }
+        
         
         [ContextMenu("TakeHit")]
         private void TakeHit() {
@@ -312,7 +320,8 @@ namespace Michael.Scripts.Controller
         
         [ContextMenu("GetRevive")]
         public void GetRevive() {
-            
+            if (!isDead) return; 
+
             aliveModelCollider.enabled = true;
             GetComponent<PlayerInput>().enabled = true;
             isDead = false;
@@ -320,8 +329,8 @@ namespace Michael.Scripts.Controller
             deadModel.SetActive(false);
             GameManager.Instance.FlowersAlive.Add(this.gameObject);
             ReviveVFX.Play();
-            
         }
+
 
      
 

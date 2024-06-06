@@ -20,7 +20,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 1024
+        m_Bits: 128
       PassNames: []
     overrideMaterial: {fileID: -876546973899608171, guid: efb7683b3bcb8f244854c7547a3eb10d,
       type: 3}
@@ -63,7 +63,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 2112
+        m_Bits: 64
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 5943
+    m_Bits: 7991
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -206,7 +206,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 4096
+        m_Bits: 512
       PassNames: []
     overrideMaterial: {fileID: 2100000, guid: e6e53a5ff8ed1844b91ad358187327d5, type: 2}
     overrideMaterialPassIndex: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 1536
+        m_Bits: 128
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0

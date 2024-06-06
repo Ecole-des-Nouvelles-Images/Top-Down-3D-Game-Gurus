@@ -84,7 +84,7 @@ namespace Michael.Scripts.Controller
         }
         public void OnBooster(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !PauseControlller.IsPaused)
             {
                 Debug.Log("turbo");
                 moveSpeed *= boosterMultiplier;
@@ -98,7 +98,7 @@ namespace Michael.Scripts.Controller
 
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if ( !PauseControlller.IsPaused)
+            if (!PauseControlller.IsPaused)
             {
                 if (context.started)
                 {
