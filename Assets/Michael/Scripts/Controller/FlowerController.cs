@@ -30,7 +30,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
-        [SerializeField] private GameObject deadModel;
+        [SerializeField] protected GameObject deadModel;
         [SerializeField] protected GameObject aliveModel;
         [SerializeField] protected Collider aliveModelCollider;
         [SerializeField] private float magnetudeToStun = 22f;
@@ -247,7 +247,6 @@ namespace Michael.Scripts.Controller
             if (other.CompareTag("Shield"))
             {
                 isInvincible = true; 
-                Debug.Log("true");
             }
         }
 
