@@ -44,7 +44,7 @@ namespace Michael.Scripts.Controller
 
         protected override void PassiveCapacity()
         {
-            if (!isBoosted && GameManager.Instance.FlowersAlive.Count == 1) {
+            if (!isBoosted && GameManager.Instance.FlowersAlive.Count == 1 && !GameManager.Instance.GameFinished && !isDead) {
                 Debug.Log("boost vitesse dernier en vie");
                 MeshTrail.InvokePassive();
                 moveSpeed += 150;
