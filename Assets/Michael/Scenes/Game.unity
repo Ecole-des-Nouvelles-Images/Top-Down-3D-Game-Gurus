@@ -6852,7 +6852,7 @@ PrefabInstance:
     - target: {fileID: 3555467346372697277, guid: df501fe65bab708489a2acc612d1e8e1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7016199809970214119, guid: df501fe65bab708489a2acc612d1e8e1,
         type: 3}
@@ -6904,6 +6904,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8758197304849553120, guid: df501fe65bab708489a2acc612d1e8e1,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2540817853737639666, guid: f643d8b6c5f6d3b4aafceb1deb201bc4,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26121,12 +26127,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2e71a28353a0d346806758d5c7d7b83, type: 3}
   - {fileID: 21300000, guid: c716dbfa8ca1740469871151e0e8667b, type: 3}
   CapacityIcons:
-  - {fileID: 21300000, guid: a956f070ace59bc4a98dc284165f3907, type: 3}
-  - {fileID: 21300000, guid: d6de92cd1a97ca44b89f7b126c68a240, type: 3}
-  - {fileID: 21300000, guid: 99c2b8db9b1bdf143a47a3d88ddeee33, type: 3}
-  - {fileID: 21300000, guid: 5dd6284cb486c2946909d6d324c7a6bb, type: 3}
-  - {fileID: 21300000, guid: 8af3010ed51c6cf4a84c3c4fb5bd5763, type: 3}
-  - {fileID: 21300000, guid: f723109c4fa1dd44ab5b1c29aeb6cbd8, type: 3}
+  - {fileID: 21300000, guid: 0b2e870020322f84581538d5191398f5, type: 3}
+  - {fileID: 21300000, guid: b2f4d6ae14966ae48961838b34b644f3, type: 3}
+  - {fileID: 21300000, guid: a12598d1abd354a45b4699d1cb34d9c0, type: 3}
+  - {fileID: 21300000, guid: a333fed179c3dc743b1a38e4a7009a34, type: 3}
+  - {fileID: 21300000, guid: a0091f5408b0ca242919a02a9bb809bb, type: 3}
+  - {fileID: 21300000, guid: 0c1a9fea1bfba2e4995312147da5ea96, type: 3}
   sunImage:
   - {fileID: 250898385}
   - {fileID: 1614221945}
@@ -43092,7 +43098,7 @@ PrefabInstance:
     - target: {fileID: 133444985067933698, guid: 88fe3c2ad8e686f4fa87030039b556cd,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3910724343505021256, guid: 88fe3c2ad8e686f4fa87030039b556cd,
         type: 3}
@@ -43102,7 +43108,7 @@ PrefabInstance:
     - target: {fileID: 3910724343505021256, guid: 88fe3c2ad8e686f4fa87030039b556cd,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7064885841437509904, guid: 88fe3c2ad8e686f4fa87030039b556cd,
         type: 3}
@@ -57997,7 +58003,7 @@ MonoBehaviour:
   - {fileID: 4976423367448515421, guid: 089cf703b34b5424f840a4a0f049662f, type: 3}
   - {fileID: 3910724343505021256, guid: 88fe3c2ad8e686f4fa87030039b556cd, type: 3}
   - {fileID: 3772682401075968194, guid: 6ae9d67bf030cf14e9c83ed34e284d2d, type: 3}
-  - {fileID: 9194427384793942815, guid: 6847c14b199fa2b4e8bdb852b4b719d2, type: 3}
+  - {fileID: 4327226272648347782, guid: cb8c6b99adfe3644498b5274d3805a72, type: 3}
   - {fileID: 3555467346372697277, guid: df501fe65bab708489a2acc612d1e8e1, type: 3}
   spawnPoints:
   - {fileID: 1455872826}
@@ -60591,12 +60597,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2e71a28353a0d346806758d5c7d7b83, type: 3}
   - {fileID: 21300000, guid: c716dbfa8ca1740469871151e0e8667b, type: 3}
   CapacityIcons:
-  - {fileID: 21300000, guid: a956f070ace59bc4a98dc284165f3907, type: 3}
-  - {fileID: 21300000, guid: d6de92cd1a97ca44b89f7b126c68a240, type: 3}
-  - {fileID: 21300000, guid: 99c2b8db9b1bdf143a47a3d88ddeee33, type: 3}
-  - {fileID: 21300000, guid: 5dd6284cb486c2946909d6d324c7a6bb, type: 3}
-  - {fileID: 21300000, guid: 8af3010ed51c6cf4a84c3c4fb5bd5763, type: 3}
-  - {fileID: 21300000, guid: f723109c4fa1dd44ab5b1c29aeb6cbd8, type: 3}
+  - {fileID: 21300000, guid: 0b2e870020322f84581538d5191398f5, type: 3}
+  - {fileID: 21300000, guid: b2f4d6ae14966ae48961838b34b644f3, type: 3}
+  - {fileID: 21300000, guid: a12598d1abd354a45b4699d1cb34d9c0, type: 3}
+  - {fileID: 21300000, guid: a333fed179c3dc743b1a38e4a7009a34, type: 3}
+  - {fileID: 21300000, guid: a0091f5408b0ca242919a02a9bb809bb, type: 3}
+  - {fileID: 21300000, guid: 0c1a9fea1bfba2e4995312147da5ea96, type: 3}
   sunImage:
   - {fileID: 892397231}
   - {fileID: 41423026}
@@ -121275,12 +121281,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2e71a28353a0d346806758d5c7d7b83, type: 3}
   - {fileID: 21300000, guid: c716dbfa8ca1740469871151e0e8667b, type: 3}
   CapacityIcons:
-  - {fileID: 21300000, guid: a956f070ace59bc4a98dc284165f3907, type: 3}
-  - {fileID: 21300000, guid: d6de92cd1a97ca44b89f7b126c68a240, type: 3}
-  - {fileID: 21300000, guid: 99c2b8db9b1bdf143a47a3d88ddeee33, type: 3}
-  - {fileID: 21300000, guid: 5dd6284cb486c2946909d6d324c7a6bb, type: 3}
-  - {fileID: 21300000, guid: 8af3010ed51c6cf4a84c3c4fb5bd5763, type: 3}
-  - {fileID: 21300000, guid: f723109c4fa1dd44ab5b1c29aeb6cbd8, type: 3}
+  - {fileID: 21300000, guid: 0b2e870020322f84581538d5191398f5, type: 3}
+  - {fileID: 21300000, guid: b2f4d6ae14966ae48961838b34b644f3, type: 3}
+  - {fileID: 21300000, guid: a12598d1abd354a45b4699d1cb34d9c0, type: 3}
+  - {fileID: 21300000, guid: a333fed179c3dc743b1a38e4a7009a34, type: 3}
+  - {fileID: 21300000, guid: a0091f5408b0ca242919a02a9bb809bb, type: 3}
+  - {fileID: 21300000, guid: 0c1a9fea1bfba2e4995312147da5ea96, type: 3}
   sunImage:
   - {fileID: 6248833357120075272}
   - {fileID: 2402347690974124529}
