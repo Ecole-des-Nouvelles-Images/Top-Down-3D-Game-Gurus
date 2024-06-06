@@ -23,6 +23,7 @@ namespace Michael.Scripts.Controller
         public FlowerController deadFlowerController;
         public bool IsPlanted = false;
         public bool isInvincible = false;
+        public bool isUnhittable = false;
         public bool IsStunned;
         public bool isDead;
         public static bool FlowersWin;
@@ -284,7 +285,7 @@ namespace Michael.Scripts.Controller
         [ContextMenu("GetStunned")]
         private void GetStunned() {
             
-            if (!isInvincible)
+            if (!isInvincible && !isUnhittable)
             {
                 GetUnplanted();
                 stunParticleSystem.gameObject.SetActive(true);
@@ -296,7 +297,7 @@ namespace Michael.Scripts.Controller
         
         [ContextMenu("TakeHit")]
         private void TakeHit() {
-            if (!isInvincible) {
+            if (!isInvincible && !isUnhittable) {
                 aliveModelCollider.enabled = false;
                 aliveModel.SetActive(false);
                 deadModel.SetActive(true);
