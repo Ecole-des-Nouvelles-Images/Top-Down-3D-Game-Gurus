@@ -15,6 +15,7 @@ TagManager:
   - FxTemporaire
   - Fake
   - Wall
+  - Shield
   layers:
   - Default
   - TransparentFX

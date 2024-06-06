@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Michael.Scripts.Controller;
-using Michael.Scripts.Manager;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Michael.Scripts.Ui

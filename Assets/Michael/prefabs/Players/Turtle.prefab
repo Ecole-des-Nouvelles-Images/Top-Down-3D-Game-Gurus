@@ -10474,7 +10474,7 @@ Transform:
   m_GameObject: {fileID: 1168902694845961782}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000000038959}
+  m_LocalPosition: {x: 0, y: 0.047, z: -0.000000038959}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -25977,6 +25977,27 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c6cee065-2dcb-4c5c-bc03-efb6a502f11b
     m_ActionName: Character/Booster[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows1/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2817803585925714333}
+        m_TargetAssemblyTypeName: Michael.Scripts.Controller.CharacterController,
+          Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 48f46006-6b8a-40f7-9701-52f8ca7720e4
+    m_ActionName: Character/Pause[/XInputControllerWindows/start,/XInputControllerWindows1/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3e007b0e-bd27-40ae-acdd-2a246a51bcb5
+    m_ActionName: UI/StartGame[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: QTE
@@ -26045,6 +26066,7 @@ MonoBehaviour:
   moveSpeed: 400
   _animator: {fileID: 4159274208551880169}
   idleTreshold: 0.1
+  Rb: {fileID: 0}
   boosterMultiplier: 1.2
   _attackCollider: {fileID: 4408583465232902560}
   dashMaterial: {fileID: 2100000, guid: cec535088cc7fc54fb6a157fe45ca828, type: 2}
@@ -26061,11 +26083,12 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0, a: 0}
   chargingParticules: {fileID: 1110142503304172048}
   chargingSmokeParticules: {fileID: 4786662540256690413}
+  destructionMode: 0
   scanTime: 0
   scanRange: 12
   scanDuration: 3
   scanSphereArea: {fileID: 8721222829056409284}
-  TrapPrefab: {fileID: 8109188231840348700, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+  TrapPrefab: {fileID: 6696123197788748044, guid: 1ba76a8d896c91e47aa29cc35ee22ab2,
     type: 3}
   TrapSpawn: {fileID: 5385597024245364116}
 --- !u!114 &6791591643116250088
@@ -31118,7 +31141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1601028925336999455
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43168,7 +43191,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a995404b7fb442a42acbc79bac9f5d79, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -43191,6 +43214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _crashParticules: {fileID: 0}
   _dirtParticules: {fileID: 0}
+  _runParticules: {fileID: 0}
 --- !u!1 &7320261519637047387
 GameObject:
   m_ObjectHideFlags: 0

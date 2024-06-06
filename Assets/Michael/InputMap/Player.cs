@@ -82,6 +82,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""48f46006-6b8a-40f7-9701-52f8ca7720e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,6 +225,17 @@ namespace UnityEngine.InputSystem
                     ""action"": ""Booster"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b983cdd2-f4ce-498d-a935-c5bcf08e5e2a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -309,6 +329,15 @@ namespace UnityEngine.InputSystem
                     ""type"": ""PassThrough"",
                     ""id"": ""9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StartGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e007b0e-bd27-40ae-acdd-2a246a51bcb5"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -732,6 +761,17 @@ namespace UnityEngine.InputSystem
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad68115a-5832-489b-8a2f-93a0ac1d82cb"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -935,6 +975,7 @@ namespace UnityEngine.InputSystem
             m_Character_SecondaryCapacity = m_Character.FindAction("Secondary Capacity", throwIfNotFound: true);
             m_Character_ThirdCapacity = m_Character.FindAction("ThirdCapacity", throwIfNotFound: true);
             m_Character_FourthCapacity = m_Character.FindAction("FourthCapacity", throwIfNotFound: true);
+            m_Character_Pause = m_Character.FindAction("Pause", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -947,6 +988,7 @@ namespace UnityEngine.InputSystem
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+            m_UI_StartGame = m_UI.FindAction("StartGame", throwIfNotFound: true);
             // QTE
             m_QTE = asset.FindActionMap("QTE", throwIfNotFound: true);
             m_QTE_UpArrow = m_QTE.FindAction("UpArrow", throwIfNotFound: true);
@@ -1022,6 +1064,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Character_SecondaryCapacity;
         private readonly InputAction m_Character_ThirdCapacity;
         private readonly InputAction m_Character_FourthCapacity;
+        private readonly InputAction m_Character_Pause;
         public struct CharacterActions
         {
             private @Player m_Wrapper;
@@ -1032,6 +1075,7 @@ namespace UnityEngine.InputSystem
             public InputAction @SecondaryCapacity => m_Wrapper.m_Character_SecondaryCapacity;
             public InputAction @ThirdCapacity => m_Wrapper.m_Character_ThirdCapacity;
             public InputAction @FourthCapacity => m_Wrapper.m_Character_FourthCapacity;
+            public InputAction @Pause => m_Wrapper.m_Character_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Character; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1059,6 +1103,9 @@ namespace UnityEngine.InputSystem
                 @FourthCapacity.started += instance.OnFourthCapacity;
                 @FourthCapacity.performed += instance.OnFourthCapacity;
                 @FourthCapacity.canceled += instance.OnFourthCapacity;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
 
             private void UnregisterCallbacks(ICharacterActions instance)
@@ -1081,6 +1128,9 @@ namespace UnityEngine.InputSystem
                 @FourthCapacity.started -= instance.OnFourthCapacity;
                 @FourthCapacity.performed -= instance.OnFourthCapacity;
                 @FourthCapacity.canceled -= instance.OnFourthCapacity;
+                @Pause.started -= instance.OnPause;
+                @Pause.performed -= instance.OnPause;
+                @Pause.canceled -= instance.OnPause;
             }
 
             public void RemoveCallbacks(ICharacterActions instance)
@@ -1112,6 +1162,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_UI_RightClick;
         private readonly InputAction m_UI_TrackedDevicePosition;
         private readonly InputAction m_UI_TrackedDeviceOrientation;
+        private readonly InputAction m_UI_StartGame;
         public struct UIActions
         {
             private @Player m_Wrapper;
@@ -1126,6 +1177,7 @@ namespace UnityEngine.InputSystem
             public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
             public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+            public InputAction @StartGame => m_Wrapper.m_UI_StartGame;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1165,6 +1217,9 @@ namespace UnityEngine.InputSystem
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @StartGame.started += instance.OnStartGame;
+                @StartGame.performed += instance.OnStartGame;
+                @StartGame.canceled += instance.OnStartGame;
             }
 
             private void UnregisterCallbacks(IUIActions instance)
@@ -1199,6 +1254,9 @@ namespace UnityEngine.InputSystem
                 @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+                @StartGame.started -= instance.OnStartGame;
+                @StartGame.performed -= instance.OnStartGame;
+                @StartGame.canceled -= instance.OnStartGame;
             }
 
             public void RemoveCallbacks(IUIActions instance)
@@ -1355,6 +1413,7 @@ namespace UnityEngine.InputSystem
             void OnSecondaryCapacity(InputAction.CallbackContext context);
             void OnThirdCapacity(InputAction.CallbackContext context);
             void OnFourthCapacity(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
@@ -1368,6 +1427,7 @@ namespace UnityEngine.InputSystem
             void OnRightClick(InputAction.CallbackContext context);
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+            void OnStartGame(InputAction.CallbackContext context);
         }
         public interface IQTEActions
         {

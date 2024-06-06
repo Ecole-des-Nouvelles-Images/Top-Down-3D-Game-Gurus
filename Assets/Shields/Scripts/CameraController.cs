@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Michael.Scripts.Manager;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour

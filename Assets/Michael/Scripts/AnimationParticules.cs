@@ -35,9 +35,11 @@ public class AnimationParticules : MonoBehaviour
         }
     }
     
-    public void StopAnimation() {
-        _animator.SetBool("Attack",false);
+    
+    public void DestroyDirt() {
+       Destroy(gameObject);
     }
+    
     
     
     

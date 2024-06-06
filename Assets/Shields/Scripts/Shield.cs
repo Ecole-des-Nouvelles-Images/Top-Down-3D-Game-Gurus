@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using Michael.Scripts.Manager;
+using Noah.Scripts;
 using UnityEngine;
 
 namespace Shields.Scripts
@@ -6,20 +9,25 @@ namespace Shields.Scripts
     public class Shield : MonoBehaviour
     {
         Renderer _renderer;
+        private FlowerController _holderFlowerController;
+        private Collider _collider;
         [SerializeField] AnimationCurve _DisplacementCurve;
         [SerializeField] float _DisplacementMagnitude;
         [SerializeField] float _LerpSpeed;
         [SerializeField] float _DisolveSpeed;
         [SerializeField] private float _autoCloseDelay = 2f;
-        bool _shieldOn;
+        public bool _shieldOn;
         bool _isAnimating;
         Coroutine _disolveCoroutine;
 
         void Start()
         {
+            _holderFlowerController = GetComponentInParent<FlowerController>();
             _renderer = GetComponent<Renderer>();
+            _collider = GetComponent<Collider>();
             _renderer.material.SetFloat("_Disolve", 1);
             _isAnimating = false;
+            _collider.enabled = false;
         }
 
         void Update()
@@ -37,6 +45,7 @@ namespace Shields.Scripts
             {
                 OpenShield();
             }
+            
         }
 
         public void HitShield(Vector3 hitPos)
@@ -50,6 +59,8 @@ namespace Shields.Scripts
         {
             if (!_isAnimating && !_shieldOn)
             {
+                _holderFlowerController.isInvincible = true;
+                _collider.enabled = true;
                 _shieldOn = true;
                 _isAnimating = true; 
                 if (_disolveCoroutine != null)
@@ -96,13 +107,21 @@ namespace Shields.Scripts
 
         private void CloseShield()
         {
+            _collider.enabled = false;
             _shieldOn = false;
-            _isAnimating = true; 
+            _isAnimating = true;
             if (_disolveCoroutine != null)
             {
                 StopCoroutine(_disolveCoroutine);
             }
             _disolveCoroutine = StartCoroutine(Coroutine_DisolveAndAutoClose(1)); 
+            
+            FlowerController[] allFlowers = FindObjectsOfType<FlowerController>();
+            foreach (FlowerController flower in allFlowers)
+            {
+                flower.isInvincible = false;
+            }
         }
+        
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Michael.Scripts.Controller;
+using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -12,7 +13,7 @@ namespace Michael.Scripts.Controller
        [SerializeField] private float _invincibilityTimer;
        [SerializeField] private float invincibilityDuration = 5f;
        [SerializeField] private ParticleSystem pollenVfx;
-       private bool isBoosted;
+       [SerializeField] private bool isBoosted;
        
         
       protected override void Start()
@@ -28,26 +29,27 @@ namespace Michael.Scripts.Controller
                 isInvincible = false;
                 _invincibilityTimer = 0;
             }
-            
-            if (isInvincible && !isBoosted && !isDead) {
-                
-                pollenVfx.Play();
-               // aliveModel.SetActive(false);
-                
-                _invincibilityTimer += Time.deltaTime;
-                moveSpeed += 20;
-                isBoosted = true;
 
-            }
-            else {
+            if (isInvincible)
+            {
+                _invincibilityTimer += Time.deltaTime;
+                if (!isBoosted && !isDead) {
                 
+                    _animator.SetBool("IsInvincible",true);
+                    pollenVfx.Play();
+                    moveSpeed += 40;
+                    isBoosted = true;
+                }
+                
+            }
+            else
+            {
+                _animator.SetBool("IsInvincible",false);
                 pollenVfx.Stop();
-             //   aliveModel.SetActive(true);
                 isBoosted = false;
-                moveSpeed = 525;
+                moveSpeed = 525;  
             }
            
-            
             
         }
         protected override void PassiveCapacity()

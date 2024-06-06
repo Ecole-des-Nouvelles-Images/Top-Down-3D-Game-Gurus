@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46c7d667e5a1d604c9d4df13c6853837,
         type: 3}
       propertyPath: m_Name
-      value: dirt_Model
+      value: dirt
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 46c7d667e5a1d604c9d4df13c6853837,
         type: 3}
@@ -81,6 +81,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8506262870774506199}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46c7d667e5a1d604c9d4df13c6853837,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5571201911315848287}
   m_SourcePrefab: {fileID: 100100000, guid: 46c7d667e5a1d604c9d4df13c6853837, type: 3}
 --- !u!1 &4129921455319913798 stripped
 GameObject:
@@ -109,3 +113,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5571201911315848287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4129921455319913798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb55cf53aabbd484099639a63af4d4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crashParticules: {fileID: 0}
+  _dirtParticules: {fileID: 0}
+  _runParticules: {fileID: 0}

@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using Michael.Scripts.Manager;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -37,7 +38,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private Image reviveChargingIcon;
         [SerializeField] private GameObject deadArrowUI;
         [SerializeField] private VisualEffect ReviveVFX;
-        
+        [SerializeField] private GameObject dirt;
         protected virtual void Start() {
             StartAnimation();
         }
@@ -84,20 +85,18 @@ namespace Michael.Scripts.Controller
                 if (isCharging) {
                     deadFlowerController.reviveChargingIcon.fillAmount = 0;
                     reanimateTimer += Time.deltaTime;
-                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount, value =>
-                            deadFlowerController.reviveChargingIcon.fillAmount = value, reanimateTimer / reanimateDuration, reanimateDuration)
-                        .OnComplete(() => {
-                            
+                   deadFlowerController.reviveChargingIcon.fillAmount = reanimateTimer / reanimateDuration;
+                      
                             if (reanimateTimer >= reanimateDuration + 0.1f) {
                                 ThirdCapacity();
                                 isCharging = false;
                                 reanimateTimer = 0;
                             }
-                        });
+                    
                 }
                 else {
-                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
-                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, reanimateDuration);
+                    /*DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
+                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, reanimateDuration);*/
                 }
 
             }
@@ -154,6 +153,7 @@ namespace Michael.Scripts.Controller
         {
             if (IsPlanted)
             {
+                Instantiate(dirt,transform.localPosition, quaternion.identity);
                 IsPlanted = false;
                 Rb.isKinematic = false;
                 _animator.SetBool("isPlanted", IsPlanted);
@@ -194,10 +194,14 @@ namespace Michael.Scripts.Controller
                 TakeHit();
             }
             if (other.CompareTag("TurtleTrap")) {
-                
-                GameManager.Instance.TurtleTrap.Remove(other.gameObject);
-                Destroy(other.gameObject);
-                GetStunned();
+
+                if (!isDead)
+                {
+                    GameManager.Instance.TurtleTrap.Remove(other.gameObject);
+                    Destroy(other.gameObject);
+                    GetStunned();
+                }
+               
             }
 
             if (other.CompareTag("Seed"))
@@ -228,9 +232,12 @@ namespace Michael.Scripts.Controller
                 canReanimate = false;
                 isCharging = false;
                 reanimateTimer = 0;
-                deadFlowerController.reviveChargingIcon.gameObject.SetActive(false);
-                deadFlowerController.deadArrowUI.SetActive(true);
-                deadFlowerController = null;
+                if (deadFlowerController) {
+                    deadFlowerController.reviveChargingIcon.gameObject.SetActive(false);
+                    deadFlowerController.deadArrowUI.SetActive(true);
+                    deadFlowerController = null;
+                }
+             
             }
         }
 

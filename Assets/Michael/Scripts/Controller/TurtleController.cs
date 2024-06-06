@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Michael.Scripts.Manager;
+using Michael.Scripts.Ui;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 namespace Michael.Scripts.Controller
 {
@@ -29,7 +31,8 @@ namespace Michael.Scripts.Controller
         private bool _isCharging;
         private bool _isDashing;
         private Vector3 _lastDashDirection;
-        private float _normalSpeed;
+        private float _normalSpeed; 
+        public bool destructionMode;
         
         [Header("Scanning")]
         [SerializeField] private float scanTime, scanRange, scanDuration;
@@ -95,14 +98,17 @@ namespace Michael.Scripts.Controller
 
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.started )
+            if ( !PauseControlller.IsPaused)
             {
-                StartCharging();
-            }
-            else if (context.canceled)
-            { 
-                StopCharging();
-                MainCapacity();
+                if (context.started)
+                {
+                    StartCharging();
+                }
+                else if (context.canceled)
+                { 
+                    StopCharging();
+                    MainCapacity();
+                } 
             }
         }
 
@@ -153,7 +159,13 @@ namespace Michael.Scripts.Controller
                     Rb.rotation = Quaternion.LookRotation(dashDirection);
                 }
                 _isDashing = true;
+                Invoke(nameof(DelayDestructionMode), 1);
             }
+        }
+
+        private void DelayDestructionMode()
+        {
+            destructionMode = false;
         }
 
 
@@ -167,6 +179,7 @@ namespace Michael.Scripts.Controller
                 chargingSmokeParticules.SetActive(false);
                 _lastDashDirection = Vector3.zero;
                 chargingParticules.SetActive(false);
+
             }
 
             if (_isCharging)
@@ -202,15 +215,13 @@ namespace Michael.Scripts.Controller
                  
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[2]);
                     dashMaterial.SetColor("_EmissionColor",colorsDashLevel[2]);
+                    destructionMode = true;
+
                 }
                 else {
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[0]);
                     dashMaterial.SetColor("_EmissionColor",colorsDashLevel[0]);
                 }
-                
-                
-                
-                
             }
             
         }
@@ -239,11 +250,7 @@ namespace Michael.Scripts.Controller
                 _animator.SetTrigger("Attack");
                 BatteryManager.Instance.BatteryCost(10);
             }
-         
         }
-        
-
-
         private void EnableAttackCollider()
         {
             _attackCollider.enabled = true;
@@ -303,6 +310,5 @@ namespace Michael.Scripts.Controller
         }
         
         #endregion
-        
     }
 }

@@ -24,6 +24,7 @@ namespace Michael.Scripts.Manager
         
         public void LoadMenuScene(string sceneName)
         {
+            DataManager.Instance.PlayerChoice.Clear();
             CustomSceneManager.Instance.LoadScene(sceneName);
         }
         

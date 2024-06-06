@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using DG.Tweening;
-using Michael.Scripts.Character_Selection;
 using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -25,15 +23,19 @@ namespace Michael.Scripts.Ui
             SetMusicVolume();
             SetSfxVolume();
 
-            if (DataManager.CharacterSelectionScene) {
-                eventSystem.SetActive(false);
-                CharacterSelectionPanel.SetActive(true);
-                DataManager.CharacterSelectionScene = false;
-            }
-            else
+            if (CharacterSelectionPanel)
             {
-                mainMenuPanel.SetActive(true);
+                if (DataManager.CharacterSelectionScene) {
+                    eventSystem.SetActive(false);
+                    CharacterSelectionPanel.SetActive(true);
+                    DataManager.CharacterSelectionScene = false;
+                }
+                else
+                {
+                    mainMenuPanel.SetActive(true);
+                }
             }
+          
         }
         
         
@@ -53,15 +55,16 @@ namespace Michael.Scripts.Ui
         }
 
         
-        public void SelectButton(Button newButton)
+        public void ToggleVibration()
         {
-            // Définir le bouton sélectionné par défaut sur null
-            EventSystem.current.SetSelectedGameObject(null);
-
-            // Sélectionner le nouveau bouton
-            newButton.Select();
+            DataManager.CanVibrate = !DataManager.CanVibrate;
         }
         
+        public void ToggleUIWorldSpace()
+        {
+            DataManager.UiInWorldSpace = !DataManager.UiInWorldSpace;
+        }
+
         
 
         public void SetMusicVolume()

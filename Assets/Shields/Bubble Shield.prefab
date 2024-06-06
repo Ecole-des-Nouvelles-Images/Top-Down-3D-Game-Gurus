@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8713065609354456771}
   m_Layer: 0
   m_Name: Bubble Shield
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,3 +189,4 @@ MonoBehaviour:
   _DisplacementMagnitude: 0.4
   _LerpSpeed: 2
   _DisolveSpeed: 1
+  _autoCloseDelay: 2
