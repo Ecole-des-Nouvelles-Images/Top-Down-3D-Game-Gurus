@@ -1,5 +1,3 @@
-using Shields.Scripts;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Michael.Scripts.Controller
@@ -11,12 +9,19 @@ namespace Michael.Scripts.Controller
 
         protected override void MainCapacity()
         {
-            _Shield.OpenShield();
+            if (sun >= CapacityCost && !IsPlanted)
+            {
+                _Shield.OpenShield();
+                OnLooseSunCapacity(CapacityCost);
+            }
+            
         }
+        
 
         protected override void PassiveCapacity()
         {
             ;
         }
+     
     }
 }

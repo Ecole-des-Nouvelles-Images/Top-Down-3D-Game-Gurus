@@ -1,16 +1,17 @@
 using System;
+using Michael.Scripts.Controller;
 using UnityEngine;
 
-namespace Noah.Scripts
+namespace Michael.Scripts
 {
     public class ShieldDetector : MonoBehaviour
     {
-        private Michael.Scripts.Controller.TurtleController TurtleController;
+        TurtleController TurtleController;
         [SerializeField] public float _shieldCounterForce = 5;
 
         private void Start()
         {
-            TurtleController = GetComponent<Michael.Scripts.Controller.TurtleController>();
+            TurtleController = GetComponent<TurtleController>();
         }
 
         private void OnTriggerEnter(Collider other)

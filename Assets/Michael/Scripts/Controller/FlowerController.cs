@@ -23,7 +23,7 @@ namespace Michael.Scripts.Controller
         public FlowerController deadFlowerController;
         public bool IsPlanted = false;
         public bool isInvincible = false;
-        public bool IsStun;
+        public bool IsStunned;
         public bool isDead;
         public static bool FlowersWin;
         [SerializeField] bool isCharging;
@@ -67,7 +67,7 @@ namespace Michael.Scripts.Controller
 
         protected override void FixedUpdate()
         {
-            if (!IsStun)
+            if (!IsStunned)
             {
                 Move();
             }
@@ -116,13 +116,13 @@ namespace Michael.Scripts.Controller
           
             
 
-            if (IsStun)
+            if (IsStunned)
             {
                 stunTimer += Time.deltaTime;
                 if (stunTimer >= stunDuration)
                 {
                     stunParticleSystem.gameObject.SetActive(false);
-                    IsStun = false;
+                    IsStunned = false;
                     stunTimer = 0;
                     _animator.SetBool("IsDizzy",false);
                 }
@@ -137,7 +137,7 @@ namespace Michael.Scripts.Controller
         
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.performed && !IsStun)
+            if (context.performed && !IsStunned)
             {
                 MainCapacity();
             }
@@ -148,7 +148,7 @@ namespace Michael.Scripts.Controller
         {
             if (context.started)
             {
-                if (!IsStun && currentPlantingCooldown <= 0)
+                if (!IsStunned && currentPlantingCooldown <= 0)
                 {
                     if (!IsPlanted)
                     {
@@ -184,7 +184,7 @@ namespace Michael.Scripts.Controller
         
         public override void OnThirdCapacity(InputAction.CallbackContext context) {// REANIMATION
 
-            if (canReanimate && sun == maxSun && !IsStun)
+            if (canReanimate && sun == maxSun && !IsStunned)
             {
                 if (context.started) {
                     isCharging = true;
@@ -242,6 +242,11 @@ namespace Michael.Scripts.Controller
                 {
                     GetStunned();
                 }
+
+                if (other.CompareTag("Shield"))
+                {
+                    isInvincible = true; 
+                }
             }
         }
 
@@ -256,6 +261,11 @@ namespace Michael.Scripts.Controller
                     deadFlowerController.reviveChargingIcon.gameObject.SetActive(false);
                     deadFlowerController.deadArrowUI.SetActive(true);
                     deadFlowerController = null;
+                }
+                
+                if (other.CompareTag("Shield"))
+                {
+                    isInvincible = false; 
                 }
              
             }
@@ -276,7 +286,16 @@ namespace Michael.Scripts.Controller
             
             stunParticleSystem.gameObject.SetActive(true);
             _animator.SetBool("IsDizzy",true);
-            IsStun = true;
+            IsStunned = true;
+
+            if (!isInvincible)
+            {
+                GetUnplanted();
+                stunParticleSystem.gameObject.SetActive(true);
+                _animator.SetBool("IsDizzy", true);
+                IsStunned = true; 
+            }
+            
         }
         
         [ContextMenu("TakeHit")]

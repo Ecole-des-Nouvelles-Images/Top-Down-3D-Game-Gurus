@@ -78,7 +78,7 @@ namespace Michael.Scripts.Controller
 
         protected override void FixedUpdate()
         {
-            if (!_isgrappling && !IsStun)
+            if (!_isgrappling && !IsStunned)
             {
                 Move();
             }
@@ -90,7 +90,7 @@ namespace Michael.Scripts.Controller
 
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.started && !IsStun)
+            if (context.started && !IsStunned)
             {
                 MainCapacity();
             }
