@@ -31,7 +31,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private float reanimateDuration = 1;
         [SerializeField] private GameObject deadModel;
         [SerializeField] protected GameObject aliveModel;
-        [SerializeField] private Collider aliveModelCollider;
+        [SerializeField] protected Collider aliveModelCollider;
         [SerializeField] private float magnetudeToStun = 22f;
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;
@@ -134,6 +134,14 @@ namespace Michael.Scripts.Controller
             }
 
         }  
+        
+        public override void OnMainCapacity(InputAction.CallbackContext context)
+        {
+            if (context.performed && !IsStun)
+            {
+                MainCapacity();
+            }
+        }
         
         
         public override void OnSecondaryCapacity(InputAction.CallbackContext context)
