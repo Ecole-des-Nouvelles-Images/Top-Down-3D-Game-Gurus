@@ -2294,7 +2294,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -5432,7 +5432,7 @@ Transform:
   m_GameObject: {fileID: 1003838119}
   serializedVersion: 2
   m_LocalRotation: {x: 0.42841145, y: -0, z: -0, w: 0.9035838}
-  m_LocalPosition: {x: -0.026079178, y: 41.37062, z: -26.018888}
+  m_LocalPosition: {x: -0.026079178, y: 41.370815, z: -26.019041}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6448,6 +6448,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: potReverse_Mode_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406380253203057477, guid: 9e350ffe8687392488060a37ffedfaef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8406380253203057477, guid: 9e350ffe8687392488060a37ffedfaef,
         type: 3}
@@ -8300,12 +8305,12 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -8327948163345420313, guid: 166a3b15b968da04d9f7edb022fdc371, type: 3}
+  m_Mesh: {fileID: 4292758321063833231, guid: a89dd19146c9e5d4490251a83802ab78, type: 3}
 --- !u!1 &1541481583
 GameObject:
   m_ObjectHideFlags: 0

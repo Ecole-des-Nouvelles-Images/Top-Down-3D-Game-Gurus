@@ -55,7 +55,7 @@ namespace Michael.Scripts.Controller
         {
             pollenVfx.Play();
             aliveModelCollider.enabled = false;
-            moveSpeed += 20;
+            moveSpeed += 300;
             _isBoosted = true;
             Debug.Log("Boost Activated");
         }
@@ -67,7 +67,6 @@ namespace Michael.Scripts.Controller
             moveSpeed = 525;
             _isBoosted = false;
             ExitObstacle();
-            Debug.Log("Boost Reset");
         }
 
         private void ExitObstacle()
@@ -77,14 +76,12 @@ namespace Michael.Scripts.Controller
                 Vector3 safePosition = FindSafePosition();
                 transform.position = safePosition;
                 _isColliding = false;
-                Debug.Log("Exited Obstacle");
             }
         }
 
         private void OnCollisionEnter(Collision other)
         {
             _isColliding = true;
-            Debug.Log("Collision Detected");
         }
 
         protected override void MainCapacity()
@@ -93,7 +90,6 @@ namespace Michael.Scripts.Controller
             {
                 isInvincible = true;
                 OnLooseSunCapacity(CapacityCost);
-                Debug.Log("Main Capacity Activated");
             }
         }
         
@@ -120,34 +116,6 @@ namespace Michael.Scripts.Controller
             }
 
             return transform.position + Vector3.up * radius;
-        }
-        
-        private void OnDrawGizmosSelected()
-        {
-            Vector3 origin = transform.position;
-            float maxDistance = 10f;
-
-            Vector3[] directions = {
-                Vector3.forward,
-                Vector3.back,
-                Vector3.left,
-                Vector3.right,
-            };
-
-            foreach (var direction in directions)
-            {
-                RaycastHit hit;
-                if (Physics.Raycast(origin, direction, out hit, maxDistance))
-                {
-                    Gizmos.color = Color.green;
-                    Gizmos.DrawLine(origin, hit.point);
-                }
-                else
-                {
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawLine(origin, origin + direction * maxDistance);
-                }
-            }
         }
     }
 }
