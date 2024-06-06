@@ -34,6 +34,12 @@ namespace Michael.Scripts
         {
             InvokeRepeating(nameof(MeshTrail.PassiveMeshActivate), 0.5f, 2f);
         }
+        
+        public void StopPassive()
+        {
+            isTrailActive = false;
+            CancelInvoke(nameof(PassiveMeshActivate));
+        }
 
         private void PassiveMeshActivate()
         {
