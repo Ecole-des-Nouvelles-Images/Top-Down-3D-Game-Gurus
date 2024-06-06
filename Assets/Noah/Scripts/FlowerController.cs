@@ -22,8 +22,8 @@ namespace Noah.Scripts
         [SerializeField] private float reanimateDuration = 1;
         [SerializeField] private GameObject deadModel;
         [SerializeField] private GameObject aliveModel;
-        [SerializeField] private Collider aliveModelCollider;
-        [SerializeField] private bool isDead;
+        protected Collider AliveModelCollider;
+        protected bool isDead;
         [SerializeField] private float magnetudeToStun = 22f;
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;
@@ -116,7 +116,7 @@ namespace Noah.Scripts
             IsPlanted = true;
             Rb.isKinematic = true;
             _animator.SetBool("isPlanted", IsPlanted);
-            aliveModelCollider.enabled = false;
+            AliveModelCollider.enabled = false;
         }
 
         private void GetUnplanted()
@@ -126,7 +126,7 @@ namespace Noah.Scripts
                 IsPlanted = false;
                 Rb.isKinematic = false;
                 _animator.SetBool("isPlanted", IsPlanted);
-                aliveModelCollider.enabled = true;
+                AliveModelCollider.enabled = true;
                 currentPlantingCooldown = plantingCooldown;
             }
         }
@@ -229,7 +229,7 @@ namespace Noah.Scripts
         {
             if (!isInvincible)
             {
-                aliveModelCollider.enabled = false;
+                AliveModelCollider.enabled = false;
                 aliveModel.SetActive(false);
                 deadModel.SetActive(true);
                 GetComponent<PlayerInput>().enabled = false;
@@ -242,7 +242,7 @@ namespace Noah.Scripts
         [ContextMenu("GetRevive")]
         public void GetRevive()
         {
-            aliveModelCollider.enabled = true;
+            AliveModelCollider.enabled = true;
             GetComponent<PlayerInput>().enabled = true;
             isDead = false;
             aliveModel.SetActive(true);
