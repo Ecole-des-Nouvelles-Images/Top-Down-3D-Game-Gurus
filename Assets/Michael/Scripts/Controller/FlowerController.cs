@@ -135,6 +135,14 @@ namespace Michael.Scripts.Controller
 
         }  
         
+        public override void OnMainCapacity(InputAction.CallbackContext context)
+        {
+            if (context.performed && !IsStun)
+            {
+                MainCapacity();
+            }
+        }
+        
         
         public override void OnSecondaryCapacity(InputAction.CallbackContext context)
         {
