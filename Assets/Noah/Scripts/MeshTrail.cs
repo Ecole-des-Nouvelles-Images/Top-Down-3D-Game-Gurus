@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Michael.Scripts
+namespace Noah.Scripts
 {
     public class MeshTrail : MonoBehaviour
     {
@@ -25,23 +25,14 @@ namespace Michael.Scripts
         {
             if (Input.GetKeyDown(KeyCode.Space) && !isTrailActive)
             {
-                isTrailActive = true;
-                StartCoroutine(ActivateTrail(activateTime));
+                StartMeshTrail();
             }
         }
 
-        public void InvokePassive()
+        public void StartMeshTrail()
         {
-            InvokeRepeating(nameof(MeshTrail.PassiveMeshActivate), 0.5f, 2f);
-        }
-
-        private void PassiveMeshActivate()
-        {
-            if (!isTrailActive)
-            {
-                isTrailActive = true;
-                StartCoroutine(ActivateTrail(activateTime));
-            }
+            isTrailActive = true;
+            StartCoroutine(ActivateTrail(activateTime));
         }
 
         IEnumerator ActivateTrail(float timeActive)
@@ -91,4 +82,3 @@ namespace Michael.Scripts
         }
     }
 }
-

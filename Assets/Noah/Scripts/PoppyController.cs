@@ -1,5 +1,4 @@
 using System;
-using Michael.Scripts;
 using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
