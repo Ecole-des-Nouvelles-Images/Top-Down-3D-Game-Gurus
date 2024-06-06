@@ -5322,7 +5322,7 @@ MonoBehaviour:
   deadFlowerController: {fileID: 0}
   IsPlanted: 0
   isInvincible: 0
-  IsStun: 0
+  IsStunned: 0
   isDead: 0
   isCharging: 0
   reanimateTimer: 0
@@ -5338,6 +5338,8 @@ MonoBehaviour:
   reviveChargingIcon: {fileID: 2141135432512811220}
   deadArrowUI: {fileID: 1528622345218665613}
   ReviveVFX: {fileID: 6725650099244391937}
+  dirt: {fileID: 0}
+  fireWorksParticules: {fileID: 0}
 --- !u!136 &5737656819072611389
 CapsuleCollider:
   m_ObjectHideFlags: 0
