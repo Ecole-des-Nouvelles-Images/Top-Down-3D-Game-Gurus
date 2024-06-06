@@ -284,10 +284,6 @@ namespace Michael.Scripts.Controller
         [ContextMenu("GetStunned")]
         private void GetStunned() {
             
-            stunParticleSystem.gameObject.SetActive(true);
-            _animator.SetBool("IsDizzy",true);
-            IsStunned = true;
-
             if (!isInvincible)
             {
                 GetUnplanted();
