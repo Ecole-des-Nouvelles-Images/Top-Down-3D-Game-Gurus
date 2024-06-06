@@ -65,7 +65,7 @@ namespace Michael.Scripts.Controller
         private void GrapplingUpdate()
         {
             if (_grapplingCdTimer > 0)
-                _grapplingCdTimer -= TimeManager.Instance.deltaTime;
+                _grapplingCdTimer -= Time.deltaTime;
 
             if (_isgrappling)
             {
@@ -120,7 +120,7 @@ namespace Michael.Scripts.Controller
         {
             if (!_isgrappling) return;
 
-            _grappleHoldTimer += TimeManager.Instance.deltaTime;
+            _grappleHoldTimer += Time.deltaTime;
 
             if (!_shouldApplyGrappleForce)
             {
@@ -154,7 +154,7 @@ namespace Michael.Scripts.Controller
         private void ApplyGrappleForce()
         {
             Vector3 directionToGrapple = (grapplePoint - transform.position).normalized;
-            Vector3 forceVector = directionToGrapple * grapplingSpeed * TimeManager.Instance.deltaTime;
+            Vector3 forceVector = directionToGrapple * grapplingSpeed * Time.deltaTime;
 
             Rb.AddForce(forceVector, ForceMode.Force);
 

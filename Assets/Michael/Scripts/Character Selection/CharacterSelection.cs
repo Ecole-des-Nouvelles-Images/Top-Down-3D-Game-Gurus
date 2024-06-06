@@ -83,7 +83,7 @@ namespace Michael.Scripts.Character_Selection
                 if (IsCharging)
                 {
                     startButton.fillAmount = 0;
-                    startTimer += TimeManager.Instance.deltaTime;
+                    startTimer += Time.deltaTime;
                     startButton.fillAmount = startTimer / startTimerDuration;
                     if (startTimer >= startTimerDuration + 0.1f)
                     {

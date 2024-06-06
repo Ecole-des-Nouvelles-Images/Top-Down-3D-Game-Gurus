@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     }
     void Update()
     {
-        Vector3 delta = (transform.forward * _ProjectileSpeed * TimeManager.Instance.deltaTime);
+        Vector3 delta = (transform.forward * _ProjectileSpeed * Time.deltaTime);
         transform.position += delta;
         ray = new Ray(transform.position,transform.forward);
         if(Physics.Raycast(ray,out hit))

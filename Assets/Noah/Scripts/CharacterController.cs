@@ -44,8 +44,8 @@ namespace Noah.Scripts
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
             }
             
-            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * TimeManager.Instance.deltaTime);
-            Rb.AddForce(movement * TimeManager.Instance.deltaTime, ForceMode.Force);
+            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * Time.deltaTime);
+            Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
             // Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
             
         }

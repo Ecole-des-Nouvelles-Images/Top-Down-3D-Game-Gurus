@@ -40,7 +40,7 @@ public class colorChange : MonoBehaviour
             }
 
             // Incrémente le pas de changement de couleur
-            step += TimeManager.Instance.deltaTime / fadeDuration;
+            step += Time.deltaTime / fadeDuration;
 
             // Attend la fin du frame avant la prochaine itération
             yield return null;

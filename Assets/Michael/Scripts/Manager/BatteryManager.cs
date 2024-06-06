@@ -22,8 +22,8 @@ namespace Michael.Scripts.Manager
         
         void Update() {
             
-           CurrentBatteryTime -= TimeManager.Instance.deltaTime;
-           _delayBatteryTime -= TimeManager.Instance.deltaTime *_easeSilerRate;
+           CurrentBatteryTime -= Time.deltaTime;
+           _delayBatteryTime -= Time.deltaTime *_easeSilerRate;
            _delayBatteryTime = Mathf.Clamp(_delayBatteryTime,CurrentBatteryTime, _maxBatteryTime);
            
            _batteryBar.value = CurrentBatteryTime / _maxBatteryTime;

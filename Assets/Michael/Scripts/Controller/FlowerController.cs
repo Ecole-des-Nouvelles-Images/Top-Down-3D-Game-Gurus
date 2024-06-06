@@ -2,11 +2,13 @@ using System;
 using DG.Tweening;
 using Michael.Scripts.Manager;
 using Unity.Mathematics;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.VFX;
+using Random = UnityEngine.Random;
 
 namespace Michael.Scripts.Controller
 {
@@ -23,6 +25,7 @@ namespace Michael.Scripts.Controller
         public bool isInvincible = false;
         public bool IsStun;
         public bool isDead;
+        public static bool FlowersWin;
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
@@ -39,6 +42,8 @@ namespace Michael.Scripts.Controller
         [SerializeField] private GameObject deadArrowUI;
         [SerializeField] private VisualEffect ReviveVFX;
         [SerializeField] private GameObject dirt;
+        [SerializeField] private ParticleSystem fireWorksParticules;
+        
         protected virtual void Start() {
             StartAnimation();
         }
@@ -70,6 +75,13 @@ namespace Michael.Scripts.Controller
 
         protected override void Update() {
 
+            if (GameManager.Instance.TurtleIsDead && !FlowersWin)
+            {
+                _animator.SetTrigger("Victory");
+                _animator.SetInteger("DanceIndex", Random.Range(0, 3));
+                fireWorksParticules.Play();
+                FlowersWin = true;
+            }
             _animator.SetFloat("Velocity",Rb.velocity.magnitude);
             
             if (sun < 0) {
@@ -84,7 +96,7 @@ namespace Michael.Scripts.Controller
             {
                 if (isCharging) {
                     deadFlowerController.reviveChargingIcon.fillAmount = 0;
-                    reanimateTimer += TimeManager.Instance.deltaTime;
+                    reanimateTimer += Time.deltaTime;
                    deadFlowerController.reviveChargingIcon.fillAmount = reanimateTimer / reanimateDuration;
                       
                             if (reanimateTimer >= reanimateDuration + 0.1f) {
@@ -95,8 +107,8 @@ namespace Michael.Scripts.Controller
                     
                 }
                 else {
-                    /*DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
-                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, reanimateDuration);*/
+                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
+                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, 0.3f);
                 }
 
             }
@@ -106,7 +118,7 @@ namespace Michael.Scripts.Controller
 
             if (IsStun)
             {
-                stunTimer += TimeManager.Instance.deltaTime;
+                stunTimer += Time.deltaTime;
                 if (stunTimer >= stunDuration)
                 {
                     stunParticleSystem.gameObject.SetActive(false);
@@ -118,7 +130,7 @@ namespace Michael.Scripts.Controller
             
             if (currentPlantingCooldown > 0)
             {
-                currentPlantingCooldown -= TimeManager.Instance.deltaTime;
+                currentPlantingCooldown -= Time.deltaTime;
             }
 
         }  

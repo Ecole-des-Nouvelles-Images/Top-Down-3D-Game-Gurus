@@ -32,7 +32,7 @@ namespace Michael.Scripts.Controller
 
             if (isInvincible)
             {
-                _invincibilityTimer += TimeManager.Instance.deltaTime;
+                _invincibilityTimer += Time.deltaTime;
                 if (!isBoosted && !isDead) {
                 
                     _animator.SetBool("IsInvincible",true);

@@ -60,7 +60,7 @@ namespace Noah.Scripts
 
             if (isCharging)
             {
-                reanimateTimer += TimeManager.Instance.deltaTime;
+                reanimateTimer += Time.deltaTime;
                 if (reanimateTimer >= reanimateDuration + 0.1)
                 {
                     ThirdCapacity();
@@ -71,7 +71,7 @@ namespace Noah.Scripts
 
             if (IsStunned)
             {
-                stunTimer += TimeManager.Instance.deltaTime;
+                stunTimer += Time.deltaTime;
                 if (stunTimer >= stunDuration)
                 {
                     stunParticleSystem.gameObject.SetActive(false);
@@ -83,7 +83,7 @@ namespace Noah.Scripts
 
             if (currentPlantingCooldown > 0)
             {
-                currentPlantingCooldown -= TimeManager.Instance.deltaTime;
+                currentPlantingCooldown -= Time.deltaTime;
             }
         }
 
