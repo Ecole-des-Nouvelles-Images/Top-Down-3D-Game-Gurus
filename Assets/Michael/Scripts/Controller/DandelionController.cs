@@ -1,35 +1,36 @@
 using System;
 using Michael.Scripts.Controller;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Michael.Scripts.Controller
 {
     public class DandelionController : FlowerController
     {
-        [SerializeField] private float invincibilityDuration = 5f;
+        [SerializeField] private float unhittableDuration = 5f;
         [SerializeField] private ParticleSystem pollenVfx;
-        private float _invincibilityTimer;
+        private float _unhittableTimer;
         private bool _isBoosted;
         private bool _isColliding;
 
         protected override void Start()
         {
             base.Start();
-            _invincibilityTimer = 0;
+            _unhittableTimer = 0;
         }
 
         protected override void Update()
         {
             base.Update();
 
-            if (isInvincible)
+            if (isUnhittable)
             {
-                _invincibilityTimer += Time.deltaTime;
+                _unhittableTimer += Time.deltaTime;
 
-                if (_invincibilityTimer >= invincibilityDuration)
+                if (_unhittableTimer >= unhittableDuration)
                 {
-                    isInvincible = false;
-                    _invincibilityTimer = 0;
+                    isUnhittable = false;
+                    _unhittableTimer = 0;
                     ResetBoost();
                 }
                 else if (!_isBoosted && !isDead)
@@ -97,7 +98,7 @@ namespace Michael.Scripts.Controller
         {
             if (sun >= CapacityCost && !IsPlanted)
             {
-                isInvincible = true;
+                isUnhittable = true;
                 OnLooseSunCapacity(CapacityCost);
             }
         }

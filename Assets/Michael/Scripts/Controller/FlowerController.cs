@@ -23,13 +23,14 @@ namespace Michael.Scripts.Controller
         public FlowerController deadFlowerController;
         public bool IsPlanted = false;
         public bool isInvincible = false;
+        public bool isUnhittable = false;
         public bool IsStunned;
         public bool isDead;
         public static bool FlowersWin;
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
-        [SerializeField] private GameObject deadModel;
+        [SerializeField] protected GameObject deadModel;
         [SerializeField] protected GameObject aliveModel;
         [SerializeField] protected Collider aliveModelCollider;
         [SerializeField] private float magnetudeToStun = 22f;
@@ -246,7 +247,6 @@ namespace Michael.Scripts.Controller
             if (other.CompareTag("Shield"))
             {
                 isInvincible = true; 
-                Debug.Log("true");
             }
         }
 
@@ -284,7 +284,7 @@ namespace Michael.Scripts.Controller
         [ContextMenu("GetStunned")]
         private void GetStunned() {
             
-            if (!isInvincible)
+            if (!isInvincible && !isUnhittable)
             {
                 GetUnplanted();
                 stunParticleSystem.gameObject.SetActive(true);
@@ -296,7 +296,7 @@ namespace Michael.Scripts.Controller
         
         [ContextMenu("TakeHit")]
         private void TakeHit() {
-            if (!isInvincible) {
+            if (!isInvincible && !isUnhittable) {
                 aliveModelCollider.enabled = false;
                 aliveModel.SetActive(false);
                 deadModel.SetActive(true);

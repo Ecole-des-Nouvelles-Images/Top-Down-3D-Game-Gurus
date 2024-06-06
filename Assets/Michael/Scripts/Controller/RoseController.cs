@@ -1,49 +1,49 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Michael.Scripts.Controller
 {
     public class RoseController : FlowerController
     {
-        [SerializeField] private GameObject spawnTrap;
+        [SerializeField] private GameObject spawnTrapPrefab;
         [SerializeField] private float respawnDelay = 5f;
-        
+        private bool _isRespawning;
+        private GameObject currentTrap;
+
         protected override void PassiveCapacity()
         {
             throw new System.NotImplementedException();
         }
-        
+
         protected override void Update()
         {
             base.Update();
-            PassiveCapacity();
-            Respawn();
+            if (isDead && !_isRespawning)
+            {
+                Respawn();
+            }
         }
 
         protected override void MainCapacity()
         {
             if (sun >= CapacityCost && !IsPlanted)
             {
-                if (spawnTrap != null)
+                if (currentTrap == null)
                 {
-                    Instantiate(spawnTrap, transform.position, transform.rotation);
-                    OnLooseSunCapacity(CapacityCost);
+                    currentTrap = Instantiate(spawnTrapPrefab, transform.position, transform.rotation);
                 }
-
                 else
                 {
-                    spawnTrap.transform.position = transform.position;
+                    currentTrap.transform.position = transform.position;
                 }
-                
+
+                OnLooseSunCapacity(CapacityCost);
             }
-          
         }
-        
-        
+
         private void Respawn()
         {
-            if (isDead)
+            if (!_isRespawning)
             {
                 StartCoroutine(RespawnWaiter());
             }
@@ -51,11 +51,18 @@ namespace Michael.Scripts.Controller
 
         IEnumerator RespawnWaiter()
         {
+            _isRespawning = true;
             yield return new WaitForSeconds(respawnDelay);
-            transform.position = spawnTrap.transform.position;
+
+            if (currentTrap != null)
+            {
+                transform.position = currentTrap.transform.position;
+                Destroy(currentTrap);
+                currentTrap = null;  // Ensure reference is cleared
+            }
+
             GetRevive();
+            _isRespawning = false;
         }
     }
-    
 }
-
