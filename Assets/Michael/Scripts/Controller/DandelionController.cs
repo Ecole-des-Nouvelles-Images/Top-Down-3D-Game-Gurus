@@ -57,9 +57,10 @@ namespace Michael.Scripts.Controller
             gameObject.layer = LayerMask.NameToLayer("Dandelion");
 
             pollenVfx.Play();
-            aliveModel.SetActive(false);
+         //   aliveModel.SetActive(false);
             moveSpeed += 300;
             _isBoosted = true;
+            _animator.SetBool("IsInvincible",true);
             Debug.Log("Boost Activated");
         }
 
@@ -68,9 +69,10 @@ namespace Michael.Scripts.Controller
             gameObject.layer = LayerMask.NameToLayer("Default");
 
             pollenVfx.Stop();
-            aliveModel.SetActive(true);
+          //  aliveModel.SetActive(true);
             moveSpeed = 525;
             _isBoosted = false;
+            _animator.SetBool("IsInvincible",false);
             ExitObstacle();
         }
 

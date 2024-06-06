@@ -282,6 +282,7 @@ namespace Michael.Scripts.Controller
                 sun = 0;
                 GameManager.Instance.FlowersAlive.Remove(this.gameObject);
                 deadArrowUI.SetActive(true);
+                GameManager.Instance.Winverification();
             }
            
         }

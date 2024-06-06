@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4230d0b5b79e21343b1c6b6dd08c1021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScene: Menu
+  startScene: IntroScreen
 --- !u!4 &859742001
 Transform:
   m_ObjectHideFlags: 0

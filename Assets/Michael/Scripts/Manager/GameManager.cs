@@ -26,14 +26,13 @@ namespace Michael.Scripts.Manager
         [SerializeField] private GameObject firstCamera;
         [SerializeField] private GameObject circularTransition;
         [SerializeField] private GameObject CrashVfx;
-        [SerializeField] private Transform spawnTurtlePosition;
+       // [SerializeField] private Transform spawnTurtlePosition;
         [SerializeField] private GameObject EndGamePanel;
         //[SerializeField] private GameObject TurtleVictoryPanel;
         //[SerializeField] private GameObject FlowersVictoryPanel;
         [SerializeField] private GameObject TurtleUis;
         [SerializeField] private GameObject eventSystem;
         [SerializeField] private GameObject restartButton;
-        [SerializeField] private GameObject PlayersParent;
         
         void Start()
         {
@@ -48,30 +47,35 @@ namespace Michael.Scripts.Manager
                 player.GetComponent<PlayerInput>().enabled = false;
             }
         }
-        
-        
-        private void Update()
-        {
 
-             if (FlowersAlive.Count <= 0 && !GameFinished) {
+        public void Winverification()
+        {
+            if (FlowersAlive.Count <= 0 && !GameFinished) {
                 
-              //  TurtleVictoryPanel.SetActive(true);
+                //  TurtleVictoryPanel.SetActive(true);
                 EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 3f);
                 eventSystem.SetActive(true);
                 eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
                 GameFinished = true;
                 FlowersIsdead = true;
                 DesactiveGameManager();
-             }
-             else if (TurtleIsDead && !GameFinished) {
-               // FlowersVictoryPanel.SetActive(true);
+                
+            }
+            else if (TurtleIsDead && !GameFinished) {
+                // FlowersVictoryPanel.SetActive(true);
                 EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 3f);
                 eventSystem.SetActive(true);
                 eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
                 GameFinished = true;
-                DesactiveGameManager();
                 TurtleUis.SetActive(false);
-             }
+                DesactiveGameManager();
+                
+            }
+        }
+        private void Update()
+        {
+
+           
         }
 
 
