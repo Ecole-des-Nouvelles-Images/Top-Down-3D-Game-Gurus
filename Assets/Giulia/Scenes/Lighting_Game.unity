@@ -9799,7 +9799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &998545715
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -23313,9 +23313,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Turtle: {fileID: 0}
   TurtleIsDead: 0
-  FlowersAreDead: 0
+  FlowersIsdead: 0
+  GameFinished: 0
   FlowersAlive: []
-  Flowers: []
+  Players: []
   TurtleTrap: []
   _sunSpawnPoints:
   - {fileID: 1167156833}
@@ -23333,10 +23334,7 @@ MonoBehaviour:
   firstCamera: {fileID: 210059584}
   circularTransition: {fileID: 759119402}
   CrashVfx: {fileID: 1529346437}
-  spawnTurtlePosition: {fileID: 0}
   EndGamePanel: {fileID: 0}
-  TurtleVictoryPanel: {fileID: 766603039}
-  FlowersVictoryPanel: {fileID: 1337294575}
   TurtleUis: {fileID: 1501747238}
   eventSystem: {fileID: 0}
   restartButton: {fileID: 0}
