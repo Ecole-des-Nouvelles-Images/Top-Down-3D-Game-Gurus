@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8090,12 +8090,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d69c1dee282a8c48b56b78075e80cbb, type: 3}
   - {fileID: 21300000, guid: ba493867d00783049b9ce024ab8ad7c6, type: 3}
   _characterCapacitiesSprites:
-  - {fileID: 21300000, guid: a956f070ace59bc4a98dc284165f3907, type: 3}
-  - {fileID: 21300000, guid: d6de92cd1a97ca44b89f7b126c68a240, type: 3}
-  - {fileID: 21300000, guid: 99c2b8db9b1bdf143a47a3d88ddeee33, type: 3}
-  - {fileID: 21300000, guid: 5dd6284cb486c2946909d6d324c7a6bb, type: 3}
-  - {fileID: 21300000, guid: 8af3010ed51c6cf4a84c3c4fb5bd5763, type: 3}
-  - {fileID: 21300000, guid: f723109c4fa1dd44ab5b1c29aeb6cbd8, type: 3}
+  - {fileID: 21300000, guid: 0b2e870020322f84581538d5191398f5, type: 3}
+  - {fileID: 21300000, guid: b2f4d6ae14966ae48961838b34b644f3, type: 3}
+  - {fileID: 21300000, guid: a12598d1abd354a45b4699d1cb34d9c0, type: 3}
+  - {fileID: 21300000, guid: a333fed179c3dc743b1a38e4a7009a34, type: 3}
+  - {fileID: 21300000, guid: a0091f5408b0ca242919a02a9bb809bb, type: 3}
+  - {fileID: 21300000, guid: 0c1a9fea1bfba2e4995312147da5ea96, type: 3}
   _characterSelected: {fileID: 0}
   _joinButton: {fileID: 2087938348}
   _characterIndex: 0
@@ -8226,12 +8226,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d69c1dee282a8c48b56b78075e80cbb, type: 3}
   - {fileID: 21300000, guid: ba493867d00783049b9ce024ab8ad7c6, type: 3}
   _characterCapacitiesSprites:
-  - {fileID: 21300000, guid: a956f070ace59bc4a98dc284165f3907, type: 3}
-  - {fileID: 21300000, guid: d6de92cd1a97ca44b89f7b126c68a240, type: 3}
-  - {fileID: 21300000, guid: 99c2b8db9b1bdf143a47a3d88ddeee33, type: 3}
-  - {fileID: 21300000, guid: 5dd6284cb486c2946909d6d324c7a6bb, type: 3}
-  - {fileID: 21300000, guid: 8af3010ed51c6cf4a84c3c4fb5bd5763, type: 3}
-  - {fileID: 21300000, guid: f723109c4fa1dd44ab5b1c29aeb6cbd8, type: 3}
+  - {fileID: 21300000, guid: 0b2e870020322f84581538d5191398f5, type: 3}
+  - {fileID: 21300000, guid: b2f4d6ae14966ae48961838b34b644f3, type: 3}
+  - {fileID: 21300000, guid: a12598d1abd354a45b4699d1cb34d9c0, type: 3}
+  - {fileID: 21300000, guid: a333fed179c3dc743b1a38e4a7009a34, type: 3}
+  - {fileID: 21300000, guid: a0091f5408b0ca242919a02a9bb809bb, type: 3}
+  - {fileID: 21300000, guid: 0c1a9fea1bfba2e4995312147da5ea96, type: 3}
   _characterSelected: {fileID: 0}
   _joinButton: {fileID: 2109705253}
   _characterIndex: 0
@@ -28492,12 +28492,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d69c1dee282a8c48b56b78075e80cbb, type: 3}
   - {fileID: 21300000, guid: ba493867d00783049b9ce024ab8ad7c6, type: 3}
   _characterCapacitiesSprites:
-  - {fileID: 21300000, guid: a956f070ace59bc4a98dc284165f3907, type: 3}
-  - {fileID: 21300000, guid: d6de92cd1a97ca44b89f7b126c68a240, type: 3}
-  - {fileID: 21300000, guid: 99c2b8db9b1bdf143a47a3d88ddeee33, type: 3}
-  - {fileID: 21300000, guid: 5dd6284cb486c2946909d6d324c7a6bb, type: 3}
-  - {fileID: 21300000, guid: 8af3010ed51c6cf4a84c3c4fb5bd5763, type: 3}
-  - {fileID: 21300000, guid: f723109c4fa1dd44ab5b1c29aeb6cbd8, type: 3}
+  - {fileID: 21300000, guid: 0b2e870020322f84581538d5191398f5, type: 3}
+  - {fileID: 21300000, guid: b2f4d6ae14966ae48961838b34b644f3, type: 3}
+  - {fileID: 21300000, guid: a12598d1abd354a45b4699d1cb34d9c0, type: 3}
+  - {fileID: 21300000, guid: a333fed179c3dc743b1a38e4a7009a34, type: 3}
+  - {fileID: 21300000, guid: a0091f5408b0ca242919a02a9bb809bb, type: 3}
+  - {fileID: 21300000, guid: 0c1a9fea1bfba2e4995312147da5ea96, type: 3}
   _characterSelected: {fileID: 0}
   _joinButton: {fileID: 1078795207}
   _characterIndex: 0
@@ -29971,12 +29971,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d69c1dee282a8c48b56b78075e80cbb, type: 3}
   - {fileID: 21300000, guid: ba493867d00783049b9ce024ab8ad7c6, type: 3}
   _characterCapacitiesSprites:
-  - {fileID: 21300000, guid: a956f070ace59bc4a98dc284165f3907, type: 3}
-  - {fileID: 21300000, guid: d6de92cd1a97ca44b89f7b126c68a240, type: 3}
-  - {fileID: 21300000, guid: 99c2b8db9b1bdf143a47a3d88ddeee33, type: 3}
-  - {fileID: 21300000, guid: 5dd6284cb486c2946909d6d324c7a6bb, type: 3}
-  - {fileID: 21300000, guid: 8af3010ed51c6cf4a84c3c4fb5bd5763, type: 3}
-  - {fileID: 21300000, guid: f723109c4fa1dd44ab5b1c29aeb6cbd8, type: 3}
+  - {fileID: 21300000, guid: 0b2e870020322f84581538d5191398f5, type: 3}
+  - {fileID: 21300000, guid: b2f4d6ae14966ae48961838b34b644f3, type: 3}
+  - {fileID: 21300000, guid: a12598d1abd354a45b4699d1cb34d9c0, type: 3}
+  - {fileID: 21300000, guid: a333fed179c3dc743b1a38e4a7009a34, type: 3}
+  - {fileID: 21300000, guid: a0091f5408b0ca242919a02a9bb809bb, type: 3}
+  - {fileID: 21300000, guid: 0c1a9fea1bfba2e4995312147da5ea96, type: 3}
   _characterSelected: {fileID: 0}
   _joinButton: {fileID: 380310892}
   _characterIndex: 0
