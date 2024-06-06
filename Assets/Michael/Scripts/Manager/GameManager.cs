@@ -136,10 +136,5 @@ namespace Michael.Scripts.Manager
             Time.timeScale = 1f;
             TimeManager.Instance.fixedDeltaTime = 0.02f * Time.timeScale;
         }
-    
-        
-
-
-
     }
 }

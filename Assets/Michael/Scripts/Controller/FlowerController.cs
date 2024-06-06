@@ -242,11 +242,11 @@ namespace Michael.Scripts.Controller
                 {
                     GetStunned();
                 }
-
-                if (other.CompareTag("Shield"))
-                {
-                    isInvincible = true; 
-                }
+            }
+            if (other.CompareTag("Shield"))
+            {
+                isInvincible = true; 
+                Debug.Log("true");
             }
         }
 
