@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Michael.Scripts.Manager;
+using Michael.Scripts.Ui;
 using Noah.Scripts;
 using UnityEditor;
 using UnityEngine;
@@ -95,7 +96,7 @@ namespace Michael.Scripts.Controller
 
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.started && !IsStunned)
+            if (context.started && !IsStunned && !PauseControlller.IsPaused)
             {
                 MainCapacity();
             }
