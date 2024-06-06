@@ -1634,7 +1634,7 @@ PrefabInstance:
     - target: {fileID: 3817836459905497788, guid: b5e16718cc06c1b4ea1a736f146b1e1a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5602710015207724501, guid: b5e16718cc06c1b4ea1a736f146b1e1a,
         type: 3}
@@ -1736,12 +1736,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 10
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 5
-  Tomatoe: []
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!1 &175254298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,16 +2428,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 10
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 5
-  Tomatoe:
-  - {fileID: 219214991}
-  - {fileID: 219214990}
-  - {fileID: 219214989}
-  - {fileID: 219214988}
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!65 &219214999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3245,12 +3243,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 21.5
-  shakeStrengh: {x: 0.005, y: 0, z: 0.005}
-  shakeVibrato: 3
-  Tomatoe: []
-  waterRipples: {fileID: 1656369316}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!136 &363565939
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3684,12 +3683,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 10
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 5
-  Tomatoe: []
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!135 &414640688
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3788,13 +3788,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 5
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 1
-  Tomatoe: []
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 8470265593162532242, guid: aa4ce640ee5f5064190b502b449fc74c,
-    type: 3}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!4 &447160885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6632724267621182870, guid: 7a1a3279babe4164ea2c6734c1c86cb9,
@@ -5004,13 +5004,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 5
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 1
-  Tomatoe: []
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 107808823903732338, guid: f74807421c1acd144b232fa9c1ff9765,
-    type: 3}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!1001 &596918638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7586,16 +7586,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 10
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 5
-  Tomatoe:
-  - {fileID: 268752460}
-  - {fileID: 1813789175}
-  - {fileID: 880999924}
-  - {fileID: 224264762}
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!65 &913772907
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7929,6 +7926,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2060725000}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &988496769
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.152731
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.044794
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8109188231840348700, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_Name
+      value: TrapTurtle (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee, type: 3}
 --- !u!1001 &992496279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13577,12 +13642,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 46833686}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &1656369316 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5291275307717659108, guid: 5a8d99fb95262ea458a7b580f2a1611c,
-    type: 3}
-  m_PrefabInstance: {fileID: 46833686}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1658626744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13672,6 +13731,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1658626744}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1675337795
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.1050878
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.9574528
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435411342509355928, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8109188231840348700, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee,
+        type: 3}
+      propertyPath: m_Name
+      value: TrapTurtle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a5c8a9e8e42b9e46a6f6a1aacec82ee, type: 3}
 --- !u!64 &1683752415
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18203,3 +18330,5 @@ SceneRoots:
   - {fileID: 188921148}
   - {fileID: 1804138735}
   - {fileID: 1347470395}
+  - {fileID: 1675337795}
+  - {fileID: 988496769}

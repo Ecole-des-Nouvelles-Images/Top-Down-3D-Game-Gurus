@@ -11,13 +11,13 @@ namespace Michael.Scripts.Controller
         private float _invincibilityTimer;
         private bool _isBoosted;
         private bool _isColliding;
-       
+
         protected override void Start()
         {
             base.Start();
             _invincibilityTimer = 0;
         }
-      
+
         protected override void Update()
         {
             base.Update();
@@ -53,8 +53,11 @@ namespace Michael.Scripts.Controller
 
         private void ActivateBoost()
         {
+            // Changer le layer mask en CanMoveThroughWalls
+            gameObject.layer = LayerMask.NameToLayer("Dandelion");
+
             pollenVfx.Play();
-            aliveModelCollider.enabled = false;
+            aliveModel.SetActive(false);
             moveSpeed += 300;
             _isBoosted = true;
             Debug.Log("Boost Activated");
@@ -62,8 +65,10 @@ namespace Michael.Scripts.Controller
 
         private void ResetBoost()
         {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+
             pollenVfx.Stop();
-            aliveModelCollider.enabled = true;
+            aliveModel.SetActive(true);
             moveSpeed = 525;
             _isBoosted = false;
             ExitObstacle();
@@ -73,8 +78,10 @@ namespace Michael.Scripts.Controller
         {
             if (_isColliding)
             {
+                /*
                 Vector3 safePosition = FindSafePosition();
                 transform.position = safePosition;
+                */
                 _isColliding = false;
             }
         }
@@ -92,7 +99,7 @@ namespace Michael.Scripts.Controller
                 OnLooseSunCapacity(CapacityCost);
             }
         }
-        
+        /*
         private Vector3 FindSafePosition()
         {
             float radius = 1f; 
@@ -103,7 +110,6 @@ namespace Michael.Scripts.Controller
                 Vector3.back,
                 Vector3.left,
                 Vector3.right,
-
             };
 
             foreach (var direction in directions)
@@ -117,5 +123,6 @@ namespace Michael.Scripts.Controller
 
             return transform.position + Vector3.up * radius;
         }
+        */
     }
 }
