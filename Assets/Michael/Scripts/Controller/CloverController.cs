@@ -22,10 +22,12 @@ namespace Michael.Scripts.Controller
             {
                 Vector3 initialPosition = gameObject.transform.position;
                 GameObject randomSpawnPoint = plantedFlowers[Random.Range(0, plantedFlowers.Length)];
-                //Rb.isKinematic = true;
-                transform.position = new Vector3(randomSpawnPoint.transform.position.x, 0,
-                    randomSpawnPoint.transform.position.z);
-
+               
+                /*transform.position = new Vector3(randomSpawnPoint.transform.position.x, 0,
+                    randomSpawnPoint.transform.position.z);*/
+                Rb.MovePosition( new Vector3(randomSpawnPoint.transform.position.x, 0,
+                    randomSpawnPoint.transform.position.z));
+                
                  randomSpawnPoint.transform.position = new Vector3(initialPosition.x,
                     randomSpawnPoint.transform.position.y, initialPosition.z);
                 
