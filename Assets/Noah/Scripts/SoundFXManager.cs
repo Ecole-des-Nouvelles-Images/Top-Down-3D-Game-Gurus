@@ -7,7 +7,7 @@ namespace Noah.Scripts
         public static SoundFXManager Instance;
 
         [SerializeField] private AudioSource soundFXObject;
-
+        [SerializeField] private AudioSource LoopsoundFXObject;
         private void Awake()
         {
             if (Instance == null)
@@ -24,6 +24,16 @@ namespace Noah.Scripts
             audioSource.Play();
             float clipLength = audioSource.clip.length;
         }
+        
+        public void PlayLoopSoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
+        {
+            AudioSource audioSource = Instantiate(LoopsoundFXObject, spawnTransform.position, Quaternion.identity);
+            audioSource.clip = audioClip;
+            audioSource.volume = volume;
+            audioSource.Play();
+            float clipLength = audioSource.clip.length;
+        }
+        
         
         public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
         {

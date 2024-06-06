@@ -88,6 +88,8 @@ namespace Michael.Scripts.Controller
             {
                 Debug.Log("turbo");
                 moveSpeed *= boosterMultiplier;
+                BatteryManager.Instance.CurrentBatteryTime -= Time.deltaTime;
+                //changer couleur reacteur
             }
             else
             {
