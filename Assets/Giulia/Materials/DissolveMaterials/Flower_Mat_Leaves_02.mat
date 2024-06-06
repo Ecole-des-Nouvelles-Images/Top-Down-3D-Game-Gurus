@@ -112,7 +112,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _Dissolve_Size: 0.46
-    - _Dissolve_Step: -0.2
+    - _Dissolve_Step: -0.3
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1

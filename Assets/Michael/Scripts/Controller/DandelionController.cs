@@ -32,12 +32,11 @@ namespace Michael.Scripts.Controller
 
             if (isInvincible)
             {
-                _invincibilityTimer += TimeManager.Instance.deltaTime;
+                _invincibilityTimer += Time.deltaTime;
                 if (!isBoosted && !isDead) {
                 
+                    _animator.SetBool("IsInvincible",true);
                     pollenVfx.Play();
-                    // aliveModel.SetActive(false);
-               
                     moveSpeed += 40;
                     isBoosted = true;
                 }
@@ -45,22 +44,12 @@ namespace Michael.Scripts.Controller
             }
             else
             {
+                _animator.SetBool("IsInvincible",false);
                 pollenVfx.Stop();
-                //   aliveModel.SetActive(true);
                 isBoosted = false;
                 moveSpeed = 525;  
             }
-            
-         
-            /*else if (!isInvincible)
-            {
-                pollenVfx.Stop();
-                //   aliveModel.SetActive(true);
-                isBoosted = false;
-                moveSpeed = 525;  
-            }*/
-            
-            
+           
             
         }
         protected override void PassiveCapacity()

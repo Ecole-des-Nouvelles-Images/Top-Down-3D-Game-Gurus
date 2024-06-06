@@ -1756,12 +1756,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 10
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 5
-  Tomatoe: []
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!1 &175254298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,13 +1922,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 5
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 1
-  Tomatoe: []
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 8470265593162532242, guid: aa4ce640ee5f5064190b502b449fc74c,
-    type: 3}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!1 &189857933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,16 +2504,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 10
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 5
-  Tomatoe:
-  - {fileID: 219214991}
-  - {fileID: 219214990}
-  - {fileID: 219214989}
-  - {fileID: 219214988}
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!65 &219214999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3461,12 +3459,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 21.5
-  shakeStrengh: {x: 0.005, y: 0, z: 0.005}
-  shakeVibrato: 3
-  Tomatoe: []
-  waterRipples: {fileID: 1656369316}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!136 &363565939
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4058,12 +4057,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 10
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 5
-  Tomatoe: []
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!135 &414640688
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4162,13 +4162,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 5
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 1
-  Tomatoe: []
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 8470265593162532242, guid: aa4ce640ee5f5064190b502b449fc74c,
-    type: 3}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!4 &447160885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6632724267621182870, guid: 7a1a3279babe4164ea2c6734c1c86cb9,
@@ -5364,13 +5364,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 5
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 1
-  Tomatoe: []
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 107808823903732338, guid: f74807421c1acd144b232fa9c1ff9765,
-    type: 3}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!1 &609991756
 GameObject:
   m_ObjectHideFlags: 0
@@ -7626,16 +7626,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeThreshold: 10
-  shakeStrengh: {x: 0.01, y: 0, z: 0.01}
-  shakeVibrato: 5
-  Tomatoe:
-  - {fileID: 268752460}
-  - {fileID: 1813789175}
-  - {fileID: 880999924}
-  - {fileID: 224264762}
-  waterRipples: {fileID: 0}
-  brokenPot: {fileID: 0}
+  originalObject: {fileID: 0}
+  fracturedObject: {fileID: 0}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 5
+  explosionMaxForce: 100
+  explosionForceRadius: 10
+  shrinkDuration: 2
 --- !u!65 &913772907
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13160,7 +13157,7 @@ Transform:
   m_GameObject: {fileID: 1003838119}
   serializedVersion: 2
   m_LocalRotation: {x: 0.42841145, y: -0, z: -0, w: 0.9035838}
-  m_LocalPosition: {x: 1.504, y: 6.4987245, z: 4.0762134}
+  m_LocalPosition: {x: 1.504, y: 6.498719, z: 4.076219}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13932,7 +13929,7 @@ PrefabInstance:
     - target: {fileID: 2040460775051823323, guid: e87c97282711c884ba583a33670a1e78,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2299572467230386191, guid: e87c97282711c884ba583a33670a1e78,
         type: 3}
@@ -14057,7 +14054,7 @@ PrefabInstance:
     - target: {fileID: 4954648134359500131, guid: e87c97282711c884ba583a33670a1e78,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7021285108189239530, guid: e87c97282711c884ba583a33670a1e78,
         type: 3}
@@ -17563,12 +17560,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 46833686}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &1656369316 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5291275307717659108, guid: 5a8d99fb95262ea458a7b580f2a1611c,
-    type: 3}
-  m_PrefabInstance: {fileID: 46833686}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1658626744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20172,7 +20163,6 @@ MonoBehaviour:
   - {fileID: 7986743049460497559}
   - {fileID: 488593522}
   - {fileID: 1189322213}
-  TurtleUi: {fileID: 0}
 --- !u!114 &2018925706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20208,9 +20198,12 @@ MonoBehaviour:
   circularTransition: {fileID: 759119402}
   CrashVfx: {fileID: 1529346437}
   spawnTurtlePosition: {fileID: 0}
+  EndGamePanel: {fileID: 0}
   TurtleVictoryPanel: {fileID: 766603039}
   FlowersVictoryPanel: {fileID: 1337294575}
   TurtleUis: {fileID: 1501747238}
+  eventSystem: {fileID: 0}
+  restartButton: {fileID: 0}
 --- !u!114 &2018925707
 MonoBehaviour:
   m_ObjectHideFlags: 0

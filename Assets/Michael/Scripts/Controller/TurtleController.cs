@@ -186,7 +186,7 @@ namespace Michael.Scripts.Controller
             {
                 _animator.SetBool("IsDashing",true);
                 _animator.SetFloat("DashTimer",_chargeTime);
-                _chargeTime += TimeManager.Instance.deltaTime;
+                _chargeTime += Time.deltaTime;
 
                 if (move.magnitude > 0.5f)
                 {
@@ -298,7 +298,7 @@ namespace Michael.Scripts.Controller
         private void ScanningUpdate() {
             if (_isScanning) {
               
-                scanTime += TimeManager.Instance.deltaTime;
+                scanTime += Time.deltaTime;
                 if (scanTime >= scanDuration) {
                     _isScanning = false;
                     scanTime = 0;

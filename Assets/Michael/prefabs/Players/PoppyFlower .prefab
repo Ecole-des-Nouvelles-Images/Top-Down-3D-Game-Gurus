@@ -5331,12 +5331,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 48f46006-6b8a-40f7-9701-52f8ca7720e4
-    m_ActionName: Character/Pause[/XInputControllerWindows/start,/XInputControllerWindows1/start]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 3e007b0e-bd27-40ae-acdd-2a246a51bcb5
     m_ActionName: UI/StartGame[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2134696000026841888}
+        m_TargetAssemblyTypeName: Michael.Scripts.Controller.CharacterController,
+          Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 48f46006-6b8a-40f7-9701-52f8ca7720e4
+    m_ActionName: Character/New action
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Character
@@ -5409,6 +5422,7 @@ MonoBehaviour:
   reviveChargingIcon: {fileID: 3106067439174002612}
   deadArrowUI: {fileID: 430736945437531251}
   ReviveVFX: {fileID: 5720538447671853149}
+  dirt: {fileID: 4129921455319913798, guid: 2354a717495c77a49b59c84f86f82834, type: 3}
   Gun: {fileID: 906675944261342744}
   lr: {fileID: 8694057788543303523}
   whatIsGrappleable:

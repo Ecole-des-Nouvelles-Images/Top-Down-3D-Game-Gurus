@@ -18,7 +18,7 @@ namespace Michael.Scripts.Character_Selection
         public static bool CanJoin;
         public bool IsCharging;
         public int PlayerIndex ;
-        public static int _maxPlayers = 2;
+        public static int _maxPlayers = 1;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -79,7 +79,7 @@ namespace Michael.Scripts.Character_Selection
                 if (IsCharging)
                 {
                     startButton.fillAmount = 0;
-                    startTimer += TimeManager.Instance.deltaTime;
+                    startTimer += Time.deltaTime;
                     startButton.fillAmount = startTimer / startTimerDuration;
                             if (startTimer >= startTimerDuration + 0.1f)
                             {

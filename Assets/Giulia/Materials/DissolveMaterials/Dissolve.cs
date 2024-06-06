@@ -32,7 +32,7 @@ public class Dissolve : MonoBehaviour
                 }
             }
 
-            elapsedTime += TimeManager.Instance.deltaTime;
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
 

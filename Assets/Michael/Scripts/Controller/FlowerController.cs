@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using Michael.Scripts.Manager;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -37,7 +38,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private Image reviveChargingIcon;
         [SerializeField] private GameObject deadArrowUI;
         [SerializeField] private VisualEffect ReviveVFX;
-        
+        [SerializeField] private GameObject dirt;
         protected virtual void Start() {
             StartAnimation();
         }
@@ -83,7 +84,7 @@ namespace Michael.Scripts.Controller
             {
                 if (isCharging) {
                     deadFlowerController.reviveChargingIcon.fillAmount = 0;
-                    reanimateTimer += TimeManager.Instance.deltaTime;
+                    reanimateTimer += Time.deltaTime;
                    deadFlowerController.reviveChargingIcon.fillAmount = reanimateTimer / reanimateDuration;
                       
                             if (reanimateTimer >= reanimateDuration + 0.1f) {
@@ -105,7 +106,7 @@ namespace Michael.Scripts.Controller
 
             if (IsStun)
             {
-                stunTimer += TimeManager.Instance.deltaTime;
+                stunTimer += Time.deltaTime;
                 if (stunTimer >= stunDuration)
                 {
                     stunParticleSystem.gameObject.SetActive(false);
@@ -117,7 +118,7 @@ namespace Michael.Scripts.Controller
             
             if (currentPlantingCooldown > 0)
             {
-                currentPlantingCooldown -= TimeManager.Instance.deltaTime;
+                currentPlantingCooldown -= Time.deltaTime;
             }
 
         }  
@@ -152,6 +153,7 @@ namespace Michael.Scripts.Controller
         {
             if (IsPlanted)
             {
+                Instantiate(dirt,transform.localPosition, quaternion.identity);
                 IsPlanted = false;
                 Rb.isKinematic = false;
                 _animator.SetBool("isPlanted", IsPlanted);

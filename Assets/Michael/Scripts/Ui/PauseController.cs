@@ -20,14 +20,15 @@ namespace Michael.Scripts.Ui
         private void Start()
         {
             IsPaused = false;
-            TimeManager.Instance.timeScale = 1;
+            Time.timeScale= 1;
+          
         }
 
 
         public void OpenPausePanel() {
-            if ( TimeManager.Instance.timeScale > 0)
+            if ( Time.timeScale> 0)
             {
-                TimeManager.Instance.timeScale = 0;
+                Time.timeScale= 0;
                 IsPaused = true;
                 _pausePanel.SetActive(true);
                 _eventSystem.SetActive(true);
@@ -37,9 +38,9 @@ namespace Michael.Scripts.Ui
         
         
         public void ClosePausePanel() {
-            if (TimeManager.Instance.timeScale <= 0)
+            if ( Time.timeScale <= 0)
             { 
-                TimeManager.Instance.timeScale = 1;
+                Time.timeScale= 1;
                 IsPaused = false;
                // _eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
                 _pausePanel.SetActive(false);
