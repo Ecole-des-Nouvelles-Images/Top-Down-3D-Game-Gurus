@@ -35,7 +35,7 @@ namespace Michael.Scripts.Controller
             move = context.ReadValue<Vector2>();
         }
 
-        protected void Move()
+        protected virtual void Move()
         { 
             Vector3 movement = new Vector3(move.x, 0f, move.y) * moveSpeed;
             if ( movement != Vector3.zero)
