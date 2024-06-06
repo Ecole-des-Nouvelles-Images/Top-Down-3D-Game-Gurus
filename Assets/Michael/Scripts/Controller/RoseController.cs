@@ -16,22 +16,28 @@ namespace Michael.Scripts.Controller
         
         protected override void Update()
         {
-            PassiveCapacity();
             base.Update();
+            PassiveCapacity();
             Respawn();
         }
 
         protected override void MainCapacity()
         {
-            if (spawnTrap != null)
+            if (sun >= CapacityCost && !IsPlanted)
             {
-                Instantiate(spawnTrap, transform.position, transform.rotation);
-            }
+                if (spawnTrap != null)
+                {
+                    Instantiate(spawnTrap, transform.position, transform.rotation);
+                    OnLooseSunCapacity(CapacityCost);
+                }
 
-            else
-            {
-                spawnTrap.transform.position = transform.position;
+                else
+                {
+                    spawnTrap.transform.position = transform.position;
+                }
+                
             }
+          
         }
         
         
