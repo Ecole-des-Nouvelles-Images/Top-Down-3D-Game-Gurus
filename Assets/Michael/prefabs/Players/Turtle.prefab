@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2333140987298995400}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RfrontLegBone_03_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8930637238954219877}
   - component: {fileID: 3157264638916603763}
   - component: {fileID: 1483733614332658394}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TurtleCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2098977795091996421}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LtorsoBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 3793413823592949201}
   - component: {fileID: 2266292777588556128}
   - component: {fileID: 1065719073058759484}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5026,7 +5026,7 @@ GameObject:
   - component: {fileID: 8987638091942273582}
   - component: {fileID: 1126558139634428198}
   - component: {fileID: 7721363432468736057}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BatteryBarIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5101,7 +5101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7912881802029610701}
   - component: {fileID: 7019582302338389899}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: shell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5214,7 +5214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2059765009401616008}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IKfrontR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5246,7 +5246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1410093500880153909}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RtorsoBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5280,7 +5280,7 @@ GameObject:
   - component: {fileID: 8668218264925532339}
   - component: {fileID: 672880918804705020}
   - component: {fileID: 5225555301281231511}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DirtEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10166,7 +10166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7763961509114627903}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RfrontLegBone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10199,7 +10199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1859734708173278493}
   - component: {fileID: 5622140715563626675}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RfrontLeg.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10312,7 +10312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3812760281631161764}
   - component: {fileID: 7755799701016722424}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10458,7 +10458,7 @@ GameObject:
   - component: {fileID: 8476252259411291322}
   - component: {fileID: 150692858002756553}
   - component: {fileID: 7439101301779948889}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCrakedEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15348,7 +15348,7 @@ GameObject:
   - component: {fileID: 5149682565197872525}
   - component: {fileID: 4670203136665313216}
   - component: {fileID: 3502428529326697467}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20177,7 +20177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 714398224734027706}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IKbackL_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20209,7 +20209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3011844504563331088}
   - component: {fileID: 3272255098244040210}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RbackLeg.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20320,7 +20320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5920816589666414273}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LbackLegBone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20352,7 +20352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1756062871771974944}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IKfrontL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20384,7 +20384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8527379815574625161}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RfrontLegBone_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20416,7 +20416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6793153731278296285}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RbackLegBone_03_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20447,7 +20447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8039505428452527816}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IKfrontL_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20478,7 +20478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7522230491594091358}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IKbackR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20510,7 +20510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3957951863092239573}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LbackLegBone_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20542,7 +20542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4691512565070156751}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: jawBottomBone_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20574,7 +20574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3425857257361402442}
   - component: {fileID: 7574516076559995304}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RfrontLeg.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20685,7 +20685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8583101717443892321}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: headBone
   m_TagString: Turtle Collider
   m_Icon: {fileID: 0}
@@ -20720,7 +20720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8658445113811516705}
   - component: {fileID: 7285063021976891105}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LbackLeg.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20833,7 +20833,7 @@ GameObject:
   - component: {fileID: 4060200176597937728}
   - component: {fileID: 7968143463418946051}
   - component: {fileID: 3287274065865735813}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25662,7 +25662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6715107866754834512}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RtorsoBone_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25693,7 +25693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3483409614871190233}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IKbackR_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25724,7 +25724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7322166857218828407}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LtorsoBone_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25760,7 +25760,7 @@ GameObject:
   - component: {fileID: 5512825134671668568}
   - component: {fileID: 2817803585925714333}
   - component: {fileID: 6791591643116250088}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Turtle
   m_TagString: Turtle
   m_Icon: {fileID: 0}
@@ -26175,7 +26175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1095110913741103772}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: groundBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26207,7 +26207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5177936982275320293}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IKfrontR_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26240,7 +26240,7 @@ GameObject:
   - component: {fileID: 7079082753260233849}
   - component: {fileID: 600948403232954570}
   - component: {fileID: 728364428640472768}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31068,7 +31068,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5121782572229191107}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: jawBottomBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31100,7 +31100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8596289649090006572}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LbackLegBone_03_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31135,7 +31135,7 @@ GameObject:
   - component: {fileID: 1601028925336999455}
   - component: {fileID: 8737442495464815318}
   - component: {fileID: 3670877418791652735}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BatteryBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31210,7 +31210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7819340578658766004}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RbackLegBone_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31242,7 +31242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4622260650796590617}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RbackLegBone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31276,7 +31276,7 @@ GameObject:
   - component: {fileID: 4002336395157913047}
   - component: {fileID: 8799164497687918697}
   - component: {fileID: 8228853414278575744}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31351,7 +31351,7 @@ GameObject:
   - component: {fileID: 5324221990227605572}
   - component: {fileID: 6319865727226314337}
   - component: {fileID: 4733579325002140155}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: QTEImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31426,7 +31426,7 @@ GameObject:
   - component: {fileID: 4127940565306408143}
   - component: {fileID: 7413010418100454826}
   - component: {fileID: 9060778079202944980}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35988,7 +35988,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8211418644999608834}
   - component: {fileID: 3498092168942357095}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: DashTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36132,7 +36132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5567115830624891240}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RfrontLegBone_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36166,7 +36166,7 @@ GameObject:
   - component: {fileID: 5264223723390665854}
   - component: {fileID: 8708912130635626313}
   - component: {fileID: 6749126620174751832}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BatteryBarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36240,7 +36240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7051775095140440825}
   - component: {fileID: 7966076464532304326}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36386,7 +36386,7 @@ GameObject:
   - component: {fileID: 2430296982862307086}
   - component: {fileID: 1844569089631487829}
   - component: {fileID: 1719801651292362215}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36520,7 +36520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3492996430548411659}
   - component: {fileID: 6958547722639659961}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LfrontLeg.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36632,7 +36632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5352411494713183915}
   - component: {fileID: 2680729200211570571}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LbackLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36744,7 +36744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2213704737039953578}
   - component: {fileID: 7212621093269828907}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LbackLeg.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36857,7 +36857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4544909977042008077}
   - component: {fileID: 4408583465232902560}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: headTopBone
   m_TagString: Turtle Collider
   m_Icon: {fileID: 0}
@@ -36910,7 +36910,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3127971651650572920}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LfrontLegBone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36942,7 +36942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2340796727637564777}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: baseBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36986,7 +36986,7 @@ GameObject:
   - component: {fileID: 2250236851052493093}
   - component: {fileID: 8587064339550388160}
   - component: {fileID: 771836232194047892}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ScannerSphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37079,7 +37079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6981555118421587155}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LfrontLegBone_03_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37112,7 +37112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5853465137077922015}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: jawTopBone_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37144,7 +37144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6373514486933663480}
   - component: {fileID: 8394263228830163177}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: headJaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37257,7 +37257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7005244870917529978}
   - component: {fileID: 7774964973923733637}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Rtorso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37368,7 +37368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3766293774414020564}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: neckBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37401,7 +37401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9040790186583211883}
   - component: {fileID: 379469112837622353}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37547,7 +37547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7321641483316742801}
   - component: {fileID: 5002323388438207804}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: bodyBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37659,7 +37659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4944703997398433273}
   - component: {fileID: 4614565453749764879}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: headTop
   m_TagString: Turtle Collider
   m_Icon: {fileID: 0}
@@ -37773,7 +37773,7 @@ GameObject:
   - component: {fileID: 6837259397149078321}
   - component: {fileID: 1921714678294072992}
   - component: {fileID: 4606188712992803021}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37839,7 +37839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5766372267825812260}
   - component: {fileID: 7742717093748487929}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LfrontLeg.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37952,7 +37952,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5061874197990066527}
   - component: {fileID: 2789310421507943926}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RbackLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38064,7 +38064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 432330710248987904}
   - component: {fileID: 5891448645084539517}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38210,7 +38210,7 @@ GameObject:
   - component: {fileID: 2467754392169502879}
   - component: {fileID: 766338985112730691}
   - component: {fileID: 8216232082038177267}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43038,7 +43038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 139994042459997571}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LfrontLegBone_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43070,7 +43070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7336818772832856010}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: headBottomBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43102,7 +43102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8466254620095720777}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LfrontLegBone_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43136,7 +43136,7 @@ GameObject:
   - component: {fileID: 1715909631262304774}
   - component: {fileID: 4159274208551880169}
   - component: {fileID: 5083118674861723289}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Rig+Mode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43225,7 +43225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3770055654959458357}
   - component: {fileID: 1320185046757417199}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RfrontLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43336,7 +43336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6405332311483215449}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: jawTopBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43368,7 +43368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5385597024245364116}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: TrapSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43401,7 +43401,7 @@ GameObject:
   - component: {fileID: 4782808716696639454}
   - component: {fileID: 788963877142711661}
   - component: {fileID: 7516378582538569231}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48229,7 +48229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2322347839813249454}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LbackLegBone_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48263,7 +48263,7 @@ GameObject:
   - component: {fileID: 16309336837253966}
   - component: {fileID: 9177324016373728020}
   - component: {fileID: 1144567139522258326}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53091,7 +53091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3267155945864857975}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RbackLegBone_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53127,7 +53127,7 @@ GameObject:
   - component: {fileID: 3580875963355868286}
   - component: {fileID: 8704207197959729700}
   - component: {fileID: 6546819067031798328}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57957,7 +57957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3394357265698833045}
   - component: {fileID: 7038671666733323877}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RbackLeg.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58069,7 +58069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3572132935031193084}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IKbackL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58101,7 +58101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2257000893225030065}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: tortoiseRIG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58138,7 +58138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8194187503505372207}
   - component: {fileID: 8192609269529367515}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LfrontLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58249,7 +58249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4014038713495673157}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: shellBone_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58282,7 +58282,7 @@ GameObject:
   - component: {fileID: 4981864144389969733}
   - component: {fileID: 2109838131239015119}
   - component: {fileID: 5076702462169154249}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'FailQTEImage '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58358,7 +58358,7 @@ GameObject:
   - component: {fileID: 7016348089488188854}
   - component: {fileID: 3603920937336277359}
   - component: {fileID: 2150476302327861845}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CloudEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63245,7 +63245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3453369026925491651}
   - component: {fileID: 8083973546259333347}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Ltorso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63360,7 +63360,7 @@ GameObject:
   - component: {fileID: 9096402957664314100}
   - component: {fileID: 3619924149500783908}
   - component: {fileID: 3291541190971278149}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ScannerSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63476,7 +63476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1721688673586122866}
   - component: {fileID: 3881876121639062461}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: headJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63589,7 +63589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4247495442237721975}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: shellBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63629,6 +63629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CFXR2 Sparks Rain
+      objectReference: {fileID: 0}
+    - target: {fileID: 763799897560185588, guid: 798157bad7358b04499c9d71cd3c0d9b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 763799897560185588, guid: 798157bad7358b04499c9d71cd3c0d9b,
         type: 3}
