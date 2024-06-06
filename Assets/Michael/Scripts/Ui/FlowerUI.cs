@@ -39,15 +39,15 @@ namespace Michael.Scripts.Ui
            if (FlowerPlayer) {
                sun = FlowerPlayer.sun;
 
-               Color capacityIconColor = capacityIcon.color;
+              
                if (sun == FlowerPlayer.CapacityCost)
                {
-                   capacityIconColor.a = 255;
-                   Debug.Log("ok");
+                  capacityIcon.transform.DOScale(1.1f, 0.5f).SetEase(Ease.OutSine)
+                       .SetLoops(-1, LoopType.Yoyo);
                }
                else
                {
-                   capacityIconColor.a = 0;
+                 //  capacityIcon.transform.DOScale(1, 1);
                }
            }
            
