@@ -32,6 +32,7 @@ namespace Michael.Scripts.Manager
             if (CurrentBatteryTime <= 0 && !GameManager.Instance.TurtleIsDead){
                
                 GameManager.Instance.TurtleIsDead = true;
+                GameManager.Instance.Winverification();
             }
 
             if (CurrentBatteryTime > _maxBatteryTime)
@@ -43,6 +44,8 @@ namespace Michael.Scripts.Manager
        public void BatteryCost(float capacityCost)
         {
             CurrentBatteryTime -= capacityCost;
+            GameManager.Instance.Winverification();
+            
         }
         
         

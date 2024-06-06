@@ -18,7 +18,7 @@ namespace Michael.Scripts
         public List<Transform> spawnPoints;
         [SerializeField] private CinemachineTargetGroup _targetGroup;
         [SerializeField] private List<FlowerUI> FlowerUis;
-       // [SerializeField] private TurtleUi TurtleUi;
+        
         
         private void Start() {
 
@@ -28,6 +28,8 @@ namespace Michael.Scripts
                 {
                     GameObject character = Instantiate(characterPrefabs[ DataManager.Instance.PlayerChoice[i]], spawnPoints[ DataManager.Instance.PlayerChoice[i]].position,
                         Quaternion.identity,this.gameObject.transform);
+                    
+                    GameManager.Instance.Players.Add(character);
                     
                     if (character.CompareTag("Turtle")) { 
                         Debug.Log("turtle ajouté");
@@ -41,7 +43,6 @@ namespace Michael.Scripts
                         FlowerUis[i].FlowerPlayer = character.GetComponent<FlowerController>();
                         FlowerUis[i].GameObject().SetActive(true);
                         _targetGroup.AddMember(character.transform,1,2);
-                        GameManager.Instance.Flowers.Add(character);
                         GameManager.Instance.FlowersAlive.Add(character);
                         Debug.Log("fleur ajouté");
                     }

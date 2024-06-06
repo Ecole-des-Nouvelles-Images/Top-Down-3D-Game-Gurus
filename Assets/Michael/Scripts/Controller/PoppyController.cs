@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using Michael.Scripts.Manager;
+using Noah.Scripts;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 namespace Michael.Scripts.Controller
 {
     public class PoppyController : FlowerController
     {
-       [Header("Grappling - References")]
+        public MeshTrail MeshTrail;
+        [Header("Grappling - References")]
         [SerializeField] private Transform Gun;
         [SerializeField] private LineRenderer lr;
         [SerializeField] private LayerMask whatIsGrappleable;
@@ -23,7 +26,6 @@ namespace Michael.Scripts.Controller
         [Header("Grappling - Cooldown")]
         [SerializeField] private float grapplingCd;
         private float _grapplingCdTimer;
-        
         
         private float _grappleHoldTimer;
         private Vector3 grapplePoint;
@@ -42,9 +44,10 @@ namespace Michael.Scripts.Controller
 
         protected override void PassiveCapacity()
         {
-            if (!isBoosted &&GameManager.Instance.FlowersAlive.Count == 1) {
+            if (!isBoosted && GameManager.Instance.FlowersAlive.Count == 1) {
                 Debug.Log("boost vitesse dernier en vie");
-                moveSpeed += 20;
+                MeshTrail.InvokePassive();
+                moveSpeed += 150;
                 isBoosted = true;
             }
 
@@ -75,7 +78,7 @@ namespace Michael.Scripts.Controller
 
         protected override void FixedUpdate()
         {
-            if (!_isgrappling && !IsStun)
+            if (!_isgrappling && !IsStunned)
             {
                 Move();
             }
@@ -87,7 +90,7 @@ namespace Michael.Scripts.Controller
 
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            if (context.started)
+            if (context.started && !IsStunned)
             {
                 MainCapacity();
             }

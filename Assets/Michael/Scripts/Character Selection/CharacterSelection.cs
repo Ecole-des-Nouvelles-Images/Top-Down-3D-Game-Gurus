@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Michael.Scripts.Manager;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -13,12 +14,13 @@ namespace Michael.Scripts.Character_Selection
     {
         public static bool[] PlayerIsReady;
         public static bool[] PlayerIsJoined;
+        public static bool CanHold;
         public static bool CanStart;
         public static bool TurtleIsSelected;
         public static bool CanJoin;
         public bool IsCharging;
         public int PlayerIndex ;
-        public static int _maxPlayers = 1;
+        public static int _maxPlayers = 2;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -43,18 +45,18 @@ namespace Michael.Scripts.Character_Selection
         [SerializeField] private InputAction startGameAction;
         [SerializeField] private AudioSource pressedSound;
         [SerializeField] private AudioSource cancelSound;
-       
-        private void Awake()
+        
+        private void Start()
         {
             startGameAction = GetComponent<PlayerInput>().currentActionMap.FindAction("StartGame");
             startGameAction.started += context => StartHold();
             startGameAction.canceled += context => StartRelease();
-        }
-        private void Start()
-        {
+            
+            
             PlayerIndex = GetComponent<PlayerInput>().user.index;
             _initialTransform = transform.localScale;
             Selector.SetActive(false);
+            CanHold = false;
             CanStart = false;
             TurtleIsSelected = false;
             PlayerIsReady = new bool[5] {false, false, false, false,false};
@@ -65,15 +67,17 @@ namespace Michael.Scripts.Character_Selection
                 readyText.transform.DOScale(1.1f, 0.5f).SetEase(Ease.OutSine)
                     .SetLoops(-1, LoopType.Yoyo);
             }
-            
-           
         }
 
+        public void CanStartGame()
+        {
+            CanStart = true;
+        }
       
         private void Update()
         {
             PlayerSelector();
-            if (CanStart)
+            if (CanHold)
             {
                 
                 if (IsCharging)
@@ -81,11 +85,11 @@ namespace Michael.Scripts.Character_Selection
                     startButton.fillAmount = 0;
                     startTimer += Time.deltaTime;
                     startButton.fillAmount = startTimer / startTimerDuration;
-                            if (startTimer >= startTimerDuration + 0.1f)
-                            {
-                                circleTransition.transform.DOScale(15,1);
-                                Invoke("LoadSceneWarpper",1f);
-                            }
+                    if (startTimer >= startTimerDuration + 0.1f)
+                    {
+                        circleTransition.transform.DOScale(15,1);
+                        Invoke("CanStartGame",1.1f);
+                    }
                 }
                 else
                 {
@@ -109,7 +113,7 @@ namespace Michael.Scripts.Character_Selection
         }
 
         void PlayerSelector() {
-            if  (_eventSystem.currentSelectedGameObject.GetComponentInChildren<HorizontalLayoutGroup>()) {
+            if  (_eventSystem.currentSelectedGameObject && _eventSystem.currentSelectedGameObject.GetComponentInChildren<HorizontalLayoutGroup>()) {
                 transform.SetParent( _eventSystem.currentSelectedGameObject
                     .GetComponentInChildren<HorizontalLayoutGroup>().transform);
                 _characterSelected = GetComponentInParent<Button>(); 
@@ -271,7 +275,8 @@ namespace Michael.Scripts.Character_Selection
         
 
         public void StartHold() {
-            if (CanStart) {
+            if (CanHold) {
+                Debug.Log("charge");
                 IsCharging = true;
             }  
            
@@ -321,18 +326,17 @@ namespace Michael.Scripts.Character_Selection
                     }
                 }
                 if  (/*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= _maxPlayers && TurtleIsSelected) {
-                    CanStart = true;
+                    CanHold = true;
                 }
                 else if ( readyCount >= _maxPlayers && !TurtleIsSelected){
-                    CanStart = false;
+                    CanHold = false;
                 
                 }
-                else
-                {
-                    CanStart = false;
+                else {
+                    CanHold = false;
                 }
 
-                if (CanStart)
+                if (CanHold)
                 {
                     textInfo.SetActive(false);
                     startText.SetActive(true);
@@ -341,18 +345,6 @@ namespace Michael.Scripts.Character_Selection
             }
         }
        
-        
-
-        public void LoadSceneWarpper()
-        {
-            string sceneName = "Game";
-            CustomSceneManager.Instance.LoadScene(sceneName);
-            
-        }
-        
-        
-        
-        
         
         
         

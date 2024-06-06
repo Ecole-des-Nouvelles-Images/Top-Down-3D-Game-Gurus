@@ -2,11 +2,13 @@ using System;
 using DG.Tweening;
 using Michael.Scripts.Manager;
 using Unity.Mathematics;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.VFX;
+using Random = UnityEngine.Random;
 
 namespace Michael.Scripts.Controller
 {
@@ -21,14 +23,15 @@ namespace Michael.Scripts.Controller
         public FlowerController deadFlowerController;
         public bool IsPlanted = false;
         public bool isInvincible = false;
-        public bool IsStun;
+        public bool IsStunned;
         public bool isDead;
+        public static bool FlowersWin;
         [SerializeField] bool isCharging;
         [SerializeField] float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
         [SerializeField] private GameObject deadModel;
         [SerializeField] protected GameObject aliveModel;
-        [SerializeField] private Collider aliveModelCollider;
+        [SerializeField] protected Collider aliveModelCollider;
         [SerializeField] private float magnetudeToStun = 22f;
         [SerializeField] private float stunDuration = 3f;
         [SerializeField] private float stunTimer = 0;
@@ -39,6 +42,8 @@ namespace Michael.Scripts.Controller
         [SerializeField] private GameObject deadArrowUI;
         [SerializeField] private VisualEffect ReviveVFX;
         [SerializeField] private GameObject dirt;
+        [SerializeField] private ParticleSystem fireWorksParticules;
+        
         protected virtual void Start() {
             StartAnimation();
         }
@@ -62,7 +67,7 @@ namespace Michael.Scripts.Controller
 
         protected override void FixedUpdate()
         {
-            if (!IsStun)
+            if (!IsStunned)
             {
                 Move();
             }
@@ -70,6 +75,13 @@ namespace Michael.Scripts.Controller
 
         protected override void Update() {
 
+            if (GameManager.Instance.TurtleIsDead && !FlowersWin)
+            {
+                _animator.SetTrigger("Victory");
+                _animator.SetInteger("DanceIndex", Random.Range(0, 3));
+                fireWorksParticules.Play();
+                FlowersWin = true;
+            }
             _animator.SetFloat("Velocity",Rb.velocity.magnitude);
             
             if (sun < 0) {
@@ -95,8 +107,8 @@ namespace Michael.Scripts.Controller
                     
                 }
                 else {
-                    /*DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
-                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, reanimateDuration);*/
+                    DOTween.To(() => deadFlowerController.reviveChargingIcon.fillAmount,
+                        value => deadFlowerController.reviveChargingIcon.fillAmount = value, 0f, 0.3f);
                 }
 
             }
@@ -104,13 +116,13 @@ namespace Michael.Scripts.Controller
           
             
 
-            if (IsStun)
+            if (IsStunned)
             {
                 stunTimer += Time.deltaTime;
                 if (stunTimer >= stunDuration)
                 {
                     stunParticleSystem.gameObject.SetActive(false);
-                    IsStun = false;
+                    IsStunned = false;
                     stunTimer = 0;
                     _animator.SetBool("IsDizzy",false);
                 }
@@ -123,12 +135,20 @@ namespace Michael.Scripts.Controller
 
         }  
         
+        public override void OnMainCapacity(InputAction.CallbackContext context)
+        {
+            if (context.performed && !IsStunned)
+            {
+                MainCapacity();
+            }
+        }
+        
         
         public override void OnSecondaryCapacity(InputAction.CallbackContext context)
         {
             if (context.started)
             {
-                if (!IsStun && currentPlantingCooldown <= 0)
+                if (!IsStunned && currentPlantingCooldown <= 0)
                 {
                     if (!IsPlanted)
                     {
@@ -164,7 +184,7 @@ namespace Michael.Scripts.Controller
         
         public override void OnThirdCapacity(InputAction.CallbackContext context) {// REANIMATION
 
-            if (canReanimate && sun == maxSun && !IsStun)
+            if (canReanimate && sun == maxSun && !IsStunned)
             {
                 if (context.started) {
                     isCharging = true;
@@ -223,6 +243,11 @@ namespace Michael.Scripts.Controller
                     GetStunned();
                 }
             }
+            if (other.CompareTag("Shield"))
+            {
+                isInvincible = true; 
+                Debug.Log("true");
+            }
         }
 
         private void OnTriggerExit(Collider other)
@@ -236,6 +261,11 @@ namespace Michael.Scripts.Controller
                     deadFlowerController.reviveChargingIcon.gameObject.SetActive(false);
                     deadFlowerController.deadArrowUI.SetActive(true);
                     deadFlowerController = null;
+                }
+                
+                if (other.CompareTag("Shield"))
+                {
+                    isInvincible = false; 
                 }
              
             }
@@ -254,9 +284,14 @@ namespace Michael.Scripts.Controller
         [ContextMenu("GetStunned")]
         private void GetStunned() {
             
-            stunParticleSystem.gameObject.SetActive(true);
-            _animator.SetBool("IsDizzy",true);
-            IsStun = true;
+            if (!isInvincible)
+            {
+                GetUnplanted();
+                stunParticleSystem.gameObject.SetActive(true);
+                _animator.SetBool("IsDizzy", true);
+                IsStunned = true; 
+            }
+            
         }
         
         [ContextMenu("TakeHit")]
@@ -270,6 +305,7 @@ namespace Michael.Scripts.Controller
                 sun = 0;
                 GameManager.Instance.FlowersAlive.Remove(this.gameObject);
                 deadArrowUI.SetActive(true);
+                GameManager.Instance.Winverification();
             }
            
         }

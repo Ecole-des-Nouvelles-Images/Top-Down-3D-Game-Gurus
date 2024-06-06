@@ -249,6 +249,9 @@ namespace Michael.Scripts.Controller
                 Invoke(nameof(DisableAttackCollider), 0.7f);
                 _animator.SetTrigger("Attack");
                 BatteryManager.Instance.BatteryCost(10);
+                
+                
+                
             }
         }
         private void EnableAttackCollider()

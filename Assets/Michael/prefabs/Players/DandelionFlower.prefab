@@ -348,10 +348,9 @@ MonoBehaviour:
   deadArrowUI: {fileID: 3035541742640246703}
   ReviveVFX: {fileID: 4656057519872337942}
   dirt: {fileID: 4129921455319913798, guid: 2354a717495c77a49b59c84f86f82834, type: 3}
-  _invincibilityTimer: 0
+  fireWorksParticules: {fileID: 0}
   invincibilityDuration: 3
   pollenVfx: {fileID: 4086426091261872676}
-  isBoosted: 0
 --- !u!1 &2532690040068707908
 GameObject:
   m_ObjectHideFlags: 0
@@ -7227,6 +7226,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
+      propertyPath: lengthInSec
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -7267,6 +7271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
       propertyPath: ShapeModule.radiusThickness
       value: 1
       objectReference: {fileID: 0}
@@ -7278,7 +7287,7 @@ PrefabInstance:
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 86
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
@@ -7303,22 +7312,27 @@ PrefabInstance:
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 79.7
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.36040404
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.8584906
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.659256
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}
@@ -7334,6 +7348,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.minColor.r
       value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770194000847474545, guid: d868441e7c7245c4c9d63c4c2c854698,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 8433819736002045041, guid: d868441e7c7245c4c9d63c4c2c854698,
         type: 3}

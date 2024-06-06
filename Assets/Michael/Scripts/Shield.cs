@@ -4,12 +4,12 @@ using Michael.Scripts.Manager;
 using Noah.Scripts;
 using UnityEngine;
 
-namespace Shields.Scripts
+namespace Michael.Scripts
 {
     public class Shield : MonoBehaviour
     {
         Renderer _renderer;
-        private FlowerController _holderFlowerController;
+        private Controller.FlowerController _holderFlowerController;
         private Collider _collider;
         [SerializeField] AnimationCurve _DisplacementCurve;
         [SerializeField] float _DisplacementMagnitude;
@@ -22,7 +22,7 @@ namespace Shields.Scripts
 
         void Start()
         {
-            _holderFlowerController = GetComponentInParent<FlowerController>();
+            _holderFlowerController = GetComponentInParent<Controller.FlowerController>();
             _renderer = GetComponent<Renderer>();
             _collider = GetComponent<Collider>();
             _renderer.material.SetFloat("_Disolve", 1);
@@ -32,7 +32,7 @@ namespace Shields.Scripts
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+           /* if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main!.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
@@ -45,7 +45,7 @@ namespace Shields.Scripts
             {
                 OpenShield();
             }
-            
+            */
         }
 
         public void HitShield(Vector3 hitPos)
@@ -116,8 +116,8 @@ namespace Shields.Scripts
             }
             _disolveCoroutine = StartCoroutine(Coroutine_DisolveAndAutoClose(1)); 
             
-            FlowerController[] allFlowers = FindObjectsOfType<FlowerController>();
-            foreach (FlowerController flower in allFlowers)
+            Controller.FlowerController[] allFlowers = FindObjectsOfType<Controller.FlowerController>();
+            foreach (Controller.FlowerController flower in allFlowers)
             {
                 flower.isInvincible = false;
             }

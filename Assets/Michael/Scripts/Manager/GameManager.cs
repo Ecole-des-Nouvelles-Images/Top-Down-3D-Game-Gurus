@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 namespace Michael.Scripts.Manager
@@ -13,9 +14,10 @@ namespace Michael.Scripts.Manager
     {
         public GameObject Turtle;
         public bool TurtleIsDead = false;
-        public bool FlowersAreDead = false;
+        public bool FlowersIsdead = false;
+        public bool GameFinished = false;
         public List<GameObject> FlowersAlive;
-        public List<GameObject> Flowers;
+        public List<GameObject> Players;
         public List<GameObject> TurtleTrap;
         public Dictionary<GameObject, Transform> _sunOccupiedSpawns = new Dictionary<GameObject, Transform>();
         [SerializeField] private Transform[] _sunSpawnPoints;
@@ -24,13 +26,14 @@ namespace Michael.Scripts.Manager
         [SerializeField] private GameObject firstCamera;
         [SerializeField] private GameObject circularTransition;
         [SerializeField] private GameObject CrashVfx;
-        [SerializeField] private Transform spawnTurtlePosition;
+       // [SerializeField] private Transform spawnTurtlePosition;
         [SerializeField] private GameObject EndGamePanel;
-        [SerializeField] private GameObject TurtleVictoryPanel;
-        [SerializeField] private GameObject FlowersVictoryPanel;
+        //[SerializeField] private GameObject TurtleVictoryPanel;
+        //[SerializeField] private GameObject FlowersVictoryPanel;
         [SerializeField] private GameObject TurtleUis;
         [SerializeField] private GameObject eventSystem;
         [SerializeField] private GameObject restartButton;
+        
         void Start()
         {
             circularTransition.transform.DOScale(15, 1.2f);
@@ -39,31 +42,40 @@ namespace Michael.Scripts.Manager
         
         private void DesactiveGameManager()
         {
-            gameObject.SetActive(false);
+            foreach (GameObject player in Players)
+            {
+                player.GetComponent<PlayerInput>().enabled = false;
+            }
         }
 
+        public void Winverification()
+        {
+            if (FlowersAlive.Count <= 0 && !GameFinished) {
+                
+                //  TurtleVictoryPanel.SetActive(true);
+                EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 3f);
+                eventSystem.SetActive(true);
+                eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
+                GameFinished = true;
+                FlowersIsdead = true;
+                DesactiveGameManager();
+                
+            }
+            else if (TurtleIsDead && !GameFinished) {
+                // FlowersVictoryPanel.SetActive(true);
+                EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 3f);
+                eventSystem.SetActive(true);
+                eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
+                GameFinished = true;
+                TurtleUis.SetActive(false);
+                DesactiveGameManager();
+                
+            }
+        }
         private void Update()
         {
 
-          /*  if (FlowersAlive.Count <= 0) {
-                
-                TurtleVictoryPanel.SetActive(true);
-                EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 2f);
-                eventSystem.SetActive(true);
-                eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
-                FlowersAreDead = true;
-                Invoke("DesactiveGameManager",2.1f);
-                
-            }
-            else if (TurtleIsDead)
-            {
-                FlowersVictoryPanel.SetActive(true);
-                EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 2f);
-                eventSystem.SetActive(true);
-                eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
-                Invoke("DesactiveGameManager",2.1f);
-               
-            }*/
+           
         }
 
 
@@ -124,10 +136,5 @@ namespace Michael.Scripts.Manager
             Time.timeScale = 1f;
             TimeManager.Instance.fixedDeltaTime = 0.02f * Time.timeScale;
         }
-    
-        
-
-
-
     }
 }
