@@ -11281,6 +11281,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1085580450}
+        m_TargetAssemblyTypeName: Michael.Scripts.Ui.PauseControlller, Assembly-CSharp
+        m_MethodName: ClosePausePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 728801675}
         m_TargetAssemblyTypeName: Michael.Scripts.Manager.EndGamePanel, Assembly-CSharp
         m_MethodName: LoadMenuScene
@@ -54530,6 +54542,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 35073875934794459, guid: b5e16718cc06c1b4ea1a736f146b1e1a,
+        type: 3}
+      propertyPath: m_ForceModule
+      value: 
+      objectReference: {fileID: 1326746306}
     - target: {fileID: 3817836459905497788, guid: b5e16718cc06c1b4ea1a736f146b1e1a,
         type: 3}
       propertyPath: m_Name
@@ -85604,6 +85621,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1085580450}
+        m_TargetAssemblyTypeName: Michael.Scripts.Ui.PauseControlller, Assembly-CSharp
+        m_MethodName: ClosePausePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1944594520}
         m_TargetAssemblyTypeName: Michael.Scripts.Manager.EndGamePanel, Assembly-CSharp
         m_MethodName: LoadCharacterSelectionScene
@@ -89814,7 +89843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 0.6745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -92946,8 +92975,6 @@ MonoBehaviour:
   CrashVfx: {fileID: 1529346437}
   spawnTurtlePosition: {fileID: 0}
   EndGamePanel: {fileID: 1944594515}
-  TurtleVictoryPanel: {fileID: 1337294575}
-  FlowersVictoryPanel: {fileID: 299100126}
   TurtleUis: {fileID: 1501747238}
   eventSystem: {fileID: 1706073784}
   restartButton: {fileID: 598526861}

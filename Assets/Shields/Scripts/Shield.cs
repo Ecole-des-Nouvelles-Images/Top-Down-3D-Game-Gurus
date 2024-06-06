@@ -77,7 +77,7 @@ namespace Shields.Scripts
             while (lerp < 1)
             {
                 _renderer.material.SetFloat("_DisplacementStrength", _DisplacementCurve.Evaluate(lerp) * _DisplacementMagnitude);
-                lerp += Time.deltaTime * _LerpSpeed;
+                lerp += TimeManager.Instance.deltaTime * _LerpSpeed;
                 yield return null;
             }
         }
@@ -89,7 +89,7 @@ namespace Shields.Scripts
             while (lerp < 1)
             {
                 _renderer.material.SetFloat("_Disolve", Mathf.Lerp(start, target, lerp));
-                lerp += Time.deltaTime * _DisolveSpeed;
+                lerp += TimeManager.Instance.deltaTime * _DisolveSpeed;
                 yield return null;
             }
             _renderer.material.SetFloat("_Disolve", target);

@@ -41,7 +41,7 @@ namespace Noah.Scripts
 
             while (elapsedTime < duration)
             {
-                elapsedTime += Time.deltaTime;
+                elapsedTime += TimeManager.Instance.deltaTime;
                 yield return null;
             }
             

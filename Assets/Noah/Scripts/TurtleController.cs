@@ -108,8 +108,8 @@ namespace Noah.Scripts
                 Rb.rotation = Quaternion.Slerp(Rb.rotation, newRotation, 0.15f);
             }
             
-            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * Time.deltaTime);
-            Rb.AddForce(movement * Time.deltaTime, ForceMode.Force);
+            // Rb.MovePosition(transform.position + new Vector3(movement.x, 2, movement.z) * TimeManager.Instance.deltaTime);
+            Rb.AddForce(movement * TimeManager.Instance.deltaTime, ForceMode.Force);
             // Rb.velocity = new Vector3(movement.x, Rb.velocity.y, movement.z);
             
         }
@@ -194,7 +194,7 @@ namespace Noah.Scripts
             {
                 _animator.SetBool("IsDashing", true);
                 _animator.SetFloat("DashTimer", _chargeTime);
-                _chargeTime += Time.deltaTime;
+                _chargeTime += TimeManager.Instance.deltaTime;
 
                 if (move.magnitude > 0.5f)
                 {
@@ -338,7 +338,7 @@ namespace Noah.Scripts
         {
             if (_isScanning)
             {
-                scanTime += Time.deltaTime;
+                scanTime += TimeManager.Instance.deltaTime;
                 if (scanTime >= scanDuration)
                 {
                     _isScanning = false;

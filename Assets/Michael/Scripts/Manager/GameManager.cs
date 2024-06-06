@@ -26,8 +26,8 @@ namespace Michael.Scripts.Manager
         [SerializeField] private GameObject CrashVfx;
         [SerializeField] private Transform spawnTurtlePosition;
         [SerializeField] private GameObject EndGamePanel;
-        [SerializeField] private GameObject TurtleVictoryPanel;
-        [SerializeField] private GameObject FlowersVictoryPanel;
+      //  [SerializeField] private GameObject TurtleVictoryPanel;
+        //[SerializeField] private GameObject FlowersVictoryPanel;
         [SerializeField] private GameObject TurtleUis;
         [SerializeField] private GameObject eventSystem;
         [SerializeField] private GameObject restartButton;
@@ -45,25 +45,22 @@ namespace Michael.Scripts.Manager
         private void Update()
         {
 
-          /*  if (FlowersAlive.Count <= 0) {
+             if (FlowersAlive.Count <= 0) {
                 
-                TurtleVictoryPanel.SetActive(true);
+              //  TurtleVictoryPanel.SetActive(true);
                 EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 2f);
                 eventSystem.SetActive(true);
                 eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
                 FlowersAreDead = true;
                 Invoke("DesactiveGameManager",2.1f);
-                
-            }
-            else if (TurtleIsDead)
-            {
-                FlowersVictoryPanel.SetActive(true);
+             }
+             else if (TurtleIsDead) {
+               // FlowersVictoryPanel.SetActive(true);
                 EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 2f);
                 eventSystem.SetActive(true);
                 eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(restartButton);
                 Invoke("DesactiveGameManager",2.1f);
-               
-            }*/
+             }
         }
 
 

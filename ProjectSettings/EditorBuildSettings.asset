@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Michael/Scenes/SharedScene.unity
     guid: 7f45bb19d96f5ec4c83d7eacea317e9c
   - enabled: 1
+    path: Assets/Michael/Scenes/IntroScreen.unity
+    guid: e2583a893be5e7f489d53bb5dbb2022a
+  - enabled: 1
     path: Assets/Michael/Scenes/Menu.unity
     guid: c9942cce6f1df3d4eb96e55ac27f697b
   - enabled: 1

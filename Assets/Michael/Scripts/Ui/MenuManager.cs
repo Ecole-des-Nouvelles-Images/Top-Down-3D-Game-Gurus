@@ -1,4 +1,6 @@
+using System;
 using DG.Tweening;
+using Michael.Scripts.Character_Selection;
 using Michael.Scripts.Manager;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -23,22 +25,30 @@ namespace Michael.Scripts.Ui
             SetMusicVolume();
             SetSfxVolume();
 
-            if (CharacterSelectionPanel)
-            {
+            if (CharacterSelectionPanel) {
                 if (DataManager.CharacterSelectionScene) {
                     eventSystem.SetActive(false);
                     CharacterSelectionPanel.SetActive(true);
                     DataManager.CharacterSelectionScene = false;
                 }
-                else
-                {
+                else {
                     mainMenuPanel.SetActive(true);
                 }
             }
           
         }
         
-        
+        public void StartGame() {
+            CustomSceneManager.Instance.LoadScene("Game");
+        }
+
+        private void Update() {
+            if (CharacterSelection.CanStart) {
+               StartGame();
+               CharacterSelection.CanStart = false;
+
+            }
+        }
         public void QuitApplication()
         {
             Application.Quit();
