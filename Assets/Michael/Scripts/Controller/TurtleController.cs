@@ -39,6 +39,7 @@ namespace Michael.Scripts.Controller
         [SerializeField] private AudioSource level2Dashsound;
         [SerializeField] private AudioSource toupisSound;
         [SerializeField] private AudioSource biteSound;
+        [SerializeField] private AudioSource scansound;
 
         private bool isnitro;
         private bool runstop;
@@ -370,6 +371,7 @@ namespace Michael.Scripts.Controller
 
             if (!_isScanning)
             {
+                scansound.Play();
                 scanSphereArea.transform.DOScale(scanRange, 3f);
                 _isScanning = true;
                 BatteryManager.Instance.BatteryCost(20);

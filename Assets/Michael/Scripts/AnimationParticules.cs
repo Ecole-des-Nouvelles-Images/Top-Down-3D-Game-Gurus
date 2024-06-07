@@ -9,6 +9,7 @@ public class AnimationParticules : MonoBehaviour
     [SerializeField] private ParticleSystem _dirtParticules;
     [SerializeField] private ParticleSystem _runParticules;
     private Animator _animator;
+    [SerializeField] private AudioSource footstepsound;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class AnimationParticules : MonoBehaviour
     public void RunParticules() {
         if (_runParticules) {
            _runParticules.Play();
+           footstepsound.Play();
         }
     }
     
