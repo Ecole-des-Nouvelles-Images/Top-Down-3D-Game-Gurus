@@ -24,6 +24,10 @@ namespace Michael.Scripts
         
         private void Start() {
 
+             player1spawned = false;
+             player2spawned = false;
+             player3spawned = false;
+                 
             for (int i = 0; i < 4; i++)
             {
                 if ( DataManager.Instance.PlayerChoice.ContainsKey(i))
