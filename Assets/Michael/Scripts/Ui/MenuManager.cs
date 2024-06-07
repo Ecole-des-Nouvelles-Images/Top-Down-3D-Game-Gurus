@@ -18,6 +18,8 @@ namespace Michael.Scripts.Ui
         [SerializeField] private GameObject CharacterSelectionPanel;
         [SerializeField] private GameObject eventSystem;
        
+        private bool _gameStarted;
+        
         private void Start()
         {
             _musicSlider.value = DataManager.MusicVolume;
@@ -43,10 +45,10 @@ namespace Michael.Scripts.Ui
         }
 
         private void Update() {
-            if (CharacterSelection.CanStart) {
+            if (CharacterSelection.CanStart && !_gameStarted) {
                StartGame();
                CharacterSelection.CanStart = false;
-
+               _gameStarted = true;
             }
         }
         public void QuitApplication()

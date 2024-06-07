@@ -20,7 +20,7 @@ namespace Michael.Scripts.Character_Selection
         public static bool CanJoin;
         public bool IsCharging;
         public int PlayerIndex ;
-        public static int _maxPlayers = 2;
+        public static int _maxPlayers = 4;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -48,6 +48,7 @@ namespace Michael.Scripts.Character_Selection
         
         private void Start()
         {
+            
             startGameAction = GetComponent<PlayerInput>().currentActionMap.FindAction("StartGame");
             startGameAction.started += context => StartHold();
             startGameAction.canceled += context => StartRelease();
