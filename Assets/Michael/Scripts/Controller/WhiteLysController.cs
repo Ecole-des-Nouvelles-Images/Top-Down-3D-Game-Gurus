@@ -3,33 +3,41 @@ using Michael.Scripts.Ui;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 namespace Michael.Scripts.Controller
 {
     public class WhiteLysController : FlowerController
     {
+        [SerializeField] private VisualEffect shareEnergy;
+
         protected override void MainCapacity()
         {
             //give his sun to other flowers
-            if (sun > 0) {
-                
-                foreach (GameObject floweralive in  GameManager.Instance.FlowersAlive) {
+            if (sun > 0)
+            {
+
+                shareEnergy.Play();
+                foreach (GameObject floweralive in GameManager.Instance.FlowersAlive)
+                {
                     if (floweralive != gameObject)
                     {
                         if (floweralive.GetComponent<FlowerController>().sun < 3)
                         {
+                            if (floweralive.GetComponent<FlowerController>().GatherEnergy != null)
+                            {
+                                floweralive.GetComponent<FlowerController>().GatherEnergy.Play();
+                            }
+
                             floweralive.GetComponent<FlowerController>().sun += sun;
-                        }
-                        else
-                        {
-                            Debug.Log("toutes les fleurs ont des soleils");
+                            sun = 0;
                         }
                     }
+
                 }
-                sun = 0;
-            
             }
         }
+
 
         protected override void PassiveCapacity()
         {

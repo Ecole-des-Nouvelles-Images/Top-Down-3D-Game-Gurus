@@ -26,7 +26,7 @@ namespace Michael.Scripts.Manager
            _delayBatteryTime -= Time.deltaTime *_easeSilerRate;
            _delayBatteryTime = Mathf.Clamp(_delayBatteryTime,CurrentBatteryTime, _maxBatteryTime);
            
-           _batteryBar.value = CurrentBatteryTime / _maxBatteryTime;
+            _batteryBar.value = CurrentBatteryTime / _maxBatteryTime; 
             _easeBatteryBar.value = _delayBatteryTime / _maxBatteryTime;
             
             if (CurrentBatteryTime <= 0 && !GameManager.Instance.TurtleIsDead){
