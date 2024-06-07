@@ -120,7 +120,6 @@ namespace Michael.Scripts.Controller
         {
             if (context.performed && !PauseControlller.IsPaused)
             {
-                Debug.Log("turbo");
                 moveSpeed *= boosterMultiplier;
                 BatteryManager.Instance.CurrentBatteryTime -= Time.deltaTime;
                 dashMaterial.SetColor("_EmissionColor",boostColor);
@@ -163,7 +162,6 @@ namespace Michael.Scripts.Controller
                 if (_lastDashDirection != Vector3.zero)
                 {
                     dashDirection = _lastDashDirection;
-                    Debug.Log("utilisation last dash direction");
                 }
                 
                 float currentDashForce = 0;
@@ -171,24 +169,20 @@ namespace Michael.Scripts.Controller
                 if (_chargeTime > firstDashLevelTime && _chargeTime < secondDashLevelTime)
                 {
                     currentDashForce = firstDashLevelPower * firstDashLevelTime;
-                    Debug.Log("First Level Dash");
                 }
                 else if (_chargeTime > firstDashLevelTime && _chargeTime > secondDashLevelTime && _chargeTime < thirdDashLevelTime)
                 {
                     currentDashForce = secondDashLevelPower * secondDashLevelTime;
-                    Debug.Log("Second Level Dash");
                     BatteryManager.Instance.BatteryCost(10);
 
                 }
                 else if (_chargeTime > firstDashLevelTime && _chargeTime > secondDashLevelTime && _chargeTime > thirdDashLevelTime)
                 {
                     currentDashForce = thirdDashLevelPower * thirdDashLevelTime;
-                    Debug.Log("Third Level Dash");
                     BatteryManager.Instance.BatteryCost(20);
                 }
                 else
                 {
-                    Debug.Log("No Force");
                 }
                 _animator.SetBool("IsDashing",true);
                 Rb.AddForce(currentDashForce * dashDirection, ForceMode.Impulse);

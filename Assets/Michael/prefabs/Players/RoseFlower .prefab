@@ -536,7 +536,7 @@ MonoBehaviour:
   GatherEnergy: {fileID: 2716993728449156146}
   spawnTrap: {fileID: 7102651170530908386, guid: e94bd4fea0828344a8b729c83c748971,
     type: 3}
-  respawnDelay: 5
+  respawnDelay: 2
 --- !u!1 &4853872592971802212
 GameObject:
   m_ObjectHideFlags: 0
