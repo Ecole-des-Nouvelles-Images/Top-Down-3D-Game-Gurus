@@ -22,7 +22,7 @@ namespace Michael.Scripts
         
         private void Start() {
 
-            for (int i = 0; i < CharacterSelection._maxPlayers ; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if ( DataManager.Instance.PlayerChoice.ContainsKey(i))
                 {
@@ -30,14 +30,7 @@ namespace Michael.Scripts
                         Quaternion.identity,this.gameObject.transform);
                     
                     GameManager.Instance.Players.Add(character);
-                    
-                    if (character.CompareTag("Turtle")) { 
-                        Debug.Log("turtle ajouté");
-                        _targetGroup.AddMember(character.transform,1.1f,2.5f);
-                        GameManager.Instance.Turtle = character.gameObject;
-                        SeeTroughWall._turtle = character.gameObject;
-                    }
-                    if (!character.CompareTag("Turtle"))
+                    if (character.CompareTag("Flower"))
                     {
                         character.GetComponent<FlowerController>().characterIndex = DataManager.Instance.PlayerChoice[i];
                         FlowerUis[i].FlowerPlayer = character.GetComponent<FlowerController>();
@@ -46,6 +39,13 @@ namespace Michael.Scripts
                         GameManager.Instance.FlowersAlive.Add(character);
                         Debug.Log("fleur ajouté");
                     }
+                    else if (character.CompareTag("Turtle")) { 
+                        Debug.Log("turtle ajouté");
+                        _targetGroup.AddMember(character.transform,1.1f,2.5f);
+                        GameManager.Instance.Turtle = character.gameObject;
+                        SeeTroughWall._turtle = character.gameObject;
+                    }
+                   
                 }
             }
         }
