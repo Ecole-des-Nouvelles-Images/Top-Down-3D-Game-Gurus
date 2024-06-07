@@ -31,10 +31,11 @@ namespace Michael.Scripts.Controller
         [SerializeField] private GameObject chargingSmokeParticules;
         
         [Header("SoundFX")]
-        [SerializeField] private AudioClip idleSound;
-        [SerializeField] private AudioClip runStartSound;
-        [SerializeField] private AudioClip level1Dashsound;
-        [SerializeField] private AudioClip level2Dashsound;
+        [SerializeField] private AudioSource idleSound;
+        [SerializeField] private AudioSource runStartSound;
+        [SerializeField] private AudioSource level1Dashsound;
+        [SerializeField] private AudioSource level2Dashsound;
+        //[SerializeField] private AudioSource
         [SerializeField] private Color boostColor;
         [SerializeField] private Color normalColor;
         private bool idlesoundIsPlaying;
@@ -98,15 +99,16 @@ namespace Michael.Scripts.Controller
                 
             }
 
-           /* if ( !idlesoundIsPlaying)
+          /*  if ( !idlesoundIsPlaying && _isCharging)
             {
-                SoundFXManager.Instance.PlayLoopSoundFXClip(idleSound,gameObject.transform,0.5f);
-                idlesoundIsPlaying = true;
+               idleSound.Play();
+               idlesoundIsPlaying = true;
                     
             }
             else if  (Rb.velocity.magnitude > 0.01f )
             {
-                SoundFXManager.Instance.PlayLoopSoundFXClip(runStartSound,gameObject.transform,0.5f);
+                runStartSound.Stop();
+              
             }*/
 
            
@@ -120,6 +122,7 @@ namespace Michael.Scripts.Controller
         {
             if (context.performed && !PauseControlller.IsPaused)
             {
+                
                 Debug.Log("turbo");
                 moveSpeed *= boosterMultiplier;
                 BatteryManager.Instance.CurrentBatteryTime -= Time.deltaTime;
@@ -236,14 +239,14 @@ namespace Michael.Scripts.Controller
                 // change light of turtle when charging 
                 if (_chargeTime > firstDashLevelTime && _chargeTime < secondDashLevelTime) {
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[0]);
-                  //  dashMaterial.SetColor("_EmissionColor",colorsDashLevel[0]);
+                   dashMaterial.SetColor("_EmissionColor",colorsDashLevel[0]);
                     
                     
                 }
                 else if (_chargeTime > firstDashLevelTime && _chargeTime > secondDashLevelTime && _chargeTime < thirdDashLevelTime) {
                   
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[1]);
-                    //dashMaterial.SetColor("_EmissionColor",colorsDashLevel[1]);
+                    dashMaterial.SetColor("_EmissionColor",colorsDashLevel[1]);
                     //dashTrail.enabled = true;
                     chargingSmokeParticules.SetActive(true);
                     chargingParticules.SetActive(true);
@@ -252,7 +255,7 @@ namespace Michael.Scripts.Controller
                 else if (_chargeTime > firstDashLevelTime && _chargeTime > secondDashLevelTime && _chargeTime > thirdDashLevelTime) {
                  
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[2]);
-                   // dashMaterial.SetColor("_EmissionColor",colorsDashLevel[2]);
+                   dashMaterial.SetColor("_EmissionColor",colorsDashLevel[2]);
                     destructionMode = true;
 
                 }

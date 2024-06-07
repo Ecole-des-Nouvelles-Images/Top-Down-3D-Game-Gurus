@@ -20,7 +20,7 @@ namespace Michael.Scripts.Character_Selection
         public static bool CanJoin;
         public bool IsCharging;
         public int PlayerIndex ;
-        public static int _maxPlayers = 4;
+        public static int _maxPlayers = 2;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
