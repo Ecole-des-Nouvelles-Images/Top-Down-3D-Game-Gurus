@@ -48,6 +48,7 @@ namespace Michael.Scripts.Character_Selection
         
         private void Start()
         {
+            
             startGameAction = GetComponent<PlayerInput>().currentActionMap.FindAction("StartGame");
             startGameAction.started += context => StartHold();
             startGameAction.canceled += context => StartRelease();
