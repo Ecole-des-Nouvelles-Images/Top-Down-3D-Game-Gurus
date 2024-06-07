@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -16,6 +17,7 @@ namespace Michael.Scripts.Manager
         public bool TurtleIsDead = false;
         public bool FlowersIsdead = false;
         public bool GameFinished = false;
+        public bool GameisStarted = false;
         public List<GameObject> FlowersAlive;
         public List<GameObject> Players;
         public List<GameObject> TurtleTrap;
@@ -33,9 +35,15 @@ namespace Michael.Scripts.Manager
         [SerializeField] private GameObject TurtleUis;
         [SerializeField] private GameObject eventSystem;
         [SerializeField] private GameObject restartButton;
-        
+        [SerializeField] private GameObject okButton;
+        [SerializeField] private GameObject RulesPanel;
+
+
         void Start()
         {
+            GameisStarted = false;
+            RulesPanel.GetComponent<CanvasGroup>().DOFade(1, 1f);
+            Invoke(nameof(ShowRulesPanels),1.25f);
             circularTransition.transform.DOScale(15, 1.2f);
 
         }
@@ -72,11 +80,23 @@ namespace Michael.Scripts.Manager
                 
             }
         }
-        private void Update()
-        {
+      
 
-           
+        public void ShowRulesPanels()
+        {
+            Time.timeScale = 0;
+            eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(okButton);
+            
+            
         }
+        
+        public void closeRulesPanels()
+        {
+            Time.timeScale = 1;
+            GameisStarted = true;
+        }
+        
+        
 
 
         public void StartGame()
