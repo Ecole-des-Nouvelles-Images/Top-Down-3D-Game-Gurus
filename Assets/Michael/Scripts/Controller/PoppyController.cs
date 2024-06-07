@@ -56,6 +56,7 @@ namespace Michael.Scripts.Controller
             {
                 isBoosted = false;
                 moveSpeed = 525;
+                MeshTrail.StopPassive();
             }
 
             else if (isDead || GameManager.Instance.GameFinished)

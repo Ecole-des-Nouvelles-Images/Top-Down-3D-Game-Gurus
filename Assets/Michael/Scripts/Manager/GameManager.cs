@@ -41,9 +41,9 @@ namespace Michael.Scripts.Manager
 
         void Start()
         {
-            GameisStarted = false; 
-            RulesPanel.GetComponent<CanvasGroup>().DOFade(1, 1f);
-            Invoke(nameof(ShowRulesPanels),1.25f);
+            GameisStarted = false;
+           // RulesPanel.GetComponent<CanvasGroup>().DOFade(1, 1f);
+           // Invoke(nameof(ShowRulesPanels),5f);
             circularTransition.transform.DOScale(15, 1.2f);
 
         }
@@ -93,7 +93,7 @@ namespace Michael.Scripts.Manager
         public void closeRulesPanels()
         {
             Time.timeScale = 1;
-            GameisStarted = true;
+            GameisStarted = true; 
         }
         
         

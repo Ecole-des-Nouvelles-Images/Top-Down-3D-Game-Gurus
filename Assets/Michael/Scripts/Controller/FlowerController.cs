@@ -30,8 +30,8 @@ namespace Michael.Scripts.Controller
         public bool IsStunned;
         public bool isDead;
         public static bool FlowersWin;
-        [SerializeField] bool isCharging;
-        [SerializeField] float reanimateTimer = 0;
+        public bool isCharging;
+        public float reanimateTimer = 0;
         [SerializeField] private float reanimateDuration = 1;
         [SerializeField] protected GameObject deadModel;
         [SerializeField] protected GameObject aliveModel;
@@ -86,7 +86,7 @@ namespace Michael.Scripts.Controller
             {
                 _animator.SetTrigger("Victory");
                 _animator.SetInteger("DanceIndex", Random.Range(0, 3));
-                fireWorksParticules.Play();
+              //  fireWorksParticules.Play();
                 FlowersWin = true;
             }
             _animator.SetFloat("Velocity",Rb.velocity.magnitude);
