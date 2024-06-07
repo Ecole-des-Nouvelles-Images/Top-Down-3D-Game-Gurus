@@ -22,13 +22,14 @@ namespace Michael.Scripts.FeedBack
 
         private void Awake()
         {
-            _turtleController = FindObjectOfType<TurtleController>();
+            
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Turtle"))
             {
+               _turtleController =  collision.gameObject.GetComponent<TurtleController>();
                 if (_turtleController.destructionMode)
                 {
                     Explode();

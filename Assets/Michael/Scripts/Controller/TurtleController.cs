@@ -33,14 +33,21 @@ namespace Michael.Scripts.Controller
         [Header("SoundFX")]
         [SerializeField] private AudioSource idleSound;
         [SerializeField] private AudioSource runStartSound;
+        [SerializeField] private AudioSource runnitro;
+        [SerializeField] private AudioSource RUNSTOP;
         [SerializeField] private AudioSource level1Dashsound;
         [SerializeField] private AudioSource level2Dashsound;
-        //[SerializeField] private AudioSource
+        [SerializeField] private AudioSource toupisSound;
+        [SerializeField] private AudioSource biteSound;
+     
+        private bool idlesoundIsPlaying;
+        private bool runIsPlaying;
+        private bool level1IsPlaying;
+        private bool level2IsPlaying;
+        private bool toupisIsPlaying;
+        
         [SerializeField] private Color boostColor;
         [SerializeField] private Color normalColor;
-        private bool idlesoundIsPlaying;
-        
-        
         
         
         private float _chargeTime;
@@ -99,7 +106,7 @@ namespace Michael.Scripts.Controller
                 
             }
 
-          /*  if ( !idlesoundIsPlaying && _isCharging)
+            if ( !idlesoundIsPlaying && _isCharging)
             {
                idleSound.Play();
                idlesoundIsPlaying = true;
@@ -109,7 +116,7 @@ namespace Michael.Scripts.Controller
             {
                 runStartSound.Stop();
               
-            }*/
+            }
 
            
             
@@ -247,6 +254,7 @@ namespace Michael.Scripts.Controller
                   
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[1]);
                     dashMaterial.SetColor("_EmissionColor",colorsDashLevel[1]);
+                    level1Dashsound.Play();
                     //dashTrail.enabled = true;
                     chargingSmokeParticules.SetActive(true);
                     chargingParticules.SetActive(true);
@@ -257,7 +265,7 @@ namespace Michael.Scripts.Controller
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[2]);
                    dashMaterial.SetColor("_EmissionColor",colorsDashLevel[2]);
                     destructionMode = true;
-
+                    level2Dashsound.Play();
                 }
                 else {
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[0]);
@@ -290,8 +298,7 @@ namespace Michael.Scripts.Controller
                 Invoke(nameof(DisableAttackCollider), 0.7f);
                 _animator.SetTrigger("Attack");
                 BatteryManager.Instance.BatteryCost(10);
-                
-                
+                biteSound.Play();
                 
             }
         }

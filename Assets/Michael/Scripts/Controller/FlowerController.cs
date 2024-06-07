@@ -15,6 +15,9 @@ namespace Michael.Scripts.Controller
 {
     public abstract class FlowerController : CharacterController
     {
+        [SerializeField] private AudioSource minesound;
+        [SerializeField] private AudioSource revivesound;
+        [SerializeField] private AudioSource capacitysound;
         public int characterIndex;
         public static Action OnSunCollected;
         public int sun =0 ; 
@@ -148,6 +151,7 @@ namespace Michael.Scripts.Controller
             if (context.performed && !IsStunned && !PauseControlller.IsPaused)
             {
                 MainCapacity();
+                capacitysound.Play();
             }
         }
         
@@ -228,6 +232,7 @@ namespace Michael.Scripts.Controller
                     GameManager.Instance.TurtleTrap.Remove(other.gameObject);
                     Destroy(other.gameObject);
                     GetStunned();
+                    minesound.Play();
                 }
                
             }
@@ -331,6 +336,7 @@ namespace Michael.Scripts.Controller
             deadModel.SetActive(false);
             GameManager.Instance.FlowersAlive.Add(this.gameObject);
             ReviveVFX.Play();
+            revivesound.Play();
         }
 
 

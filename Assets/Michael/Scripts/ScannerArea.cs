@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ScannerArea : MonoBehaviour
 {
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Flower")) {

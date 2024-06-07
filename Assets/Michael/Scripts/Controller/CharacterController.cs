@@ -73,6 +73,7 @@ namespace Michael.Scripts.Controller
             if (context.performed && !PauseControlller.IsPaused)
             {
                 MainCapacity();
+               
             }
         }
 
@@ -87,7 +88,7 @@ namespace Michael.Scripts.Controller
             if (context.performed && !PauseControlller.IsPaused)
             {
                 SecondaryCapacity();
-                RumbleManager.Instance.RumblePulse(0.25f, 1f, 0.25f);
+                //RumbleManager.Instance.RumblePulse(0.25f, 1f, 0.25f);
             }
            
         }
