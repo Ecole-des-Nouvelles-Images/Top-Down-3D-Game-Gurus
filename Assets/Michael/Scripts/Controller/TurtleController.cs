@@ -39,12 +39,15 @@ namespace Michael.Scripts.Controller
         [SerializeField] private AudioSource level2Dashsound;
         [SerializeField] private AudioSource toupisSound;
         [SerializeField] private AudioSource biteSound;
-     
+
+        private bool isnitro;
+        private bool runstop;
         private bool idlesoundIsPlaying;
         private bool runIsPlaying;
         private bool level1IsPlaying;
         private bool level2IsPlaying;
         private bool toupisIsPlaying;
+        private bool isturntoupis;
         
         [SerializeField] private Color boostColor;
         [SerializeField] private Color normalColor;
@@ -90,6 +93,33 @@ namespace Michael.Scripts.Controller
 
         protected override void Update()
         {
+
+            if (runIsPlaying)
+            {
+                idleSound.Play();
+                runIsPlaying = false;
+            }
+
+            if (runStartSound)
+            {
+                runStartSound.Play();
+            }
+    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             DashingUpdate();
             ScanningUpdate();
             _animator.SetFloat("Velocity",Rb.velocity.magnitude);
@@ -106,15 +136,14 @@ namespace Michael.Scripts.Controller
                 
             }
 
-            if ( !idlesoundIsPlaying && _isCharging)
+            if (  _isCharging)
             {
-               idleSound.Play();
                idlesoundIsPlaying = true;
                     
             }
             else if  (Rb.velocity.magnitude > 0.01f )
             {
-                runStartSound.Stop();
+                
               
             }
 
@@ -134,12 +163,13 @@ namespace Michael.Scripts.Controller
                 moveSpeed *= boosterMultiplier;
                 BatteryManager.Instance.CurrentBatteryTime -= Time.deltaTime;
                 dashMaterial.SetColor("_EmissionColor",boostColor);
-              
+                runnitro.Play();
             }
             else
             {
                 dashMaterial.SetColor("_EmissionColor",normalColor);
                 moveSpeed = _normalSpeed;
+                runnitro.Stop();
             }
         }
         #region Main Capacity
@@ -151,11 +181,13 @@ namespace Michael.Scripts.Controller
                 if (context.started)
                 {
                     StartCharging();
+                    toupisSound.Play();
                 }
                 else if (context.canceled)
                 { 
                     StopCharging();
                     MainCapacity();
+                    toupisSound.Stop();
                 } 
             }
         }
@@ -254,11 +286,10 @@ namespace Michael.Scripts.Controller
                   
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[1]);
                     dashMaterial.SetColor("_EmissionColor",colorsDashLevel[1]);
-                    level1Dashsound.Play();
                     //dashTrail.enabled = true;
                     chargingSmokeParticules.SetActive(true);
                     chargingParticules.SetActive(true);
-
+                    level1Dashsound.Play();
                 }
                 else if (_chargeTime > firstDashLevelTime && _chargeTime > secondDashLevelTime && _chargeTime > thirdDashLevelTime) {
                  

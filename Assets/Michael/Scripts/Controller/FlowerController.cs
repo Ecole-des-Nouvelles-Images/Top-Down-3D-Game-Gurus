@@ -346,9 +346,6 @@ namespace Michael.Scripts.Controller
         {
             sun -= capacityCost;
         }
-
-        
-        
         
     }
 }

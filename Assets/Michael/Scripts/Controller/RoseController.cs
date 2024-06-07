@@ -32,7 +32,12 @@ namespace Michael.Scripts.Controller
         {
             if (_currentTrap == null)
             {
-                _currentTrap = Instantiate(spawnTrap, transform.position, transform.rotation);
+                if (sun >= CapacityCost && !IsPlanted)
+                {
+                    _currentTrap = Instantiate(spawnTrap, transform.position, transform.rotation);
+                    OnLooseSunCapacity(CapacityCost);
+                }
+               
             }
             else
             {
