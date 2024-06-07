@@ -1,5 +1,6 @@
 using Michael.Scripts.Manager;
 using Michael.Scripts.Ui;
+using Noah.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -86,6 +87,7 @@ namespace Michael.Scripts.Controller
             if (context.performed && !PauseControlller.IsPaused)
             {
                 SecondaryCapacity();
+                RumbleManager.Instance.RumblePulse(0.25f, 1f, 0.25f);
             }
            
         }

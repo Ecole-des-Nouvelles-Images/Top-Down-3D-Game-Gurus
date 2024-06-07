@@ -26,7 +26,7 @@ namespace Michael.Scripts.Controller
         public bool isInvincible = false;
         public bool isUnhittable = false;
         public bool isUnstoppable = false;
-
+        
         public bool IsStunned;
         public bool isDead;
         public static bool FlowersWin;
@@ -48,6 +48,8 @@ namespace Michael.Scripts.Controller
         [SerializeField] private VisualEffect ReviveVFX;
         [SerializeField] private GameObject dirt;
         [SerializeField] private ParticleSystem fireWorksParticules;
+        public VisualEffect GatherEnergy;
+        
         
         protected virtual void Start() {
             StartAnimation();

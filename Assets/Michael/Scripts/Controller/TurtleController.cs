@@ -167,8 +167,7 @@ namespace Michael.Scripts.Controller
         {
             destructionMode = false;
         }
-
-
+        
         private void DashingUpdate()
         {
             if (_isDashing && Rb.velocity.magnitude < 0.01f)
@@ -249,9 +248,6 @@ namespace Michael.Scripts.Controller
                 Invoke(nameof(DisableAttackCollider), 0.7f);
                 _animator.SetTrigger("Attack");
                 BatteryManager.Instance.BatteryCost(10);
-                
-                
-                
             }
         }
         private void EnableAttackCollider()
