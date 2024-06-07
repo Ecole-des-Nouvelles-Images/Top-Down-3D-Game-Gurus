@@ -26,7 +26,7 @@ namespace Michael.Scripts.Ui
 
 
         public void OpenPausePanel() {
-            if ( Time.timeScale> 0)
+            if ( Time.timeScale> 0 && !GameManager.Instance.GameisStarted)
             {
                 Time.timeScale= 0;
                 IsPaused = true;
@@ -38,7 +38,7 @@ namespace Michael.Scripts.Ui
         
         
         public void ClosePausePanel() {
-            if ( Time.timeScale <= 0)
+            if ( Time.timeScale <= 0 && !GameManager.Instance.GameisStarted)
             { 
                 Time.timeScale= 1;
                 IsPaused = false;

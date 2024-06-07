@@ -1,6 +1,8 @@
+using System;
 using DG.Tweening;
 using Michael.Scripts.Manager;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Michael.Scripts
@@ -16,7 +18,16 @@ namespace Michael.Scripts
         [SerializeField] private string StartMessage;
         private void Start()
         {
-            Invoke("Countdown",1);
+           // Invoke("Countdown",1);
+        }
+
+        private void Update()
+        {
+            if (GameManager.Instance.GameisStarted)
+            {
+                Countdown();
+                GameManager.Instance.GameisStarted = false;
+            }
         }
 
         private void Countdown()
