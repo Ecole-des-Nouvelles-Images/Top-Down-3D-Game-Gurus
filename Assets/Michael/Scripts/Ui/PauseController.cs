@@ -15,8 +15,7 @@ namespace Michael.Scripts.Ui
         [SerializeField] private GameObject _pausePanel;
         [SerializeField] private GameObject _eventSystem;
         [SerializeField] private GameObject _playButton;
-        [SerializeField] private Volume volume;
-
+      
         private void Start()
         {
             IsPaused = false;
@@ -42,9 +41,7 @@ namespace Michael.Scripts.Ui
             { 
                 Time.timeScale= 1;
                 IsPaused = false;
-               // _eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
                 _pausePanel.SetActive(false);
-                _eventSystem.SetActive(false);
 
             }
         }

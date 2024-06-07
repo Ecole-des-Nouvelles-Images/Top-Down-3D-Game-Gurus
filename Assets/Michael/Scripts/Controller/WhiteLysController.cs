@@ -1,6 +1,8 @@
 using Michael.Scripts.Manager;
+using Michael.Scripts.Ui;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Michael.Scripts.Controller
 {
@@ -17,7 +19,6 @@ namespace Michael.Scripts.Controller
                         if (floweralive.GetComponent<FlowerController>().sun < 3)
                         {
                             floweralive.GetComponent<FlowerController>().sun += sun;
-                            sun = 0;
                         }
                         else
                         {
@@ -25,6 +26,7 @@ namespace Michael.Scripts.Controller
                         }
                     }
                 }
+                sun = 0;
             
             }
         }
@@ -45,7 +47,21 @@ namespace Michael.Scripts.Controller
             canReanimate = false;
 
         }
-        
+
+        public override void OnThirdCapacity(InputAction.CallbackContext context)
+        {
+            if (canReanimate && !IsStunned && !PauseControlller.IsPaused )
+            {
+                if (context.started) {
+                    isCharging = true;
+                   
+                }
+                else if (context.canceled) {
+                    isCharging = false;
+                    reanimateTimer = 0;
+                }
+            }
+        }
         
         
     }

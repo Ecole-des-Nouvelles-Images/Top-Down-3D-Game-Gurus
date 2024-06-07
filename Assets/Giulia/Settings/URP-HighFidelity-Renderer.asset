@@ -63,7 +63,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 64
+        m_Bits: 0
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 512
+        m_Bits: 4096
       PassNames: []
     overrideMaterial: {fileID: 2100000, guid: e6e53a5ff8ed1844b91ad358187327d5, type: 2}
     overrideMaterialPassIndex: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
     overrideShaderPassIndex: 0
     overrideMode: 1
     overrideDepthState: 1
-    depthCompareFunction: 0
+    depthCompareFunction: 5
     enableWrite: 0
     stencilSettings:
       overrideStencilState: 0
