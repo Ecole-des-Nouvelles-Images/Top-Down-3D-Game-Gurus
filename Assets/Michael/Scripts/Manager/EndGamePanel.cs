@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Intégration.V1.Scripts.SharedScene;
 using Michael.Scripts.Ui;
 using UnityEngine;
 

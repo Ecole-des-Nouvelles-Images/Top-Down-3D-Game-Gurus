@@ -1,8 +1,8 @@
-using Intégration.V1.Scripts.Game;
 using Michael.Scripts;
+using Michael.Scripts.Controller;
 using UnityEngine;
 
-namespace Noah.Scripts
+namespace Intégration.V1.Scripts.Game.Characters
 {
     public class CornflowerController : FlowerController
     {
@@ -10,8 +10,13 @@ namespace Noah.Scripts
 
         protected override void MainCapacity()
         {
-            _Shield.OpenShield();
+            if (sun >= CapacityCost && !IsPlanted)
+            {
+                _Shield.OpenShield();
+                OnLooseSunCapacity(CapacityCost);
+            }
         }
+
 
         protected override void PassiveCapacity()
         {

@@ -1,16 +1,17 @@
 using System;
-using Intégration.V1.Scripts.Game;
+using Intégration.V1.Scripts.UI;
 using Michael.Scripts;
 using Michael.Scripts.Manager;
+using Michael.Scripts.Ui;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Noah.Scripts
+namespace Intégration.V1.Scripts.Game.Characters
 {
     public class PoppyController : FlowerController
     {
         public MeshTrail MeshTrail;
-        
+
         [Header("Grappling - References")] [SerializeField]
         private Transform Gun;
 
@@ -28,7 +29,6 @@ namespace Noah.Scripts
         private float grapplingCd;
 
         private float _grapplingCdTimer;
-
 
         private float _grappleHoldTimer;
         private Vector3 grapplePoint;
@@ -49,17 +49,21 @@ namespace Noah.Scripts
         {
             if (!isBoosted && GameManager.Instance.FlowersAlive.Count == 1)
             {
-                Debug.Log("boost vitesse dernier en vie");
-                moveSpeed += 20;
+                MeshTrail.InvokePassive();
+                moveSpeed += 150;
                 isBoosted = true;
-                
-                
             }
 
             if (GameManager.Instance.FlowersAlive.Count > 1)
             {
                 isBoosted = false;
-                moveSpeed = 350;
+                moveSpeed = 525;
+                MeshTrail.StopPassive();
+            }
+
+            else if (isDead || GameManager.Instance.GameFinished)
+            {
+                MeshTrail.StopPassive();
             }
         }
 
@@ -68,7 +72,6 @@ namespace Noah.Scripts
             PassiveCapacity();
             base.Update();
             GrapplingUpdate();
-            
         }
 
         private void GrapplingUpdate()
@@ -96,8 +99,7 @@ namespace Noah.Scripts
 
         public override void OnMainCapacity(InputAction.CallbackContext context)
         {
-            RumbleManager.Instance.RumblePulse(2f, 5f, 2f);
-            if (context.started)
+            if (context.started && !IsStunned && !PauseControlller.IsPaused)
             {
                 MainCapacity();
             }
