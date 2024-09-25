@@ -17,5 +17,7 @@ namespace Intégration.V1.Scripts.IntroScreen
         {
             CustomSceneManager.Instance.LoadScene("Menu");
         }
+        
+  
     }
 }
