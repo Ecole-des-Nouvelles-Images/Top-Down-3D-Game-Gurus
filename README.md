@@ -34,7 +34,7 @@
   <strong>Équipe</strong>
 </h2>
 <p>
-  L'équipe <strong>Game Gurus</strong> est composée de 3 étudiants : <a href="[https://github.com/GiuPH)]">Giulia HAUT PERUCCA</a>, <strong>Product Owner</strong> et <strong>Artiste 2D & 3D</strong>, <a href="https://github.com/Michael-elie">Michaël ELIE</a>, et <a href="https://github.com/NoahMil">Noah MILIANI</a>, tous deux <strong>Game Designers</strong> et <strong>Développeurs</strong>.
+  L'équipe <strong>Game Gurus</strong> est composée de 3 étudiants : <a href="https://github.com/GiuPH">Giulia HAUT PERUCCA</a>, <strong>Product Owner</strong> et <strong>Artiste 2D & 3D</strong>, <a href="https://github.com/Michael-elie">Michaël ELIE</a>, et <a href="https://github.com/NoahMil">Noah MILIANI</a>, tous deux <strong>Game Designers</strong> et <strong>Développeurs</strong>.
 </p>
 
 <h2 id="pitch" align="center">
