@@ -17,6 +17,9 @@
     <li>
       <a href="#équipe">Équipe</a>
     </li>
+        <li>
+      <a href="#pitch">Pitch</a>
+    </li>
   </ol>
 </details>
 
@@ -31,6 +34,14 @@
   <strong>Équipe</strong>
 </h2>
 <p>
-  L'équipe Game Gurus est composée de 3 étudiants :
+  L'équipe <strong>Game Gurus</strong> est composée de 3 étudiants :
   <strong>Giulia PERUCCA</strong>, <strong>Product Owner</strong> et <strong>Artiste 2D & 3D</strong>, <strong>Michaël ELIE</strong> et <strong>Noah MILIANI</strong>, tous deux <strong>Game Designers</strong> et <strong>Développeurs</strong>.
 </p>
+
+<h2 id="pitch" align="center">
+  <strong>Pitch</strong>  
+</h2>
+<p>
+  <strong>Turbo Tortue</strong> est un jeu d'<strong>action 3D</strong> en <strong>Top Down </strong>, multijoueur local pour <strong>2 à 4 joueurs</strong>, jouable sur PC avec des manettes de console. Le jeu est une <strong>course-poursuite</strong> intense où un joueur incarne une <strong>tortue robotique</strong> qui doit éliminer les autres joueurs, chacun incarnant une <strong>fleur mutante</strong> avec des <strong>caractéristiques spécifiques</strong>.
+</p>
+
