@@ -51,8 +51,9 @@
   <strong>Univers</strong>
 </h2>
 <p>
-  Dans un laboratoire, Dr Green, un scientifique de renom, mène des recherches sur la croissance et l'évolution des plantes. Un jour, un incident se produit et Dr Green renverse accidentellement un produit chimique expérimental sur ses spécimens végétaux. Ce produit, conçu initialement pour stimuler la croissance des plantes, provoque une mutation inattendue. 
-  Les plantes commencent à se développer de manière anormale, gagnant en taille, en force et en agressivité. Ces plantes mutantes, désormais dotées d'une conscience et d'une mobilité étonnantes, parviennent à s'échapper du laboratoire. Elles retournent dans le jardin du Dr. Green, un jardin autrefois paisible et harmonieux, maintenant transformé en un champ de bataille. 
+  Dans un laboratoire, Dr Green, un scientifique de renom, mène des recherches sur la croissance et l'évolution des plantes. Un jour, un incident se produit et Dr Green renverse accidentellement un produit chimique expérimental sur ses spécimens végétaux. Ce produit, conçu initialement pour stimuler la croissance des plantes, provoque une mutation inattendue. <br>
+  
+  Les plantes commencent à se développer de manière anormale, gagnant en taille, en force et en agressivité. Ces plantes mutantes, désormais dotées d'une conscience et d'une mobilité étonnantes, parviennent à s'échapper du laboratoire. Elles retournent dans le jardin du Dr. Green, un jardin autrefois paisible et harmonieux, maintenant transformé en un champ de bataille. <br>
+  
   Face à cette situation critique, le Dr. Green a une idée de génie. Il conçoit et construit une tortue robotique, TurboTortue, équipée des dernières technologies pour faire face à cette menace végétale. TurboTortue est programmée pour retrouver et éliminer les plantes mutantes, quitte à tout détruire sur son passage.
-
-
+</p>
