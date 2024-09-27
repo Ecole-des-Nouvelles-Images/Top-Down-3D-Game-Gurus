@@ -2,19 +2,19 @@
   <strong>TURBO TORTUE</strong>
 </h1>
 
-![tt_illuMain](https://github.com/user-attachments/assets/13732990-d58f-44d7-84d1-bc986e10a5e0)
+![TurboTortue](https://github.com/user-attachments/assets/63703d10-dc62-467a-9cbb-803ed9e0abcd)
 
 <h2 align="center">
-  <strong>Sommaire</strong>
+  <strong>Table of Contents</strong>
 </h2>
 
 <details>
-  <summary>Table des matières</summary>
+  <summary>Table of Contents</summary>
   <ol>
     <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#équipe">Équipe</a></li>
+    <li><a href="#team">Team</a></li>
     <li><a href="#pitch">Pitch</a></li>
-    <li><a href="#univers">Univers</a></li>
+    <li><a href="#universe">Universe</a></li>
   </ol>
 </details>
 
@@ -22,25 +22,25 @@
   <strong>Introduction</strong>  
 </h2>
 <p>
-  Le projet <strong>Turbo Tortue</strong> est un jeu de <strong>poursuite multijoueur local</strong>, réalisé par l'équipe <strong>Game Gurus</strong> du 29 mai au 2 juin 2024 en fin de cycle de 2e année Jeu Vidéo & Image Temps Réel, au sein de l'<a href="https://github.com/Ecole-des-Nouvelles-Images">Ecole des Nouvelles Images</a>. Une phase de préproduction de 3 semaines a été accordée afin de <strong>clarifier les objectifs et la vision du jeu</strong> et de <strong>prévoir la gestion du temps</strong> lors de la production finale.
+  The <strong>Turbo Tortue</strong> project is a <strong>local multiplayer chase game</strong>, developed by the <strong>Game Gurus</strong> team from May 29th to June 2nd, 2024, as part of the second-year Video Games & Real-Time Imagery course at the <a href="https://github.com/Ecole-des-Nouvelles-Images">Ecole des Nouvelles Images</a>. A 3-week preproduction phase was granted to <strong>clarify the objectives and vision of the game</strong> and <strong>plan time management</strong> during the final production.
 </p>
 
-<h2 id="équipe" align="center">
-  <strong>Équipe</strong>
+<h2 id="team" align="center">
+  <strong>Team</strong>
 </h2>
 <p>
-  L'équipe <strong>Game Gurus</strong> est composée de 3 étudiants : <a href="https://github.com/GiuPH">Giulia HAUT PERUCCA</a>, <strong>Product Owner</strong> et <strong>Artiste 2D & 3D</strong>, <a href="https://github.com/Michael-elie">Michaël ELIE</a>, et <a href="https://github.com/NoahMil">Noah MILIANI</a>, tous deux <strong>Game Designers</strong> et <strong>Développeurs</strong>.
+  The <strong>Game Gurus</strong> team consists of three students: <a href="https://github.com/GiuPH">Giulia HAUT PERUCCA</a>, <strong>Product Owner</strong> and <strong>2D & 3D Artist</strong>; <a href="https://github.com/Michael-elie">Michaël ELIE</a>; and <a href="https://github.com/NoahMil">Noah MILIANI</a>, both <strong>Game Designers</strong> and <strong>Developers</strong>.
 </p>
 
 <div align="center">
   <a href="https://github.com/GiuPH">
-    <img src="https://github.com/user-attachments/assets/4bf9078f-1b46-422f-82e4-2f9525755cc3" width="300px" alt="avatar giulia-rond">
+    <img src="https://github.com/user-attachments/assets/4bf9078f-1b46-422f-82e4-2f9525755cc3" width="300px" alt="avatar giulia-round">
   </a>
   <a href="https://github.com/Michael-elie">
-    <img src="https://github.com/user-attachments/assets/501d8a9a-d5c5-4e7b-8321-08c1dc5233c8" width="300px" alt="avatar michael-rond">
+    <img src="https://github.com/user-attachments/assets/501d8a9a-d5c5-4e7b-8321-08c1dc5233c8" width="300px" alt="avatar michael-round">
   </a>
   <a href="https://github.com/NoahMil">
-    <img src="https://github.com/user-attachments/assets/2a66cfb4-db97-4eb6-b8aa-197e4ca7ca6a" width="300px" alt="avatar noah-rond">
+    <img src="https://github.com/user-attachments/assets/2a66cfb4-db97-4eb6-b8aa-197e4ca7ca6a" width="300px" alt="avatar noah-round">
   </a>
 </div>
 
@@ -48,19 +48,18 @@
   <strong>Pitch</strong>  
 </h2>
 <p>
-  <strong>Turbo Tortue</strong> est un jeu d'<strong>action 3D</strong> en <strong>Top Down</strong>, multijoueur local pour <strong>2 à 4 joueurs</strong>, jouable sur PC avec des manettes de console. Le jeu est une <strong>course-poursuite</strong> intense où un joueur incarne une <strong>tortue robotique</strong> qui doit éliminer les autres joueurs, chacun incarnant une <strong>fleur mutante</strong> avec des <strong>caractéristiques spécifiques</strong>.
+  <strong>Turbo Tortue</strong> is a <strong>3D action</strong> game with a <strong>Top-Down</strong> perspective, supporting local multiplayer for <strong>2 to 4 players</strong>, and playable on PC with console controllers. The game is an intense <strong>chase</strong> where one player controls a <strong>robotic turtle</strong> tasked with eliminating the other players, each embodying a <strong>mutant flower</strong> with specific <strong>unique abilities</strong>.
 </p>
 
-<h2 id="univers" align="center">
-  <strong>Univers</strong>
+<h2 id="universe" align="center">
+  <strong>Universe</strong>
 </h2>
 <p>
-  Dans un laboratoire, Dr Green, un scientifique de renom, mène des recherches sur <strong>la croissance et l'évolution des plantes</strong>. Un jour, un incident se produit et Dr Green renverse accidentellement un <strong>produit chimique expérimental</strong> sur ses spécimens végétaux. Ce produit, conçu initialement pour stimuler la croissance des plantes, provoque une <strong> mutation inattendue</strong>. <br>
+  In a laboratory, Dr. Green, a renowned scientist, conducts research on <strong>plant growth and evolution</strong>. One day, an accident occurs, and Dr. Green accidentally spills an <strong>experimental chemical</strong> on his plant specimens. This chemical, initially designed to stimulate plant growth, causes an <strong>unexpected mutation</strong>. <br>
   
-  Les plantes commencent à se développer de manière anormale, <strong> gagnant en taille, en force et en agressivité</strong>. Ces plantes mutantes, désormais dotées <strong> d'une conscience et mobilité étonnantes</strong>, parviennent à s'échapper du laboratoire. Elles retournent dans le jardin du Dr. Green, un jardin autrefois paisible et harmonieux, maintenant transformé en un <strong> un champ de bataille</strong>. <br>
+  The plants begin to grow abnormally, <strong>gaining size, strength, and aggression</strong>. These mutant plants, now endowed with <strong>consciousness and surprising mobility</strong>, manage to escape the laboratory. They return to Dr. Green's garden, which was once a peaceful and harmonious place, now transformed into a <strong>battlefield</strong>. <br>
   
-  Face à cette situation critique, le Dr. Green a une idée de génie. Il conçoit et construit une <strong>tortue robotique, nommée TurboTortue</strong>, équipée des dernières technologies pour faire face à cette menace végétale. TurboTortue est programmée pour <strong>retrouver et éliminer les plantes mutantes</strong>, quitte à tout détruire sur son passage.
+  Faced with this critical situation, Dr. Green has a brilliant idea. He designs and builds a <strong>robotic turtle, named TurboTortue</strong>, equipped with the latest technologies to combat this plant threat. TurboTortue is programmed to <strong>locate and eliminate the mutant plants</strong>, even if it means destroying everything in its path.
 </p>
 
 https://github.com/user-attachments/assets/f641f1b6-5fb7-461c-9206-120f83fa2d0f
-
