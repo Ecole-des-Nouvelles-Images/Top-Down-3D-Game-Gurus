@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -11,6 +12,8 @@ namespace Intégration.V1.Scripts.Menu
 {
     public class CharacterSelection : MonoBehaviour
     {
+        public static Action OnGameStart;
+        
         public static bool[] PlayerIsReady;
         public static bool[] PlayerIsJoined;
         public static bool CanHold;
@@ -19,7 +22,7 @@ namespace Intégration.V1.Scripts.Menu
         public static bool CanJoin;
         public bool IsCharging;
         public int PlayerIndex;
-        public static int _maxPlayers = 4;
+        public static int _minPlayers = 4;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -38,6 +41,7 @@ namespace Intégration.V1.Scripts.Menu
         [SerializeField] private Image startButton;
         [SerializeField] private GameObject startText;
         [SerializeField] private GameObject textInfo;
+        [SerializeField] private GameObject turtleInfo;
         [SerializeField] private float startTimerDuration = 2f;
         [SerializeField] private float startTimer = 0;
         private Vector3 _initialTransform;
@@ -50,6 +54,7 @@ namespace Intégration.V1.Scripts.Menu
             startGameAction = GetComponent<PlayerInput>().currentActionMap.FindAction("StartGame");
             startGameAction.started += context => StartHold();
             startGameAction.canceled += context => StartRelease();
+            MenuManager.Instance._gameStarted = false;
 
 
             PlayerIndex = GetComponent<PlayerInput>().user.index;
@@ -68,6 +73,16 @@ namespace Intégration.V1.Scripts.Menu
             }
         }
 
+        private void OnEnable()
+        {
+            OnGameStart += MenuManager.Instance.GameStartAction;
+        }
+        
+        private void OnDisable()
+        {
+            OnGameStart -= MenuManager.Instance.GameStartAction;
+        }
+
         public void CanStartGame()
         {
             CanStart = true;
@@ -75,6 +90,7 @@ namespace Intégration.V1.Scripts.Menu
 
         private void Update()
         {
+            
             PlayerSelector();
             if (CanHold)
             {
@@ -86,7 +102,7 @@ namespace Intégration.V1.Scripts.Menu
                     if (startTimer >= startTimerDuration + 0.1f)
                     {
                         circleTransition.transform.DOScale(15, 1);
-                        Invoke("CanStartGame", 1.1f);
+                        OnGameStart.Invoke();
                     }
                 }
                 else
@@ -204,6 +220,13 @@ namespace Intégration.V1.Scripts.Menu
             return null;
         }
 
+        public void OnDeviceLost()
+        {
+            OnCancel();
+        }
+        
+        
+
 
         public void OnCancel()
         {
@@ -306,19 +329,17 @@ namespace Intégration.V1.Scripts.Menu
 
                 for (int i = 0; i < PlayerIsJoined.Length; i++)
                 {
-                    if (PlayerIsJoined[i] == true)
-                    {
+                    if (PlayerIsJoined[i] == true) {
                         if (PlayerIsReady[i] == false)
                         {
                             //  allPlayersReady = false;
                         }
-                        else
-                        {
+                        else {
                             readyCount++;
                             ConfirmChoice(PlayerIndex, _characterIndex);
+                            
 
-                            if (_characterSelected.name == "TurtleButton")
-                            {
+                            if (_characterSelected.name == "TurtleButton") {
                                 TurtleIsSelected = true;
                                 Debug.Log("turtle selectionnée");
                             }
@@ -328,15 +349,18 @@ namespace Intégration.V1.Scripts.Menu
                         }
                     }
                 }
-
-                if ( /*allPlayersReady == true && readyCount > _maxPlayers*/
-                    readyCount >= _maxPlayers && TurtleIsSelected)
-                {
+                
+                
+                if ( /*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= 4 && TurtleIsSelected)
+                { 
                     CanHold = true;
+                   turtleInfo.SetActive(false);
+                    
                 }
-                else if (readyCount >= _maxPlayers && !TurtleIsSelected)
+                else if (readyCount >= 4 && !TurtleIsSelected)
                 {
                     CanHold = false;
+                    turtleInfo.SetActive(true); // show error message 
                 }
                 else
                 {

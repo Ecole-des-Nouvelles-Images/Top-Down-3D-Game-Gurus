@@ -44,7 +44,7 @@ namespace Michael.Scripts.Manager
         {
             //GameisStarted = true;
             GameisStarted = false;
-           RulesPanel.GetComponent<CanvasGroup>().DOFade(1, 1f);
+           RulesPanel.GetComponent<CanvasGroup>().DOFade(1, 5f);
            Invoke(nameof(ShowRulesPanels),3f);
            circularTransition.transform.DOScale(15, 1.2f);
 
@@ -61,7 +61,6 @@ namespace Michael.Scripts.Manager
         public void Winverification()
         {
             if (FlowersAlive.Count <= 0 && !GameFinished) {
-                
                 //  TurtleVictoryPanel.SetActive(true);
                 EndGamePanel.GetComponent<CanvasGroup>().DOFade(1, 3f);
                 eventSystem.SetActive(true);
@@ -69,7 +68,6 @@ namespace Michael.Scripts.Manager
                 GameFinished = true;
                 FlowersIsdead = true;
                 DesactiveGameManager();
-                
             }
             else if (TurtleIsDead && !GameFinished) {
                 // FlowersVictoryPanel.SetActive(true);
@@ -79,7 +77,6 @@ namespace Michael.Scripts.Manager
                 GameFinished = true;
                 TurtleUis.SetActive(false);
                 DesactiveGameManager();
-                
             }
         }
       

@@ -7,9 +7,9 @@ namespace Intégration.V1.Scripts.Game.Characters
     {
         [SerializeField] private GameObject spawnTrap;
         [SerializeField] private float respawnDelay = 5f;
-
+        [SerializeField] private bool _isRespawning;
         private GameObject _currentTrap;
-        private bool _isRespawning;
+        
 
         protected override void PassiveCapacity()
         {
@@ -21,27 +21,36 @@ namespace Intégration.V1.Scripts.Game.Characters
             base.Start();
             PassiveCapacity();
         }
+        
 
         protected override void Update()
         {
             base.Update();
-            Respawn();
-        }
-
-        protected override void MainCapacity()
-        {
-            if (_currentTrap == null)
-            {
-                if (sun >= CapacityCost && !IsPlanted)
-                {
-                    _currentTrap = Instantiate(spawnTrap, transform.position, transform.rotation);
-                    OnLooseSunCapacity(CapacityCost);
-                }
+            if (_currentTrap) {
+                Respawn();
             }
             else
             {
-                _currentTrap.transform.position = transform.position;
+                CanRespawn = false;
             }
+          
+        }
+
+        protected override void MainCapacity() {
+                if (sun >= CapacityCost && !IsPlanted) {
+                    if (!_currentTrap)
+                    {
+                        CanRespawn = true;
+                        _currentTrap = Instantiate(spawnTrap, transform.position, transform.rotation);
+                        OnLooseSunCapacity(CapacityCost);
+                        capacitysound.Play();
+                    }
+                    else {
+                        _currentTrap.transform.position = transform.position;
+                        OnLooseSunCapacity(CapacityCost);
+                        capacitysound.Play();
+                    }
+                }
         }
 
         private void Respawn()
@@ -52,14 +61,14 @@ namespace Intégration.V1.Scripts.Game.Characters
             }
         }
 
-        IEnumerator RespawnWaiter()
-        {
+        IEnumerator RespawnWaiter() {
             _isRespawning = true;
             yield return new WaitForSeconds(respawnDelay);
             Rb.MovePosition(_currentTrap.transform.position);
             Destroy(_currentTrap);
             GetRevive();
-            _isRespawning = false;
+            CanRespawn = false;
+           _isRespawning = false;
         }
     }
 }

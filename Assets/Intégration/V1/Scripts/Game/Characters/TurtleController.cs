@@ -110,19 +110,6 @@ namespace Michael.Scripts.Controller
     
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             DashingUpdate();
             ScanningUpdate();
             _animator.SetFloat("Velocity",Rb.velocity.magnitude);

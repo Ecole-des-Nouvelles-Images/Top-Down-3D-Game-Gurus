@@ -17,6 +17,7 @@ namespace Intégration.V1.Scripts.Game.Characters
             if (sun > 0)
             {
                 shareEnergy.Play();
+                capacitysound.Play();
                 foreach (GameObject floweralive in GameManager.Instance.FlowersAlive)
                 {
                     if (floweralive != gameObject)
@@ -29,10 +30,11 @@ namespace Intégration.V1.Scripts.Game.Characters
                             }
 
                             floweralive.GetComponent<FlowerController>().sun += sun;
-                            sun = 0;
+                           
                         }
                     }
                 }
+                sun = 0;
             }
         }
 

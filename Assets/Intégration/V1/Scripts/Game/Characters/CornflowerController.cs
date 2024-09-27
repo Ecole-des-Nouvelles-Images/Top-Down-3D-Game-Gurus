@@ -12,6 +12,7 @@ namespace Intégration.V1.Scripts.Game.Characters
         {
             if (sun >= CapacityCost && !IsPlanted)
             {
+                capacitysound.Play();
                 _Shield.OpenShield();
                 OnLooseSunCapacity(CapacityCost);
             }

@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Intégration.V1.Scripts.SharedScene;
 using Michael.Scripts.Manager;
@@ -9,6 +10,7 @@ namespace Intégration.V1.Scripts.Menu
 {
     public class MenuManager : MonoBehaviourSingleton<MenuManager>
     {
+        public bool _gameStarted;
         [SerializeField] private AudioMixer _mixer;
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private Slider _sfxSlider;
@@ -16,7 +18,6 @@ namespace Intégration.V1.Scripts.Menu
         [SerializeField] private GameObject CharacterSelectionPanel;
         [SerializeField] private GameObject eventSystem;
 
-        private bool _gameStarted;
 
         private void Start()
         {
@@ -40,6 +41,16 @@ namespace Intégration.V1.Scripts.Menu
             }
         }
 
+        public void GameStartAction()
+        {
+            if ( !_gameStarted) {
+                
+              Invoke("StartGame",1.1f);
+                CharacterSelection.CanStart = false;
+                _gameStarted = true;
+            }
+        }
+
         public void StartGame()
         {
             CustomSceneManager.Instance.LoadScene("Game");
@@ -47,12 +58,12 @@ namespace Intégration.V1.Scripts.Menu
 
         private void Update()
         {
-            if (CharacterSelection.CanStart && !_gameStarted)
+          /*  if (CharacterSelection.CanStart && !_gameStarted)
             {
                 StartGame();
                 CharacterSelection.CanStart = false;
                 _gameStarted = true;
-            }
+            }*/
         }
 
         public void QuitApplication()

@@ -17,6 +17,7 @@ namespace Intégration.V1.Scripts.Game.Characters
         {
             if (IsPlanted && sun >= CapacityCost && plantedFlowers.Length != 0)
             {
+                capacitysound.Play();
                 Vector3 initialPosition = gameObject.transform.position;
                 GameObject randomSpawnPoint = plantedFlowers[Random.Range(0, plantedFlowers.Length)];
 

@@ -650,6 +650,7 @@ MonoBehaviour:
   isInvincible: 0
   isUnhittable: 0
   isUnstoppable: 0
+  _isRespawning: 0
   IsStunned: 0
   isDead: 0
   isCharging: 0
@@ -7256,7 +7257,7 @@ MonoBehaviour:
   _crashParticules: {fileID: 0}
   _dirtParticules: {fileID: 2559796367723553251}
   _runParticules: {fileID: 5893337261442892108}
-  footstepsound: {fileID: 7308751830130348925}
+  footstepsound: {fileID: 1987651671372900149}
 --- !u!4 &4453438878477613029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4917595172687070136, guid: 4d2232a76cf3b7a468651d6d004132c9,

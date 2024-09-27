@@ -114,6 +114,7 @@ namespace Intégration.V1.Scripts.Game.Characters
         {
             if (sun >= CapacityCost && !IsPlanted)
             {
+                capacitysound.Play();
                 StartGrapple();
                 OnLooseSunCapacity(CapacityCost);
             }

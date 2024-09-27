@@ -6,6 +6,7 @@ using Michael.Scripts.Ui;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 using Random = UnityEngine.Random;
@@ -16,7 +17,8 @@ namespace Intégration.V1.Scripts.Game.Characters
     {
         [SerializeField] private AudioSource minesound;
         [SerializeField] private AudioSource revivesound;
-        [SerializeField] private AudioSource capacitysound;
+        public AudioSource capacitysound;
+        public bool CanRespawn;
         public int characterIndex;
         public static Action OnSunCollected;
         public int sun = 0;
@@ -28,7 +30,6 @@ namespace Intégration.V1.Scripts.Game.Characters
         public bool isInvincible = false;
         public bool isUnhittable = false;
         public bool isUnstoppable = false;
-
         public bool IsStunned;
         public bool isDead;
         public static bool FlowersWin;
@@ -150,7 +151,6 @@ namespace Intégration.V1.Scripts.Game.Characters
             if (context.performed && !IsStunned && !PauseControlller.IsPaused)
             {
                 MainCapacity();
-                capacitysound.Play();
             }
         }
 
@@ -321,11 +321,14 @@ namespace Intégration.V1.Scripts.Game.Characters
                 aliveModel.SetActive(false);
                 deadModel.SetActive(true);
                 GetComponent<PlayerInput>().enabled = false;
-                isDead = true;
                 sun = 0;
+                isDead = true;
                 GameManager.Instance.FlowersAlive.Remove(this.gameObject);
                 deadArrowUI.SetActive(true);
-                GameManager.Instance.Winverification();
+                if (!CanRespawn) {
+                    GameManager.Instance.Winverification();
+                }
+               
             }
         }
 

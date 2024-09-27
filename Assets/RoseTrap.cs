@@ -6,15 +6,16 @@ using UnityEngine;
 public class RoseTrap : MonoBehaviour
 {
     [SerializeField] private GameObject dirt;
-
+    [SerializeField] private AudioSource destroySound;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Turtle"))
+        if (other.CompareTag("Turtle Collider"))
         {
-            Instantiate(dirt, transform.position, transform.rotation);
-            Destroy(this);
+            Instantiate(dirt, transform.position, new Quaternion(-90,0,0,0));
+            destroySound.Play();
+            Destroy(this.gameObject);
+           
         }
-        
         
     }
 }

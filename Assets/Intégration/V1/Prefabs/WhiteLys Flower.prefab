@@ -5573,6 +5573,7 @@ MonoBehaviour:
   isInvincible: 0
   isUnhittable: 0
   isUnstoppable: 0
+  _isRespawning: 0
   IsStunned: 0
   isDead: 0
   isCharging: 0
@@ -6356,7 +6357,7 @@ MonoBehaviour:
   _crashParticules: {fileID: 0}
   _dirtParticules: {fileID: 6024912876239500853}
   _runParticules: {fileID: 7741985525989045300}
-  footstepsound: {fileID: 2594968589048736195}
+  footstepsound: {fileID: 4022691148791442207}
 --- !u!1001 &2045519307843942346
 PrefabInstance:
   m_ObjectHideFlags: 0
