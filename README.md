@@ -27,7 +27,7 @@
   <strong>Introduction</strong>  
 </h2>
 <p>
-  Le projet <strong>Turbo Tortue</strong> est un jeu de <strong>poursuite multijoueur local</strong>, réalisé en fin de deuxième année par l'équipe <strong>Game Gurus</strong>, du 29 mai au 2 juin 2024. Une phase de préproduction de 3 semaines a été accordée afin de <strong>clarifier les objectifs et la vision du jeu</strong> et de <strong>prévoir la gestion du temps</strong> lors de la production finale.
+  Le projet <strong>Turbo Tortue</strong> est un jeu de <strong>poursuite multijoueur local</strong>, réalisé par l'équipe <strong>Game Gurus</strong> du 29 mai au 2 juin 2024 en fin de cycle de 2e année Jeu Vidéo & Image Temps Réel, au sein de l'<a href="https://github.com/Ecole-des-Nouvelles-Images">Ecole des Nouvelles Images</a>. Une phase de préproduction de 3 semaines a été accordée afin de <strong>clarifier les objectifs et la vision du jeu</strong> et de <strong>prévoir la gestion du temps</strong> lors de la production finale.
 </p>
 
 <h2 id="équipe" align="center">
