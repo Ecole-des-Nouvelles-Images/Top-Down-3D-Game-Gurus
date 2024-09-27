@@ -9,7 +9,7 @@
 </h2>
 
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Contents</summary>
   <ol>
     <li><a href="#introduction">Introduction</a></li>
     <li><a href="#team">Team</a></li>
@@ -62,4 +62,4 @@
   Faced with this critical situation, Dr. Green has a brilliant idea. He designs and builds a <strong>robotic turtle, named TurboTortue</strong>, equipped with the latest technologies to combat this plant threat. TurboTortue is programmed to <strong>locate and eliminate the mutant plants</strong>, even if it means destroying everything in its path.
 </p>
 
-https://github.com/user-attachments/assets/f641f1b6-5fb7-461c-9206-120f83fa2d0f
+https://github.com/user-attachments/assets/4c7658da-f2d2-47db-b50f-f7639f6b0fbb
