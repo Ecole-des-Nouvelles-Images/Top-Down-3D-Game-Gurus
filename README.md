@@ -11,18 +11,11 @@
 <details>
   <summary>Table des matières</summary>
   <ol>
-    <li>
-      <a href="#introduction">Introduction</a>
-    </li>
-    <li>
-      <a href="#équipe">Équipe</a>
-    </li>
-    <li>
-      <a href="#pitch">Pitch</a>
-    </li>
-        <li>
-      <a href="#univers">Univers</a>
-    </li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#équipe">Équipe</a></li>
+    <li><a href="#pitch">Pitch</a></li>
+    <li><a href="#univers">Univers</a></li>
+    <li><a href="README_EN.md">English Version</a></li> <!-- Lien vers le fichier anglais -->
   </ol>
 </details>
 
