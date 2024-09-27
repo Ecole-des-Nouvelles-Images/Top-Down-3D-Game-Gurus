@@ -2,7 +2,7 @@
   <strong>TURBO TORTUE</strong>
 </h1>
 
-![tt_illuMain](https://github.com/user-attachments/assets/13732990-d58f-44d7-84d1-bc986e10a5e0)
+![TurboTortue](https://github.com/user-attachments/assets/01b2e527-9497-44b4-ab4b-5aa89cf980dd)
 
 <h2 align="center">
   <strong>Sommaire</strong>
@@ -62,5 +62,4 @@
   Face à cette situation critique, le Dr. Green a une idée de génie. Il conçoit et construit une <strong>tortue robotique, nommée TurboTortue</strong>, équipée des dernières technologies pour faire face à cette menace végétale. TurboTortue est programmée pour <strong>retrouver et éliminer les plantes mutantes</strong>, quitte à tout détruire sur son passage.
 </p>
 
-https://github.com/user-attachments/assets/f641f1b6-5fb7-461c-9206-120f83fa2d0f
-
+https://github.com/user-attachments/assets/5c592d67-d7da-408a-89f8-f6f15dae4b14
