@@ -40,15 +40,17 @@
   L'équipe <strong>Game Gurus</strong> est composée de 3 étudiants : <a href="https://github.com/GiuPH">Giulia HAUT PERUCCA</a>, <strong>Product Owner</strong> et <strong>Artiste 2D & 3D</strong>, <a href="https://github.com/Michael-elie">Michaël ELIE</a>, et <a href="https://github.com/NoahMil">Noah MILIANI</a>, tous deux <strong>Game Designers</strong> et <strong>Développeurs</strong>.
 </p>
 
-<a href="https://github.com/GiuPH">
-  <img src="https://github.com/user-attachments/assets/4bf9078f-1b46-422f-82e4-2f9525755cc3" width="333px" alt="avatar giulia-rond">
-</a>
-<a href="https://github.com/Michael-elie">
-  <img src="https://github.com/user-attachments/assets/501d8a9a-d5c5-4e7b-8321-08c1dc5233c8" width="333px" alt="avatar michael-rond">
-</a>
-<a href="https://github.com/NoahMil">
-  <img src="https://github.com/user-attachments/assets/2a66cfb4-db97-4eb6-b8aa-197e4ca7ca6a" width="333px" alt="avatar noah-rond">
-</a>
+<div align="center">
+  <a href="https://github.com/GiuPH">
+    <img src="https://github.com/user-attachments/assets/4bf9078f-1b46-422f-82e4-2f9525755cc3" width="300px" alt="avatar giulia-rond">
+  </a>
+  <a href="https://github.com/Michael-elie">
+    <img src="https://github.com/user-attachments/assets/501d8a9a-d5c5-4e7b-8321-08c1dc5233c8" width="300px" alt="avatar michael-rond">
+  </a>
+  <a href="https://github.com/NoahMil">
+    <img src="https://github.com/user-attachments/assets/2a66cfb4-db97-4eb6-b8aa-197e4ca7ca6a" width="300px" alt="avatar noah-rond">
+  </a>
+</div>
 
 <h2 id="pitch" align="center">
   <strong>Pitch</strong>  
@@ -67,3 +69,6 @@
   
   Face à cette situation critique, le Dr. Green a une idée de génie. Il conçoit et construit une <strong>tortue robotique, nommée TurboTortue</strong>, équipée des dernières technologies pour faire face à cette menace végétale. TurboTortue est programmée pour <strong>retrouver et éliminer les plantes mutantes</strong>, quitte à tout détruire sur son passage.
 </p>
+
+https://github.com/user-attachments/assets/f641f1b6-5fb7-461c-9206-120f83fa2d0f
+
