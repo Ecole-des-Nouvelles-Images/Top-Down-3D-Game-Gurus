@@ -51,9 +51,9 @@
   <strong>Univers</strong>
 </h2>
 <p>
-  Dans un laboratoire, Dr Green, un scientifique de renom, mène des recherches sur la croissance et l'évolution des plantes. Un jour, un incident se produit et Dr Green renverse accidentellement un produit chimique expérimental sur ses spécimens végétaux. Ce produit, conçu initialement pour stimuler la croissance des plantes, provoque une mutation inattendue. <br>
+  Dans un laboratoire, Dr Green, un scientifique de renom, mène des recherches sur <strong>la croissance et l'évolution des plantes</strong>. Un jour, un incident se produit et Dr Green renverse accidentellement un <strong>produit chimique expérimental</strong> sur ses spécimens végétaux. Ce produit, conçu initialement pour stimuler la croissance des plantes, provoque une <strong> mutation inattendue</strong>. <br>
   
-  Les plantes commencent à se développer de manière anormale, gagnant en taille, en force et en agressivité. Ces plantes mutantes, désormais dotées d'une conscience et d'une mobilité étonnantes, parviennent à s'échapper du laboratoire. Elles retournent dans le jardin du Dr. Green, un jardin autrefois paisible et harmonieux, maintenant transformé en un champ de bataille. <br>
+  Les plantes commencent à se développer de manière anormale, <strong> gagnant en taille, en force et en agressivité</strong>. Ces plantes mutantes, désormais dotées <strong> d'une conscience et mobilité étonnantes</strong>, parviennent à s'échapper du laboratoire. Elles retournent dans le jardin du Dr. Green, un jardin autrefois paisible et harmonieux, maintenant transformé en un <strong> un champ de bataille</strong>. <br>
   
-  Face à cette situation critique, le Dr. Green a une idée de génie. Il conçoit et construit une tortue robotique, TurboTortue, équipée des dernières technologies pour faire face à cette menace végétale. TurboTortue est programmée pour retrouver et éliminer les plantes mutantes, quitte à tout détruire sur son passage.
+  Face à cette situation critique, le Dr. Green a une idée de génie. Il conçoit et construit une <strong>tortue robotique, nommée TurboTortue</strong>, équipée des dernières technologies pour faire face à cette menace végétale. TurboTortue est programmée pour <strong>retrouver et éliminer les plantes mutantes</strong>, quitte à tout détruire sur son passage.
 </p>
