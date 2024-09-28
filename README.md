@@ -13,7 +13,7 @@
   <ol>
     <li><a href="#introduction">Introduction</a></li>
     <li><a href="#team">Team</a></li>
-    <li><a href="#pitch">Pitch</a></li>
+    <li><a href="#What’s it about">What’s it about</a></li>
     <li><a href="#universe">Universe</a></li>
   </ol>
 </details>
@@ -44,8 +44,8 @@
   </a>
 </div>
 
-<h2 id="pitch" align="center">
-  <strong>Pitch</strong>  
+<h2 id="What’s it about" align="center">
+  <strong>What’s it about</strong>  
 </h2>
 <p>
   <strong>Turbo Tortue</strong> is a <strong>3D action</strong> game with a <strong>Top-Down</strong> perspective, supporting local multiplayer for <strong>2 to 4 players</strong>, and playable on PC with console controllers. The game is an intense <strong>chase</strong> where one player controls a <strong>robotic turtle</strong> tasked with eliminating the other players, each embodying a <strong>mutant flower</strong> with specific <strong>unique abilities</strong>.
