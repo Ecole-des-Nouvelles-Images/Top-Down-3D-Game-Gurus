@@ -29,7 +29,7 @@
   <strong>Team</strong>
 </h2>
 <p>
-  The <strong>Game Gurus</strong> team consists of three students: <a href="https://github.com/GiuPH">Giulia HAUT PERUCCA</a>, <strong>Product Owner</strong> and <strong>2D & 3D Artist</strong>; <a href="https://github.com/Michael-elie">Michaël ELIE</a>; and <a href="https://github.com/NoahMil">Noah MILIANI</a>, both <strong>Game Designers</strong> and <strong>Developers</strong>.
+  The <strong>Game Gurus</strong> team consists of three students: <a href="https://github.com/GiuPH">Giulia HAUT PERUCCA</a>, <strong>Product Owner</strong> and <strong>2D & 3D Artist</strong>; <a href="https://github.com/Michael-elie">Michaël ELIE</a> and <a href="https://github.com/NoahMil">Noah MILIANI</a>, both <strong>Game Designers</strong> and <strong>Developers</strong>.
 </p>
 
 <div align="center">
