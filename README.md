@@ -39,7 +39,7 @@
 
 <div align="center">
   <a href="https://github.com/GiuPH">
-    <img src="https://github.com/user-attachments/assets/4bf9078f-1b46-422f-82e4-2f9525755cc3" width="300px" alt="avatar giulia-round">
+    <img src="https://github.com/user-attachments/assets/abfea9c2-0f03-4a30-b9f8-93ece0954c80" width="300px" alt="avatar giulia-round">
   </a>
   <a href="https://github.com/Michael-elie">
     <img src="https://github.com/user-attachments/assets/501d8a9a-d5c5-4e7b-8321-08c1dc5233c8" width="300px" alt="avatar michael-round">
