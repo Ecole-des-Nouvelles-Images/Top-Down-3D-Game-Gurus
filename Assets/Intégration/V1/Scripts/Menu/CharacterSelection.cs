@@ -22,7 +22,7 @@ namespace Intégration.V1.Scripts.Menu
         public static bool CanJoin;
         public bool IsCharging;
         public int PlayerIndex;
-        public static int _minPlayers = 4;
+        public static int _minPlayers = 2;
         [SerializeField] private List<Button> _characterButtons;
         [SerializeField] private List<Sprite> _characterSprites;
         [SerializeField] private List<Sprite> _characterCapacitiesSprites;
@@ -351,13 +351,13 @@ namespace Intégration.V1.Scripts.Menu
                 }
                 
                 
-                if ( /*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= 4 && TurtleIsSelected)
+                if ( /*allPlayersReady == true && readyCount > _maxPlayers*/ readyCount >= _minPlayers && TurtleIsSelected)
                 { 
                     CanHold = true;
                    turtleInfo.SetActive(false);
                     
                 }
-                else if (readyCount >= 4 && !TurtleIsSelected)
+                else if (readyCount >= _minPlayers && !TurtleIsSelected)
                 {
                     CanHold = false;
                     turtleInfo.SetActive(true); // show error message 

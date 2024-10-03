@@ -1724,6 +1724,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 30011410}
+    - targetCorrespondingSourceObject: {fileID: 2139461705802056273, guid: 68b1916c49d05d94d86028f6e46ffd86,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 30011411}
   m_SourcePrefab: {fileID: 100100000, guid: 68b1916c49d05d94d86028f6e46ffd86, type: 3}
 --- !u!4 &30011408 stripped
 Transform:
@@ -1758,6 +1762,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5000004, y: 2.1472998, z: 0.30000007}
   m_Center: {x: 0, y: 1.02635, z: -0.100000024}
+--- !u!114 &30011411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30011409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 30011409}
+  fracturedObject: {fileID: 1376641032921080153, guid: 2d046ca74f5e78e43b8e1edcbd3f414b,
+    type: 3}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 20
+  explosionMaxForce: 200
+  explosionForceRadius: 20
+  shrinkDuration: 5
 --- !u!1 &32428717
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeThreshold: 5
-  shakeStrengh: {x: 0.1, y: 0, z: 0.1}
+  shakeStrengh: {x: 0.2, y: 0, z: 0.2}
   shakeVibrato: 1
   Tomatoe: []
   waterRipples: {fileID: 0}
@@ -20781,8 +20805,8 @@ MonoBehaviour:
     type: 3}
   explosionVFX: {fileID: 0}
   explosionMinForce: 50
-  explosionMaxForce: 150
-  explosionForceRadius: 10
+  explosionMaxForce: 200
+  explosionForceRadius: 25
   shrinkDuration: 2
 --- !u!64 &600219815
 MeshCollider:
@@ -36913,13 +36937,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c180cdc72a81e247bd5f65af49e864e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameStarted: 0
   _mixer: {fileID: 24100000, guid: 948a43e030d566f43bc1b8a8fd389050, type: 2}
   _musicSlider: {fileID: 319491917}
   _sfxSlider: {fileID: 464582330}
   mainMenuPanel: {fileID: 0}
   CharacterSelectionPanel: {fileID: 0}
   eventSystem: {fileID: 0}
-  _gameStarted: 0
 --- !u!1 &1087505281
 GameObject:
   m_ObjectHideFlags: 0
@@ -54107,6 +54131,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1557863267}
+    - targetCorrespondingSourceObject: {fileID: 3121404190952660745, guid: b6191263ec720c04d90240d153b91214,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1557863268}
   m_SourcePrefab: {fileID: 100100000, guid: b6191263ec720c04d90240d153b91214, type: 3}
 --- !u!4 &1557863265 stripped
 Transform:
@@ -54139,8 +54167,28 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5000004, y: 2.2923417, z: 0.30000007}
-  m_Center: {x: 0, y: 0.95382905, z: -0.100000024}
+  m_Size: {x: 1.5000004, y: 1.3349537, z: 0.30000007}
+  m_Center: {x: 0.0000000029952798, y: 1.432523, z: -0.10000002}
+--- !u!114 &1557863268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557863266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1c7c3fcee25f94a9a06dc076efc009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 1557863266}
+  fracturedObject: {fileID: 4081514382847591222, guid: a1b088bc8c93ec542bc04b0f4c04253e,
+    type: 3}
+  explosionVFX: {fileID: 0}
+  explosionMinForce: 21.4
+  explosionMaxForce: 150
+  explosionForceRadius: 21.2
+  shrinkDuration: 4
 --- !u!1 &1563893694
 GameObject:
   m_ObjectHideFlags: 0
@@ -55396,7 +55444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeThreshold: 5
-  shakeStrengh: {x: 0.1, y: 0, z: 0.1}
+  shakeStrengh: {x: 0.2, y: 0, z: 0.2}
   shakeVibrato: 1
   Tomatoe: []
   waterRipples: {fileID: 0}
@@ -60011,8 +60059,8 @@ MonoBehaviour:
     type: 3}
   explosionVFX: {fileID: 0}
   explosionMinForce: 50
-  explosionMaxForce: 150
-  explosionForceRadius: 20
+  explosionMaxForce: 200
+  explosionForceRadius: 25
   shrinkDuration: 2
 --- !u!1 &1752294684
 GameObject:

@@ -4,6 +4,7 @@ namespace Intégration.V1.Scripts.Game.Characters
 {
     public class DandelionController : FlowerController
     {
+        [SerializeField] private Collider dandelionCollider;
         [SerializeField] private float unhittableDuration = 5f;
         [SerializeField] private ParticleSystem pollenVfx;
         private float _unhittableTimer;
@@ -56,7 +57,8 @@ namespace Intégration.V1.Scripts.Game.Characters
 
             pollenVfx.Play();
             //   aliveModel.SetActive(false);
-            moveSpeed += 300;
+            moveSpeed += 250;
+            dandelionCollider.enabled = false;// desactive collider pour eviter de recuperer des soleils
             _isBoosted = true;
             _animator.SetBool("IsInvincible", true);
             Debug.Log("Boost Activated");
@@ -69,6 +71,7 @@ namespace Intégration.V1.Scripts.Game.Characters
             pollenVfx.Stop();
             //  aliveModel.SetActive(true);
             moveSpeed = 525;
+            dandelionCollider.enabled = true; 
             _isBoosted = false;
             _animator.SetBool("IsInvincible", false);
             ExitObstacle();

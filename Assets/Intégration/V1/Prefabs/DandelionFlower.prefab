@@ -332,6 +332,7 @@ MonoBehaviour:
   minesound: {fileID: 4349320412742853472}
   revivesound: {fileID: 821098870295943508}
   capacitysound: {fileID: 5054537600316536732}
+  CanRespawn: 0
   characterIndex: 0
   sun: 0
   maxSun: 3
@@ -362,6 +363,7 @@ MonoBehaviour:
   dirt: {fileID: 4129921455319913798, guid: 2354a717495c77a49b59c84f86f82834, type: 3}
   fireWorksParticules: {fileID: 0}
   GatherEnergy: {fileID: 5808993123053797089}
+  dandelionCollider: {fileID: 7223760300387731525}
   unhittableDuration: 5
   pollenVfx: {fileID: 4086426091261872676}
 --- !u!1 &2398343139286559124

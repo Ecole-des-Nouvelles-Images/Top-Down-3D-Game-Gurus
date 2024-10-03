@@ -16,12 +16,16 @@ namespace Michael.Scripts.Controller
     public class TurtleController : CharacterController
     {
         public bool destructionMode;
-        [SerializeField] private float boosterMultiplier = 1.2f;
-          [Header("General References")]
+        [Header("General References")]
         [SerializeField] private Collider _attackCollider;
        // [SerializeField] private TrailRenderer dashTrail;
-        [SerializeField] private Material dashMaterial;
 
+        [Header("Boost")]
+        [SerializeField] private float boosterMultiplier = 1.2f;
+        [SerializeField] private bool nitroActivate;
+        [SerializeField] private GameObject SpeedParticle;
+        [SerializeField] private Material dashMaterial;
+        
         [Header("Charging & Dashing")]
         [SerializeField] private float firstDashLevelTime = 0.7f;
         [SerializeField] private float firstDashLevelPower = 5; 
@@ -107,6 +111,19 @@ namespace Michael.Scripts.Controller
             {
                 runStartSound.Play();
             }
+
+            if (nitroActivate)
+            {
+                SpeedParticle.SetActive(true);
+                materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[2]);
+                dashMaterial.SetColor("_EmissionColor",boostColor);
+                BatteryManager.Instance.CurrentBatteryTime -= Time.deltaTime * 12;
+            }
+            else
+            {
+                SpeedParticle.SetActive(false);
+                 dashMaterial.SetColor("_EmissionColor",normalColor);
+            }
     
             
             
@@ -119,10 +136,10 @@ namespace Michael.Scripts.Controller
                 GetComponent<PlayerInput>().enabled = false;
                 materialToUpdate.SetColor("_EmissionColor",Color.black);
             }
-            else if (!_isCharging )
+            else if (!_isCharging && !nitroActivate )
             {
                 materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[0]);
-              //  dashMaterial.SetColor("_EmissionColor",colorsDashLevel[0]);
+               // dashMaterial.SetColor("_EmissionColor",colorsDashLevel[0]);
                 
             }
 
@@ -131,11 +148,11 @@ namespace Michael.Scripts.Controller
                idlesoundIsPlaying = true;
                     
             }
-            else if  (Rb.velocity.magnitude > 0.01f )
+           /* else if  (Rb.velocity.magnitude > 0.01f )
             {
                 
               
-            }
+            }*/
 
            
             
@@ -151,15 +168,16 @@ namespace Michael.Scripts.Controller
                 
                 Debug.Log("turbo");
                 moveSpeed *= boosterMultiplier;
-                BatteryManager.Instance.CurrentBatteryTime -= Time.deltaTime;
-                dashMaterial.SetColor("_EmissionColor",boostColor);
+               // dashMaterial.SetColor("_EmissionColor",boostColor);
                 runnitro.Play();
+                nitroActivate = true;
             }
             else
             {
-                dashMaterial.SetColor("_EmissionColor",normalColor);
+                //dashMaterial.SetColor("_EmissionColor",normalColor);
                 moveSpeed = _normalSpeed;
                 runnitro.Stop();
+                nitroActivate = false; 
             }
         }
         #region Main Capacity
@@ -268,14 +286,14 @@ namespace Michael.Scripts.Controller
                 // change light of turtle when charging 
                 if (_chargeTime > firstDashLevelTime && _chargeTime < secondDashLevelTime) {
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[0]);
-                   dashMaterial.SetColor("_EmissionColor",colorsDashLevel[0]);
+                  // dashMaterial.SetColor("_EmissionColor",colorsDashLevel[0]);
                     
                     
                 }
                 else if (_chargeTime > firstDashLevelTime && _chargeTime > secondDashLevelTime && _chargeTime < thirdDashLevelTime) {
                   
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[1]);
-                    dashMaterial.SetColor("_EmissionColor",colorsDashLevel[1]);
+                    //dashMaterial.SetColor("_EmissionColor",colorsDashLevel[1]);
                     //dashTrail.enabled = true;
                     chargingSmokeParticules.SetActive(true);
                     chargingParticules.SetActive(true);
@@ -284,7 +302,7 @@ namespace Michael.Scripts.Controller
                 else if (_chargeTime > firstDashLevelTime && _chargeTime > secondDashLevelTime && _chargeTime > thirdDashLevelTime) {
                  
                     materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[2]);
-                   dashMaterial.SetColor("_EmissionColor",colorsDashLevel[2]);
+                  // dashMaterial.SetColor("_EmissionColor",colorsDashLevel[2]);
                     destructionMode = true;
                     level2Dashsound.Play();
                 }
@@ -316,7 +334,7 @@ namespace Michael.Scripts.Controller
         {
             if (!_isDashing) {
                 EnableAttackCollider();
-                Invoke(nameof(DisableAttackCollider), 0.7f);
+                Invoke(nameof(DisableAttackCollider), 0.4f);
                 _animator.SetTrigger("Attack");
                 BatteryManager.Instance.BatteryCost(10);
                 biteSound.Play();
@@ -339,7 +357,7 @@ namespace Michael.Scripts.Controller
 
         protected override void ThirdCapacity() {
 
-            if (GameManager.Instance.TurtleTrap.Count <= 1)
+            if (GameManager.Instance.TurtleTrap.Count <= 2)
             {
                 GameObject trap = Instantiate(TrapPrefab,TrapSpawn.position,TrapSpawn.rotation);
                 GameManager.Instance.TurtleTrap.Add(trap);
@@ -347,7 +365,7 @@ namespace Michael.Scripts.Controller
             }
             else
             {
-                Debug.Log("2 trap maximum");
+                Debug.Log("3 trap maximum");
             }
           
         }
