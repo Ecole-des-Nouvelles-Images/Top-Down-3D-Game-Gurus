@@ -56,6 +56,15 @@ namespace Intégration.V1.Scripts.Game.Characters
 
         protected virtual void Start()
         {
+            PlayerInput playerInput = GetComponent<PlayerInput>();
+            playerInput.onDeviceLost += input =>
+            {
+                Debug.Log($"OnDeviceLost: {input}");
+            };
+            playerInput.onDeviceRegained += input =>
+            {
+                Debug.Log($"OnDeviceRegained: {input}");
+            };
             StartAnimation();
         }
 

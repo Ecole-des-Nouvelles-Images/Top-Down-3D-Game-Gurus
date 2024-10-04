@@ -117,7 +117,7 @@ namespace Michael.Scripts.Controller
                 SpeedParticle.SetActive(true);
                 materialToUpdate.SetColor("_EmissionColor",colorsDashLevel[2]);
                 dashMaterial.SetColor("_EmissionColor",boostColor);
-                BatteryManager.Instance.CurrentBatteryTime -= Time.deltaTime * 12;
+                BatteryManager.Instance.CurrentBatteryTime -= Time.deltaTime * 13;
             }
             else
             {

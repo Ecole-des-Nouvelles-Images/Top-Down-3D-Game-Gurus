@@ -31421,13 +31421,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8463613a58f7a4b8cd230016458469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 400
+  moveSpeed: 350
   _animator: {fileID: 4159274208551880169}
   idleTreshold: 0.1
   Rb: {fileID: 0}
   destructionMode: 0
   _attackCollider: {fileID: 4408583465232902560}
-  boosterMultiplier: 1.4
+  boosterMultiplier: 1.22
   nitroActivate: 0
   SpeedParticle: {fileID: 2108700137790310046}
   dashMaterial: {fileID: 2100000, guid: cec535088cc7fc54fb6a157fe45ca828, type: 2}
